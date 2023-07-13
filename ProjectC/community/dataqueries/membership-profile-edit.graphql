@@ -1,0 +1,31 @@
+# label: "Membership Profile Edit"
+# $id: {{ request.contact.contact_vid|default("0") }}
+
+query membershipProfileEdit($id: String!) {
+  CRM {
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      associations {
+        p_member_profile_collection__profile_owner(limit: 500) {
+          items {
+            hs_object_id
+            first_name
+            last_name
+            bio
+            username
+            profile_photo
+            twitter_url
+            facebook_url
+            instagram_url
+            company_name
+            email
+            website_url
+            full_bio
+            linkedin
+            profile_visibility
+          }
+          total
+        }
+      }
+    }
+  }
+}

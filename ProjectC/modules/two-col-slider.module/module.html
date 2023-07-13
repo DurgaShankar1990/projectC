@@ -1,0 +1,165 @@
+
+<style>
+  {% scope_css %}
+
+  .slide__content {
+    {% if module.styles.content.alignment.alignment.horizontal_align %}
+    text-align: {{ module.styles.content.alignment.alignment.horizontal_align }};
+    {% endif %}
+  }
+
+  .spacing--center {
+    max-width: {{ theme.spacing.maximum_content_width }}px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .spacing--touching_left {
+    max-width: calc(100% - ((100% - {{ theme.spacing.maximum_content_width }}px) / 2));
+    margin-right: auto;
+    margin-left: 0;
+    width: 100%;
+  }
+  .spacing--touching_right {
+    max-width: calc(100% - ((100% - {{ theme.spacing.maximum_content_width }}px) / 2));
+    margin-left: auto;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .slide__image {
+    border-radius: {{ module.styles.image.corner_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    {% if module.styles.image.shadow %}
+    width: calc(46% - {{ module.styles.image.offset_amount }}px);
+    {% else %}
+    width: 46%;
+    {% endif %}
+    margin-top: 0;
+    margin-left: 0;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  .slide__image img {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+  }
+  .slide__image.shadow--top_left {
+    box-shadow: -{{ module.styles.image.offset_amount }}px -{{ module.styles.image.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: {{ module.styles.image.offset_amount }}px 0 0 {{ module.styles.image.offset_amount }}px !important;
+  }
+  .slide__image.shadow--top_right {
+    box-shadow: {{ module.styles.image.offset_amount }}px -{{ module.styles.image.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: {{ module.styles.image.offset_amount }}px {{ module.styles.image.offset_amount }}px 0 0 !important;
+  }
+  .slide__image.shadow--bottom_left {
+    box-shadow: -{{ module.styles.image.offset_amount }}px {{ module.styles.image.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.styles.image.offset_amount }}px 0 {{ module.styles.image.offset_amount }}px !important;
+  }
+  .slide__image.shadow--bottom_right {
+    box-shadow: {{ module.styles.image.offset_amount }}px {{ module.styles.image.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.styles.image.offset_amount }}px {{ module.styles.image.offset_amount }}px 0 !important;
+  }
+
+  .slide__image.shadow--top_left:hover {
+    box-shadow: -{{ module.styles.image.offset_amount / 2 }}px -{{ module.styles.image.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: {{ module.styles.image.offset_amount / 2 }}px 0 0 {{ module.styles.image.offset_amount / 2 }}px !important;
+    width: calc(46% - {{ module.styles.image.offset_amount /2 }}px);
+  }
+  .slide__image.shadow--top_right:hover {
+    box-shadow: {{ module.styles.image.offset_amount / 2 }}px -{{ module.styles.image.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: {{ module.styles.image.offset_amount / 2 }}px {{ module.styles.image.offset_amount / 2 }}px 0 0 !important;
+    width: calc(46% - {{ module.styles.image.offset_amount /2 }}px);
+  }
+  .slide__image.shadow--bottom_left:hover {
+    box-shadow: -{{ module.styles.image.offset_amount / 2 }}px {{ module.styles.image.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.styles.image.offset_amount / 2 }}px 0 {{ module.styles.image.offset_amount / 2 }}px !important;
+    width: calc(46% - {{ module.styles.image.offset_amount /2 }}px);
+  }
+  .slide__image.shadow--bottom_right:hover {
+    box-shadow: {{ module.styles.image.offset_amount / 2 }}px {{ module.styles.image.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.styles.image.offset_amount / 2 }}px {{ module.styles.image.offset_amount / 2 }}px 0 !important;
+    width: calc(46% - {{ module.styles.image.offset_amount /2 }}px);
+  }
+  {% unless module.styles.slider.hide_arrows %}
+  #module--{{ name }} {
+    padding: 0 2rem;
+  }
+  {% endunless %}
+  @media(max-width: 767px) {
+    .slide__image {
+      margin: 1rem 0 !important;
+      width: 100%;
+    }
+    #module--{{ name }} {
+      padding: 0;
+    }
+  }
+
+
+  {% end_scope_css %}
+</style>
+
+{# slides #}
+
+<div id="module--{{ name }}" class="slides animate animate--{{ module.styles.animation }}">
+  {% for slide in module.slides %}
+  <section class="slide">
+    <div class="slides__slide slide--{{ slide.order }} spacing--{{ slide.spacing }}">
+      {% if slide.image.src %}
+      <div class="slide__image {{ module.styles.image.shadow }} {% if module.styles.image.shadow == 'shadow--offset' %} shadow--{{ module.styles.image.shadow_position }} {% endif %}" style="--shadow-color: rgba({{ slide.shadow_color.color|convert_rgb }}, {{ slide.shadow_color.opacity / 100 }});">
+        <img src="{{ resize_image_url(slide.image.src, 0, 0, 600) }}" alt="{{ slide.image.alt }}">
+      </div>
+      {% endif %}
+      <div class="slide__text">
+        {% if slide.content %}
+        <div class="slide__content">{{ slide.content }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+
+</div>
+
+{% require_js %}
+
+<script>
+  $('#module--{{ name }}').flickity({
+    // options
+    cellAlign: 'left',
+    {% if module.styles.slider.transition_effect == 'fade' %}
+    fade: true,
+    {% endif %}
+    {% if module.styles.slider.wrap_around %}
+    wrapAround: true,
+    {% endif %}
+    {% if module.styles.slider.automatically_slide %}
+    autoPlay: {{ module.styles.slider.time_between_slides_milliseconds }},
+    {% unless module.styles.slider.pause_autoplay_on_hover %}
+    pauseAutoPlayOnHover: false,
+    {% endunless %}
+    {% endif %}
+    {% if module.styles.slider.disable_dragging %}
+    draggable: false,
+    {% endif %}
+    {% if module.styles.slider.adaptive_height %}
+    adaptiveHeight: true,
+    {% endif %}
+    {% if module.styles.slider.hide_slide_dots %}
+    pageDots: false,
+    {% endif %}
+    {% if module.styles.slider.hide_arrows %}
+    prevNextButtons: false,
+    {% endif %}
+    contain: true
+    });
+</script>
+
+{% end_require_js %}

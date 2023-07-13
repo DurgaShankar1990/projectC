@@ -1,0 +1,23 @@
+.topics-container{padding:15px 0;}
+
+.topic-card h5 {
+    margin: 0;
+  color:#000;
+  font-weight:bold;
+}
+span.detail-container {
+    font-size: .7rem;
+}
+.topic-card span.detail-container {display:flex;justify-content:space-between;}
+.topic-card {
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    margin-top: 15px;
+    border-radius: 7px;
+    background: #fff;
+}
+.topic-card a {color:#000;}
+.topic-card:hover {
+    background: whitesmoke;
+}
+.svg-icon {height:.7rem;vertical-align: text-top;}

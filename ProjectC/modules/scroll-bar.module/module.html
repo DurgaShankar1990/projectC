@@ -1,0 +1,51 @@
+
+{% require_css %}
+<style>
+  .scroll-bar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: {{ module.height }}px;
+    background-color: rgba({{ module.unfilled_background_color.color|convert_rgb }}, {{ module.unfilled_background_color.opacity / 100 }});
+    z-index: 1000;
+    overflow: hidden;
+    display: none;
+  }
+  .scroll-bar > .scroll-bar-inner {
+    height: 100%;
+    width: 0;
+    background-color: rgba({{ module.filled_background_color.color|convert_rgb }}, {{ module.filled_background_color.opacity / 100 }});
+    border-radius: 0 60px 60px 0;
+  }
+</style>
+{% end_require_css %}
+<div id="{{ name }}" class="scroll-bar">
+  <div class="scroll-bar-inner">
+  </div>
+</div>
+
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    $('#{{ name }}').prependTo('body');
+
+      // // use jquery to measure the height of the page
+      var height = $(document).height();
+    // get what percentage of the page has been scrolled
+    var scrollPercent = (document.documentElement.scrollTop + document.body.scrollTop) / height;
+    // set the width of the progress bar to the percentage of the page scrolled
+    $(window).scroll(function() {
+      var screenHeight = $(window).height();
+      var height = $(document).height() - screenHeight;
+      var scrollPercent = (document.documentElement.scrollTop + document.body.scrollTop) / height;
+      $('.scroll-bar-inner').css('width', scrollPercent * 101 + '%');
+      if (scrollPercent == 0) {
+        $('.scroll-bar').fadeOut();
+      } else {
+        $('.scroll-bar').fadeIn();
+      }
+    });
+  });
+</script>
+{% end_require_js %}

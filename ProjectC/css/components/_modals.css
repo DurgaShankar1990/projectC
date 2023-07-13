@@ -1,0 +1,19 @@
+/* @import url('http://example.com/example_style.css'); */
+
+/***********************************************/
+/* CSS @imports must be at the top of the file */
+/* Add them above this section                 */
+/***********************************************/
+
+/*****************************************/
+/* Start your style declarations here    */
+/*****************************************/
+.b-modal {
+  display: block;
+  width: {{ theme.modals.modal_width ~ "px" }};
+  max-width: 100%;
+}
+.b-modal .b-modal__body {
+  padding: 1rem;
+  background-color: rgba({{ theme.modals.background_color.color|convert_rgb }}, {{ theme.modals.background_color.opacity / 100 }});
+}

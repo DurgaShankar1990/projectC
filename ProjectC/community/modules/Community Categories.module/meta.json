@@ -1,0 +1,12 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 96392566017,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/community.css",
+    "name" : "community.css"
+  } ],
+  "label" : "Community Categories",
+  "is_available_for_new_content" : true
+}

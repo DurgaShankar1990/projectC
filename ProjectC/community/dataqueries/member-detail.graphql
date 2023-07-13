@@ -1,0 +1,25 @@
+# label: "Member Detail"
+# $id: {{ dynamic_page_crm_object.id|default("0") }}
+
+query memberDetail($id: String!) {
+  CRM {
+    p_member_profile(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      associations {
+        p_topic_collection__member_author(filter: {is_deleted__neq: true}, limit: 500, orderBy: hs_createdate__desc) {
+          items {
+            name
+            category
+            hs_createdate
+            topic_slug
+            submitted_by_name
+            submitted_by_member_id
+            status
+            number_of_replies
+          }
+          total
+        }
+      }
+    }
+  }
+}
+

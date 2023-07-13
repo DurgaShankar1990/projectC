@@ -1,0 +1,88 @@
+# label: "Community Topics"
+# $contactId: {{ request.contact.contact_vid|default("0") }}
+# $topicId: {{ dynamic_page_crm_object.id|default("0") }}
+
+query communityTopics($contactId: String!, $topicId: String!) {
+  CRM {
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $contactId) {
+      associations {
+        p_member_profile_collection__profile_owner(limit: 500) {
+          items {
+            hs_object_id
+            first_name
+            last_name
+            bio
+            username
+            profile_photo
+            twitter_url
+            facebook_url
+            instagram_url
+            company_name
+            email
+            website_url
+            full_bio
+            linkedin
+            profile_visibility
+            associations {
+              p_reply_collection__member_profile_to_reply(limit: 500) {
+                items {
+                  _metadata {
+                    id
+                  }
+                }
+                total
+              }
+            }
+          }
+          total
+        }
+        p_topic_collection__author(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+        p_topic_collection__follower(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+      }
+    }
+    p_topic(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $topicId) {
+      _metadata {
+        id
+      }
+      associations {
+        p_member_profile_collection__member_author(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+            hs_object_id
+            first_name
+            last_name
+            bio
+            username
+            profile_photo
+            twitter_url
+            facebook_url
+            instagram_url
+            company_name
+            email
+            website_url
+            full_bio
+            linkedin
+            profile_visibility
+          }
+          total
+        }
+      }
+    }
+  }
+}

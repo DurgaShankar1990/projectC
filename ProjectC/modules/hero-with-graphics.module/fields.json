@@ -1,0 +1,646 @@
+[ {
+  "id" : "b62fcff2-fe46-43a2-75f1-bdb94f9f1e0a",
+  "name" : "text",
+  "display_width" : null,
+  "label" : "Text",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d579c3da-fa29-58a9-10da-b6bc6a196160",
+    "name" : "text_above_title",
+    "display_width" : null,
+    "label" : "Text Above Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "OMEGA"
+  }, {
+    "id" : "67487bb5-0bc9-b305-6ee1-3347a6e0d523",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "HERO TEXT"
+  }, {
+    "id" : "58de7fa5-c70c-d89f-0578-598283e84738",
+    "name" : "helper_text",
+    "display_width" : null,
+    "label" : "Helper Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span>This theme is built on three key concepts: Power, Simplicity, and Versatility. We worked diligently on the Omega theme, so you don't have to... giving you more time for what's important.</span></p>"
+  }, {
+    "id" : "1606e6e7-9d36-61e5-5525-ec880099d1f0",
+    "name" : "link_text",
+    "display_width" : null,
+    "label" : "Link Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "UPGRADE YOUR WEBSITE TODAY"
+  }, {
+    "id" : "d643196d-e807-90e9-e0bc-8829329e2d8e",
+    "name" : "link_field",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "#",
+        "content_id" : null
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "text_above_title" : "OMEGA",
+    "title" : "HERO TEXT",
+    "helper_text" : "<p><span>This theme is built on three key concepts: Power, Simplicity, and Versatility. We worked diligently on the Omega theme, so you don't have to... giving you more time for what's important.</span></p>",
+    "link_text" : "UPGRADE YOUR WEBSITE TODAY",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "#",
+        "content_id" : null
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "748174ff-3173-d508-5817-599f41915a37",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "6eb6814e-a3f2-2546-07a8-be68cecdc261",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_from_top"
+  }, {
+    "id" : "11528c40-18c3-3ca8-3d04-756147f5b902",
+    "name" : "swap_order_desktop",
+    "display_width" : null,
+    "label" : "Swap Order (Desktop)",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "32fa35f7-396c-6eda-3fe8-f214692ab426",
+    "name" : "swap_order_mobile",
+    "display_width" : null,
+    "label" : "Swap Order (Mobile)",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "df9264be-0e93-c9cb-6d7b-4a4d0ab5fe7d",
+    "name" : "text",
+    "display_width" : null,
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d470397c-a39c-9571-1ee0-37dfad00fc20",
+      "name" : "spacing",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      }
+    }, {
+      "id" : "d0096aea-5b7e-4080-74a7-9ccade7e0912",
+      "name" : "margin_left",
+      "display_width" : null,
+      "label" : "Margin Left",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number"
+    }, {
+      "id" : "437b67ba-e820-c31b-b8fd-7931dce4109f",
+      "name" : "margin_right",
+      "display_width" : null,
+      "label" : "Margin Right",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : -300
+    }, {
+      "id" : "bc0f5b07-9eb1-3640-fd5c-2c7540b648cd",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "0fba4d38-594c-abf3-a4c1-60c850a6a9df",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "white"
+    }, {
+      "id" : "4bbfc003-8de0-7998-558a-ac438b4cbbc0",
+      "name" : "button_style",
+      "display_width" : null,
+      "label" : "Button Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "secondary"
+    }, {
+      "id" : "072d65a1-bcfb-6ba8-79b8-9aa99de31b9f",
+      "name" : "link_color",
+      "display_width" : null,
+      "label" : "Link Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "4bbfc003-8de0-7998-558a-ac438b4cbbc0",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "link",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "5bb3f066-d6ea-285c-ee36-0161d13dff6f",
+      "name" : "corner_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    }, {
+      "id" : "8e88d238-2bd5-54e3-3e1a-23ede3b9fba9",
+      "name" : "text_alignment",
+      "display_width" : null,
+      "label" : "Text Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : ""
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      },
+      "margin_right" : -300,
+      "background_color" : "primary_dark",
+      "text_color" : "white",
+      "button_style" : "secondary",
+      "link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "corner_radius" : 20,
+      "text_alignment" : ""
+    }
+  }, {
+    "id" : "53367437-bfa3-026f-7395-2c51a7d0348a",
+    "name" : "graphic",
+    "display_width" : null,
+    "label" : "Graphic",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1901395d-6617-ffdd-d4be-593c0c62226d",
+      "name" : "graphic_style",
+      "display_width" : null,
+      "label" : "Graphic Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "flex-start", "Default - Align Top" ], [ "center", "Default - Align Center" ], [ "flex-end", "Default - Align Bottom" ], [ "match_text_height", "Match Text Height" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "center"
+    }, {
+      "id" : "28f392cc-ca5d-445c-53c1-6dc91f230ad8",
+      "name" : "border_radius",
+      "display_width" : null,
+      "label" : "Border Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "step" : 1,
+      "type" : "number",
+      "default" : 12
+    }, {
+      "id" : "53e59ffe-3dae-3525-ee16-84827f4392f1",
+      "name" : "box_shadow",
+      "display_width" : null,
+      "label" : "Box Shadow",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "fb283ca6-0ebe-2a4a-1517-6353dfffcce0",
+      "name" : "play_icon_color",
+      "display_width" : null,
+      "label" : "Play Icon Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "2c4ef834-2aeb-31d7-a858-b913a1db71f6",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "video",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      }
+    }, {
+      "id" : "83673e4e-a63d-15b9-e23e-e248d58c6ba5",
+      "name" : "play_icon_size",
+      "display_width" : null,
+      "label" : "Play Icon Size",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "min" : 50,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 100
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_style" : "center",
+      "border_radius" : 12,
+      "box_shadow" : true,
+      "play_icon_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      },
+      "play_icon_size" : 100
+    }
+  }, {
+    "id" : "67af4774-ceaf-9b4e-3a89-c5bbd576dd7e",
+    "name" : "give_elements_a_min_width_of_50_",
+    "display_width" : null,
+    "label" : "Give Elements a Min Width of 50%",
+    "inline_help_text" : "This can help adjust awkward spacing for elements. If an image or text is getting squished, turn this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_from_top",
+    "swap_order_desktop" : false,
+    "swap_order_mobile" : false,
+    "text" : {
+      "spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      },
+      "margin_right" : -300,
+      "background_color" : "primary_dark",
+      "text_color" : "white",
+      "button_style" : "secondary",
+      "link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "corner_radius" : 20,
+      "text_alignment" : ""
+    },
+    "graphic" : {
+      "graphic_style" : "center",
+      "border_radius" : 12,
+      "box_shadow" : true,
+      "play_icon_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      },
+      "play_icon_size" : 100
+    },
+    "give_elements_a_min_width_of_50_" : false
+  }
+}, {
+  "id" : "0f25541f-4701-28b0-cc24-b0c46bdb5a91",
+  "name" : "graphic",
+  "display_width" : null,
+  "label" : "Graphic",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2c4ef834-2aeb-31d7-a858-b913a1db71f6",
+    "name" : "graphic_type",
+    "display_width" : null,
+    "label" : "Graphic Type",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "image", "Image" ], [ "video", "Video" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "image"
+  }, {
+    "id" : "76a8b0a9-200b-617a-7afa-922a060af23c",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2c4ef834-2aeb-31d7-a858-b913a1db71f6",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review.jpg",
+      "alt" : "7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review",
+      "loading" : "lazy",
+      "width" : 3000,
+      "height" : 1750,
+      "max_width" : 3000,
+      "max_height" : 1750
+    }
+  }, {
+    "id" : "725d288d-3511-ba49-e864-6d61fb417dfc",
+    "name" : "placeholder_image",
+    "display_width" : null,
+    "label" : "Placeholder Image",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2c4ef834-2aeb-31d7-a858-b913a1db71f6",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review.jpg",
+      "alt" : "7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review",
+      "loading" : "lazy",
+      "width" : 3000,
+      "height" : 1750,
+      "max_width" : 3000,
+      "max_height" : 1750
+    }
+  }, {
+    "id" : "d0a7ba56-cae6-052a-3ee9-3adc1eb882a6",
+    "name" : "video_url",
+    "display_width" : null,
+    "label" : "Video URL",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "2c4ef834-2aeb-31d7-a858-b913a1db71f6",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v"
+  }, {
+    "id" : "6c7d5983-0223-cec2-7b8d-d4e54ac55b11",
+    "name" : "play_button_icon",
+    "display_width" : null,
+    "label" : "Play Button Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "Play Circle",
+      "unicode" : "f144",
+      "type" : "REGULAR"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "graphic_type" : "image",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review.jpg",
+      "alt" : "7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review",
+      "loading" : "lazy",
+      "width" : 3000,
+      "height" : 1750,
+      "max_width" : 3000,
+      "max_height" : 1750
+    },
+    "placeholder_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review.jpg",
+      "alt" : "7-reasons-your-2020-marketing-plan-should-include-a-tech-stack-review",
+      "loading" : "lazy",
+      "width" : 3000,
+      "height" : 1750,
+      "max_width" : 3000,
+      "max_height" : 1750
+    },
+    "video_url" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v",
+    "play_button_icon" : {
+      "name" : "Play Circle",
+      "unicode" : "f144",
+      "type" : "REGULAR"
+    }
+  }
+} ]

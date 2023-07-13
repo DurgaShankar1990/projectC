@@ -1,0 +1,155 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Thank You
+  screenshotPath: ../images/final-template-previews/ty.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+{% dnd_area 'dnd_area'
+  label='Main section',
+  class='body-container body-container--blank'
+%}
+
+{% dnd_section
+    vertical_alignment='MIDDLE',
+    full_width=true,
+  background_linear_gradient={
+    "colors" : [ "rgba(241, 208, 222, 1)", "rgba(222, 240, 247, 1)" ],
+    "direction" : "to bottom"
+  },
+  padding={
+    "default" : {
+      "top" : "80px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/hero-with-graphics",
+        offset=0,
+        width=12,
+        style={
+          "graphic" : {
+            "graphic_style" : "center"
+          },
+          "text" : {
+            "alignment" : {
+              "horizontal_align" : "LEFT",
+              "vertical_align" : "MIDDLE"
+            },
+            "background_color" : "primary_dark",
+            "button_style" : "secondary",
+            "margin_right" : -300,
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 2
+                },
+                "left" : {
+                  "units" : "rem",
+                  "value" : 2
+                },
+                "right" : {
+                  "units" : "rem",
+                  "value" : 2
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 2
+                }
+              }
+            },
+            "text_alignment" : "left",
+            "text_color" : "white",
+            "text_width_percentage" : 33
+          }
+        },
+        text={
+          "helper_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</span></p>",
+          "link_text" : "Download Offer",
+          "text_above_title" : "THANK YOU",
+          "title" : "NAME OF CONTENT"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+    vertical_alignment='MIDDLE',
+    full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/shape-divider",
+        offset=0,
+        width=12,
+        shape_color={
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2>Some More Content You Might Like</h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/blog-cards",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}

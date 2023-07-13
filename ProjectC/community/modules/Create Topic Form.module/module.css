@@ -1,0 +1,23 @@
+.input {padding-bottom:10px;}
+.submit-container {
+    display: flex;
+    align-items: center;
+}
+.submit-container label {
+    margin-bottom:0px;
+}
+.submit-container input[type=checkbox] {margin-left:10px;}
+div#editor {
+    min-height: 350px;
+}
+span.h-spin {
+  animation: spin 1.6s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}

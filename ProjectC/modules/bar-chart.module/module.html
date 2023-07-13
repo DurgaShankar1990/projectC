@@ -1,0 +1,153 @@
+{% require_css %}
+<style>
+  #module--{{ name }} .bar-chart {
+    width: calc(100% / {{ module.style.spacing.charts_per_row }} - {{ module.style.spacing.horizontal_spacing }}px);
+    padding-top: {{ module.style.spacing.chart_spacing.padding.top.value }}{{ module.style.spacing.chart_spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.chart_spacing.padding.left.value }}{{ module.style.spacing.chart_spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.chart_spacing.padding.right.value }}{{ module.style.spacing.chart_spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.chart_spacing.padding.bottom.value }}{{ module.style.spacing.chart_spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.chart_spacing.margin.top.value }}{{ module.style.spacing.chart_spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.chart_spacing.margin.bottom.value }}{{ module.style.spacing.chart_spacing.margin.bottom.units }};
+    margin-left: {{ module.style.spacing.horizontal_spacing / 2 }}px;
+    margin-right: {{ module.style.spacing.horizontal_spacing / 2 }}px;
+    border-radius: {{ module.style.chart.border_radius }}px;
+    transition: 1s;
+    {% if module.style.chart.chart_background_color == 'custom' %}
+    background-color: rgba({{ module.style.chart.custom_chart_background_color.color|convert_rgb }}, {{ module.style.chart.custom_chart_background_color.opacity / 100 }});
+    {% endif %}
+  }
+
+  {% if module.style.chart.chart_title_text_color == 'custom' %}
+  #module--{{ name }} h3 {
+    color: rgba({{ module.style.chart.custom_title_color.color|convert_rgb }}, {{ module.style.chart.custom_title_color.opacity / 100 }});
+  }
+  {% endif %}
+
+  {% if module.style.chart.chart_subtitle_text_color == 'custom' %}
+  #module--{{ name }} h5 {
+    color: rgba({{ module.style.chart.custom_subtitle_color.color|convert_rgb }}, {{ module.style.chart.custom_subtitle_color.opacity / 100 }});
+  }
+  {% endif %}
+
+
+  @media(max-width: 1024px) {
+    #module--{{ name }} .bar-chart {
+      width: calc(100% / {{ module.style.spacing.charts_per_row_tablet }} - {{ module.style.spacing.horizontal_spacing }}px);
+    }
+  }
+  @media(max-width: 620px) {
+    #module--{{ name }} .bar-chart {
+      width: 100%;
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="module--{{ name }}" class="bar-chart-wrapper">
+  {% for chart in module.charts %}
+  <div class="bar-chart animate animate--{{ module.style.animations.in_view_animation }} bg--{{ module.style.chart.chart_background_color }} {% if module.style.chart.box_shadow %} box-shadow {% endif %}">
+    <div class="matchHeight">
+      <h3 class="text--{{ module.style.chart.chart_title_text_color }}">
+        {{ chart.title }}
+      </h3>
+      <h5 class="text--{{ module.style.chart.chart_subtitle_text_color }}">
+        {{ chart.subtitle }}
+      </h5>
+    </div>
+    {% for bar in chart.bars %}
+    {% set percent = bar.amount / chart.maximum_amount * 100 %}
+    <div class="progress-bar-group">
+      <div style="display: flex; align-items: center; width: 100%;">
+        <div class="progress-bar--outer">
+          <div class="progress-bar" data-percent="{{ percent }}"
+               style="background-color: rgba({{ bar.color.color|convert_rgb }}, {{ bar.color.opacity / 100 }});">
+          </div>
+        </div>
+        <div class="bar-chart__percentage" 
+             style="color: rgba({{ bar.color.color|convert_rgb }}, {{ bar.color.opacity / 100 }});">
+          {% if chart.display_as_percentage %}
+          <span class="bar-chart__number"
+                data-amount="{% if chart.display_as_percentage %}{{ percent|round }}{% else %}{{ bar.amount }}{% endif %}">{{ percent|round }}</span>%
+          {% else %}
+          <span class="bar-chart__number"
+                data-amount="{% if chart.display_as_percentage %}{{ percent|round }}{% else %}{{ bar.amount }}{% endif %}">{{ bar.amount }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="progress-bar__label" style="color: rgba({{ bar.color.color|convert_rgb }}, {{ bar.color.opacity / 100 }});">
+        {{ bar.bar_label }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+{% require_js %}
+<script>
+  $(document).ready(function($){
+
+    $('.progress-bar').each(function(){
+      if (checkView($(this)) == true ) {
+        var width = $(this).data('percent');
+        $(this).css({'transition': 'width {{ module.style.animations.animation_speed }}ms'});
+                     $(this).show(function() {
+                     $(this).css('width', width + '%');
+                    });
+      }
+    });
+
+    $('.bar-chart__number:not(.counted)').each(function() {
+      if (checkView($(this)) == true ) {
+        $(this).addClass('counted');
+        animateCountUp(this);
+      };
+    });
+
+  });
+
+  $(window).scroll(function() {
+    $('.bar-chart__number:not(.counted)').each(function() {
+      if (checkView($(this)) == true ) {
+        $(this).addClass('counted');
+        animateCountUp(this);
+      };
+    });
+    $('.progress-bar').each(function(){
+      if (checkView($(this)) == true ) {
+        var width = $(this).data('percent');
+        $(this).css({'transition': 'width {{ module.style.animations.animation_speed }}ms'});
+                     $(this).show(function() {
+                     $(this).css('width', width + '%');
+                    });
+      }
+    });
+  });
+
+  const animationDuration = {{ module.style.animations.animation_speed }};
+  const frameDuration = 1000 / 60;
+  const totalFrames = Math.round( animationDuration / frameDuration );
+  const easeOutQuad = t => t * ( 2 - t );
+
+
+  const animateCountUp = el => {
+    let frame = 0;
+    const countTo = parseInt( el.dataset.amount, 10 );
+    console.log(countTo);
+    const counter = setInterval( () => {
+      frame++;
+      const progress = easeOutQuad( frame / totalFrames );
+      const currentCount = Math.round( countTo * progress );
+
+      if ( parseInt( el.innerHTML, 10 ) !== currentCount ) {
+        el.innerHTML = currentCount;
+      }
+      if ( frame === totalFrames ) {
+        clearInterval( counter );
+      }
+    }, frameDuration );
+  };
+</script>
+{% end_require_js %}
+
+

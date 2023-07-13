@@ -1,0 +1,23 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: OMEGA - 404 error
+  screenshotPath: ../../images/final-template-previews/404.png
+-->
+{% set template_css = '../../css/templates/system.css' %}
+{% extends '../layouts/base.html' %}
+{# pageTitle is used on system templates for setting a value for the title tag #}
+{% set pageTitle = "Error 404 | Page not found" %}
+
+{% block body %}
+<section class="content-wrapper">
+  <div class="error-page" data-error="404">
+    {% module 'content'
+      path='@hubspot/rich_text',
+      html='<h1>Page not found.</h1>'
+    %}
+    
+    <a href="/" class="hs-button">Back to Home</a>
+  </div>
+</section>
+{% endblock body %}

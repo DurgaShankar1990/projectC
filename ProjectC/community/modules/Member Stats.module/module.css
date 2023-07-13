@@ -1,0 +1,13 @@
+.counter-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+.counter-card {
+  text-align: center;
+  transform-style: preserve-3d;
+  background-size: cover !important;
+  background-position: 50% !important;
+}
+.counter-card__inner {
+  transform: translateZ(20px);
+}

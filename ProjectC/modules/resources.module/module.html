@@ -1,0 +1,182 @@
+
+{% set arrow_icon = '<svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path id="Polygon_4" data-name="Polygon 4" d="M5.293.707a1,1,0,0,1,1.414,0l3.586,3.586A1,1,0,0,1,9.586,6H2.414a1,1,0,0,1-.707-1.707Z" transform="translate(12 6) rotate(180)" fill="#00cdd6"/></svg>' %}
+{% set tags_icon = '<svg class="tags-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tags" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z" class=""></path></svg>' %}
+
+{% set tags = [] %}
+{% for item in module.resources %}
+{% for tag in item.tag %}
+{% unless tag in tags %}
+{% do tags.append( tag ) %}
+{% endunless %}
+{% endfor %}
+{% endfor %}
+
+{% set types = [] %}
+{% for item in module.resources %}
+{% unless item.type in types %}
+{% do types.append( item.type ) %}
+{% endunless %}
+{% endfor %}
+
+{% require_css %}
+<style>
+  #{{ name }} .resource {
+    border-radius: {{ module.style.corner_radius }}px;
+    overflow: hidden;
+  }
+  #{{ name }} .topics__filter {
+    {{ module.style.tag_buttons.inactive.border_field.css }};
+    color: rgba({{ module.style.tag_buttons.inactive.text_color.color|convert_rgb }}, {{ module.style.tag_buttons.inactive.text_color.opacity / 100 }});
+    background-color: rgba({{ module.style.tag_buttons.inactive.background_color.color|convert_rgb }}, {{ module.style.tag_buttons.inactive.background_color.opacity / 100 }});
+  }
+  #{{ name }} .topics__filter.selected {
+    {{ module.style.tag_buttons.active.border_field.css }};
+    color: rgba({{ module.style.tag_buttons.active.text_color.color|convert_rgb }}, {{ module.style.tag_buttons.active.text_color.opacity / 100 }});
+    background-color: rgba({{ module.style.tag_buttons.active.background_color.color|convert_rgb }}, {{ module.style.tag_buttons.active.background_color.opacity / 100 }});
+  }
+  #{{ name }} .section-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+  #{{ name }} .resource__type {
+    border-radius: 0 {{ module.style.resource_type.corner_radius }}px {{ module.style.resource_type.corner_radius }}px 0;
+    font-weight: {{ module.style.resource_type.font_weight }};
+  }
+  #{{ name }} .resource__link {
+    color: rgba({{ module.style.link.link_color.color|convert_rgb }}, {{ module.style.link.link_color.opacity / 100 }});
+    position: relative;
+    font-weight: {{ module.style.link.font_weight }};
+  }
+  #{{ name }} .resource__link:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: rgba({{ module.style.link.link_color.color|convert_rgb }}, {{ module.style.link.link_color.opacity / 100 }});
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  #{{ name }} .resource-wrapper:hover .resource__link:after {
+    width: 100%;
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ name }}" class="resources">
+  <div class="topics">
+    <div class="section-wrapper">
+      <div class="topics__inner">
+        <h3 style="width: 100%; text-align:{{ module.style.text_above_tags.alignment }};" class="text--{{ module.style.text_above_tags.text_color }}">
+          {{ module.text_above_tags }}
+        </h3>
+        {% if module.include_tag_buttons %}
+        <button class="topics__filter isotope-filter selected" 
+                data-filter="*">
+          All
+        </button>
+        {% for tag in tags %}
+        {% if loop.index0 < module.number_of_tags_to_show %}
+        <button class="topics__filter isotope-filter" data-filter=".{{ tag|replace(' ', '_') }}">
+          {{ tag }}
+        </button>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="filters">
+    <div class="section-wrapper">
+      <div class="filters__inner">
+        {% if module.include_search_bar %}
+        <div class="filters__search">
+          <div class="filters__filter-name">Search Resources</div>
+          <input type="text" class="quicksearch" placeholder="Search" />
+        </div>
+        {% endif %}
+        <div class="filters__filters">
+          {% if module.include_filter_by_topic_dropdown %}
+          <div class="filters__topic">
+            <div class="filters__filter-name">Filter By Topic</div>
+            <div style="position: relative;">
+              {{ arrow_icon }}
+              <select class="select-filter">
+                <option value="*" data-filter="*">
+                  Any
+                </option>
+                {% for tag in tags %}
+                <option value=".{{ tag|replace(' ', '_') }}" data-filter=".{{ tag|replace(' ', '_') }}">
+                  {{ tag }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          {% endif %}
+          {% if module.include_filter_by_type_dropdown %}
+          <div class="filters__type">
+            <div class="filters__filter-name">Filter By Type</div>
+            <div style="position: relative;">
+              {{ arrow_icon }}
+              <select class="select-filter--type">
+                <option value="*" data-filter="*">
+                  Any
+                </option>
+                {% for type in types %}
+                <option value=".{{ type|replace(' ', '_') }}" data-filter=".{{ type|replace(' ', '_') }}">
+                  {{ type }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="resources-wrapper">
+    <div class="section-wrapper">
+      <div class="resources__inner-wrapper">
+        <h2 class="resources__empty-list">
+          It looks like there aren't any resources matching that filter. Please try again.
+        </h2>
+        {% for row in module.resources %}
+        <div class="resource-wrapper {% for tag in row.tag %} {{ tag|replace(' ', '_') }}{% endfor %} {% for type in row.type %} {{ type|replace(' ', '_') }}{% endfor %}">
+          <a href="{{ row.resource_url }}" class="resource">
+            <div class="resource__image">
+              <img loading="lazy" src="{{ row.resource_image.src }}" alt="{{ row.resource_name }}" width="600">
+              <div class="resource__name">
+                {{ row.resource_name }}
+              </div>
+              <div class="resource__type bg--{{ module.style.resource_type.background_color }} color--{{ module.style.resource_type.text_color }}">
+                {{ row.type }}
+              </div>
+            </div>
+            <div class="resource__info">
+              <div>
+                <p class="resource__desc">
+                  {{ row.resource_description }}
+                </p>
+                <div class="resource__link">
+                  {{ row.resource_link_text }}
+                </div>
+              </div>
+              <div class="resource__tags">
+                {{ tags_icon }} {% for tag in row.tag %}
+                <span class="resource__tag">{{ tag }}{% unless loop.last %}, {% endunless %}
+                </span>
+                {% endfor %}
+              </div>
+            </div>
+
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

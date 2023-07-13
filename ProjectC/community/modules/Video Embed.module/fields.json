@@ -1,0 +1,13 @@
+[ {
+  "id" : "2c5ef806-bed5-868f-e951-051f973e580f",
+  "name" : "video_embed_code",
+  "display_width" : null,
+  "label" : "Video Embed Code or URL",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+} ]

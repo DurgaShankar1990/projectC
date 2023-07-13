@@ -1,0 +1,38 @@
+[ {
+  "id" : "c62110db-2256-1b4f-d6bf-27f4ccb6228d",
+  "name" : "unfilled_background_color",
+  "display_width" : null,
+  "label" : "Unfilled Background Color",
+  "required" : true,
+  "locked" : false,
+  "type" : "color",
+  "default" : {
+    "color" : "#F7E2CA",
+    "opacity" : 100
+  }
+}, {
+  "id" : "797d9d2c-7aff-e08e-8d4c-a5e42a02349a",
+  "name" : "filled_background_color",
+  "display_width" : null,
+  "label" : "Filled Background Color",
+  "required" : true,
+  "locked" : false,
+  "type" : "color",
+  "default" : {
+    "color" : "#CA6D02",
+    "opacity" : 100
+  }
+}, {
+  "id" : "273559e0-3318-e3d6-9633-1d01539eaa6b",
+  "name" : "height",
+  "display_width" : null,
+  "label" : "Height",
+  "required" : true,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 2,
+  "max" : 30,
+  "step" : 1,
+  "type" : "number",
+  "default" : 10
+} ]

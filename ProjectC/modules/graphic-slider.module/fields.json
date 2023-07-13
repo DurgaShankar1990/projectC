@@ -1,0 +1,350 @@
+[ {
+  "id" : "76657426-1f61-4d6c-ce42-ed80ae8b8cdb",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2efcd944-e3cd-bbfa-9167-419c7b76ea61",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_in"
+  }, {
+    "id" : "9c231310-bd7c-cca6-d217-db9037a78585",
+    "name" : "image_size",
+    "display_width" : null,
+    "label" : "Image Size",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "set_height", "Set Height" ], [ "keep_dimensions", "Keep Dimensions" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "keep_dimensions"
+  }, {
+    "id" : "e2379721-0b52-b187-e2a2-29346d21c489",
+    "name" : "image_height",
+    "display_width" : null,
+    "label" : "Image Height",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9c231310-bd7c-cca6-d217-db9037a78585",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "set_height",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "text",
+    "min" : 30,
+    "step" : 1,
+    "type" : "number",
+    "default" : 400
+  }, {
+    "id" : "7678bd4d-6f53-c169-4199-89ccde72d113",
+    "name" : "border_radius",
+    "display_width" : null,
+    "label" : "Corner Radius",
+    "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "828be42c-58f3-ea9a-1bf4-72880c31f474",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "box-shadow", "Regular" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "f166daf1-40f0-1ce5-46aa-5ec82b6d445e",
+    "name" : "icon_size",
+    "display_width" : null,
+    "label" : "Icon Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 20,
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "default" : 80
+  }, {
+    "id" : "d28e77b2-c808-72c4-f22d-b63b96fb2ccd",
+    "name" : "icon_color",
+    "display_width" : null,
+    "label" : "Icon Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7de16f49-e4e8-94c1-b7e6-9ff5d17d2d61",
+    "name" : "height_between_slides",
+    "display_width" : null,
+    "label" : "Height Between Slides",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "matchHeight", "Match Height" ], [ "resize", "Resize Per Slide" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "matchHeight"
+  }, {
+    "id" : "8bcd45fc-ccbc-a862-10b8-388d6ccbb839",
+    "name" : "thumbnail",
+    "display_width" : null,
+    "label" : "Thumbnail",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "f464e5a1-105f-81ac-537f-b5447394a021",
+      "name" : "height",
+      "display_width" : null,
+      "label" : "Height",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 20,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 80
+    }, {
+      "id" : "4532655c-d904-5567-6818-7b6872d661a9",
+      "name" : "width",
+      "display_width" : null,
+      "label" : "Width",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 20,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 120
+    }, {
+      "id" : "7c82bf90-01a0-b594-c38d-0d386ab4a084",
+      "name" : "border_radius",
+      "display_width" : null,
+      "label" : "Border Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "step" : 1,
+      "type" : "number",
+      "default" : 6
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "height" : 80,
+      "width" : 120,
+      "border_radius" : 6
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_in",
+    "image_size" : "keep_dimensions",
+    "image_height" : 400,
+    "border_radius" : 20,
+    "shadow" : "none",
+    "icon_size" : 80,
+    "icon_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "height_between_slides" : "matchHeight",
+    "thumbnail" : {
+      "height" : 80,
+      "width" : 120,
+      "border_radius" : 6
+    }
+  }
+}, {
+  "id" : "cd6a56cb-1b6d-23a6-54d9-9b38cb0ac8f1",
+  "name" : "items",
+  "display_width" : null,
+  "label" : "Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "42a94803-0b30-b32d-36de-5c35f06a100b",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "42a94803-0b30-b32d-36de-5c35f06a100b",
+    "name" : "graphic_type",
+    "display_width" : null,
+    "label" : "Graphic Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "image", "Image" ], [ "video", "Video" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "image"
+  }, {
+    "id" : "4fbb8819-eb22-8977-f5ff-d91a0e1f1131",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "loading" : "lazy",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    }
+  }, {
+    "id" : "d487b478-f3df-9a21-24aa-90f481f732a9",
+    "name" : "video_url",
+    "display_width" : null,
+    "label" : "Video URL",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "42a94803-0b30-b32d-36de-5c35f06a100b",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v"
+  }, {
+    "id" : "1488817f-916d-68ff-a415-ad8601d16486",
+    "name" : "play_icon",
+    "display_width" : null,
+    "label" : "Play Icon",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "42a94803-0b30-b32d-36de-5c35f06a100b",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "Play Circle",
+      "unicode" : "f144",
+      "type" : "SOLID"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "graphic_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "loading" : "lazy",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    },
+    "video_url" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v",
+    "play_icon" : {
+      "name" : "Play Circle",
+      "unicode" : "f144",
+      "type" : "SOLID"
+    }
+  }, {
+    "graphic_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "loading" : "lazy",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    },
+    "video_url" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v",
+    "play_icon" : {
+      "name" : "Play Circle",
+      "unicode" : "f144",
+      "type" : "SOLID"
+    }
+  }, {
+    "graphic_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "loading" : "lazy",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    },
+    "video_url" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v",
+    "play_icon" : {
+      "name" : "Play Circle",
+      "unicode" : "f144",
+      "type" : "SOLID"
+    }
+  } ]
+} ]

@@ -1,0 +1,15 @@
+{
+  "global" : true,
+  "smart_type" : "NOT_SMART",
+  "inline_help_text" : "<a href=\"https://cohortium.io/support/set-up?utm_source=Cohortium%20In-App%20Settings\"><strong>Need Assistance?</strong> Click Here for Full Instructions and Documentation</a>",
+  "icon" : "fontawesome-5.14.0:Tools:SOLID",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING", "QUOTE" ],
+  "module_id" : 96399871573,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../../css/main.css",
+    "name" : "main.css"
+  } ],
+  "label" : "cohortium settings",
+  "is_available_for_new_content" : true
+}

@@ -1,0 +1,88 @@
+{% require_css %}
+<style>
+  #{{ name }} {
+    border-radius: {{ module.style.border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    {% if module.style.shadow == 'shadow--offset' %}
+    width: calc(100% - {{ module.style.offset_amount }}px);
+    {% else %}
+    width: 100%;
+    {% endif %}
+    {% if module.style.image_size == 'set_height' %}
+    height: {{ module.style.image_height }}px;
+    {% endif %}
+    margin-top: 0;
+    margin-left: 0;
+  }
+  #{{ name }} img {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    object-fit: cover;
+  }
+  #{{ name }}.shadow--top_left {
+    box-shadow: -{{ module.style.offset_amount }}px -{{ module.style.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: {{ module.style.offset_amount }}px 0 0 {{ module.style.offset_amount }}px !important;
+  }
+  #{{ name }}.shadow--top_right {
+    box-shadow: {{ module.style.offset_amount }}px -{{ module.style.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: {{ module.style.offset_amount }}px {{ module.style.offset_amount }}px 0 0 !important;
+  }
+  #{{ name }}.shadow--bottom_left {
+    box-shadow: -{{ module.style.offset_amount }}px {{ module.style.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.style.offset_amount }}px 0 {{ module.style.offset_amount }}px !important;
+  }
+  #{{ name }}.shadow--bottom_right {
+    box-shadow: {{ module.style.offset_amount }}px {{ module.style.offset_amount }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.style.offset_amount }}px {{ module.style.offset_amount }}px 0 !important;
+  }
+  #{{ name }}.shadow--top_left:hover {
+    box-shadow: -{{ module.style.offset_amount / 2 }}px -{{ module.style.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: {{ module.style.offset_amount / 2 }}px 0 0 {{ module.style.offset_amount / 2 }}px !important;
+    width: calc(100% - {{ module.style.offset_amount /2 }}px);
+  }
+  #{{ name }}.shadow--top_right:hover {
+    box-shadow: {{ module.style.offset_amount / 2 }}px -{{ module.style.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: {{ module.style.offset_amount / 2 }}px {{ module.style.offset_amount / 2 }}px 0 0 !important;
+    width: calc(100% - {{ module.style.offset_amount /2 }}px);
+  }
+  #{{ name }}.shadow--bottom_left:hover {
+    box-shadow: -{{ module.style.offset_amount / 2 }}px {{ module.style.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.style.offset_amount / 2 }}px 0 {{ module.style.offset_amount / 2 }}px !important;
+    width: calc(100% - {{ module.style.offset_amount /2 }}px);
+  }
+  #{{ name }}.shadow--bottom_right:hover {
+    box-shadow: {{ module.style.offset_amount / 2 }}px {{ module.style.offset_amount / 2 }}px 0 var(--shadow-color) !important;
+    margin: 0 {{ module.style.offset_amount / 2 }}px {{ module.style.offset_amount / 2 }}px 0 !important;
+    width: calc(100% - {{ module.style.offset_amount /2 }}px);
+  }
+  #{{ name }} svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: rgba({{ module.style.icon_color.color|convert_rgb }}, {{ module.style.icon_color.opacity / 100 }});
+    height: {{ module.style.icon_size }}px;
+  }
+</style>
+{% end_require_css %}
+
+<a {% unless request.postDict.inpageEditorUI %}href="{{ module.video_url }}"{% endunless %}
+   id="{{ name }}" 
+   class="omega-video 
+          animate animate--{{ module.style.animation }}
+          {{ module.style.shadow }}
+          {% if module.style.shadow == 'shadow--offset' %}shadow--{{ module.style.shadow_position }}{% endif %}" 
+   style="--shadow-color: rgba({{ module.style.shadow_color.color|convert_rgb }}, {{ module.style.shadow_color.opacity / 100 }});">
+  <img width="{{ module.image.width }}" height="{{ module.image.height }}" loading="lazy" src="{{ module.image.src }}" alt="{{ module.image.alt }}">
+  {% icon
+    name="{{ module.play_icon.name }}"
+    style="{{ module.play_icon.type }}"
+    unicode="{{ module.play_icon.unicode }}"
+    icon_set="{{ module.play_icon.icon_set }}"
+  %}
+</a>

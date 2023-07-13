@@ -1,0 +1,16 @@
+{% set member = dynamic_page_crm_object %}
+{% set cs = widget_data.cohortium_settings %}
+{% if module.badge_hubdb or cs.categories_tags.badges_hubdb %}
+{% set badgeDB = module.badge_hubdb || cs.categories_tags.badges_hubdb %}
+{% set badge_arts = hubdb_table_rows(badgeDB, "") %}
+{% endif %}
+{% set badges = member.badges %}
+<div class="badge-container">
+  {% for badge in badges %}
+  {% for badge_art in badge_arts %}
+  {% if badge_art.slug == badge %}
+  <img alt="{{ badge }}" title="{{ badge }}" src="{{ badge_art.badge_image.url }}" class="profile-badge">
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</div>

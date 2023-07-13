@@ -1,0 +1,16 @@
+.topics-container{padding:15px 0;border-top:1px solid #cecece}
+
+.topic-card h4 {
+    margin-bottom: 0;
+  color:#000;
+}
+span.detail-container {
+    font-size: .7rem;
+}
+.topic-card span.detail-container {display:flex;justify-content:space-between;}
+.topic-card {padding:10px 5px;}
+.topic-card a {color:#000;}
+.topic-card:hover {
+    background: whitesmoke;
+}
+.svg-icon {height:.7rem;vertical-align: text-top;}

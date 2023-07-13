@@ -1,0 +1,47 @@
+{% require_css %}
+<style>
+  #{{ name }} {
+    position: relative;
+    padding-top: {{ module.style.spacing.padding.top.value }}{{ module.style.spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.padding.left.value }}{{ module.style.spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.padding.right.value }}{{ module.style.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.padding.bottom.value }}{{ module.style.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.margin.top.value }}{{ module.style.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value }}{{ module.style.spacing.margin.bottom.units }};
+    margin-left: {{ module.style.left_margin }}px;
+    margin-right: {{ module.style.right_margin }}px;
+    border-radius: {{ module.style.corner_radius }}px;
+    z-index: 3;
+  }
+  #{{ name }}.bg--custom {
+    background-color: rgba({{ module.style.custom_background_color.color|convert_rgb }}, {{ module.style.custom_background_color.opacity / 100 }});
+  }
+  {% if module.style.text_color %}
+  #{{ name }} * {
+    color: inherit;
+  }
+  {% endif %}
+  @media(max-width: 767px) {
+    #{{ name }} {
+      padding-top: {{ module.style.mobile.spacing.padding.top.value }}{{ module.style.mobile.spacing.padding.top.units }};
+      padding-left: {{ module.style.mobile.spacing.padding.left.value }}{{ module.style.mobile.spacing.padding.left.units }};
+      padding-right: {{ module.style.mobile.spacing.padding.right.value }}{{ module.style.mobile.spacing.padding.right.units }};
+      padding-bottom: {{ module.style.mobile.spacing.padding.bottom.value }}{{ module.style.mobile.spacing.padding.bottom.units }};
+      margin-top: {{ module.style.mobile.spacing.margin.top.value }}{{ module.style.mobile.spacing.margin.top.units }};
+      margin-bottom: {{ module.style.mobile.spacing.margin.bottom.value }}{{ module.style.mobile.spacing.margin.bottom.units }};
+      margin-left: {{ module.style.mobile.left_margin }}px;
+      margin-right: {{ module.style.mobile.right_margin }}px;
+    }
+  }
+</style>
+{% end_require_css %}
+<div id="{{ name }}" 
+     class="omega-rich-text 
+            animate animate--{{ module.style.animation }}
+            text--{{ module.style.text_color }} 
+            bg--{{ module.style.background_color }}
+            {% if module.style.box_shadow %}
+            box-shadow
+            {% endif %}">
+  {{ module.richtext_field }}
+</div>

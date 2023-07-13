@@ -1,0 +1,135 @@
+{% require_css %}
+<style>
+  {% if module.style.text_shadow %}
+  #module--{{ name }} {
+    text-shadow: 0 0 6px #000;
+  }
+  {% endif %}
+  #module--{{ name }} {
+    background-position: {{ module.style.background.horizontal_background_position }}% {{ module.style.background.vertical_background_position }}%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    {% if module.style.full_screen %}
+    min-height: 100vh;
+    {% endif %}
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: {{ module.style.spacing.padding.top.value }}{{ module.style.spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.padding.left.value }}{{ module.style.spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.padding.right.value }}{{ module.style.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.padding.bottom.value }}{{ module.style.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.margin.top.value }}{{ module.style.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value }}{{ module.style.spacing.margin.bottom.units }};
+  }
+  #module--{{ name }} .hero__container {
+    max-width: {{ module.style.container_width }}px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: relative;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    align-items: flex-start;
+    {% if module.style.container_alignment == 'center' %}
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    {% elif module.style.container_alignment == 'right' %}
+    margin-left: auto;
+    text-align: right;
+    align-items: flex-end;
+    {% endif %}
+  }
+  @media(max-width: 620px) {
+    #module--{{ name }} {
+      padding-top: {{ module.style.mobile.mobile_spacing.padding.top.value }}{{ module.style.mobile.mobile_spacing.padding.top.units }};
+      padding-left: {{ module.style.mobile.mobile_spacing.padding.left.value }}{{ module.style.mobile.mobile_spacing.padding.left.units }};
+      padding-right: {{ module.style.mobile.mobile_spacing.padding.right.value }}{{ module.style.mobile.mobile_spacing.padding.right.units }};
+      padding-bottom: {{ module.style.mobile.mobile_spacing.padding.bottom.value }}{{ module.style.mobile.mobile_spacing.padding.bottom.units }};
+      margin-top: {{ module.style.mobile.mobile_spacing.margin.top.value }}{{ module.style.mobile.mobile_spacing.margin.top.units }};
+      margin-bottom: {{ module.style.mobile.mobile_spacing.margin.bottom.value }}{{ module.style.mobile.mobile_spacing.margin.bottom.units }};
+    }
+  }
+
+</style>
+{% end_require_css %}
+
+<div id="module--{{ name }}" class="hero section" style="background-image: url({{ resize_image_url(module.background_image.src, 0, 0, 1600) }});">
+  <div class="overlay bg--{{ module.style.background.overlay_color }}" style="opacity: {{ module.style.background.overlay_opacity }}%; {% if module.style.background.overlay_color == 'custom' %}background-color: {{ module.style.background.custom_overlay_color.color }}{% endif %}"></div>
+  <div class="section-wrapper">
+    <div class="hero__container animate animate--{{ module.style.animation }}">
+      {% if module.text_above_title %}
+      <h5 class="text--{{ module.style.text_color }}">
+        {{ module.text_above_title }}
+      </h5>
+      {% endif %}
+      {% if module.title %}
+      <h1 class="{% if module.typewriter_effect %} typewriter {% endif %}text--{{ module.style.text_color }}">
+        {% unless module.typewriter_effect %}
+        {{ module.title }}
+        {% endunless %}
+      </h1>
+      {% endif %}
+      {% if module.helper_text %}
+      <p class="text--{{ module.style.text_color }}" style="margin-bottom: 3rem;">
+        {{ module.helper_text }}
+      </p>
+      {% endif %}
+      {% if module.link_text %}
+      {% set href = module.link_field.url.href %}
+      {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.link_field.no_follow %}
+      {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.link_field.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}" 
+         style="--effect-color: {{ module.style.link.effect_color.color }}"
+         class="btn--{{ module.style.link.button_style }}
+                animate--{{ module.style.link.animation_effect }}
+                hover--{{ module.style.link.hover_effect }}">
+        {{ module.link_text }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% require_js %}
+<script>
+  {% if module.typewriter_effect %}
+  var text = "{{ module.title|replace('"', "'") }}";
+  // get every letter of the text
+  var letters = text.split('');
+  var line = [letters[0]]; //begin with a single letter
+
+  // type the words one letter at a time into .typeWriter
+  var i = 1;
+  var typeWriter = setInterval(function() {
+    if (i < letters.length) {
+      line.push(letters[i]);
+      i++;
+    } else {
+      clearInterval(typeWriter);
+    }
+    var newLine = line.join('') + '<span class="blink"></span>';
+    document.querySelector('.typewriter').innerHTML = newLine;
+  }, 100);
+  {% endif %}
+</script>
+{% end_require_js %}

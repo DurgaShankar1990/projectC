@@ -1,0 +1,114 @@
+{% require_css %}
+<style>
+  #{{ name }} {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  #{{ name }} .icon-cards__wrapper {
+    text-align: {{ module.style.cards.alignment }};
+    margin-top: {{ module.style.cards.spacing.margin.top.value ~ module.style.cards.spacing.margin.top.units }};
+    padding: {{ module.style.cards.spacing.padding.top.value ~ module.style.cards.spacing.padding.top.units }} 
+      {{ module.style.cards.spacing.padding.right.value ~ module.style.cards.spacing.padding.right.units }} 
+      {{ module.style.cards.spacing.padding.bottom.value ~ module.style.cards.spacing.padding.bottom.units }} 
+      {{ module.style.cards.spacing.padding.left.value ~ module.style.cards.spacing.padding.left.units }} ;
+    margin-bottom: {{ module.style.cards.spacing.margin.bottom.value ~ module.style.cards.spacing.margin.bottom.units }};
+    width: calc(100% / {{ module.style.cards.card_per_row_desktop }} - {{ module.style.cards.space_between_cards }}px);
+    margin-left:{{ module.style.cards.space_between_cards / 2}}px;
+    margin-right:{{ module.style.cards.space_between_cards / 2}}px;
+    border-radius: {{ module.style.cards.border_radius }}px;
+    position: relative;
+  }
+  #{{ name }} .icon-wrap {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: {{ module.style.icon.background.size }}px;
+    width: {{ module.style.icon.background.size }}px;
+    max-height: {{ module.style.icon.background.size }}px;
+    max-width: {{ module.style.icon.background.size }}px;
+    {% if module.background.background_color == 'custom' %}
+    background-color: rgba({{ module.style.icon.background.custom_background_color.color|convert_rgb }}, {{ module.style.icon.background.custom_background_color.opacity / 100 }});
+    {% endif %}
+    border-radius: {{ module.style.icon.background.border_radius }}px;
+    {% if module.style.icon.overlap_icon_with_top %}
+    position: absolute;
+    top: 0;
+    {% if module.style.cards.alignment == "left" %}
+    transform: translate(0%, -50%);
+    {% elif module.style.cards.alignment == "right" %}
+    transform: translate(-100%, -50%);
+    {% else %}
+    transform: translate(-50%, -50%);
+    {% endif %}
+    {% endif %}
+    z-index: 4;
+  }
+  #{{ name }} svg {
+    height: {{ module.style.icon.icon.size }}px;
+    width: auto;
+  }
+  #{{ name }} svg path {
+    fill: rgba({{ module.style.icon.icon.icon_color.color|convert_rgb }}, {{ module.style.icon.icon.icon_color.opacity / 100 }});
+  }
+  #{{ name }} .icon-cards__text * {
+    color: inherit;
+  }
+
+  @media(max-width: 1024px) {
+    #{{ name }} .icon-cards__wrapper {
+      width: calc(100% / {{ module.style.cards.card_per_row_tablet }} - {{ module.style.cards.space_between_cards }}px);
+    }
+  }
+  @media(max-width: 767px) {
+    #{{ name }} .icon-cards__wrapper {
+      width: 100%;
+      margin: {{ module.style.cards.space_between_cards }}px 0;
+      margin-top: {{ module.style.cards.spacing.margin.top.value ~ module.style.cards.spacing.margin.top.units }};
+      margin-bottom: {{ module.style.cards.spacing.margin.bottom.value ~ module.style.cards.spacing.margin.bottom.units }};
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ name }}" class="icon-cards__container animate animate--{{ module.style.animation }}">
+  {% for item in module.cards %}
+  {% set href = item.link.url.href %}
+  {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+  {% endif %}
+  <a {% if item.include_a_link %} href="{{ href }}" {% else %} style="cursor: auto;" {% endif %}
+     {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+     {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %} class="icon-cards__wrapper bg--{{ module.style.cards.card_background_color }} {% if module.style.cards.box_shadow %} box-shadow {% endif %}"
+     data-tilt='true'
+     data-tilt-max='{{ module.style.hover.tilt_amount }}'
+     {% if module.style.hover.glare_effect %}
+     data-tilt-glare data-tilt-max-glare="{{ module.style.hover.glare_amount }}"
+     {% endif %}
+     data-tilt-scale="{{ module.style.hover.scale_amount }}">
+    <div class="icon-wrap bg--{{ module.style.icon.background.background_color }}">
+      {% icon
+      name="{{ item.icon.name }}"
+      style="{{ item.icon.type }}"
+      unicode="{{ item.icon.unicode }}"
+      icon_set="{{ item.icon.icon_set }}",
+      no_wrapper=true
+    %}
+    </div>
+    <div class="icon-cards__text text--{{ module.style.cards.card_text_color }}">
+      {{ item.card_text }}
+    </div>
+  </a>
+  {% endfor %}  
+</div>
+

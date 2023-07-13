@@ -1,0 +1,1640 @@
+[ {
+  "id" : "579c3b48-8895-1449-c2cd-438b6ecd8473",
+  "name" : "course_name",
+  "display_width" : null,
+  "label" : "Course Name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "c702a29d-dc61-5db4-7c32-cede2ac78901",
+  "name" : "lessons",
+  "display_width" : null,
+  "label" : "Lessons",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "9bfb996d-cbfe-1f6b-4460-c9c43081d16f",
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "4650c2a9-7f8f-37d0-f676-eacf97cab7bb",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lesson Name"
+  }, {
+    "id" : "9bfb996d-cbfe-1f6b-4460-c9c43081d16f",
+    "name" : "listing_view",
+    "display_width" : null,
+    "label" : "Listing View",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "02ea0768-eedb-538e-af00-00d54de5417d",
+      "name" : "overview_short_description",
+      "display_width" : null,
+      "label" : "Overview Short Description",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>"
+    }, {
+      "id" : "3eda8a91-c34a-c5b2-a1b2-ed3a3e7ceb8a",
+      "name" : "link_text",
+      "display_width" : null,
+      "label" : "Link Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "View Lesson"
+    }, {
+      "id" : "b204e37a-a43d-4fc1-9cbb-cd493b917b27",
+      "name" : "thumbnail_image",
+      "display_width" : null,
+      "label" : "Thumbnail Image",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : false,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      }
+    }, {
+      "id" : "3e2629e7-30f6-38fc-a235-7f7212a21312",
+      "name" : "estimated_time",
+      "display_width" : null,
+      "label" : "Estimated Time",
+      "inline_help_text" : "In minutes, how long will this lesson take?\nIf left blank, the box will not show.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 10
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "overview_short_description" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+      "link_text" : "View Lesson",
+      "thumbnail_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      },
+      "estimated_time" : 10
+    }
+  }, {
+    "id" : "27e2dc51-201a-13ea-235c-5bbbfa5c6aaa",
+    "name" : "lesson_view",
+    "display_width" : null,
+    "label" : "Lesson View",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e306c58f-496a-6289-095b-4072f30442a4",
+      "name" : "supporting_text",
+      "display_width" : null,
+      "label" : "Supporting Text",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p>This is the lesson content. Replace it with written content that could be helpful to act as resources for your videos.</p>"
+    }, {
+      "id" : "1496a510-e2d9-c843-a106-e3fccfe23d39",
+      "name" : "video_url",
+      "display_width" : null,
+      "label" : "Video URL",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v"
+    }, {
+      "id" : "85ceff79-00fa-5cae-c1c6-488ce3848018",
+      "name" : "lesson_hero_background_image",
+      "display_width" : null,
+      "label" : "Lesson Hero Background Image",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : false,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      }
+    }, {
+      "id" : "2b3adda0-f2de-70d8-5081-943aec9d6154",
+      "name" : "enable_quiz_questions",
+      "display_width" : null,
+      "label" : "Enable Quiz Questions",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "3bc0154a-ab8c-17b4-9a20-767c18e0fc9b",
+      "name" : "quiz_questions",
+      "display_width" : null,
+      "label" : "Quiz Questions",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : null,
+        "max" : null,
+        "sorting_label_field" : null,
+        "default" : 1
+      },
+      "visibility" : {
+        "controlling_field" : "2b3adda0-f2de-70d8-5081-943aec9d6154",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "children" : [ {
+        "id" : "242e9492-6260-8828-f166-536f50ab10c8",
+        "name" : "quiz_question",
+        "display_width" : null,
+        "label" : "Quiz Question",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "What is 2+2?"
+      }, {
+        "id" : "850561f4-0924-11fc-065c-b2b9c53f89c3",
+        "name" : "quiz_answers",
+        "display_width" : null,
+        "label" : "Quiz Answers",
+        "required" : false,
+        "locked" : false,
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : "cf2aea4a-a345-932d-9063-b4a7e316d297",
+          "default" : 2
+        },
+        "children" : [ {
+          "id" : "cf2aea4a-a345-932d-9063-b4a7e316d297",
+          "name" : "quiz_answer",
+          "display_width" : null,
+          "label" : "Quiz Answer",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "4"
+        }, {
+          "id" : "e186c415-f2fc-4a62-1019-f24f202a594b",
+          "name" : "answer_description",
+          "display_width" : null,
+          "label" : "Answer Description",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Correct. When you add 2 and 2 together, you get 4. Great Job!"
+        }, {
+          "id" : "88fa15b3-14f4-6763-063a-7dde2dbec037",
+          "name" : "this_is_the_correct_answer",
+          "display_width" : null,
+          "label" : "This is the correct answer",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : false
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : [ {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        }, {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        } ]
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : [ {
+        "quiz_question" : "What is 2+2?",
+        "quiz_answers" : [ {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        }, {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        } ]
+      } ]
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "supporting_text" : "<p>This is the lesson content. Replace it with written content that could be helpful to act as resources for your videos.</p>",
+      "video_url" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v",
+      "lesson_hero_background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      },
+      "enable_quiz_questions" : false,
+      "quiz_questions" : [ {
+        "quiz_question" : "What is 2+2?",
+        "quiz_answers" : [ {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        }, {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        } ]
+      } ]
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "title" : "Lesson Name",
+    "listing_view" : {
+      "thumbnail_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      },
+      "title" : "Lesson Name",
+      "overview_short_description" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+      "link_text" : "View Lesson",
+      "estimated_time" : 10
+    },
+    "lesson_view" : {
+      "supporting_text" : "<p>This is the lesson content. Replace it with written content that could be helpful to act as resources for your videos.</p>",
+      "video_url" : "https://impulsecreative.wistia.com/medias/juk7cqlo6v",
+      "thumbnail_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      },
+      "lesson_hero_background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+        "alt" : "Instagram_Marketing_Basketball",
+        "loading" : "lazy",
+        "width" : 1000,
+        "height" : 728,
+        "max_width" : 1000,
+        "max_height" : 728
+      },
+      "enable_quiz_questions" : false,
+      "quiz_questions" : [ {
+        "quiz_question" : "What is 2+2?",
+        "quiz_answers" : [ {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        }, {
+          "quiz_answer" : "4",
+          "answer_description" : "Correct. When you add 2 and 2 together, you get 4. Great Job!",
+          "this_is_the_correct_answer" : false
+        } ]
+      } ]
+    }
+  } ]
+}, {
+  "id" : "bd139e3a-63bb-00d4-bb90-3ad37502601a",
+  "name" : "play_button_icon",
+  "display_width" : null,
+  "label" : "Play Button Icon",
+  "required" : false,
+  "locked" : false,
+  "icon_set" : "fontawesome-5.14.0",
+  "type" : "icon",
+  "default" : {
+    "name" : "Play Circle",
+    "unicode" : "f144",
+    "type" : "REGULAR"
+  }
+}, {
+  "id" : "c4a55370-a73b-0da1-956b-32dffec98dc5",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "688f32ba-e67e-de7a-e20a-e3e2ff71ec30",
+    "name" : "overview_page",
+    "display_width" : null,
+    "label" : "Overview Page",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "332ea0fe-09ca-2d87-f5ab-b60c8d7890cb",
+      "name" : "cards_per_row_desktop",
+      "display_width" : null,
+      "label" : "Cards per row (Desktop)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 1,
+      "max" : 4,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "b0a1fc76-bd95-4a99-dbf0-bb4b7bb33a05",
+      "name" : "cards_per_row_tablet",
+      "display_width" : null,
+      "label" : "Cards per row (Tablet)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 1,
+      "max" : 3,
+      "step" : 1,
+      "type" : "number",
+      "default" : 2
+    }, {
+      "id" : "f3c955b1-2aac-f1cc-7cb1-a0102badacfc",
+      "name" : "space_between_cards",
+      "display_width" : null,
+      "label" : "Space Between Cards",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 80,
+      "step" : 1,
+      "type" : "number",
+      "default" : 30
+    }, {
+      "id" : "196eb67b-f248-deb1-6315-1b65765d6822",
+      "name" : "card_image_height",
+      "display_width" : null,
+      "label" : "Card Image Height",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 100,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 200
+    }, {
+      "id" : "445cdd4d-118a-75c1-a5d1-3a20dcd83211",
+      "name" : "lesson_background_color",
+      "display_width" : null,
+      "label" : "Lesson Background Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "white"
+    }, {
+      "id" : "00ec8237-4fb0-4656-66e4-c4d75ed49c32",
+      "name" : "custom_lesson_background_color",
+      "display_width" : null,
+      "label" : "Custom Lesson Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "445cdd4d-118a-75c1-a5d1-3a20dcd83211",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      }
+    }, {
+      "id" : "141305f8-890d-7589-ae5b-9a29cec57f1a",
+      "name" : "lesson_description_text_color",
+      "display_width" : null,
+      "label" : "Lesson Description Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "black"
+    }, {
+      "id" : "4c2e9c6e-52d3-dc2c-be45-7d64d7c8d505",
+      "name" : "custom_lesson_description_text_color",
+      "display_width" : null,
+      "label" : "Custom Lesson Description Text Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "141305f8-890d-7589-ae5b-9a29cec57f1a",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#121212",
+        "opacity" : 90
+      }
+    }, {
+      "id" : "67ffe9c9-758c-b9d6-ad25-9a5f19009139",
+      "name" : "link_color",
+      "display_width" : null,
+      "label" : "Link Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "3a86271a-f2f3-8ee7-d092-8b7a4e6fed43",
+      "name" : "card_border_radius",
+      "display_width" : null,
+      "label" : "Card Corner Radius",
+      "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 6
+    }, {
+      "id" : "5e37cb10-4fb0-0b9a-4467-c4683c5bc3bc",
+      "name" : "shadow_on_cards",
+      "display_width" : null,
+      "label" : "Shadow on Cards",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "d2394784-ed18-19af-d671-b47932b4ae58",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fade_in"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "cards_per_row_desktop" : 3,
+      "cards_per_row_tablet" : 2,
+      "space_between_cards" : 30,
+      "card_image_height" : 200,
+      "lesson_background_color" : "white",
+      "custom_lesson_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      },
+      "lesson_description_text_color" : "black",
+      "custom_lesson_description_text_color" : {
+        "color" : "#121212",
+        "opacity" : 90
+      },
+      "link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "card_border_radius" : 6,
+      "shadow_on_cards" : true,
+      "animation" : "fade_in"
+    }
+  }, {
+    "id" : "75cafe65-7bf0-413f-bc16-9dc3685628dc",
+    "name" : "lesson_pages",
+    "display_width" : null,
+    "label" : "Lesson Pages",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "a0e8fbb4-feb6-1097-89e9-f8b90ee9451c",
+      "name" : "hero",
+      "display_width" : null,
+      "label" : "Hero",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "d4a46a47-1309-279b-0797-43245e190d49",
+        "name" : "lesson_hero_height_desktop",
+        "display_width" : null,
+        "label" : "Lesson Hero Height (Desktop)",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 200,
+        "max" : 1200,
+        "step" : 1,
+        "type" : "number",
+        "default" : 400
+      }, {
+        "id" : "2d889175-b457-c799-147e-6d7d89cb9f3d",
+        "name" : "play_icon_size",
+        "display_width" : null,
+        "label" : "Play Icon Size",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "min" : 40,
+        "max" : 160,
+        "step" : 1,
+        "type" : "number",
+        "default" : 100
+      }, {
+        "id" : "7395015f-530b-f37a-9cf7-353b30e6c2c4",
+        "name" : "play_icon_color",
+        "display_width" : null,
+        "label" : "Play Icon Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "lesson_hero_height_desktop" : 400,
+        "play_icon_size" : 100,
+        "play_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }
+    }, {
+      "id" : "c93ed086-c136-19a9-6929-4a4ff74ecd27",
+      "name" : "text_box",
+      "display_width" : null,
+      "label" : "Text Box",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "27ff378f-c4fe-e241-63bc-020639dfcb60",
+        "name" : "lesson_content_width",
+        "display_width" : null,
+        "label" : "Lesson Content Width",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 600,
+        "max" : 1600,
+        "step" : 1,
+        "type" : "number",
+        "default" : 980
+      }, {
+        "id" : "f6318a5b-0ab7-0645-b742-2582060875d1",
+        "name" : "text_background_color",
+        "display_width" : null,
+        "label" : "Text Background Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "white"
+      }, {
+        "id" : "c7a0f111-4cb5-28f5-1f76-e1b98a4d3532",
+        "name" : "custom_text_background_color",
+        "display_width" : null,
+        "label" : "Custom Text Background Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "f6318a5b-0ab7-0645-b742-2582060875d1",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#121212",
+          "opacity" : 90
+        }
+      }, {
+        "id" : "bc9a68f8-e857-7f65-5fb6-69ab3fd17254",
+        "name" : "text_box_border_radius",
+        "display_width" : null,
+        "label" : "Text Box Border Radius",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 60,
+        "step" : 1,
+        "type" : "number",
+        "default" : 30
+      }, {
+        "id" : "a103d9d2-313b-ba43-4f68-80389aaa271f",
+        "name" : "text_box_spacing",
+        "display_width" : null,
+        "label" : "Text Box Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "default" : {
+          "margin" : {
+            "top" : {
+              "value" : -3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "lesson_content_width" : 980,
+        "text_background_color" : "white",
+        "custom_text_background_color" : {
+          "color" : "#121212",
+          "opacity" : 90
+        },
+        "text_box_border_radius" : 30,
+        "text_box_spacing" : {
+          "margin" : {
+            "top" : {
+              "value" : -3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        }
+      }
+    }, {
+      "id" : "ad9f7dc5-1ea3-0afa-0d08-92d1e1c0f6e3",
+      "name" : "quiz",
+      "display_width" : null,
+      "label" : "Quiz",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "98d6cc6a-48ce-ae1a-648e-c49d4957cf41",
+        "name" : "lesson_content_width",
+        "display_width" : null,
+        "label" : "Quiz Box Width",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 600,
+        "max" : 1600,
+        "step" : 1,
+        "type" : "number",
+        "default" : 980
+      }, {
+        "id" : "fdb7349b-d46a-1cbe-62e5-0fe5fd5c4541",
+        "name" : "background_color",
+        "display_width" : null,
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "white"
+      }, {
+        "id" : "1c40eea3-5507-e351-a97d-4ac01fd2b881",
+        "name" : "custom_background_color",
+        "display_width" : null,
+        "label" : "Custom Background Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "fdb7349b-d46a-1cbe-62e5-0fe5fd5c4541",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        }
+      }, {
+        "id" : "f717f1f2-9216-63d6-8362-4e0786a139ee",
+        "name" : "box_border_radius",
+        "display_width" : null,
+        "label" : "Box Border Radius",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 60,
+        "step" : 1,
+        "type" : "number",
+        "default" : 30
+      }, {
+        "id" : "96859189-4a75-8d54-5e93-d2ed2f59ff7a",
+        "name" : "box_spacing",
+        "display_width" : null,
+        "label" : "Box Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "default" : {
+          "margin" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        }
+      }, {
+        "id" : "af6e63c6-19a6-f60f-a3cf-79c902af59f2",
+        "name" : "text_color",
+        "display_width" : null,
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "black"
+      }, {
+        "id" : "fbbe1074-ee04-389e-81c7-fd232b83ab86",
+        "name" : "custom_text_color",
+        "display_width" : null,
+        "label" : "Custom Text Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "af6e63c6-19a6-f60f-a3cf-79c902af59f2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#000000",
+          "opacity" : 90
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "lesson_content_width" : 980,
+        "background_color" : "white",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "box_border_radius" : 30,
+        "box_spacing" : {
+          "margin" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        },
+        "text_color" : "black",
+        "custom_text_color" : {
+          "color" : "#000000",
+          "opacity" : 90
+        }
+      }
+    }, {
+      "id" : "7dbc8ca7-49da-734e-1bb4-ec1379ad6053",
+      "name" : "navigation",
+      "display_width" : null,
+      "label" : "Navigation",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "8e743fbe-5b90-e27e-5e95-26707627a77f",
+        "name" : "navigation_background_color",
+        "display_width" : null,
+        "label" : "Navigation Background Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "white"
+      }, {
+        "id" : "50671c98-2b6d-f1cd-6753-a5be63e71661",
+        "name" : "custom_navigation_background_color",
+        "display_width" : null,
+        "label" : "Custom Navigation Background Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "8e743fbe-5b90-e27e-5e95-26707627a77f",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        }
+      }, {
+        "id" : "03541c4f-2437-6f42-d91a-3c3c0516a707",
+        "name" : "navigation_text_color",
+        "display_width" : null,
+        "label" : "Navigation Text Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary_dark"
+      }, {
+        "id" : "73917e3f-9bbb-259f-74d9-0f6a2508d166",
+        "name" : "custom_navigation_text_color",
+        "display_width" : null,
+        "label" : "Custom Navigation Text Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "03541c4f-2437-6f42-d91a-3c3c0516a707",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#121212",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "165a0a73-1bc0-258b-ffe6-47d9118ec777",
+        "name" : "add_shadow_to_navigation",
+        "display_width" : null,
+        "label" : "Add Shadow to Navigation",
+        "required" : false,
+        "locked" : false,
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : true
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "navigation_background_color" : "white",
+        "custom_navigation_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "navigation_text_color" : "primary_dark",
+        "custom_navigation_text_color" : {
+          "color" : "#121212",
+          "opacity" : 100
+        },
+        "add_shadow_to_navigation" : true
+      }
+    }, {
+      "id" : "6df0a3a7-fb25-9099-2eb6-a5adee6a5211",
+      "name" : "estimated_time",
+      "display_width" : null,
+      "label" : "Estimated Time",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "7671be66-ac6c-5075-4f3e-496321142b84",
+        "name" : "background_color",
+        "display_width" : null,
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "white"
+      }, {
+        "id" : "6f05f03c-ad53-3c29-805d-ef5cc1f3ad93",
+        "name" : "custom_background_color",
+        "display_width" : null,
+        "label" : "Custom Background Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "7671be66-ac6c-5075-4f3e-496321142b84",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        }
+      }, {
+        "id" : "53e554d0-ebed-b40b-e10f-581e7e0cf007",
+        "name" : "text_color",
+        "display_width" : null,
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary_dark"
+      }, {
+        "id" : "c1eba65f-1c25-1e8e-5ee3-d083c0b96977",
+        "name" : "custom_text_color",
+        "display_width" : null,
+        "label" : "Custom Text Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "53e554d0-ebed-b40b-e10f-581e7e0cf007",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#121212",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "e54c926e-93f8-52ad-9014-e4ac68a1033d",
+        "name" : "border_radius",
+        "display_width" : null,
+        "label" : "Border Radius",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 60,
+        "step" : 1,
+        "type" : "number",
+        "default" : 6
+      }, {
+        "id" : "753f5105-544b-f77f-d8f3-76c241541244",
+        "name" : "add_shadow_to_navigation",
+        "display_width" : null,
+        "label" : "Add Shadow to Box",
+        "required" : false,
+        "locked" : false,
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : true
+      }, {
+        "id" : "ce2600f7-6f0b-cb3a-418f-121cb1ec54bb",
+        "name" : "clock_icon_color",
+        "display_width" : null,
+        "label" : "Clock Icon Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "background_color" : "white",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "text_color" : "primary_dark",
+        "custom_text_color" : {
+          "color" : "#121212",
+          "opacity" : 100
+        },
+        "border_radius" : 6,
+        "add_shadow_to_navigation" : true,
+        "clock_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }
+    }, {
+      "id" : "5cc6f33b-2076-06e2-2ce0-5f7376a8c704",
+      "name" : "buttons",
+      "display_width" : null,
+      "label" : "Buttons",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "1f830f2f-fa7b-9ac8-9e8e-4a6d088ad82a",
+        "name" : "course_overview_button_style",
+        "display_width" : null,
+        "label" : "Course Overview Button Style",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "tertiary"
+      }, {
+        "id" : "635b0693-a4a0-3e4a-b984-e7e0cad7fdaa",
+        "name" : "previous_lesson_button_style",
+        "display_width" : null,
+        "label" : "Previous Lesson Button Style",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "secondary"
+      }, {
+        "id" : "f4007e31-5eb5-6d0f-31d0-e5c115d9a671",
+        "name" : "next_lesson_button_style",
+        "display_width" : null,
+        "label" : "Next Lesson Button Style",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary"
+      }, {
+        "id" : "ee105be5-3673-0d3d-a12e-1175be6167c0",
+        "name" : "check_answer_button_style",
+        "display_width" : null,
+        "label" : "Check Answer Button Style",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary"
+      }, {
+        "id" : "80b048ad-681e-f20d-b189-88c3ffffd1ae",
+        "name" : "next_question_button_style",
+        "display_width" : null,
+        "label" : "Next Question Button Style",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "secondary"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "course_overview_button_style" : "tertiary",
+        "previous_lesson_button_style" : "secondary",
+        "next_lesson_button_style" : "primary",
+        "check_answer_button_style" : "primary",
+        "next_question_button_style" : "secondary"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "hero" : {
+        "lesson_hero_height_desktop" : 400,
+        "play_icon_size" : 100,
+        "play_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      },
+      "text_box" : {
+        "lesson_content_width" : 980,
+        "text_background_color" : "white",
+        "custom_text_background_color" : {
+          "color" : "#121212",
+          "opacity" : 90
+        },
+        "text_box_border_radius" : 30,
+        "text_box_spacing" : {
+          "margin" : {
+            "top" : {
+              "value" : -3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        }
+      },
+      "quiz" : {
+        "lesson_content_width" : 980,
+        "background_color" : "white",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "box_border_radius" : 30,
+        "box_spacing" : {
+          "margin" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        },
+        "text_color" : "black",
+        "custom_text_color" : {
+          "color" : "#000000",
+          "opacity" : 90
+        }
+      },
+      "navigation" : {
+        "navigation_background_color" : "white",
+        "custom_navigation_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "navigation_text_color" : "primary_dark",
+        "custom_navigation_text_color" : {
+          "color" : "#121212",
+          "opacity" : 100
+        },
+        "add_shadow_to_navigation" : true
+      },
+      "estimated_time" : {
+        "background_color" : "white",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "text_color" : "primary_dark",
+        "custom_text_color" : {
+          "color" : "#121212",
+          "opacity" : 100
+        },
+        "border_radius" : 6,
+        "add_shadow_to_navigation" : true,
+        "clock_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      },
+      "buttons" : {
+        "course_overview_button_style" : "tertiary",
+        "previous_lesson_button_style" : "secondary",
+        "next_lesson_button_style" : "primary",
+        "check_answer_button_style" : "primary",
+        "next_question_button_style" : "secondary"
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "overview_page" : {
+      "cards_per_row_desktop" : 3,
+      "cards_per_row_tablet" : 2,
+      "space_between_cards" : 30,
+      "card_image_height" : 200,
+      "lesson_background_color" : "white",
+      "custom_lesson_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      },
+      "lesson_description_text_color" : "black",
+      "custom_lesson_description_text_color" : {
+        "color" : "#121212",
+        "opacity" : 90
+      },
+      "link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "card_border_radius" : 6,
+      "shadow_on_cards" : true,
+      "animation" : "fade_in"
+    },
+    "lesson_pages" : {
+      "hero" : {
+        "lesson_hero_height_desktop" : 400,
+        "play_icon_size" : 100,
+        "play_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      },
+      "text_box" : {
+        "lesson_content_width" : 980,
+        "text_background_color" : "white",
+        "custom_text_background_color" : {
+          "color" : "#121212",
+          "opacity" : 90
+        },
+        "text_box_border_radius" : 30,
+        "text_box_spacing" : {
+          "margin" : {
+            "top" : {
+              "value" : -3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        }
+      },
+      "quiz" : {
+        "lesson_content_width" : 980,
+        "background_color" : "white",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "box_border_radius" : 30,
+        "box_spacing" : {
+          "margin" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          },
+          "padding" : {
+            "top" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "bottom" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "left" : {
+              "value" : 3,
+              "units" : "rem"
+            },
+            "right" : {
+              "value" : 3,
+              "units" : "rem"
+            }
+          }
+        },
+        "text_color" : "black",
+        "custom_text_color" : {
+          "color" : "#000000",
+          "opacity" : 90
+        }
+      },
+      "navigation" : {
+        "navigation_background_color" : "white",
+        "custom_navigation_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "navigation_text_color" : "primary_dark",
+        "custom_navigation_text_color" : {
+          "color" : "#121212",
+          "opacity" : 100
+        },
+        "add_shadow_to_navigation" : true
+      },
+      "estimated_time" : {
+        "background_color" : "white",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 90
+        },
+        "text_color" : "primary_dark",
+        "custom_text_color" : {
+          "color" : "#121212",
+          "opacity" : 100
+        },
+        "border_radius" : 6,
+        "add_shadow_to_navigation" : true,
+        "clock_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      },
+      "buttons" : {
+        "course_overview_button_style" : "tertiary",
+        "previous_lesson_button_style" : "secondary",
+        "next_lesson_button_style" : "primary",
+        "check_answer_button_style" : "primary",
+        "next_question_button_style" : "secondary"
+      }
+    }
+  }
+}, {
+  "id" : "1024a139-ab45-e952-1016-0bf7b2891b1e",
+  "name" : "lesson_preview",
+  "display_width" : null,
+  "label" : "Lesson Preview",
+  "inline_help_text" : "Change this number to select the lesson that you would like to view in the HubSpot editor. <br> This will have no effect on what the user sees.",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 1,
+  "step" : 1,
+  "type" : "number",
+  "default" : 1
+} ]

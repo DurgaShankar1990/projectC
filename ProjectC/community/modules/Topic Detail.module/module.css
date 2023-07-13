@@ -1,0 +1,46 @@
+button.tools {  display: flex;
+    font-size: .9rem;
+    background: transparent;
+    border: 0px;
+    color: #000;
+    padding: 4px 10px;
+    justify-content: center;
+    align-items: center;}
+.tools svg {height:1rem;}
+.follow-like {
+    display: flex;
+}
+@media(max-width: 767px) {
+    .follow-like {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+.breadcrumb-link.tagger {margin-left:10px;}
+.video-outer-container {padding-bottom:20px;}
+.solvedtag {
+    background: #33bf33;
+    color: #fff;
+    padding: 0.2rem 0.8rem;
+    margin-left: 5px;
+    font-size: 1rem;
+    line-height: 1em;
+    position: absolute;
+    top: -10px;
+    left: -6px;
+}
+.follow > * {
+  pointer-events: none;
+}
+button#topic-follow-button .unvote {
+    display:none;
+}
+button#topic-follow-button.following .unvote {
+    margin-left: 5px;
+    display: block;
+    opacity: .3;
+}
+button#topic-follow-button.following:hover .unvote {
+    opacity: 1;
+}

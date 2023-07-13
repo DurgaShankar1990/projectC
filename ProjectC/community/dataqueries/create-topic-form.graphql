@@ -1,0 +1,22 @@
+# label: "Create Topic Form"
+# $id: {{ request.contact.contact_vid|default("0") }}
+
+query createTopicForm($id: String!) {
+  CRM {
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      associations {
+        p_member_profile_collection__profile_owner(limit: 500) {
+          items {
+            first_name
+            last_name
+            bio
+            username
+            profile_photo
+            hs_object_id
+          }
+          total
+        }
+      }
+    }
+  }
+}

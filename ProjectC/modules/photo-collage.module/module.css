@@ -1,0 +1,20 @@
+.collage {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.collage__image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.collage__image-wrapper img {
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  transition: .3s;
+}
+.collage__image-wrapper:hover img {
+  transform: scale(1.05);
+}

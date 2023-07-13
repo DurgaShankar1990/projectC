@@ -1,0 +1,35 @@
+# label: "Topic Detail Edit"
+# $contactId: {{ request.contact.contact_vid|default("0") }}
+# $topicId: {{ dynamic_page_crm_object.id || module.crmobject_field.id }}
+
+query topicDetailEdit($contactId: String!, $topicId: String!) {
+  CRM {
+    p_topic(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $topicId) {
+      _metadata {
+        id
+      }
+      associations {
+        p_member_profile_collection__member_author(limit: 10) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+      }
+    }
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $contactId) {
+      associations {
+        p_member_profile_collection__profile_owner(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+      }
+    }
+  }
+}

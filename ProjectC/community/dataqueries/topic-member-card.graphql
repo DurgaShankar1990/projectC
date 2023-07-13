@@ -1,0 +1,60 @@
+# label: "Topic Member Card"
+# $memberId: {{ dynamic_page_crm_object.id|default("0") }}
+# $topicId: {{ dynamic_page_crm_object.id|default("0") }}
+# $limits: {{ module.limit_results|default(500) }}
+
+query topicMemberCard($memberId: String!, $topicId: String!, $limits: Int!) {
+  CRM {
+    p_member_profile(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $memberId) {
+      associations {
+        p_topic_collection__member_author(filter: {is_deleted__neq: true}, limit: $limits, orderBy: hs_createdate__desc) {
+          items {
+            name
+            category
+            hs_createdate
+            topic_slug
+            submitted_by_name
+            submitted_by_member_id
+            status
+            upvote_count
+            number_of_replies
+            number_of_solutions
+          }
+          total
+        }
+      }
+    }
+    p_topic(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $topicId) {
+      _metadata {
+        id
+      }
+      associations {
+        p_member_profile_collection__member_author(limit: 10) {
+          items {
+            _metadata {
+              id
+            }
+            associations {
+              p_topic_collection__member_author(filter: {is_deleted__neq: true}, limit: $limits, orderBy: hs_createdate__desc) {
+                items {
+                  name
+                  category
+                  hs_createdate
+                  topic_slug
+                  submitted_by_name
+                  submitted_by_member_id
+                  status
+                  upvote_count
+                  number_of_replies
+                  number_of_solutions
+                }
+                total
+              }
+            }
+          }
+          total
+        }
+      }
+    }
+  }
+}

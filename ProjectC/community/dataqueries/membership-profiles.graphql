@@ -1,0 +1,43 @@
+# label: "Membership Profiles"
+# $id: {{ dynamic_page_crm_object.id|default("0") }}
+
+query membershipProfiles($id: String!) {
+  CRM {
+    p_member_profile(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      _metadata {
+        id
+      }
+      first_name
+      last_name
+      bio
+      username
+      profile_photo
+      associations {
+        p_topic_collection__member_author(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+        replies:p_reply_collection__member_profile_to_reply(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+        solutions:p_reply_collection__member_profile_to_reply(limit: 500, filter: {mark_as_solution__eq: true}) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+      }
+    }
+  }
+}

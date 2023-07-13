@@ -1,0 +1,37 @@
+{% set cs = widget_data.cohortium_settings %}
+{% set catDB = module.hubdbtable_field || cs.categories_tags.category_hubdb_table %}
+{% if module.hubdbtable_field or cs.categories_tags.category_hubdb_table %}
+{% set categories = hubdb_table_rows(catDB , "visibility=1") %}
+{% endif %}
+<div class="{{name}} category-container">
+  {% for category in categories %}
+  <a class="{{name}} category-card {% if request.query_dict.category == category.hs_path %}active{% endif %}" href="{{cs.default_urls.topic_listing_url}}?{{ module.tags_or_categories }}={{ category.hs_path }}">
+    <h4 style="font-size:{{ module.style.font_size }}rem;color:{{ module.style.font_color.color }};">{{ category.hs_name }}</h4>
+    <p>{{ category.description }}</p>
+  </a>
+
+  {% endfor %}
+</div>
+{% for topic in topics.results %}
+<div class="{{name}} topic-card">
+  <a href="{{cs.default_urls.topic_listing_url}}/{{topic.topic_slug}}">
+    <h5>{% if topic.number_of_solutions > 0 %}<span class="status-solved">{{cs.labels_text.filters.solved_label}}</span>{% endif %} {{topic.name}}</h5>
+  </a>
+</div>
+
+{% endfor %}
+
+{% set b_top = module.style.border.top %}
+{% set b_right = module.style.border.right %}
+{% set b_bottom = module.style.border.bottom %}
+{% set b_left = module.style.border.left %}
+<style>
+  .{{name}}.category-card, .{{name}} .topic-card {
+    border-bottom:{{ b_bottom.style }} {{ b_bottom.width.value ~ b_bottom.width.units }} {{ b_bottom.color }};
+    border-top:{{ b_top.style }} {{ b_top.width.value ~ b_top.width.units }} {{ b_top.color }};
+    border-left:{{ b_left.style }} {{ b_left.width.value ~ b_left.width.units }} {{ b_left.color }};
+    border-right:{{ b_right.style }} {{ b_right.width.value ~ b_right.width.units }} {{ b_right.color }};
+    background:{{ module.style.card_background.color }}
+  }
+</style>
+

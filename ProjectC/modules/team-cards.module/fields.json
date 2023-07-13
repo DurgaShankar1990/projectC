@@ -1,0 +1,822 @@
+[ {
+  "id" : "1041d90f-6389-f88b-a3f1-f22aaeeddb34",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d423915b-b8fa-63a7-b517-83b9b4bd6e01",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "Fade in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_from_bottom"
+  }, {
+    "id" : "b6afa4df-c723-bc6d-2dfa-011bbc44ef98",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "35bb49f4-1ef4-966d-7bf8-f3c3d750bc22",
+      "name" : "cards_per_row_desktop",
+      "display_width" : null,
+      "label" : "Cards Per Row (Desktop)",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 4,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "a4eb3d2c-6cdd-991e-25d9-6d487b1a9648",
+      "name" : "cards_per_row_tablet",
+      "display_width" : null,
+      "label" : "Cards Per Row (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 3,
+      "step" : 1,
+      "type" : "number",
+      "default" : 2
+    }, {
+      "id" : "0dc57a6e-f287-a3dd-0932-27b821404e9b",
+      "name" : "space_between_cards",
+      "display_width" : null,
+      "label" : "Space Between Cards",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "cards_per_row_desktop" : 3,
+      "cards_per_row_tablet" : 2,
+      "space_between_cards" : 20
+    }
+  }, {
+    "id" : "3c7ae259-c9c2-bccc-b545-e89de7b8b9d0",
+    "name" : "hover",
+    "display_width" : null,
+    "label" : "Hover",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "c690b569-1f13-2fa4-575e-e2f6a03f0ead",
+      "name" : "tilt_amount",
+      "display_width" : null,
+      "label" : "Tilt Amount",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 20,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "7974c08a-6a44-8bd4-1cd1-0eaa10a8a957",
+      "name" : "scale_amount",
+      "display_width" : null,
+      "label" : "Scale Amount",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0.9,
+      "max" : 1.1,
+      "step" : 0.05,
+      "prefix" : "",
+      "suffix" : "",
+      "type" : "number",
+      "default" : 1.05
+    }, {
+      "id" : "dbd2cbf6-9b61-2fe9-8788-030719907719",
+      "name" : "glare_effect",
+      "display_width" : null,
+      "label" : "Glare Effect",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "747c59c2-dd41-5637-db05-562a0d9a7a33",
+      "name" : "glare_amount",
+      "display_width" : null,
+      "label" : "Glare Amount",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "dbd2cbf6-9b61-2fe9-8788-030719907719",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 0.05,
+      "max" : 1,
+      "step" : 0.01,
+      "type" : "number",
+      "default" : 0.3
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "tilt_amount" : 3,
+      "scale_amount" : 1.05,
+      "glare_effect" : true,
+      "glare_amount" : 0.3
+    }
+  }, {
+    "id" : "6ef4867f-8d42-b0d6-a234-488f055b8358",
+    "name" : "card_styles",
+    "display_width" : null,
+    "label" : "Card Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "65c05f08-3067-b041-5d4a-4a772695ede1",
+      "name" : "border_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "help_text" : "The higher the number, the more rounded the corners of the cards will be.",
+      "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 10
+    }, {
+      "id" : "cd00e31d-2441-3c6d-9721-e662769e93cf",
+      "name" : "text_spacing",
+      "display_width" : null,
+      "label" : "Text Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : 4,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      }
+    }, {
+      "id" : "d6d87b9b-0755-8a92-cecd-cff1d8dcf78f",
+      "name" : "shadow",
+      "display_width" : null,
+      "label" : "Shadow",
+      "help_text" : "If you select offset. You will select the shadow color in the repeater in the 'Content' section of the module. This is so that you can select different colors for each slide if you so choose.",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "None" ], [ "box-shadow", "Regular" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "box-shadow"
+    }, {
+      "id" : "cc76bcb3-db1b-a7dc-6710-ee1e67892cfe",
+      "name" : "vertical_background_position",
+      "display_width" : null,
+      "label" : "Vertical Background Position",
+      "inline_help_text" : "0 = Top <br>\n50 = Center <br>\n100 = Bottom\n",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "c2a29b19-f3a8-8718-2054-7349a621b8db",
+      "name" : "horizontal_background_position",
+      "display_width" : null,
+      "label" : "Horizontal Background Position",
+      "inline_help_text" : "0 = Left <br>\n50 = Center <br>\n100 = Right\n",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "2072a29d-9f6f-1878-6119-0f8e5986630e",
+      "name" : "colors",
+      "display_width" : null,
+      "label" : "Colors",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "ecc91871-5983-562d-3845-7a123f88dfd5",
+        "name" : "title_text_color",
+        "display_width" : null,
+        "label" : "Name Text Color",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary_dark"
+      }, {
+        "id" : "a8feb7f6-cccc-3c49-3747-433f1bffc410",
+        "name" : "text_color",
+        "display_width" : null,
+        "label" : "Text Color",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "black"
+      }, {
+        "id" : "73034500-fe53-7bdf-4380-b8ed62918540",
+        "name" : "text_background_color",
+        "display_width" : null,
+        "label" : "Text Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 80
+        }
+      }, {
+        "id" : "5bd9b155-9638-7a24-daff-e28eff38bb30",
+        "name" : "social_icon_color",
+        "display_width" : null,
+        "label" : "Social Icon Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "9051b49b-a565-5bd9-3c0e-c16e76515c05",
+        "name" : "social_icon_hover_color",
+        "display_width" : null,
+        "label" : "Social Icon Hover Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "title_text_color" : "primary_dark",
+        "text_color" : "black",
+        "text_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 80
+        },
+        "social_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "social_icon_hover_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "border_radius" : 10,
+      "text_spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 4,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      },
+      "shadow" : "box-shadow",
+      "vertical_background_position" : 50,
+      "horizontal_background_position" : 50,
+      "colors" : {
+        "title_text_color" : "primary_dark",
+        "text_color" : "black",
+        "text_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 80
+        },
+        "social_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "social_icon_hover_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_from_bottom",
+    "spacing" : {
+      "cards_per_row_desktop" : 3,
+      "cards_per_row_tablet" : 2,
+      "space_between_cards" : 20
+    },
+    "hover" : {
+      "tilt_amount" : 3,
+      "scale_amount" : 1.05,
+      "glare_effect" : true,
+      "glare_amount" : 0.3
+    },
+    "card_styles" : {
+      "border_radius" : 10,
+      "text_spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 4,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      },
+      "shadow" : "box-shadow",
+      "vertical_background_position" : 50,
+      "horizontal_background_position" : 50,
+      "colors" : {
+        "title_text_color" : "primary_dark",
+        "text_color" : "black",
+        "text_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 80
+        },
+        "social_icon_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "social_icon_hover_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }
+    }
+  }
+}, {
+  "id" : "9c3f5c39-91b9-4493-7b0b-57ed4eebe8b0",
+  "name" : "cards",
+  "display_width" : null,
+  "label" : "People",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "e1e5a4b4-89f0-5cda-11cc-bcf794585d8c",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "e1e5a4b4-89f0-5cda-11cc-bcf794585d8c",
+    "name" : "card_title",
+    "display_width" : null,
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Stephen Brown"
+  }, {
+    "id" : "4b081314-73d4-43c8-10e3-f761f009a9ef",
+    "name" : "job_title",
+    "display_width" : null,
+    "label" : "Job Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Software Developer"
+  }, {
+    "id" : "52d69599-22fc-95be-bf60-7cefeda8743a",
+    "name" : "hover_text",
+    "display_width" : null,
+    "label" : "Hover Description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>"
+  }, {
+    "id" : "78e0e5bf-7003-9d15-27b1-eae5bf277753",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://20023350.fs1.hubspotusercontent-na1.net/hubfs/20023350/profile-image-2%20(1).jpg",
+      "alt" : "profile-image-2 (1)",
+      "loading" : "lazy",
+      "width" : 408,
+      "height" : 315,
+      "max_width" : 408,
+      "max_height" : 315
+    }
+  }, {
+    "id" : "4d7ed702-fb17-087c-2dec-1c47db8a975d",
+    "name" : "social_links",
+    "display_width" : null,
+    "label" : "Social Links",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "91648bad-6858-b1c6-613c-7c09e3c665bd",
+      "default" : 3
+    },
+    "children" : [ {
+      "id" : "91648bad-6858-b1c6-613c-7c09e3c665bd",
+      "name" : "social_icon",
+      "display_width" : null,
+      "label" : "Social Icon",
+      "required" : false,
+      "locked" : false,
+      "icon_set" : "fontawesome-5.14.0",
+      "type" : "icon",
+      "default" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      }
+    }, {
+      "id" : "832746d8-31c7-b86a-9c29-32726c31f04e",
+      "name" : "social_link",
+      "display_width" : null,
+      "label" : "Social Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : [ {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "card_title" : "Stephen Brown",
+    "job_title" : "Software Developer",
+    "hover_text" : "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://20023350.fs1.hubspotusercontent-na1.net/hubfs/20023350/profile-image-2%20(1).jpg",
+      "alt" : "profile-image-2 (1)",
+      "loading" : "lazy",
+      "width" : 408,
+      "height" : 315,
+      "max_width" : 408,
+      "max_height" : 315
+    },
+    "social_links" : [ {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ]
+  }, {
+    "card_title" : "Stephen Brown",
+    "job_title" : "Software Developer",
+    "hover_text" : "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://20023350.fs1.hubspotusercontent-na1.net/hubfs/20023350/profile-image-2%20(1).jpg",
+      "alt" : "profile-image-2 (1)",
+      "loading" : "lazy",
+      "width" : 408,
+      "height" : 315,
+      "max_width" : 408,
+      "max_height" : 315
+    },
+    "social_links" : [ {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ]
+  }, {
+    "card_title" : "Stephen Brown",
+    "job_title" : "Software Developer",
+    "hover_text" : "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://20023350.fs1.hubspotusercontent-na1.net/hubfs/20023350/profile-image-2%20(1).jpg",
+      "alt" : "profile-image-2 (1)",
+      "loading" : "lazy",
+      "width" : 408,
+      "height" : 315,
+      "max_width" : 408,
+      "max_height" : 315
+    },
+    "social_links" : [ {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "social_icon" : {
+        "name" : "Facebook",
+        "unicode" : "f09a",
+        "type" : "REGULAR"
+      },
+      "social_link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ]
+  } ]
+} ]

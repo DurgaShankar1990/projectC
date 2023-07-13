@@ -1,0 +1,474 @@
+[ {
+  "id" : "card",
+  "name" : "slides",
+  "display_width" : null,
+  "label" : "Slides",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "e38a7602-cf72-fd78-8312-f3e2c143f602",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "card.image",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "loading" : "lazy",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    }
+  }, {
+    "id" : "e38a7602-cf72-fd78-8312-f3e2c143f602",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h2>This is a title</h2>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>"
+  }, {
+    "id" : "c694efd1-f692-ad62-c81a-ef181b8329ca",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "center", "Center" ], [ "touching_left", "Touching Left" ], [ "touching_right", "Touching Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "243dbdec-5363-22ab-2dbb-b7586b5bed83",
+    "name" : "order",
+    "display_width" : null,
+    "label" : "Order",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "text_first", "Text First" ], [ "image_first", "Image First" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "text_first"
+  }, {
+    "id" : "df1d3329-bb31-a152-ab77-e407187330b0",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "22a94b34-3e77-16ee-e573-848cc40abf38",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "shadow--offset",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#DEF0F7",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "image" : {
+      "loading" : "lazy",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    },
+    "content" : "<h2>This is a title</h2>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>",
+    "spacing" : "center",
+    "order" : "text_first",
+    "shadow_color" : {
+      "color" : "#DEF0F7",
+      "opacity" : 100
+    }
+  }, {
+    "image" : {
+      "loading" : "lazy",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    },
+    "content" : "<h2>This is a title</h2>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>",
+    "spacing" : "center",
+    "order" : "text_first",
+    "shadow_color" : {
+      "color" : "#DEF0F7",
+      "opacity" : 100
+    }
+  }, {
+    "image" : {
+      "loading" : "lazy",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+      "alt" : "Instagram_Marketing_Basketball",
+      "width" : 1000,
+      "height" : 728,
+      "max_width" : 1000,
+      "max_height" : 728
+    },
+    "content" : "<h2>This is a title</h2>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>",
+    "spacing" : "center",
+    "order" : "text_first",
+    "shadow_color" : {
+      "color" : "#DEF0F7",
+      "opacity" : 100
+    }
+  } ]
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "f8a55438-d24d-1141-6f77-bbcdd68edc45",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "styles.image",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.image.corner.radius",
+      "name" : "corner_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "step" : 1,
+      "suffix" : "",
+      "type" : "number",
+      "default" : 20
+    }, {
+      "id" : "22a94b34-3e77-16ee-e573-848cc40abf38",
+      "name" : "shadow",
+      "display_width" : null,
+      "label" : "Shadow",
+      "help_text" : "If you select offset. You will select the shadow color in the repeater in the 'Content' section of the module. This is so that you can select different colors for each slide if you so choose.",
+      "inline_help_text" : "",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "shadow--none", "None" ], [ "box-shadow", "Regular" ], [ "shadow--offset", "Offset" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "shadow--none"
+    }, {
+      "id" : "4fdaa33c-f5d6-d5d2-89e1-1c7bccd7789d",
+      "name" : "shadow_position",
+      "display_width" : null,
+      "label" : "Shadow Position",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "22a94b34-3e77-16ee-e573-848cc40abf38",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "shadow--offset",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "top_left", "Top Left" ], [ "top_right", "Top Right" ], [ "bottom_left", "Bottom Left" ], [ "bottom_right", "Bottom Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "bottom_right"
+    }, {
+      "id" : "a834c1f2-92b5-08df-3ef0-9d2559da076b",
+      "name" : "offset_amount",
+      "display_width" : null,
+      "label" : "Offset Amount",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "22a94b34-3e77-16ee-e573-848cc40abf38",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "shadow--offset",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "corner_radius" : 20,
+      "shadow" : "shadow--none",
+      "shadow_position" : "bottom_right",
+      "offset_amount" : 50
+    }
+  }, {
+    "id" : "styles.content",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.content.alignment",
+      "name" : "alignment",
+      "display_width" : null,
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.content.alignment.alignment",
+        "name" : "alignment",
+        "display_width" : null,
+        "label" : "Alignment",
+        "required" : false,
+        "locked" : false,
+        "alignment_direction" : "HORIZONTAL",
+        "type" : "alignment",
+        "default" : {
+          "horizontal_align" : "LEFT"
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "alignment" : {
+          "horizontal_align" : "LEFT"
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "alignment" : {
+        "alignment" : {
+          "horizontal_align" : "LEFT"
+        }
+      }
+    }
+  }, {
+    "id" : "b4164d48-67bc-7c30-3357-1e29608f95c8",
+    "name" : "slider",
+    "display_width" : null,
+    "label" : "Slider",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "fd895e85-a591-9210-cf3f-ca6c117668dc",
+      "name" : "transition_effect",
+      "display_width" : null,
+      "label" : "Transition Effect",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "slide", "Slide" ], [ "fade", "Fade" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "slide"
+    }, {
+      "id" : "ab47b501-2a41-8dd3-73df-d11d657ed579",
+      "name" : "wrap_around",
+      "display_width" : null,
+      "label" : "Wrap Around",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "df3081ab-309f-e380-74bd-67ae92f53c68",
+      "name" : "automatically_slide",
+      "display_width" : null,
+      "label" : "Automatically Slide",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "e503b1dc-a4c1-1738-035b-66c0a65a04e0",
+      "name" : "time_between_slides_milliseconds",
+      "display_width" : null,
+      "label" : "Time Between Slides (milliseconds)",
+      "required" : true,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "df3081ab-309f-e380-74bd-67ae92f53c68",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 1000,
+      "max" : 20000,
+      "step" : 100,
+      "type" : "number",
+      "default" : 4000
+    }, {
+      "id" : "3b4e5561-6a3d-32c2-d83d-40935bf56229",
+      "name" : "pause_autoplay_on_hover",
+      "display_width" : null,
+      "label" : "Pause Autoplay on Hover",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "df3081ab-309f-e380-74bd-67ae92f53c68",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "673cc130-b4ea-c648-c47a-3659f16f0713",
+      "name" : "disable_dragging",
+      "display_width" : null,
+      "label" : "Disable Dragging",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "41e784f8-e846-36c5-5929-d42d6d808e02",
+      "name" : "adaptive_height",
+      "display_width" : null,
+      "label" : "Adaptive Height",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "e113a10e-7be8-f8b6-dc0d-ab2216d2aeee",
+      "name" : "hide_slide_dots",
+      "display_width" : null,
+      "label" : "Hide Slide Dots",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "42a3ea01-2e4e-e6bd-f8e2-d09b6ae636ae",
+      "name" : "hide_arrows",
+      "display_width" : null,
+      "label" : "Hide Arrows",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "transition_effect" : "slide",
+      "wrap_around" : true,
+      "automatically_slide" : true,
+      "time_between_slides_milliseconds" : 4000,
+      "pause_autoplay_on_hover" : true,
+      "disable_dragging" : false,
+      "adaptive_height" : true,
+      "hide_slide_dots" : false,
+      "hide_arrows" : false
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "none",
+    "image" : {
+      "corner_radius" : 20,
+      "shadow" : "shadow--none",
+      "shadow_position" : "bottom_right",
+      "offset_amount" : 50
+    },
+    "content" : {
+      "alignment" : {
+        "alignment" : {
+          "horizontal_align" : "LEFT"
+        }
+      }
+    },
+    "slider" : {
+      "transition_effect" : "slide",
+      "wrap_around" : true,
+      "automatically_slide" : true,
+      "time_between_slides_milliseconds" : 4000,
+      "pause_autoplay_on_hover" : true,
+      "disable_dragging" : false,
+      "adaptive_height" : true,
+      "hide_slide_dots" : false,
+      "hide_arrows" : false
+    }
+  }
+} ]

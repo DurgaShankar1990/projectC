@@ -1,0 +1,127 @@
+.reply-body {
+    padding: 20px;
+    border: solid 1px #cecece;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.authortag {
+    background: #33bf33;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    margin-left: 5px;
+    border-radius: 4px;
+    font-size: .6rem;
+}
+.submit-container {
+    display: flex;
+    align-items: center;
+}
+.submit-container label {
+    margin-bottom:0px;
+}
+.submit-container input[type=checkbox] {margin-left:10px;}
+
+.message-container {
+    margin-left: 30px;
+}
+.message-container.child-reply {
+    margin-left: 50px;
+}
+.input {
+    padding-top: 10px;
+}
+ form .input input[type=text] {
+    border:1px solid #cecece;
+}
+.disabled-replies {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    padding: 50px 20px;
+}
+.topic-detail {
+  padding-top:20px;
+    min-height: 200px;
+}
+.reply-tools button {
+  margin-top:5px;
+    display: flex;
+    font-size: .8rem;
+    font-weight: normal;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 105px;
+  justify-content:center;
+}
+.reply-tools {display:flex;justify-content:left}
+.reply-tools svg {
+    fill: #fff;
+  height:.8rem;width:auto;margin-right:10px;
+}
+
+button.upvote {
+    display: flex;
+    font-size: .7rem;
+}
+button.upvote {
+    display: flex;
+    font-size: .7rem;
+    background: transparent;
+    border: 0px;
+    color: #000;
+    padding: 4px 10px;
+    justify-content: center;
+    align-items: center;
+  font-weight:100
+}
+.upvote .unvote {display:none;}
+.upvote.upvoted .unvote {display:inherit;color:#cecece;pointer-events: none;}
+.upvote.upvoted:hover .unvote {color:#000;}
+.upvote.upvoted svg {fill:#cecece;}
+.upvote.upvoted:hover svg {fill:#000;}
+.upvote svg {
+  margin-right: 5px;
+  height: 1rem;
+  pointer-events: none;
+}
+.upvote .like-icon {
+  pointer-events: none;
+}
+
+button.admintools {  display: flex;
+    font-size: .7rem;
+    background: transparent;
+    border: 0px;
+    color: #000;
+    padding: 4px 10px;
+    justify-content: center;
+    align-items: center;}
+.admintools svg {height:.9rem;}
+.reply-detail-view {
+    display: flex;
+    align-items: center;
+  margin-bottom:.3rem;
+}
+.reply-detail-view a, .reply-detail-veiw button {
+    margin-left:.5rem;
+}
+.upvote.upvoted .unvote {
+    display: inherit;
+    margin-right: 10px;
+    font-weight: 100;
+}
+.reply-body * a {
+    text-decoration: underline !important;
+}
+button.mark-as-solution {
+    background: transparent;
+    color: #000;
+    margin-left: 10px;
+    font-size: .7rem;
+    width: 130px;
+}
+.reply-body.is-solution {
+    border: green 2px solid;
+    border-left: 5px solid green;
+}

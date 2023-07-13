@@ -1,0 +1,28 @@
+{
+  "content_tags" : [ {
+    "name" : "VIDEO",
+    "source" : "USER"
+  }, {
+    "name" : "BRANDING",
+    "source" : "USER"
+  }, {
+    "name" : "CONVERSION",
+    "source" : "USER"
+  }, {
+    "name" : "INTERACTION",
+    "source" : "USER"
+  }, {
+    "name" : "LAYOUT",
+    "source" : "USER"
+  }, {
+    "name" : "MULTIMEDIA",
+    "source" : "USER"
+  } ],
+  "global" : false,
+  "inline_help_text" : "If you use Wistia simply paste your Wistia Video URL in this field. If you use YouTube paste your YourTube URL in this field. All others paste your embed code here. <a href=\"https://www.sprockettalk.com/support/evolve/video-embed\" target=\"_blank\">Click here for documentation</a>",
+  "icon" : "https://cdn2.hubspot.net/hubfs/7338736/Evolve/icons/video-module.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 96392566028,
+  "label" : "Video Embed",
+  "is_available_for_new_content" : true
+}

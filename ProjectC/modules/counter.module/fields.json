@@ -1,0 +1,675 @@
+[ {
+  "id" : "d55cf94c-ed33-4a72-8925-f951d5d41e38",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "76a79069-c4cd-0c2a-dbaf-6c0cd730e5aa",
+    "name" : "cards_per_row",
+    "display_width" : null,
+    "label" : "Cards Per Row",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "max" : 6,
+    "step" : 1,
+    "type" : "number",
+    "default" : 4
+  }, {
+    "id" : "cc7d92e9-483c-181b-004d-9f44499db6f5",
+    "name" : "cards_per_row_tablet",
+    "display_width" : null,
+    "label" : "Cards Per Row (Tablet)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "max" : 4,
+    "step" : 1,
+    "type" : "number",
+    "default" : 2
+  }, {
+    "id" : "2ae75591-55d4-fa1c-5fd2-5fffb4a94e1c",
+    "name" : "space_between_cards",
+    "display_width" : null,
+    "label" : "Space Between Cards",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "7393fe3c-e667-fd04-1dc2-04d985e87f82",
+    "name" : "box_shadow",
+    "display_width" : null,
+    "label" : "Box Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "89b4016d-024a-5431-caa6-e873a6cac2fa",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 8,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 8,
+          "units" : "px"
+        }
+      },
+      "padding" : {
+        "top" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "bottom" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "134953c3-2f82-8333-60a9-65b160e64428",
+    "name" : "corner_radius",
+    "display_width" : null,
+    "label" : "Corner Radius",
+    "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "94ff804a-0b8b-3cac-2a01-1a3564818359",
+    "name" : "number",
+    "display_width" : null,
+    "label" : "Number",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "bf2078de-c698-9c17-aff5-930f96b11c04",
+      "name" : "number_font_size",
+      "display_width" : null,
+      "label" : "Number Font Size",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 48
+    }, {
+      "id" : "5cdc176f-9fad-ca71-7a86-5ab824e0126f",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 100,
+      "max" : 900,
+      "step" : 100,
+      "type" : "number",
+      "default" : 600
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "number_font_size" : 48,
+      "font_weight" : 600
+    }
+  }, {
+    "id" : "ba77c27b-3e61-b2fd-e7a6-057ac63064c2",
+    "name" : "animations",
+    "display_width" : null,
+    "label" : "Animations",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "3f522449-28e5-04da-e3bd-71fb01cf0e08",
+      "name" : "animation_speed",
+      "display_width" : null,
+      "label" : "Counting Animation Speed",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 1000,
+      "max" : 6000,
+      "step" : 100,
+      "type" : "number",
+      "default" : 3000
+    }, {
+      "id" : "1d8304f7-f862-e516-e28a-d9c9bf5b3d8d",
+      "name" : "scrolling_animation",
+      "display_width" : null,
+      "label" : "Scrolling Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "None" ], [ "Fade In", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fade_from_bottom"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "animation_speed" : 3000,
+      "scrolling_animation" : "fade_from_bottom"
+    }
+  }, {
+    "id" : "5d284b4f-2ab8-668c-b915-af2ad452c587",
+    "name" : "hover",
+    "display_width" : null,
+    "label" : "Hover",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "bcca9be8-4ef2-0431-1862-aa6bc4790528",
+      "name" : "scale_amount",
+      "display_width" : null,
+      "label" : "Scale Amount",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0.5,
+      "max" : 1.5,
+      "step" : 0.05,
+      "type" : "number",
+      "default" : 1.05
+    }, {
+      "id" : "140d4f79-0eba-6de2-5897-f5167933522d",
+      "name" : "tilt_amount",
+      "display_width" : null,
+      "label" : "Tilt Amount",
+      "inline_help_text" : "The larger this number is, the more your card will tilt when hovered.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 20,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "dda6d0ec-c6cf-d240-3ade-e2382e6a73e2",
+      "name" : "glare_effect",
+      "display_width" : null,
+      "label" : "Glare Effect",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "a7fc5e3f-3d0e-4526-21ca-1ad45d2f455c",
+      "name" : "glare_amount",
+      "display_width" : null,
+      "label" : "Glare Amount",
+      "inline_help_text" : "This number will change how much glare is added to the card when the mouse hovers over it.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "dda6d0ec-c6cf-d240-3ade-e2382e6a73e2",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 0.05,
+      "max" : 1,
+      "step" : 0.01,
+      "type" : "number",
+      "default" : 0.3
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "scale_amount" : 1.05,
+      "tilt_amount" : 0,
+      "glare_effect" : false,
+      "glare_amount" : 0.3
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "cards_per_row" : 4,
+    "cards_per_row_tablet" : 2,
+    "space_between_cards" : 20,
+    "box_shadow" : false,
+    "spacing" : {
+      "margin" : {
+        "top" : {
+          "value" : 8,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 8,
+          "units" : "px"
+        }
+      },
+      "padding" : {
+        "top" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "bottom" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
+        }
+      }
+    },
+    "corner_radius" : 20,
+    "number" : {
+      "number_font_size" : 48,
+      "font_weight" : 600
+    },
+    "animations" : {
+      "animation_speed" : 3000,
+      "scrolling_animation" : "fade_from_bottom"
+    },
+    "hover" : {
+      "scale_amount" : 1.05,
+      "tilt_amount" : 0,
+      "glare_effect" : false,
+      "glare_amount" : 0.3
+    }
+  }
+}, {
+  "id" : "51f409d8-c8f5-a205-8d7e-1e8038789ea9",
+  "name" : "cards",
+  "display_width" : null,
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "8f6290e4-1525-b461-3ff8-2b5073147c19",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "0454c1f1-b29f-5852-6e31-2ecd4c0e265a",
+    "name" : "number",
+    "display_width" : null,
+    "label" : "Number",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 100
+  }, {
+    "id" : "8f6290e4-1525-b461-3ff8-2b5073147c19",
+    "name" : "card_text",
+    "display_width" : null,
+    "label" : "Card Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span>This is some card text</span></p>"
+  }, {
+    "id" : "f182dc3b-84bc-755c-3f88-96f61a5dd785",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "cf231876-3af7-ed0e-79ba-a6684e45bf2a",
+    "name" : "card_specific_styles",
+    "display_width" : null,
+    "label" : "Card Specific Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "c713b014-58bb-4964-597f-a4bf134c6e9b",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "53b75e5f-7902-9ab8-58eb-1f50a03b8d3d",
+      "name" : "background_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Color" ], [ "image", "Image" ], [ "image_w_overlay", "Image w/ Overlay" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "fd5e9c56-2dbf-792b-0c3a-e6c2c1472005",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "53b75e5f-7902-9ab8-58eb-1f50a03b8d3d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "white"
+    }, {
+      "id" : "4ba21ddd-7ee2-06c9-8a69-f832fcbc5055",
+      "name" : "custom_background_color",
+      "display_width" : null,
+      "label" : "Custom Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "fd5e9c56-2dbf-792b-0c3a-e6c2c1472005",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "633cda93-fdad-537d-0411-d6d508c475ed",
+      "name" : "background_image",
+      "display_width" : null,
+      "label" : "Background Image",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "53b75e5f-7902-9ab8-58eb-1f50a03b8d3d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "responsive" : true,
+      "resizable" : false,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Game/green-bg.jpg",
+        "alt" : "green-bg",
+        "loading" : "lazy",
+        "width" : 1131,
+        "height" : 707,
+        "max_width" : 1131,
+        "max_height" : 707
+      }
+    }, {
+      "id" : "d7f6b4a3-53b8-1443-29c3-1974beaeef9a",
+      "name" : "overlay_color",
+      "display_width" : null,
+      "label" : "Overlay Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "53b75e5f-7902-9ab8-58eb-1f50a03b8d3d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image_w_overlay",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 60
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "text_color" : "primary_dark",
+      "background_type" : "color",
+      "background_color" : "white",
+      "custom_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Game/green-bg.jpg",
+        "alt" : "green-bg",
+        "loading" : "lazy",
+        "width" : 1131,
+        "height" : 707,
+        "max_width" : 1131,
+        "max_height" : 707
+      },
+      "overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 60
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "number" : 100,
+    "card_text" : "<p><span>This is some card text</span></p>",
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "card_specific_styles" : {
+      "text_color" : "primary_dark",
+      "background_type" : "color",
+      "background_color" : "white",
+      "custom_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Game/green-bg.jpg",
+        "alt" : "green-bg",
+        "loading" : "lazy",
+        "width" : 1131,
+        "height" : 707,
+        "max_width" : 1131,
+        "max_height" : 707
+      },
+      "overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 60
+      }
+    }
+  }, {
+    "number" : 100,
+    "card_text" : "<p><span>This is some card text</span></p>",
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "card_specific_styles" : {
+      "text_color" : "primary_dark",
+      "background_type" : "color",
+      "background_color" : "white",
+      "custom_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Game/green-bg.jpg",
+        "alt" : "green-bg",
+        "loading" : "lazy",
+        "width" : 1131,
+        "height" : 707,
+        "max_width" : 1131,
+        "max_height" : 707
+      },
+      "overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 60
+      }
+    }
+  }, {
+    "number" : 100,
+    "card_text" : "<p><span>This is some card text</span></p>",
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "card_specific_styles" : {
+      "text_color" : "primary_dark",
+      "background_type" : "color",
+      "background_color" : "white",
+      "custom_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Game/green-bg.jpg",
+        "alt" : "green-bg",
+        "loading" : "lazy",
+        "width" : 1131,
+        "height" : 707,
+        "max_width" : 1131,
+        "max_height" : 707
+      },
+      "overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 60
+      }
+    }
+  }, {
+    "number" : 100,
+    "card_text" : "<p><span>This is some card text</span></p>",
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "card_specific_styles" : {
+      "text_color" : "primary_dark",
+      "background_type" : "color",
+      "background_color" : "white",
+      "custom_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "background_image" : {
+        "size_type" : "auto",
+        "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Game/green-bg.jpg",
+        "alt" : "green-bg",
+        "loading" : "lazy",
+        "width" : 1131,
+        "height" : 707,
+        "max_width" : 1131,
+        "max_height" : 707
+      },
+      "overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 60
+      }
+    }
+  } ]
+} ]

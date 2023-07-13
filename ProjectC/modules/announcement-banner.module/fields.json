@@ -1,0 +1,118 @@
+[ {
+  "id" : "5d4d3c46-7db4-3cce-b479-f2875ad62974",
+  "name" : "banner_text",
+  "display_width" : null,
+  "label" : "Banner Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<p>This is a banner where you can put important information. It will drop down and users can click out of it if they don't want to see it anymore. &nbsp;&nbsp;<a href=\"http://20023350.hs-sites.com/homepage-0\" rel=\"noopener\">Learn More</a></p>"
+}, {
+  "id" : "463bb63b-fd88-8d6c-771b-02f856cc9cb2",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "67e23d3a-abd3-9a27-ba60-932d3037727d",
+    "name" : "content_max_width",
+    "display_width" : null,
+    "label" : "Content Max Width",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 400,
+    "step" : 1,
+    "type" : "number",
+    "default" : 1600
+  }, {
+    "id" : "7de04ef0-6938-8d42-369b-e73be2729ff4",
+    "name" : "background_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "secondary_dark"
+  }, {
+    "id" : "7cd606b5-7046-af2f-2073-0a1e58bd70d7",
+    "name" : "custom_background_color",
+    "display_width" : null,
+    "label" : "Custom Background Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7de04ef0-6938-8d42-369b-e73be2729ff4",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "1d8d44f4-d5b0-5296-2794-8bbd026324d9",
+    "name" : "text_color",
+    "display_width" : null,
+    "label" : "Text Color",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "white"
+  }, {
+    "id" : "2e5903a9-5fbe-44dc-13f8-d701f0280e6f",
+    "name" : "custom_text_color",
+    "display_width" : null,
+    "label" : "Custom Text Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "1d8d44f4-d5b0-5296-2794-8bbd026324d9",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "content_max_width" : 1600,
+    "background_color" : "secondary_dark",
+    "custom_background_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "text_color" : "white",
+    "custom_text_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }
+} ]

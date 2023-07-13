@@ -1,0 +1,35 @@
+# label: "Reply Detail Edit"
+# $contactId: {{ request.contact.contact_vid|default("0") }}
+# $replyId: {{ dynamic_page_crm_object.id || module.crmobject_field.id }}
+
+query replyDetailEdit($contactId: String!, $replyId: String!) {
+  CRM {
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $contactId) {
+      associations {
+        p_member_profile_collection__profile_owner(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+      }
+    }
+    p_reply(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $replyId) {
+      _metadata {
+        id
+      }
+      associations {
+        p_member_profile_collection__member_profile_to_reply(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+          }
+          total
+        }
+      }
+    }
+  }
+}

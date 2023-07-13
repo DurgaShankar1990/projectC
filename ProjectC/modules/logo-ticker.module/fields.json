@@ -1,0 +1,210 @@
+[ {
+  "id" : "edd4ffc1-825c-ca8b-0149-dceb8311cf75",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2f37e487-61bd-4b3f-e118-db4fd91fd846",
+    "name" : "image_height",
+    "display_width" : null,
+    "label" : "Image Height",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 80
+  }, {
+    "id" : "4f0365ce-8857-d90c-2c5e-3ea458a767b0",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "bottom" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "left" : {
+          "value" : 3,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 3,
+          "units" : "px"
+        }
+      },
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "44dc9ca8-d723-d607-68aa-266910fe4aca",
+    "name" : "grayscale_images",
+    "display_width" : null,
+    "label" : "Grayscale Images",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "image_height" : 80,
+    "spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "bottom" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "left" : {
+          "value" : 3,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 3,
+          "units" : "px"
+        }
+      },
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    },
+    "grayscale_images" : false
+  }
+}, {
+  "id" : "1fe99ff5-407f-af4d-7237-42884578aa81",
+  "name" : "images",
+  "display_width" : null,
+  "label" : "Images",
+  "required" : true,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 6
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : [ {
+    "size_type" : "auto",
+    "src" : "https://www.impulsecreative.com/hubfs/LOGO_Impulse/Logo-Stacked%20-%20Main.png",
+    "alt" : "Logo-Stacked - Main",
+    "loading" : "lazy",
+    "width" : 2127,
+    "height" : 737,
+    "max_width" : 2127,
+    "max_height" : 737
+  }, {
+    "size_type" : "auto",
+    "src" : "https://www.impulsecreative.com/hubfs/LOGO_Impulse/Logo-Stacked%20-%20Main.png",
+    "alt" : "Logo-Stacked - Main",
+    "loading" : "lazy",
+    "width" : 2127,
+    "height" : 737,
+    "max_width" : 2127,
+    "max_height" : 737
+  }, {
+    "size_type" : "auto",
+    "src" : "https://www.impulsecreative.com/hubfs/LOGO_Impulse/Logo-Stacked%20-%20Main.png",
+    "alt" : "Logo-Stacked - Main",
+    "loading" : "lazy",
+    "width" : 2127,
+    "height" : 737,
+    "max_width" : 2127,
+    "max_height" : 737
+  }, {
+    "size_type" : "auto",
+    "src" : "https://www.impulsecreative.com/hubfs/LOGO_Impulse/Logo-Stacked%20-%20Main.png",
+    "alt" : "Logo-Stacked - Main",
+    "loading" : "lazy",
+    "width" : 2127,
+    "height" : 737,
+    "max_width" : 2127,
+    "max_height" : 737
+  }, {
+    "size_type" : "auto",
+    "src" : "https://www.impulsecreative.com/hubfs/LOGO_Impulse/Logo-Stacked%20-%20Main.png",
+    "alt" : "Logo-Stacked - Main",
+    "loading" : "lazy",
+    "width" : 2127,
+    "height" : 737,
+    "max_width" : 2127,
+    "max_height" : 737
+  }, {
+    "size_type" : "auto",
+    "src" : "https://www.impulsecreative.com/hubfs/LOGO_Impulse/Logo-Stacked%20-%20Main.png",
+    "alt" : "Logo-Stacked - Main",
+    "loading" : "lazy",
+    "width" : 2127,
+    "height" : 737,
+    "max_width" : 2127,
+    "max_height" : 737
+  } ]
+}, {
+  "id" : "4022d43b-0db7-3451-d405-2452363dab30",
+  "name" : "slider_speed",
+  "display_width" : null,
+  "label" : "Slider Speed",
+  "required" : false,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 0,
+  "max" : 4,
+  "step" : 0.1,
+  "type" : "number",
+  "default" : 1
+}, {
+  "id" : "447a18cc-06ca-5348-3e9e-70e79e463de4",
+  "name" : "display_arrows",
+  "display_width" : null,
+  "label" : "Display Arrows",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "5ec916eb-a714-f834-52dc-c94ac6cc646c",
+  "name" : "pause_on_hover",
+  "display_width" : null,
+  "label" : "Pause on Hover",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+} ]

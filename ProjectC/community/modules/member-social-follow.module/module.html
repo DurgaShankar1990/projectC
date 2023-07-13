@@ -1,0 +1,274 @@
+
+<style>
+  {% scope_css %}
+
+  {# Social follow wrapper #}
+
+  .social-links {
+    {% if module.styles.alignment.alignment.horizontal_align %}
+    {% if module.styles.alignment.alignment.horizontal_align == 'LEFT' %}
+    justify-content: flex-start;
+    {% elif module.styles.alignment.alignment.horizontal_align == 'CENTER' %}
+    justify-content: center;
+    {% elif module.styles.alignment.alignment.horizontal_align == 'RIGHT' %}
+    justify-content: flex-end;
+    {% endif %}
+    {% endif %}
+  }
+
+  {# Social follow icons #}
+
+  .social-links__link {
+    {% if module.styles.spacing.space_between_icons %}
+    margin-right: {{ module.styles.spacing.space_between_icons ~ 'px' }};
+    {% endif %}
+    {% if module.styles.spacing.spacing.margin.bottom %}
+    margin-bottom: {{ module.styles.spacing.spacing.margin.bottom.value ~ 'px' }};
+    {% endif %}
+    {% if module.styles.spacing.spacing.margin.top %}
+    margin-top: {{ module.styles.spacing.spacing.margin.top.value ~ 'px' }};
+    {% endif %}
+  }
+
+  .social-links__icon {
+    {% if module.styles.background.color.color %}
+    background-color: rgba({{ module.styles.background.color.color|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+    {% endif %}
+    {% if module.styles.corner.radius %}
+    border-radius: {{ module.styles.corner.radius ~ 'px' }};
+    {% endif %}
+    {% if module.styles.spacing.spacing.padding.bottom %}
+    padding-bottom: {{ module.styles.spacing.spacing.padding.bottom.value ~ 'px' }};
+    {% endif %}
+    {% if module.styles.spacing.spacing.padding.top %}
+    padding-top: {{ module.styles.spacing.spacing.padding.top.value ~ 'px' }};
+    {% endif %}
+    {% if module.styles.spacing.spacing.padding.left %}
+    padding-left: {{ module.styles.spacing.spacing.padding.left.value ~ 'px' }};
+    {% endif %}
+    {% if module.styles.spacing.spacing.padding.right %}
+    padding-right: {{ module.styles.spacing.spacing.padding.right.value ~ 'px' }};
+    {% endif %}
+  }
+
+  .social-links__icon svg {
+    {% if module.styles.fill.color.color %}
+    fill: {{ module.styles.fill.color.color }};
+    {% endif %}
+    {% if module.styles.size.size %}
+    height: {{ module.styles.size.size ~ 'px' }};
+    width: {{ module.styles.size.size ~ 'px' }};
+    {% endif %}
+  }
+
+  {% if module.styles.background.color.color %}
+  .social-links__icon:hover,
+  .social-links__icon:focus {
+    background-color: rgba({{ color_variant(module.styles.background.color.color, -80)|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+  }
+  {% endif %}
+
+  {% if module.styles.background.color.color %}
+  .social-links__icon:active {
+    background-color: rgba({{ color_variant(module.styles.background.color.color, 80)|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+  }
+  {% endif %}
+
+  .facebook-f .social-links__icon:hover,
+  .facebook-f .social-links__icon:focus {
+    background-color: #3b5999;
+  }
+  .facebook-f:hover .tooltip,
+  .facebook-f:hover .tooltip::before {
+    background-color: #3b5999;
+    color: #ffffff;
+  }
+  .facebook-f .social-links__icon:hover svg,
+  .facebook-f .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .twitter .social-links__icon:hover,
+  .twitter .social-links__icon:focus {
+    background-color: #46c1f6;
+  }
+  .twitter:hover .tooltip,
+  .twitter:hover .tooltip::before {
+    background-color: #46c1f6;
+    color: #ffffff;
+  }
+  .twitter .social-links__icon:hover svg,
+  .twitter .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .instagram .social-links__icon:hover,
+  .instagram .social-links__icon:focus {
+    background: linear-gradient(to bottom right, #dd2a7b, #f58529);
+  }
+  .instagram:hover .tooltip,
+  .instagram:hover .tooltip::before {
+    background-color: #e1306c;
+    color: #ffffff;
+  }
+  .instagram .social-links__icon:hover svg,
+  .instagram .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .linkedin-in .social-links__icon:hover,
+  .linkedin-in .social-links__icon:focus {
+    background-color: #0077b5;
+  }
+  .linkedin-in:hover .tooltip,
+  .linkedin-in:hover .tooltip::before {
+    background-color: #0077b5;
+    color: #ffffff;
+  }
+  .linkedin-in .social-links__icon:hover svg,
+  .linkedin-in .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .youtube .social-links__icon:hover,
+  .youtube .social-links__icon:focus {
+    background-color: #de463b;
+  }
+  .youtube:hover .tooltip,
+  .youtube:hover .tooltip::before {
+    background-color: #de463b;
+    color: #ffffff;
+  }
+  .youtube .social-links__icon:hover svg,
+  .youtube .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .pinterest-p .social-links__icon:hover,
+  .pinterest-p .social-links__icon:focus {
+    background-color: #bd081c;
+  }
+  .pinterest-p:hover .tooltip,
+  .pinterest-p:hover .tooltip::before {
+    background-color: #bd081c;
+    color: #ffffff;
+  }
+  .pinterest-p .social-links__icon:hover svg,
+  .pinterest-p .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .whatsapp .social-links__icon:hover,
+  .whatsapp .social-links__icon:focus {
+    background-color: #25d366;
+  }
+  .whatsapp:hover .tooltip,
+  .whatsapp:hover .tooltip::before {
+    background-color: #25d366;
+    color: #ffffff;
+  }
+  .whatsapp .social-links__icon:hover svg,
+  .whatsapp .social-links__icon:focus svg {
+    fill: #fff;
+  }
+  .social-links__icon {
+    border-radius: 50%;
+    display: inline-flex;
+    margin: 0 .35rem;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: {{ module.styles.background.size }}px;
+    height:  {{ module.styles.background.size }}px;
+}
+
+  {% end_scope_css %}
+</style>
+
+{# Social links #}
+{% set member = dynamic_page_crm_object %}
+
+{# need logic to get filled out Social Media properties and populate social links as needed #}
+{% set social_url_objects = [] %}
+{% if member.facebook_url|length > 0 %}
+{% do social_url_objects.append({ 
+  'social': 'Facebook', 
+  'icon_default': 'facebook-f', 
+  'url': member.facebook_url, 
+  'no_follow': member.facebook_no_follow|default(false) }) %}
+{% endif %}
+{% if member.twitter_url|length > 0 %}
+{% do social_url_objects.append({ 
+  'social': 'Twitter', 
+  'icon_default': 'twitter', 
+  'url': member.twitter_url, 
+  'no_follow': member.twitter_no_follow|default(false) }) %}
+{% endif %}
+{% if member.linkedin|length > 0 %}
+{% do social_url_objects.append({ 
+  'social': 'LinkedIn', 
+  'icon_default': 'linkedin-in', 
+  'url': member.linkedin, 
+  'no_follow': member.linkedin_no_follow|default(false) }) %}
+{% endif %}
+{% if member.instagram_url|length > 0 %}
+{% do social_url_objects.append({ 
+  'social': 'Instagram', 
+  'icon_default': 'instagram', 
+  'url': member.instagram_url, 
+  'no_follow': member.instagram_no_follow|default(false) }) %}
+{% endif %}
+{# {% if member.website_url|length > 0 %}
+{% do social_url_objects.append({ 
+  'social': 'Website', 
+  'url': member.website_url }) %}
+{% endif %}
+{% if member.email|length > 0 %}
+{% do social_url_objects.append({ 
+  'social': 'Email', 
+  'url': member.email }) %}
+{% endif %} #}
+<div class="social-links">
+
+  {# Loops through each social link in the social links repeater #}
+
+  {# {% for item in module.social_links %} #}
+  {% for item in social_url_objects %}
+  {# Sets attributes used for the link field #}
+
+  {% set href = item.url %}
+  {% if item.social is equalto 'Email' %}
+  {% set href = 'mailto:' + href %}
+  {% endif %}
+  {% set rel = [] %}
+  {% if item.no_follow %}
+  {% do rel.append('nofollow') %}
+  {% endif %}
+  {% do rel.append('noopener') %}
+  {# {% if item.social_link.open_in_new_tab %} #}
+  {# {% do rel.append('noopener') %} #}
+  {# {% endif %} #}
+
+  {# Sets a custom icon if the custom option is selected #}
+
+  {# {% if item.social_account != 'custom_icon' %} #}
+  {% set social_icon = item.icon_default %}
+  {# {% else %} #}
+  {# {% set social_icon = item.custom_icon.name %} #}
+  {# {% endif %} #}
+
+  {# Icon #}
+
+  <a class="social-links__link {{ item.icon_default }}" href="{{ href }}" 
+     target="_blank"
+     rel="{{ rel|join(' ') }}">
+    {% if module.include_tooltip %}
+    <div class="tooltip">{{ item.social }}</div>
+    {% endif %}
+    {% icon
+        extra_classes='social-links__icon',
+        name='{{ social_icon }}',
+        purpose='semantic',
+        style='SOLID',
+        title='{{ item.social }}',
+        unique_in_loop=True
+      %}
+  </a>
+
+  {% endfor %}
+
+</div>

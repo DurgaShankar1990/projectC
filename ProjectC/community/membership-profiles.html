@@ -1,0 +1,55 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Membership Profiles
+dataQueryPath: dataqueries/membership-profiles
+-->
+{% extends "../templates/layouts/base.html" %}
+{% block body %}
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %}
+<div class="body-container body-container--landing-page">
+  {% if !dynamic_page_crm_object %}
+  {% dnd_area "dnd_area"
+    label="Main section",
+  %}
+
+  {# Hero banner #}
+  {% end_dnd_area %}
+  <div class="container-fluid row-fluid dnd-section">
+    <div class="content-wrapper row-fluid">
+      <div class="home-content span12">
+        {% module "module_16505122739359" path="../community/modules/community-members", label="community-members" %}
+      </div>
+
+    </div>
+  </div>
+  {% endif %}
+  {% if dynamic_page_crm_object or request.postDict.inpageEditorUI %}
+  {#{% set member = dynamic_page_crm_object %}#}
+    {% set member = data_query.data.CRM.p_member_profile %}
+  {# set topics = crm_associations(member.hs_object_id, "USER_DEFINED", object_schema.member_profile.topic.to_member_profile_author, "", "first_name,last_name,bio,username,profile_photo", false).results|first #}
+  {% set topics = data_query.data.CRM.p_member_profile.associations.p_topic_collection__member_author.items[0] %}
+  <div class="container-fluid row-fluid dnd-section">
+    <div class="content-wrapper row-fluid">
+      <div class="sidebar-content span4">
+        {% module "module_165051765708430" path="../community/modules/Member Sidebar", label="Member Sidebar" %}   
+        {% module "module_165051671578623" path="../community/modules/member-social-follow", label="member-social-follow" %}
+      </div>
+      <div class="home-content span8">
+        {% module "module_165051774106233" path="../community/modules/Member Stats", label="Member Stats" %}
+        {% module "module_16524956176845" path="../community/modules/Community Badges", label="Community Badges" %}
+        {% module "module_165051757340128" path="../community/modules/Member Detail", label="Member Detail" %}
+      </div>
+
+    </div>
+    {% if request.query_dict.debug %}
+    <hr>
+    {{member}}
+    {% endif %}
+  </div>
+
+  {% endif %}
+  <style>
+    .home-content, .sidebar-content {padding-top:15px;}</style>
+</div>
+{% endblock %}

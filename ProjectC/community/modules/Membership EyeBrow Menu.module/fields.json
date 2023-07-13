@@ -1,0 +1,189 @@
+[ {
+  "id" : "10816e39-57fa-cc4a-b149-7de65a1db5d5",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "9b0d8d0a-da6f-ff8f-b924-bd01a4cebe5a",
+    "name" : "background_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#113540",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "647f10cd-a62a-6776-fff2-89de1bd736d5",
+    "name" : "link_color",
+    "display_width" : null,
+    "label" : "Link Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "3a44cfd1-d6fc-ce69-2608-b5bca6a17cd9",
+    "name" : "link_hover_background_color",
+    "display_width" : null,
+    "label" : "Link Hover Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#226e85",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "793e699c-0b40-dbf0-701f-cc2d477627c7",
+    "name" : "link_hover_text_color",
+    "display_width" : null,
+    "label" : "Link Hover Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "background_color" : {
+      "color" : "#113540",
+      "opacity" : 100
+    },
+    "link_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "link_hover_background_color" : {
+      "color" : "#226e85",
+      "opacity" : 100
+    },
+    "link_hover_text_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "2893e72f-fe38-a604-707b-8ac1d195438e",
+  "name" : "left_menu",
+  "display_width" : null,
+  "label" : "Left Menu",
+  "required" : false,
+  "locked" : false,
+  "type" : "simplemenu",
+  "default" : [ {
+    "isPublished" : true,
+    "pageLinkId" : 70437489258,
+    "contentGroupId" : null,
+    "pageLinkName" : "Community - Topics",
+    "isDeleted" : false,
+    "categoryId" : 1,
+    "subCategory" : "site_page",
+    "contentType" : "site_page",
+    "state" : "PUBLISHED_OR_SCHEDULED",
+    "linkLabel" : "Test Url Here",
+    "linkUrl" : null,
+    "linkParams" : "#",
+    "linkTarget" : null,
+    "type" : "PAGE_LINK_WITH_PARAMS",
+    "children" : [ ]
+  } ]
+}, {
+  "id" : "3b0ce0fb-df68-2a84-773d-8b6cd92af576",
+  "name" : "login_label",
+  "display_width" : null,
+  "label" : "Login Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Login"
+}, {
+  "id" : "895aeb64-87fc-ed01-800a-80475c08c0b7",
+  "name" : "log_out_label",
+  "display_width" : null,
+  "label" : "Log Out Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Log Out"
+}, {
+  "id" : "fa82f327-022f-091e-9f4e-8444441759d8",
+  "name" : "edit_profile",
+  "display_width" : null,
+  "label" : "Edit Profile",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Edit Profile"
+}, {
+  "id" : "adbfbdbe-2d25-bbf1-efba-71b8324382d9",
+  "name" : "edit_profile_url",
+  "display_width" : null,
+  "label" : "Edit Profile URL",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "/profile/edit"
+}, {
+  "id" : "4748470d-9b7a-fa7d-a6fc-c355f8496df5",
+  "name" : "sign_up_label",
+  "display_width" : null,
+  "label" : "Sign Up Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Sign Up"
+}, {
+  "id" : "bced3252-a428-c46b-91bf-89d7e2ffb3b3",
+  "name" : "signup_url",
+  "display_width" : null,
+  "label" : "Signup Url",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "{{request.domain}}"
+}, {
+  "id" : "2d2bf5f7-b4e2-053d-f635-905d81cec304",
+  "name" : "language_mode",
+  "display_width" : null,
+  "label" : "Language Mode",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "localized", "Localized" ], [ "pagelang", "Page Language" ], [ "hybrid", "Hybrid" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "hybrid"
+} ]

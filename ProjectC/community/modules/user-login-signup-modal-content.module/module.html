@@ -1,0 +1,8 @@
+{% inline_rich_text field="text_message" value="{{ module.text_message }}" %}
+<div class="signup-login-buttons">
+  <a class="btn btn--secondary" href="https://{{ module.signup_url|split("://")|last }}?signup_from={{content.absolute_url}}">{{ module.signup_label }}</a>
+  <a class="btn btn--secondary" href="https://{{request.domain}}/_hcms/mem/login?redirect_url={{content.absolute_url}}%23form__reply">{{ module.login_label }}</a>
+</div>
+
+
+

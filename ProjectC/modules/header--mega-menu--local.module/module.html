@@ -1,0 +1,891 @@
+{% set arrow = '<svg class="nav__arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path id="Polygon_3" data-name="Polygon 3" d="M5.293.707a1,1,0,0,1,1.414,0l3.586,3.586A1,1,0,0,1,9.586,6H2.414a1,1,0,0,1-.707-1.707Z" transform="translate(12 6) rotate(180)" fill="#001d38"/></svg>' %}
+
+<style>
+  {% scope_css %}
+  .nav-omega {
+    background-color: {{ theme.header.background_color.color }};
+  }
+  .nav__menu-item,
+  .nav__menu-item > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: {{ module.style.links.navigation_link_color.color }};
+    font-weight: {{ module.style.links.font_weight }};
+  }
+  .nav__arrow path {
+    fill: {{ module.style.links.navigation_link_color.color }};
+  }
+  .nav__menu-item:hover {
+    background-color: {{ module.style.links.hover_box_background_color.color }};
+    color: {{ module.style.links.hover_navigation_link_color.color }};
+  }
+  .nav__menu-item:hover>a {
+    color: {{ module.style.links.hover_navigation_link_color.color }};
+  }
+  .nav__menu-item:hover .nav__link {
+    color: {{ module.style.links.hover_navigation_link_color.color }};
+  }
+  .nav__menu-item:hover .nav__arrow path {
+    fill: {{ module.style.links.hover_navigation_link_color.color }};
+  }
+  .nav__menu-children {
+    background-color: {{ module.style.links.hover_box_background_color.color }};
+  }
+  .nav__menu-children .hs-menu-item a {
+    color: {{ module.style.links.children_menus.children_menu_link_color.color }};
+  }
+  .nav__mega-menu-callout:after {
+    background-color: {{ module.style.links.children_menus.children_menu_link_color.color }};
+  }
+  .nav__menu-children ul {
+    width: 200px;
+  }
+  .nav__menu-children ul a {
+    font-weight: {{ module.style.links.children_menus.font_weight }};
+  }
+  .nav__cta-col .btn {
+    margin-top: 1rem;
+  }
+  .nav__mega-menu-link--cta *,
+  .nav__mega-menu-link--image * {
+    color: {{ module.style.mega_menu.text_color.color }};
+    transition: .3s;
+  }
+  .nav__mega-menu-link--cta:hover *,
+  .nav__mega-menu-link--image:hover * {
+    color: {{ module.style.mega_menu.hover_text_color.color }};
+  }
+  .nav__mega-menu-image svg path {
+    fill: var(--icon-color);
+  }
+  .nav__mega-menu-image svg {
+    height: {{ module.style.mega_menu.image_height }}px;
+  }
+  .nav__right-side-button {
+    margin-left: {{ module.style.right_side_button.space_between_button_and_links }}px;
+    {% if module.style.right_side_button.overwrite_default_spacing %}
+    padding-top: {{ module.style.right_side_button.custom_spacing.padding.top.value }}{{ module.style.right_side_button.custom_spacing.padding.top.units }};
+    padding-left: {{ module.style.right_side_button.custom_spacing.padding.left.value }}{{ module.style.right_side_button.custom_spacing.padding.left.units }};
+    padding-right: {{ module.style.right_side_button.custom_spacing.padding.right.value }}{{ module.style.right_side_button.custom_spacing.padding.right.units }};
+    padding-bottom: {{ module.style.right_side_button.custom_spacing.padding.bottom.value }}{{ module.style.right_side_button.custom_spacing.padding.bottom.units }};
+    margin-top: {{ module.style.right_side_button.custom_spacing.margin.top.value }}{{ module.style.right_side_button.custom_spacing.margin.top.units }};
+    margin-bottom: {{ module.style.right_side_button.custom_spacing.margin.bottom.value }}{{ module.style.right_side_button.custom_spacing.margin.bottom.units }};
+    {% endif %}
+  }
+  .nav__menu-children .hs-menu-item:hover {
+    background-color: {{ module.style.links.children_menus.hover_children_menu_link_background_color.color }};
+  }
+  .nav__menu-children .hs-menu-item:hover a {
+    color: {{ module.style.links.children_menus.hover_children_menu_link_color.color }};
+  }
+  /*  Mobile  */
+  .mobile-menu-toggle {
+    position: relative;
+    display:  inline-block;
+    width: 30px;
+    height: 30px;
+    z-index: 999;
+  }
+  .mobile-menu-toggle span {
+    margin: 0 auto;
+    position: relative;
+    top: 12px;
+  }
+  .mobile-menu-toggle span:before, .mobile-menu-toggle span:after {
+    position: absolute;
+    content: '';
+  }
+  .mobile-menu-toggle span, .mobile-menu-toggle span:before, .mobile-menu-toggle span:after {
+    width: 30px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: {{ module.style.mobile.open_menu_icon_color.color }};
+    display: block;
+  }
+  .mobile-menu-toggle.close-menu span, .mobile-menu-toggle.close-menu span:before, .mobile-menu-toggle.close-menu span:after {
+    background-color: {{ module.style.mobile.close_menu_icon_color.color }};
+  }
+  .mobile-menu-toggle span:before {
+    margin-top: -12px;
+  }
+  .mobile-menu-toggle span:after {
+    margin-top: 12px;
+  }
+  .mobile-menu-toggle span {
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  .mobile-menu-toggle.close-menu span {
+    background-color: rgba(0,0,0,0.0);
+  }
+  .mobile-menu-toggle span:before {
+    -webkit-transition-duration: 0.3s; transition-duration: 0.3s;
+  }
+  .mobile-menu-toggle.close-menu span:before {
+    margin-top: 0;
+    -webkit-transform: rotate(45deg); transform: rotate(45deg);
+  }
+  .mobile-menu-toggle span:after {
+    -webkit-transition-duration: 0.3s; transition-duration: 0.3s;
+  }
+  .mobile-menu-toggle.close-menu span:after {
+    margin-top: 0;
+    -webkit-transform: rotate(-45deg); transform: rotate(-45deg);
+  }
+  .mobile-menu {
+    background-color: rgba({{ module.style.mobile.menu_background_color.color|convert_rgb }}, {{ module.style.mobile.menu_background_color.opacity / 100 }});
+    padding-top: {{ module.style.mobile.mobile_menu_padding.padding.top.value }}{{ module.style.mobile.mobile_menu_padding.padding.top.units }};
+    padding-left: {{ module.style.mobile.mobile_menu_padding.padding.left.value }}{{ module.style.mobile.mobile_menu_padding.padding.left.units }};
+    padding-right: {{ module.style.mobile.mobile_menu_padding.padding.right.value }}{{ module.style.mobile.mobile_menu_padding.padding.right.units }};
+    padding-bottom: {{ module.style.mobile.mobile_menu_padding.padding.bottom.value }}{{ module.style.mobile.mobile_menu_padding.padding.bottom.units }};
+  }
+  .mobile-menu .hs-menu-depth-2 a:before {
+    background-color: {{ module.style.mobile.menu_text_color.color }};
+  }
+  .mobile-menu .hs-menu-depth-2 a {
+    color: {{ module.style.mobile.menu_text_color.color }};
+  }
+  .mobile-menu .hs-menu-depth-1>a {
+    color: {{ module.style.mobile.menu_text_color.color }};
+  }
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children:before, 
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children:after {
+    background-color: {{ module.style.mobile.close_menu_icon_color.color }};
+  }
+  .nav-omega {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 98;
+    position: relative;
+  }
+  .nav-omega a:not(.btn) {
+    border-bottom: none;
+  }
+  .nav__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  .nav__logo {
+    width: 200px;
+    height: auto;
+    margin: 1rem;
+    margin-left: 0;
+  }
+  .nav__logo img {
+    width: 100%;
+    height: auto;
+  }
+  .nav__menu-item-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  @media(max-width: 1080px) {
+    .nav__menu-item-wrapper {
+      display: none;
+    }
+  }
+  .nav__menu-item {
+    padding: .75rem;
+    margin: auto;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+  }
+
+  .nav__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .nav__arrow {
+    margin-left: .5rem;
+    display: inline-block;
+  }
+
+  /* Hover Effects */
+
+  .nav__menu-item:hover .nav__menu-children {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  /* Child Menus */
+  .nav__menu-children {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 0px 0px 3px 3px;
+    min-width: 100%;
+    -webkit-box-shadow: 0px 4px 4px rgba(0,0,0,.1);
+    box-shadow: 0px 4px 4px rgba(0,0,0,.1);
+  }
+  .nav__menu-children .hs-menu-item {
+    text-decoration: none;
+    list-style: none;
+    min-width: 100%;
+  }
+  .nav__menu-children .hs-menu-item a {
+    padding: .75rem 1rem;
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    text-transform: none;
+  }
+  .nav__menu-children .hs-menu-item a:hover {
+    background-color: rgba(0,28,56,.1);
+  }
+  .nav__menu-children .hs_cos_wrapper_type_simple_menu {
+    width: 100%;
+  }
+  .nav__menu-children ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Mega Menu v1 */
+  .mega-menu .nav__menu-children {
+    -webkit-box-shadow: 0px 4px 4px rgba(0,0,0,.1);
+    box-shadow: 0px 4px 4px rgba(0,0,0,.1);
+    width: 964px;
+    max-width: 100vw;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    left: 50%;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 2rem 0;
+  }
+  .nav__mega-menu-link {
+    padding: 0 2rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-decoration: none;
+    text-transform: none;
+    border-left: 1px solid #ccc; 
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .nav__mega-menu-link:first-of-type {
+    border-left: none;
+  }
+  .nav__mega-menu-link * {
+    text-align: center;
+  }
+  .nav__mega-menu-title {
+    margin: .5rem 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+  .nav__mega-menu-desc {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+    padding-top: .5rem;
+  }
+  .nav__mega-menu-callout {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    position: absolute !important;
+    left: 50%;
+    bottom: 0;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    position: relative;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-top: 0;
+  }
+  .nav__mega-menu-callout:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    height: 2px;
+    width: 0;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+  }
+  .nav__mega-menu-link:hover .nav__mega-menu-callout:after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Mega Menu v2 */
+  .nav__mega-menu-2-col {
+    text-align: left;
+    padding: 0 2rem;
+    width: calc(100% / 3);
+  }
+  .nav__mega-menu-2-col:first-of-type {
+    border-right: 1px solid #ccc;
+  }
+  .nav__mega-menu-2-col:last-of-type {
+    margin: -2rem 0;
+    margin-left: 1.25rem;
+    padding: 2rem 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    cursor: auto;
+    border-radius: 0 3px 3px 0;
+  }
+  .nav__mega-menu-link--cta {
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    margin: 1.5rem 0;
+    display: block;
+  }
+  .nav__mega-menu-link--cta:first-of-type,
+  .nav__mega-menu-link--cta:first-of-type .nav__mega-menu-title {
+    margin-top: 0;
+  }
+  .nav__mega-menu-link--cta .nav__mega-menu-title,
+  .nav__mega-menu-link--cta .nav__mega-menu-desc {
+    margin: .5rem;
+    padding: 0;
+  }
+  .nav__mega-menu-cta-button:hover {
+    -webkit-box-shadow: 0px 3px 6px rgba(0,0,0,.2);
+    box-shadow: 0px 3px 6px rgba(0,0,0,.2);
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
+  /* Mobile Menu */
+
+  .mobile-menu-wrapper {
+    display: none;
+  }
+  .mobile-menu {
+    text-align: left;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 500px;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .mobile-menu.open {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+    display: block !important;
+    -webkit-box-shadow: 0px 3px 6px rgba(0,0,0,.2);
+    box-shadow: 0px 3px 6px rgba(0,0,0,.2);
+  }
+  .close-menu {
+    position: relative;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    text-align: right;
+    width: 100%;
+  }
+  .mobile-menu .hs-menu-depth-1 {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children {
+    position: relative;
+  }
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 6px;
+    height: 2px;
+    width: 14px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children:before {
+    content: '';
+    position: absolute;
+    right: 6px;
+    top: 0;
+    height: 14px;
+    width: 2px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children.open:before {
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  .mobile-menu .hs-menu-depth-1.hs-item-has-children.open:after {
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  .mobile-menu .hs-menu-depth-1>a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: .5rem;
+  }
+  .mobile-menu .hs-menu-depth-2 a {
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-block;
+    padding: .5rem;
+    padding-left: 1rem;
+    position: reltative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+  }
+  .mobile-menu .hs-menu-depth-2 a:before {
+    position: relative;
+    content: '';
+    height: 2px;
+    width: .5rem;
+    margin-right: .5rem;
+    display: inline-block;
+  }
+  .mobile-menu .hs-menu-depth-3 a {
+    padding-left: 1.5rem;
+    font-size: .9rem;
+    font-weight: 300;
+  }
+  .mobile-menu .hs-menu-depth-3 a:before {
+    width: 1rem;
+  }
+  .nav__mobile-logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 3rem;
+    height: 40px;
+    width: auto;
+  }
+  .nav__mobile-logo img {
+    height: 40px;
+    width: auto;
+  }
+  @media(max-width: 1080px) {
+    .mobile-menu-wrapper {
+      display: block;
+      text-align: right;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    .hs-menu-children-wrapper {
+      -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
+    }
+  }
+  {% end_scope_css %}
+</style>
+{% if module.use_custom_logo %}
+{% set logo_src = module.logo.src %}
+{% set logo_alt = module.logo.alt %}
+{% else %}
+{% set logo_src = domain_settings.site_settings.logo_src %}
+{% set logo_alt = domain_settings.site_settings.logo_alt %}
+{% endif %}
+
+<div class="nav-omega">
+  <div class="nav__inner section-wrapper">
+    <a href="/" class="nav__logo" style="width: {{ theme.header.logo_width }}px;">
+      <img src="{{ logo_src }}" alt="{{ logo_alt }}">
+    </a>
+    <div class="nav__menu-item-wrapper">
+      {% for menu in module.menu_items %}
+
+      {% if menu.type == 'simple_menu' %}
+      <div class="nav__menu-item simple-menu">
+        {% if menu.link_field.url.href %}
+        {% set href = menu.link_field.url.href %}
+        {% if menu.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        {% set rel = [] %}
+        {% if menu.link_field.no_follow %}
+        {% do rel.append("nofollow") %}
+        {% endif %}
+        {% if menu.link_field.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+        {% endif %}
+        <a href="{{ href }}"
+           {% if menu.link_field.open_in_new_tab %}target="_blank"{% endif %}
+           {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+           >
+          {{ menu.dropdown_title }} {{ arrow }}
+        </a>
+        {% else %}
+        {{ menu.dropdown_title }} {{ arrow }}
+        {% endif %}
+        <div class="nav__menu-children">
+          {% simple_menu menu_tree="{{ menu.simple_menu }}" %}
+        </div>
+      </div>
+
+      {% elif menu.type == 'mega_menu' %}
+      <div class="nav__menu-item mega-menu">
+        {% if menu.link_field.url.href %}
+        {% set href = menu.link_field.url.href %}
+        {% if menu.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        {% set rel = [] %}
+        {% if menu.link_field.no_follow %}
+        {% do rel.append("nofollow") %}
+        {% endif %}
+        {% if menu.link_field.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+        {% endif %}
+        <a href="{{ href }}"
+           {% if menu.link_field.open_in_new_tab %}target="_blank"{% endif %}
+           {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+           >
+          {{ menu.dropdown_title }} {{ arrow }}
+        </a>
+        {% else %}
+        {{ menu.dropdown_title }} {{ arrow }}
+        {% endif %}
+        <!--    Mega Menu Style 1      -->
+        {% if menu.mega_menu.mega_menu_style == 'images' %}
+        <div class="nav__menu-children mega-menu--1" 
+             style="transform: translateX({{ menu.mega_menu.transform }}%);
+                    {% for item in menu.mega_menu.links_w_images %}
+                    {% if loop.index == 1 %}
+                    width: calc(320px * {{ loop.length }});
+                    {% endif %}
+                    {% endfor %}">
+          {% for item in menu.mega_menu.links_w_images %}
+
+          {% set href = item.link.url.href %}
+          {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          {% set rel = [] %}
+          {% if item.link.no_follow %}
+          {% do rel.append("nofollow") %}
+          {% endif %}
+          {% if item.link.open_in_new_tab %}
+          {% do rel.append("noopener") %}
+          {% endif %}
+          <a href="{{ href }}" style="width: calc(100% / {{loop.length}});"
+             {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+             class="nav__mega-menu-link nav__mega-menu-link--image">
+            <div class="nav__mega-menu-image" {% if item.image_type == 'icon' %} style="--icon-color:{{ item.icon_color.color }};" {% endif %}>
+              {% if item.image_type == 'image' %}
+              <img loading="lazy" height="{{ module.style.mega_menu.image_height }}" src="{{ item.link_image.src }}" alt="{{ item.link_image.alt }}">
+              {% else %}
+              {% icon
+                  name="{{ item.icon.name }}"
+                  style="{{ item.icon.type }}"
+                  unicode="{{ item.icon.unicode }}"
+                  icon_set="{{ item.icon.icon_set }}"
+                %}
+              {% endif %}
+            </div>
+            <h4 class="nav__mega-menu-title">
+              {{ item.link_title }}
+            </h4>
+            <p class="nav__mega-menu-desc">
+              {{ item.link_description }}
+            </p>
+            <p class="nav__mega-menu-callout">
+              {{ item.callout_text }}
+            </p>
+          </a>
+          {% endfor %}
+        </div>
+        {% else %}
+
+        <!--    Mega Menu Style 2      -->
+        <div class="nav__menu-children mega-menu--2" style="transform: translateX({{ menu.mega_menu.transform }}%);">
+          <div class="nav__mega-menu-2-col">
+            {% for item in menu.mega_menu.links_no_images %}
+            {% if loop.index is odd %}
+            {% set href = item.link.url.href %}
+            {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            {% set rel = [] %}
+            {% if item.link.no_follow %}
+            {% do rel.append("nofollow") %}
+            {% endif %}
+            {% if item.link.open_in_new_tab %}
+            {% do rel.append("noopener") %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if rel %}rel="{{ rel|join(" ") }}"{% endif %} 
+               class="nav__mega-menu-link--cta">
+              <h4 class="nav__mega-menu-title">
+                {{ item.link_title }}
+              </h4>
+              {% if item.link_description %}
+              <p class="nav__mega-menu-desc">
+                {{ item.link_description }}
+              </p>
+              {% endif %}
+            </a>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div class="nav__mega-menu-2-col">
+            {% for item in menu.mega_menu.links_no_images %}
+            {% if loop.index is even %}
+            {% set href = item.link.url.href %}
+            {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            {% set rel = [] %}
+            {% if item.link.no_follow %}
+            {% do rel.append("nofollow") %}
+            {% endif %}
+            {% if item.link.open_in_new_tab %}
+            {% do rel.append("noopener") %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+               class="nav__mega-menu-link--cta">
+              <h4 class="nav__mega-menu-title">
+                {{ item.link_title }}
+              </h4>
+              {% if item.link_description %}
+              <p class="nav__mega-menu-desc">
+                {{ item.link_description }}
+              </p>
+              {% endif %}
+            </a>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div style="background-color: {{ module.style.mega_menu.cta_on_right_side.background_color.color }};" class="nav__mega-menu-2-col nav__cta-col">
+            <img loading="lazy" style="width: 100%;" src="{{ menu.mega_menu.cta.cta_image.src }}" alt="{{ menu.mega_menu.cta.cta_image.alt }}">
+            <h4 class="nav__mega-menu-title" 
+                style="margin-top: 2rem; 
+                       color: {{ module.style.mega_menu.cta_on_right_side.text_color.color }};">
+              {{ menu.mega_menu.cta.cta_title }}
+            </h4>
+            {% if menu.mega_menu.cta.text_field %}
+            <p class="nav__mega-menu-desc"
+               style="color: {{ module.style.mega_menu.cta_on_right_side.text_color.color }};">
+              {{ menu.mega_menu.cta.text_field }}
+            </p>
+            {% endif %}
+            {% set href = menu.mega_menu.cta.link.url.href %}
+            {% if menu.mega_menu.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            {% set rel = [] %}
+            {% if menu.mega_menu.cta.link.no_follow %}
+            {% do rel.append("nofollow") %}
+            {% endif %}
+            {% if menu.mega_menu.cta.link.open_in_new_tab %}
+            {% do rel.append("noopener") %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if menu.mega_menu.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+               class="btn--{{ module.style.mega_menu.cta_on_right_side.button_style }} btn"
+               {% if module.style.mega_menu.cta_on_right_side.button_style == 'link' %} style="--link-color: {{ module.style.mega_menu.cta_on_right_side.text_color.color }};" {% endif %}>
+              {{ menu.mega_menu.cta.link_text }}
+            </a>
+          </div>
+
+        </div>
+
+        {% endif %}
+      </div>
+
+      {% else %}
+      <div class="nav__menu-item link">
+        {% set href = menu.link_field.url.href %}
+        {% if menu.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        {% set rel = [] %}
+        {% if menu.link_field.no_follow %}
+        {% do rel.append("nofollow") %}
+        {% endif %}
+        {% if menu.link_field.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+        {% endif %}
+        <a class="nav__link" href="{{ href }}"
+           {% if menu.link_field.open_in_new_tab %}target="_blank"{% endif %}
+           {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+           >
+          {{ menu.dropdown_title }}
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% if request.query_dict.category %}
+      {% set categoryslug = "?category=" ~ request.query_dict.category %}
+      {% endif %}
+      {%- if !request_contact.is_logged_in and module.right_side_button.logged_out_link.url.href -%}{# This makes the URL a different link for logged out users #}
+            {% set loginstate = "loggedout" %}
+      {% set href = module.right_side_button.logged_out_link.url.href ~ "?signup_from=" ~ content.absolute_url %}
+      {% else %}
+      {% set href = module.right_side_button.link.url.href ~ categoryslug %}
+            {% set loginstate = "loggedin" %}
+      {% endif %}
+      {% if module.right_side_button.link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.right_side_button.link.no_follow %}
+      {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.right_side_button.link.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}"
+         class="btn btn--{{ module.style.right_side_button.button_type }} nav__right-side-button {{ loginstate }}"
+         {% if module.right_side_button.link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+         >
+        {{ module.right_side_button.link_text }}
+      </a>
+    </div>
+    <div class="mobile-menu-wrapper">
+      <div class="mobile-menu-toggle">
+        <span class="icon-text" style="display: none;">Menu</span>
+        <span></span>
+      </div>
+      <div class="mobile-menu">
+        {% if module.mobile_menu %}
+        {% menu id="{{ module.mobile_menu }}" %}
+        {% else %}
+
+          <span id="hs_cos_wrapper_header-top-module-4_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="menu">
+          <div id="hs_menu_wrapper_header-top-module-4_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="default" aria-label="Navigation Menu">
+
+        <ul role="menu">
+          {% for menu in module.menu_items %}
+            <li class="hs-menu-item hs-menu-depth-1" role="none">
+              {% set href = menu.link_field.url.href %}
+              {% if menu.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+              {% endif %}
+              {% set rel = [] %}
+              {% if menu.link_field.no_follow %}
+              {% do rel.append("nofollow") %}
+              {% endif %}
+              {% if menu.link_field.open_in_new_tab %}
+              {% do rel.append("noopener") %}
+              {% endif %}
+              <a class="nav__link" href="{{ href }}"
+                 {% if menu.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                 {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                 >
+              {{ menu.dropdown_title }}
+              </a>
+            </li>
+          {% endfor %}
+          {% if module.right_side_button.link %}
+            {% if contact %}
+              {% set href = module.right_side_button.link.url.href %}
+            {% else %}
+              {% set href = module.right_side_button.logged_out_link.url.href %}
+            {% endif %}
+            <li class="hs-menu-item hs-menu-depth-1" role="none">
+              <a class="nav__link" href="{{ href }}">{{ module.right_side_button.link_text }}</a>
+            </li>
+          {% endif %}
+        </ul>
+</div>
+</span>
+          
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>

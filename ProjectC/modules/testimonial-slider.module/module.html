@@ -1,0 +1,200 @@
+
+{% set quote_icon = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="quote-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="quote-icon"><path fill="#fc4a1a;" d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z" class=""></path></svg>' %}
+
+{% require_css %}
+<style>
+  #module--{{ name }} .testimonial-cards__card-wrapper {
+    width: calc(100% / {{ module.styles.card_styles.cards_per_row }});
+    padding: {{ module.styles.card_styles.space_between_cards / 2}}px;
+    {% if module.styles.slider.enable_slider %}
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    {% endif %}
+  }
+  #module--{{ name }} .testimonial-cards__card {
+    margin: {{ module.styles.card_styles.space_between_cards / 2}}px 0;
+    border-radius: {{ module.styles.card_styles.border_radius }}px;
+    {% if module.styles.card_styles.add_shadow_to_cards %}
+    box-shadow: 0px 3px 6px rgba(0,0,0,.2);
+    {% endif %}
+  }
+  #module--{{ name }} .testimonial-cards__card:hover {
+    z-index: 2;
+    {% if module.styles.card_styles.add_shadow_to_cards %}
+    box-shadow: 0px 8px 16px rgba(0,0,0,.3);
+    {% endif %}
+  }
+  #module--{{ name }} .testimonial-cards__visual-wrapper {
+    height: {{ module.styles.card_styles.video_image_height }}px;
+  }
+  #module--{{ name }} .testimonial-cards__text-wrapper {
+    padding-top: {{ module.styles.card_styles.text_spacing.padding.top.value }}{{ module.styles.card_styles.text_spacing.padding.top.units }};
+    padding-right: {{ module.styles.card_styles.text_spacing.padding.right.value }}{{ module.styles.card_styles.text_spacing.padding.right.units }};
+    padding-bottom: {{ module.styles.card_styles.text_spacing.padding.bottom.value }}{{ module.styles.card_styles.text_spacing.padding.bottom.units }};
+    padding-left: {{ module.styles.card_styles.text_spacing.padding.left.value }}{{ module.styles.card_styles.text_spacing.padding.left.units }};
+    margin-top:  {{ module.styles.card_styles.text_spacing.margin.top.value }}{{ module.styles.card_styles.text_spacing.margin.top.units }};
+    margin-bottom:  {{ module.styles.card_styles.text_spacing.margin.bottom.value }}{{ module.styles.card_styles.text_spacing.margin.bottom.units }};
+  }
+  {{ module.styles.card_styles.text_spacing }}
+  #module--{{ name }} .testimonial-cards__top-quote .quote-icon {
+    z-index: 0;
+    height: 100%;
+    opacity: {{ module.styles.card_styles.top_quote_icon.top_quote_color.opacity }}%;
+    fill:  {{ module.styles.card_styles.top_quote_icon.top_quote_color.color }}
+  }
+  #module--{{ name }} .testimonial-cards__bottom-quote .quote-icon {
+    z-index: 0;
+    height: 100%;
+    opacity: {{ module.styles.card_styles.bottom_quote_icon.bottom_quote_color.opacity }}%;
+    fill:  {{ module.styles.card_styles.bottom_quote_icon.bottom_quote_color.color }}
+  }
+  #module--{{ name }} .testimonial-cards__top-quote {
+    position: absolute;
+    left: {{ module.styles.card_styles.top_quote_icon.distance_from_left_side }}px;
+    top: {{ module.styles.card_styles.top_quote_icon.distance_from_top }}px;
+    height: {{ module.styles.card_styles.top_quote_icon.height }}px;
+  }
+  #module--{{ name }} .testimonial-cards__bottom-quote {
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: {{ module.styles.card_styles.bottom_quote_icon.distance_from_bottom }}px;
+    right: {{ module.styles.card_styles.bottom_quote_icon.distance_from_right_side }}px;
+    height: {{ module.styles.card_styles.bottom_quote_icon.height }}px;
+  }
+  {% unless module.styles.slider.hide_arrows and module.styles.slider.enable_slider %}
+  @media(min-width: 767px) {
+    #module--{{ name }} .testimonial-cards__wrapper {
+      padding: 0 2rem;
+    }
+  }
+  {% endunless %}
+  .testimonial-cards__card:hover .testimonial-cards__visual-wrapper img {
+    min-width: {{ module.styles.hover.image_zoom_percentage + 100 }}%;
+    min-height: {{ module.styles.hover.image_zoom_percentage + 100 }}%;
+  }
+  @media(max-width: 1024px) {
+    #module--{{ name }} .testimonial-cards__card-wrapper {
+      width: calc(100% / {{ module.styles.card_styles.cards_per_row_tablet }});
+    }
+  }
+  @media(max-width: 767px) {
+    #module--{{ name }} .testimonial-cards__card-wrapper {
+      width: 100%;
+    }
+  }
+</style>
+
+{% end_require_css %}
+<div id="module--{{ name }}" class="testimonial-cards animate animate--fade_in">
+  <div class="testimonial-cards__wrapper">
+    {% for item in module.testimonials %}
+    <div class="testimonial-cards__card-wrapper">
+      <div class="testimonial-cards__card"
+           data-tilt='true'
+           data-tilt-max='{{ module.styles.hover.tilt_amount }}'
+           {% if module.styles.hover.glare_effect %}
+           data-tilt-glare data-tilt-max-glare="{{ module.styles.hover.glare_amount }}"
+           {% endif %}
+           data-tilt-scale="{{ module.styles.hover.scale_amount }}"
+           >
+        {% unless item.visual_content == 'none' %}
+        <div class="testimonial-cards__visual-wrapper">
+          {% if item.visual_content == 'video' %}
+          {% if item.video.player_id %}
+          {% set max_width = item.video.size_type == 'auto_custom_max' ? item.video.max_width : item.video.width %}
+          {% set max_height = item.video.size_type == 'auto_custom_max' ? item.video.max_height : item.video.height %}
+          {% widget_block video_player "embed_player"
+              overrideable=False,
+              type='scriptV4',
+              hide_playlist=True,
+              viral_sharing=False,
+              embed_button=False,
+              full_width={{ item.video.size_type == 'auto_full_width' }},
+              width="{{ max_width }}",
+              height="{{ max_height }}",
+              player_id="{{ item.video.player_id }}"
+            %}
+          {% widget_attribute "conversion_asset" %}
+          {{ item.video.conversion_asset|tojson|safe }}
+          {% end_widget_attribute %}
+          {% end_widget_block %}
+          {% endif %}
+          {% else %}
+          <img loading="lazy" src="{{ resize_image_url(item.image.src, 0, 0, 600) }}" alt="{{ item.image.alt }}">
+          {% endif %}
+        </div>
+        {% endunless %}
+        <div class="testimonial-cards__text-wrapper bg--white">
+          <div class="testimonial-cards__quote">
+            {% if module.styles.card_styles.include_top_quote %}
+            <div class="testimonial-cards__top-quote">
+              {{ quote_icon }}
+            </div>
+            {% endif %}
+            {{ item.quote }}
+            {% if module.styles.card_styles.include_bottom_quote %}
+            <div class="testimonial-cards__bottom-quote">
+              {{ quote_icon }}
+            </div>
+            {% endif %}
+          </div>
+          <div>
+            <div class="testimonial-cards__name">
+              {{ item.person_name }}
+            </div>
+            <div class="testimonial-cards__description">
+              {{ item.person_description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    {% if module.styles.slider.enable_slider %}
+    $('.testimonial-cards__wrapper').flickity({
+      // options
+      cellAlign: '{{ module.styles.slider.position_of_focused_card }}',
+      {% if module.styles.slider.wrap_around %}
+      wrapAround: true,
+      {% endif %}
+      {% if module.styles.slider.automatically_slide %}
+      autoPlay: {{ module.styles.slider.time_between_slides_milliseconds }},
+      {% unless module.styles.slider.pause_autoplay_on_hover %}
+      pauseAutoPlayOnHover: false,
+      {% endunless %}
+      {% endif %}
+      {% if module.styles.slider.disable_dragging %}
+      draggable: false,
+      {% endif %}
+      {% if module.styles.slider.hide_slide_dots %}
+      pageDots: false,
+      {% endif %}
+      {% if module.styles.slider.hide_arrows %}
+      prevNextButtons: false,
+      {% endif %}
+      contain: true
+    });
+    {% endif %}
+    {% if module.styles.equal_height_cards %}
+    $(function() {
+      $('.testimonial-cards__card').matchHeight({
+        {% if module.styles.slider.enable_slider %}
+        byRow: false,
+        {% else %}
+        byRow: true,
+        {% endif %}
+        property: 'height',
+        target: null,
+        remove: false
+      });
+    });
+    {% endif %}
+  });
+</script>
+{% end_require_js %}

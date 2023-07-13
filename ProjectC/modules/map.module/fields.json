@@ -1,0 +1,35 @@
+[ {
+  "id" : "42ced2db-1949-f9cb-617d-c98cd3f8cc45",
+  "name" : "address",
+  "display_width" : null,
+  "label" : "Address",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "42891 Lake Babcock Drive, Babcock Ranch, FL 33982"
+}, {
+  "id" : "fc1c1605-56b3-2468-5961-e152b893ba6d",
+  "name" : "map_height_desktop",
+  "display_width" : null,
+  "label" : "Map Height (Desktop)",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 400
+}, {
+  "id" : "d8afce21-26e5-e83a-64c5-96842ccecd23",
+  "name" : "map_height_mobile",
+  "display_width" : null,
+  "label" : "Map Height (Mobile)",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 200
+} ]

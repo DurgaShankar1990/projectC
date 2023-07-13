@@ -1,0 +1,10 @@
+[ {
+  "id" : "77d6d912-e6ae-7e4e-d27b-afd4f5a1778a",
+  "name" : "badge_hubdb",
+  "display_width" : null,
+  "label" : "Badge HubDB",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable",
+  "default" : ""
+} ]

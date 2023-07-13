@@ -1,0 +1,53 @@
+{% set video_split = module.video_url|split('.') %}
+{% set video_type = video_split[-1] %}
+<div id="{{ name }}">
+  <img id="{{ name }}--placeholder" width="1600" src="{{ module.poster_image.src }}" alt="{{ module.poster_image.alt }}">
+  <video autoplay muted loop>
+    {% if video_type == 'webm' %}
+    <source data-type="{{ video_type }}" src="{{ module.video_url }}" type='video/webm' />
+    {% else %}
+    <source data-type="{{ video_type }}" src="{{ module.video_url }}" type="video/mp4">
+    {% endif %}
+  </video> 
+</div>
+{% require_css %}
+<style>
+  #{{ name }} {
+    position: absolute;
+    inset: 0;
+  }
+  #{{ name }} video,
+  #{{ name }}--placeholder {
+    {% if module.parallax_video %}
+    position: fixed;
+    {% else %}
+    position: absolute; 
+    {% endif %}
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+  #{{ name }}--placeholder {
+    display: none;
+  }
+  {% if module.disable_video_on_mobile %}
+  @media(max-width: 767px) {
+    #{{ name }} video {
+      display: none !important;
+    }
+  }
+  {% endif %}
+</style>
+{% end_require_css %}
+{% require_js %}
+<script>
+  $('#{{ name }}').parents('.dnd-section').css({
+    'overflow' : 'hidden',
+    'position' : 'relative'
+  });
+  $('#{{ name }}--placeholder').show();
+  console.log('test2');
+</script>
+{% end_require_js %}

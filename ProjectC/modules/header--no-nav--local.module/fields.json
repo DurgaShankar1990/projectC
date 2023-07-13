@@ -1,0 +1,41 @@
+[ {
+  "id" : "8f74a44b-766b-0366-c1b6-134e2be46737",
+  "name" : "use_custom_logo",
+  "display_width" : null,
+  "label" : "Use Custom Logo",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "377cd2bc-d0ef-3763-2883-4fb1a8fd4ed4",
+  "name" : "logo",
+  "display_width" : null,
+  "label" : "Logo",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "8f74a44b-766b-0366-c1b6-134e2be46737",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/omega-logo-svg--2.svg",
+    "alt" : "omega-logo-svg--2",
+    "loading" : "lazy",
+    "width" : 400,
+    "height" : 400,
+    "max_width" : 400,
+    "max_height" : 400
+  }
+} ]

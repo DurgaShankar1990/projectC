@@ -1,0 +1,26 @@
+<style>
+  {% scope_css %}
+  {% if module.style.background_color == 'custom' %}
+  .banner {
+    background-color: rgba({{ module.style.custom_background_color.color|convert_rgb }}, {{ module.style.custom_background_color.opacity / 100 }});
+  }
+  {% endif %}
+  {% if module.style.text_color == 'custom' %}
+  .banner,
+  .close-banner {
+    color: rgba({{ module.style.custom_text_color.color|convert_rgb }}, {{ module.style.custom_text_color.opacity / 100 }});
+  }
+  {% endif %}
+  .banner * {
+    color: inherit;
+  }
+  {% end_scope_css %}
+</style>
+<div id="{{ name }}" class="banner bg--{{ module.style.background_color }} text--{{ module.style.text_color }}">
+  <div class="section-wrapper" style="max-width: {{ module.style.content_max_width }}px;">
+    <div class="banner__text">
+      {{ module.banner_text }}
+    </div>
+  </div>
+  <div class="close-banner text--{{ module.style.text_color }}">x</div>
+</div>

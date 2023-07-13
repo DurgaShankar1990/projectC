@@ -1,0 +1,58 @@
+[ {
+  "id" : "ea31c4e0-5f40-978f-92d1-451a8a34b9e4",
+  "name" : "video_url",
+  "display_width" : null,
+  "label" : "Video URL",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "https://www.w3schools.com/howto/rain.mp4"
+}, {
+  "id" : "f770e928-0f6c-1e9e-9d04-fb7fd7e283c8",
+  "name" : "parallax_video",
+  "display_width" : null,
+  "label" : "Parallax Video",
+  "inline_help_text" : "A video with parallax will scroll with the page, causing the background to scroll with it. ",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "4d30bd3f-ac0c-dd16-be44-62ed655ad735",
+  "name" : "poster_image",
+  "display_width" : null,
+  "label" : "Poster Image",
+  "inline_help_text" : "This poster image will be what shows while the video is loading in the background",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/abstract-2.jpg",
+    "alt" : "abstract-2",
+    "loading" : "lazy",
+    "width" : 1170,
+    "height" : 780,
+    "max_width" : 1170,
+    "max_height" : 780
+  }
+}, {
+  "id" : "07aba8c0-3117-2e5a-8a1a-1f99bc5f8d36",
+  "name" : "disable_video_on_mobile",
+  "display_width" : null,
+  "label" : "Disable Video on Mobile",
+  "inline_help_text" : "Playing large background videos on mobile can heavily affect the page speed, by selecting this box, we will display the poster image instead of playing the video on mobile.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+} ]

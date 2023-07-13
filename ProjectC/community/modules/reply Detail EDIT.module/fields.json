@@ -1,0 +1,83 @@
+[ {
+  "id" : "551706dd-d9a8-bae6-cf49-85990a6d2523",
+  "name" : "choose_your_sample_topic",
+  "display_width" : null,
+  "label" : "Choose Your Sample Topic",
+  "required" : false,
+  "locked" : false,
+  "object_type" : "p_topic",
+  "properties_to_fetch" : [ "topic_detail", "name", "dynamic_page_slug_2", "number_of_replies", "category", "status" ],
+  "display_properties" : [ ],
+  "type" : "crmobject"
+}, {
+  "id" : "c86aac8e-96a4-4ee5-9bbe-778c81195c93",
+  "name" : "show_byline",
+  "display_width" : null,
+  "label" : "Show Byline",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "username", "by Username" ], [ "fullname", "by Full Name" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "fullname"
+}, {
+  "id" : "8d84f8fc-b59c-28ac-4d0a-a4ffade567da",
+  "name" : "video_embed_field_label",
+  "display_width" : null,
+  "label" : "Video Embed Field Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Embed Video Url"
+}, {
+  "id" : "8103bd49-e3f3-7d9b-f028-989fc3f44f22",
+  "name" : "video_embed_placeholder",
+  "display_width" : null,
+  "label" : "Video Embed Placeholder",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "YouTube share link, Wistia, Loom Video link or full embed code here"
+}, {
+  "id" : "ff4521fb-532d-5f1b-3b1f-2c5ef53a79e6",
+  "name" : "save_topic_button_label",
+  "display_width" : null,
+  "label" : "Save Topic Button Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Save Topic"
+}, {
+  "id" : "1f0121df-cade-6cee-177c-c7f2ae6c1afd",
+  "name" : "dont_have_access_message",
+  "display_width" : null,
+  "label" : "Don't Have Access Message",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h3>Whoops, Looks like this isn't your topic to edit (or you're not a moderator).</h3>\n<p>If you believe this is in error please reach out to support</p>"
+}, {
+  "id" : "cd1d2f91-b26d-e360-1881-c4af8a29b969",
+  "name" : "cancel_topic_edit_label556",
+  "display_width" : null,
+  "label" : "Cancel Topic Edit Label556",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Cancel and Return to Topic"
+} ]

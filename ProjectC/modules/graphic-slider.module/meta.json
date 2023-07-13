@@ -1,0 +1,30 @@
+{
+  "global" : false,
+  "icon" : "fontawesome-5.14.0:Photo%20Video:SOLID",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 96392566046,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/magnific.css",
+    "name" : "magnific.css"
+  }, {
+    "autoload" : true,
+    "path" : "../../css/flickity.css",
+    "name" : "flickity.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/magnific.js",
+    "name" : "magnific.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/flickity.js",
+    "name" : "flickity.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/matchHeight.js",
+    "name" : "matchHeight.js"
+  } ],
+  "label" : "Graphic Slider",
+  "is_available_for_new_content" : true
+}

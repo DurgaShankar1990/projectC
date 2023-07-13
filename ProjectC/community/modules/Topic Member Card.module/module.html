@@ -1,0 +1,45 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %} {# object_schema.topic.to_reply #}
+{% from '../../../community/imports/tools.html' import icons as icons %}
+{% set cs = widget_data.cohortium_settings %}
+
+{% set badge_settings = module.choose_features_to_include %}
+{% if member %}
+<div class="member-profile-card">
+  {% if member.profile_photo %}
+  <img src="{{ member.profile_photo }}" style="height:70px;width:70px;border-radius:35px;float:left;margin-right:5px;" />
+  {% endif %}
+  {% if "fullname" is in badge_settings %}<h4>
+  {{member.first_name}} {{member.last_name}}
+  </h4>
+  {% endif %}
+  {% if "user" is in badge_settings %}<p>@{{member.username}}</p>{% endif %}
+  {% if "member_bio)" is in badge_settings %} <p>{{member.bio}}</p>{% endif %}
+  {% if "profile" is in badge_settings %}<div style="text-align:center;margin-top:25px;margin-bottom:15px;display:block"> <a href="/members/{{member.username}}" class="btn btn--primary">{{ cs.labels_text.view_profile_button_label }}</a></div>{% endif %}
+
+</div>
+{% endif %}
+{% if object_schema.member_profile.to_topic_author %}
+{# module.data_query.data.CRM #}
+{#{% set topics = crm_associations(member.hs_object_id, "USER_DEFINED", object_schema.member_profile.to_topic_author, "&limit=" ~ module.limit_results ~ "&orderBy=-hs_createdate&is_deleted__ne=true", "name,category,hs_createdate,topic_slug,submitted_by_name,submitted_by_member_id,number_of_replies,status,number_of_solutions,upvote_count", false) %}#}
+{% set topics = module.data_query.data.CRM.p_topic.associations.p_member_profile_collection__member_author.items[0].associations.p_topic_collection__member_author.items %}
+{% endif %}
+{% if topics|rejectattr("name","equalto",dynamic_page_crm_object.name)|length > 0 %}
+<div class="member-profile-card">
+  <h4>{{ cs.labels_text.more_from_author_label }} {{member.first_name}}</h4>
+
+  {% for topic in topics|rejectattr("name","equalto",dynamic_page_crm_object.name) %}
+  <div class="topic-card">
+    <a href="/topics/{{ topic.topic_slug }}">
+      <p>{{topic.name}}{% if topic.number_of_solutions > 0 %}<span class="status-solved">{{cs.labels_text.filters.solved_label}}</span>{% endif %}</p>
+      <span class="detail-container">
+        <span class="details createdate">
+          {{icons.calendar}}
+          {{topic.hs_createdate|datetimeformat('%B %e, %Y') }}</span>
+        <span class="details replies">
+          {{icons.replies}} {{topic.number_of_replies }} {% if topic.number_of_replies > 1 %}{{cs.labels_text.reply_plural_label}}{% else %}{{cs.labels_text.reply_singular_label}}{% endif %}</span> 
+        <span>{{topic.upvote_count || "0"}} {% if topic.upvote_count > 1 or !topic.upvote_count  %}{{cs.labels_text.upvote_plural_label}}{% else %}{{cs.labels_text.upvote_singular_label}}{% endif %}</span></span> </span></a>
+</div>
+
+{% endfor %}
+</div>
+{% endif %}

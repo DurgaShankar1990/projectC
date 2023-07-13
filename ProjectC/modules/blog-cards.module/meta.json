@@ -1,0 +1,30 @@
+{
+  "global" : false,
+  "icon" : "fontawesome-5.14.0:Blogger%20B",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING", "QUOTE" ],
+  "module_id" : 96392566035,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/flickity.css",
+    "name" : "flickity.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/tilt.js",
+    "name" : "tilt.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/flickity.js",
+    "name" : "flickity.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/jQuery.js",
+    "name" : "jQuery.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/matchHeight.js",
+    "name" : "matchHeight.js"
+  } ],
+  "label" : "Blog Cards",
+  "is_available_for_new_content" : true
+}

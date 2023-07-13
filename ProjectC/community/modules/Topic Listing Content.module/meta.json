@@ -1,0 +1,7 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 96392566026,
+  "data_query_path" : "../../dataqueries/topic-listing-content",
+  "is_available_for_new_content" : true
+}

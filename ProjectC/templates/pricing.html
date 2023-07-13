@@ -1,0 +1,554 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Pricing
+screenshotPath: ../images/final-template-previews/pricing.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+{% dnd_area 'dnd_area'
+  label='Main section',
+  class='body-container body-container--pricing'
+%}
+
+{% dnd_section
+full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/hero",
+        offset=0,
+        width=12,
+        background_image={
+          "alt" : "pricing",
+          "height" : 780,
+          "max_height" : 780,
+          "max_width" : 1170,
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 1170
+        },
+        helper_text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        link_text="UPGRADE YOUR WEBSITE TODAY",
+        style={
+          "background" : {
+            "overlay_color" : "black",
+            "overlay_opacity" : 40
+          },
+          "container_alignment" : "left",
+          "container_width" : 900,
+          "full_screen" : false,
+          "link" : {
+            "animation_effect" : "reflect",
+            "button_style" : "primary"
+          },
+          "spacing" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 120
+              },
+              "left" : {
+                "units" : "rem",
+                "value" : 3
+              },
+              "right" : {
+                "units" : "rem",
+                "value" : 3
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 120
+              }
+            }
+          },
+          "text_alignment" : "left",
+          "text_color" : "white",
+          "text_shadow" : true
+        },
+        text_above_title="PRICING",
+        title="Your Deserve the Very Best",
+        typewriter_effect=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/pricing-cards",
+        offset=0,
+        width=12,
+        pricing_options=[ {
+          "card_title" : "Individual License",
+          "currency" : "$",
+          "features" : [ {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          } ],
+          "highlight_color" : {
+            "color" : "#999999",
+            "opacity" : 100
+          },
+          "highlight_text" : "",
+          "highlight_text_color" : {
+            "color" : "#FFF",
+            "opacity" : 100
+          },
+          "link" : {
+            "animation_effect" : "no-animation",
+            "effect_color" : {
+              "color" : "#FAFAFA",
+              "opacity" : 100
+            },
+            "link_color" : {
+              "color" : "#FAFAFA",
+              "opacity" : 100
+            },
+            "link_text" : "Get it Now!",
+            "link_type" : "link"
+          },
+          "price" : "99",
+          "short_description" : "An individual license for testing purposes. Limited access to features."
+        }, {
+          "card_title" : "Standard License",
+          "currency" : "$",
+          "features" : [ {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          } ],
+          "highlight_color" : {
+            "color" : "#CA6D02",
+            "opacity" : 100
+          },
+          "highlight_text" : "Best Value",
+          "highlight_text_color" : {
+            "color" : "#FFF",
+            "opacity" : 100
+          },
+          "link" : {
+            "animation_effect" : "no-animation",
+            "link_color" : {
+              "color" : "#CA6D02",
+              "opacity" : 100
+            },
+            "link_text" : "Learn More!",
+            "link_type" : "link"
+          },
+          "price" : "199",
+          "short_description" : "A more robust license that is valid for up to 5 users. Access to our learning center."
+        }, {
+          "card_title" : "Professional License",
+          "currency" : "$",
+          "features" : [ {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          }, {
+            "feature" : "Individual's License",
+            "help_text" : "Access for a single user."
+          } ],
+          "highlight_color" : {
+            "color" : "#DEF0F7",
+            "opacity" : 100
+          },
+          "highlight_text" : "",
+          "highlight_text_color" : {
+            "color" : "#FFF",
+            "opacity" : 100
+          },
+          "link" : {
+            "animation_effect" : "no-animation",
+            "effect_color" : {
+              "color" : "#FAFAFA",
+              "opacity" : 100
+            },
+            "link_color" : {
+              "color" : "#FAFAFA",
+              "opacity" : 100
+            },
+            "link_text" : "Check it out!",
+            "link_type" : "link"
+          },
+          "price" : "399",
+          "short_description" : "Unlimited Licenses for your entire organization, along with top-of-the-line support."
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/shape-divider",
+        offset=0,
+        width=12,
+        flip_shape_vertically=true,
+        shape_color={
+          "color" : "#f1d0de",
+          "opacity" : 100
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% dnd_section
+
+    vertical_alignment='MIDDLE',
+  background_color="rgba(241, 208, 222, 1)"
+%}
+  {% dnd_column
+    offset=0,
+    width=5,
+    padding={
+      "default" : {
+        "left" : "1rem",
+        "right" : "1rem"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/icon-cards",
+        offset=0,
+        width=12,
+        cards=[ {
+          "card_text" : "<h4>Card Text</h4>\n<p><span>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&nbsp;</span></p>",
+          "icon" : {
+            "name" : "Dollar Sign",
+            "type" : "SOLID",
+            "unicode" : "f155"
+          },
+          "include_a_link" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          }
+        } ],
+        style={
+          "animation" : "fade_from_top",
+          "cards" : {
+            "alignment" : "center",
+            "card_background_color" : "white",
+            "card_per_row_desktop" : 1,
+            "card_per_row_tablet" : 1,
+            "card_text_color" : "primary_dark",
+            "space_between_cards" : 0,
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 1
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "left" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "right" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 1
+                }
+              }
+            }
+          },
+          "icon" : {
+            "background" : {
+              "background_color" : "primary_dark"
+            },
+            "icon" : {
+              "icon_color" : {
+                "color" : "#FFFFFF",
+                "opacity" : 100
+              },
+              "size" : 40
+            },
+            "overlap_icon_with_top" : true
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/omega-rich-text",
+        offset=0,
+        width=12,
+        style={
+          "animation" : "slide_from_left",
+          "background_color" : "primary_light",
+          "box_shadow" : true,
+          "mobile" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 1
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "left" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "right" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 1
+                }
+              }
+            }
+          },
+          "right_margin" : -300,
+          "spacing" : {
+            "padding" : {
+              "bottom" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "left" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "right" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "top" : {
+                "units" : "rem",
+                "value" : 2
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "richtext_field" %}
+          <h2>This is a title</h2>
+          <p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/icon-cards",
+        offset=0,
+        width=12,
+        cards=[ {
+          "card_text" : "<h4>Card Text</h4>\n<p><span>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&nbsp;</span></p>",
+          "icon" : {
+            "name" : "Dollar Sign",
+            "type" : "SOLID",
+            "unicode" : "f155"
+          },
+          "include_a_link" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          }
+        } ],
+        style={
+          "animation" : "fade_from_bottom",
+          "cards" : {
+            "alignment" : "center",
+            "card_background_color" : "white",
+            "card_per_row_desktop" : 1,
+            "card_per_row_tablet" : 1,
+            "card_text_color" : "primary_dark",
+            "space_between_cards" : 0,
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 3
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "left" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "right" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 1
+                }
+              }
+            }
+          },
+          "icon" : {
+            "background" : {
+              "background_color" : "primary_dark"
+            },
+            "icon" : {
+              "icon_color" : {
+                "color" : "#FFFFFF",
+                "opacity" : 100
+              },
+              "size" : 40
+            },
+            "overlap_icon_with_top" : true
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=5,
+    width=7
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/omega-image",
+        offset=0,
+        width=12,
+        image={
+          "alt" : "abstract",
+          "height" : 1031,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 687
+        },
+        style={
+          "animation" : "slide_from_right"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% end_dnd_area %}
+{% endblock body %}

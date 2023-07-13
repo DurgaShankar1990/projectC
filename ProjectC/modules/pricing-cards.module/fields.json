@@ -1,0 +1,1093 @@
+[ {
+  "id" : "b9485159-b3d6-806d-32bb-71ad9c5306a8",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c8327d71-2d2e-33fa-11e0-37d35498b3ef",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_from_bottom"
+  }, {
+    "id" : "556be5be-3922-1846-2cc0-4ecfe48799e3",
+    "name" : "border_radius",
+    "display_width" : null,
+    "label" : "Corner Radius",
+    "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "25611e24-8592-1304-e025-bae744e28d60",
+    "name" : "box_shadow",
+    "display_width" : null,
+    "label" : "Box Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "59e8fddf-013c-21f0-cc38-9de380de49cc",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "cdca5d6c-120d-36cd-1efa-49a6800363c6",
+      "name" : "number_per_row",
+      "display_width" : null,
+      "label" : "Number of Cards Per Row (Desktop)",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 4,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "884d4c83-b4cc-a4fd-29fb-c6cd385f84af",
+      "name" : "number_per_row_tablet",
+      "display_width" : null,
+      "label" : "Number of Cards Row (Tablet)",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 3,
+      "step" : 1,
+      "type" : "number",
+      "default" : 2
+    }, {
+      "id" : "f8d12b34-0d87-ce79-9a1d-fa4b3ddcd40e",
+      "name" : "spacing",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : true,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      }
+    }, {
+      "id" : "1eae43db-f2b8-48e1-669c-9b3e9006012a",
+      "name" : "space_between_cards",
+      "display_width" : null,
+      "label" : "Space Between Cards",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 30
+    }, {
+      "id" : "f58e903f-5822-69a7-8735-21c6130d9f36",
+      "name" : "mobile_spacing",
+      "display_width" : null,
+      "label" : "Mobile Spacing",
+      "required" : true,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "number_per_row" : 3,
+      "number_per_row_tablet" : 2,
+      "spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      },
+      "space_between_cards" : 30,
+      "mobile_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "82bb5f93-d035-7b47-cf4f-370d443ef315",
+    "name" : "colors",
+    "display_width" : null,
+    "label" : "Colors",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "20828639-7b05-48bf-2a17-18fbb57fa8af",
+      "name" : "checkmark_color",
+      "display_width" : null,
+      "label" : "Checkmark Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#008c8c",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "fb2f2321-3a69-8b16-268f-3b34c184f963",
+      "name" : "inner_checkmark_color",
+      "display_width" : null,
+      "label" : "Inner Checkmark Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "e22175dd-7de2-5aea-2f9d-f60ed329d45c",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Card Background Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "19dcd1e8-caa5-eddf-6520-2677abad8899",
+      "name" : "custom_background_color",
+      "display_width" : null,
+      "label" : "Custom Card Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e22175dd-7de2-5aea-2f9d-f60ed329d45c",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 90
+      }
+    }, {
+      "id" : "101897f4-4dc6-f78c-242e-176966d47a39",
+      "name" : "card_text_color",
+      "display_width" : null,
+      "label" : "Card Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "white"
+    }, {
+      "id" : "e22e9635-ecee-c948-4b98-2a84ae488f73",
+      "name" : "custom_card_text_color",
+      "display_width" : null,
+      "label" : "Custom Card Text Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "101897f4-4dc6-f78c-242e-176966d47a39",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "6b67bcfe-c758-8425-c007-fbfb6950ed05",
+      "name" : "help_text_background_color",
+      "display_width" : null,
+      "label" : "Help Text Background Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "secondary_dark"
+    }, {
+      "id" : "bdc78c7d-b9e6-67f4-8f29-57d9fb3cef6e",
+      "name" : "custom_help_text_background_color",
+      "display_width" : null,
+      "label" : "Custom Help Text Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "6b67bcfe-c758-8425-c007-fbfb6950ed05",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#3c2c42",
+        "opacity" : 90
+      }
+    }, {
+      "id" : "0e2b8e99-a187-cb3a-efaa-ad64c577f275",
+      "name" : "help_text_color",
+      "display_width" : null,
+      "label" : "Help Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "099c0f05-6229-f302-1e6c-598d92caaad7",
+      "name" : "custom_help_text_color",
+      "display_width" : null,
+      "label" : "Custom Help Text Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "0e2b8e99-a187-cb3a-efaa-ad64c577f275",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "checkmark_color" : {
+        "color" : "#008c8c",
+        "opacity" : 100
+      },
+      "inner_checkmark_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "background_color" : "primary_dark",
+      "custom_background_color" : {
+        "color" : "#113540",
+        "opacity" : 90
+      },
+      "card_text_color" : "white",
+      "custom_card_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "help_text_background_color" : "secondary_dark",
+      "custom_help_text_background_color" : {
+        "color" : "#3c2c42",
+        "opacity" : 90
+      },
+      "help_text_color" : "primary_dark",
+      "custom_help_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      }
+    }
+  }, {
+    "id" : "82b5b7bb-699a-04df-32de-e091a2f6a9b1",
+    "name" : "hover",
+    "display_width" : null,
+    "label" : "Hover",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "7e5cf98f-8c64-4d6e-d658-292530646015",
+      "name" : "tilt_amount",
+      "display_width" : null,
+      "label" : "Tilt Amount",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 20,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "939908f5-c9a8-629b-9b29-ba068187ab8f",
+      "name" : "scale_amount",
+      "display_width" : null,
+      "label" : "Scale Amount",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0.9,
+      "max" : 1.1,
+      "step" : 0.05,
+      "type" : "number",
+      "default" : 1.05
+    }, {
+      "id" : "b5468472-2239-3149-f586-4187bf31da21",
+      "name" : "glare_effect",
+      "display_width" : null,
+      "label" : "Glare Effect",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "5e73b351-d98c-3d79-322f-01ff1a1b5ba9",
+      "name" : "glare_amount",
+      "display_width" : null,
+      "label" : "Glare Amount",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "b5468472-2239-3149-f586-4187bf31da21",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 0.05,
+      "max" : 1,
+      "step" : 0.01,
+      "type" : "number",
+      "default" : 0.3
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "tilt_amount" : 3,
+      "scale_amount" : 1.05,
+      "glare_effect" : true,
+      "glare_amount" : 0.3
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_from_bottom",
+    "border_radius" : 20,
+    "box_shadow" : true,
+    "spacing" : {
+      "number_per_row" : 3,
+      "number_per_row_tablet" : 2,
+      "spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      },
+      "space_between_cards" : 30,
+      "mobile_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    },
+    "colors" : {
+      "checkmark_color" : {
+        "color" : "#008c8c",
+        "opacity" : 100
+      },
+      "inner_checkmark_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "background_color" : "primary_dark",
+      "custom_background_color" : {
+        "color" : "#113540",
+        "opacity" : 90
+      },
+      "card_text_color" : "white",
+      "custom_card_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "help_text_background_color" : "secondary_dark",
+      "custom_help_text_background_color" : {
+        "color" : "#3c2c42",
+        "opacity" : 90
+      },
+      "help_text_color" : "primary_dark",
+      "custom_help_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 90
+      }
+    },
+    "hover" : {
+      "tilt_amount" : 3,
+      "scale_amount" : 1.05,
+      "glare_effect" : true,
+      "glare_amount" : 0.3
+    }
+  }
+}, {
+  "id" : "071f89c5-3433-db22-2827-b8289a11c793",
+  "name" : "pricing_options",
+  "display_width" : null,
+  "label" : "Pricing Options",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "67cdb170-016a-379f-d979-78faa67898a3",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "67cdb170-016a-379f-d979-78faa67898a3",
+    "name" : "card_title",
+    "display_width" : null,
+    "label" : "Card Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Individual License"
+  }, {
+    "id" : "c69e9522-d06e-4c23-c253-84c9830cacd6",
+    "name" : "price",
+    "display_width" : null,
+    "label" : "Price",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "99"
+  }, {
+    "id" : "051124fb-dcd2-ada5-e7b0-3d8e52e763eb",
+    "name" : "currency",
+    "display_width" : null,
+    "label" : "Currency",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "$"
+  }, {
+    "id" : "6b4a5f3b-a967-407b-5561-8a7fe108fa55",
+    "name" : "short_description",
+    "display_width" : null,
+    "label" : "Short Description",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "An individual license for testing purposes. Limited access to features."
+  }, {
+    "id" : "0c9bc099-0c94-0e17-decb-a9394f432559",
+    "name" : "highlight_text",
+    "display_width" : null,
+    "label" : "Highlight Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Best Value"
+  }, {
+    "id" : "a148cd19-8844-7924-8bce-2fd804edb660",
+    "name" : "highlight_color",
+    "display_width" : null,
+    "label" : "Highlight Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#CA6D02",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "1322ab7c-9844-146e-b224-7966d3da822a",
+    "name" : "highlight_text_color",
+    "display_width" : null,
+    "label" : "Highlight Text Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "0c9bc099-0c94-0e17-decb-a9394f432559",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : null,
+      "property" : null,
+      "operator" : "NOT_EMPTY",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "2e84c590-4929-9e37-6b04-bdff70d20db1",
+    "name" : "features",
+    "display_width" : null,
+    "label" : "Features",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "81b2dc4d-6e69-a3dd-3123-3857e9eebca0",
+      "default" : 5
+    },
+    "children" : [ {
+      "id" : "81b2dc4d-6e69-a3dd-3123-3857e9eebca0",
+      "name" : "feature",
+      "display_width" : null,
+      "label" : "Feature",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Individual's License"
+    }, {
+      "id" : "1ae9eaab-74fe-25b9-0723-1d2611d5f6cd",
+      "name" : "help_text",
+      "display_width" : null,
+      "label" : "Help Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Access for a single user."
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : [ {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    } ]
+  }, {
+    "id" : "6308a534-fd24-2800-74bd-e79b1fb41204",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "79a0160b-4107-4c1b-67a6-81d42377f308",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "ff36f372-6375-a0d7-70fc-3eb95471dc61",
+      "name" : "link_text",
+      "display_width" : null,
+      "label" : "Link Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Learn More"
+    }, {
+      "id" : "c313f17a-5a42-4ac3-fc1f-6850c02ab1ff",
+      "name" : "link_type",
+      "display_width" : null,
+      "label" : "Link Type",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "link"
+    }, {
+      "id" : "8f4ada42-de1c-5157-9704-dfa646c26fd3",
+      "name" : "animation_effect",
+      "display_width" : null,
+      "label" : "Animation Effect",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "c313f17a-5a42-4ac3-fc1f-6850c02ab1ff",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "link",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "no-animation", "None" ], [ "glow", "Glow" ], [ "float", "Float" ], [ "pulse", "Pulse" ], [ "reflect", "Reflect" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "no-animation"
+    }, {
+      "id" : "eb611fd5-d982-c622-a052-8bc86bc852a1",
+      "name" : "effect_color",
+      "display_width" : null,
+      "label" : "Effect Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "8f4ada42-de1c-5157-9704-dfa646c26fd3",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "no-animation",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "d5cdea46-9719-def4-0732-84db5fd2013a",
+      "name" : "link_color",
+      "display_width" : null,
+      "label" : "Link Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "c313f17a-5a42-4ac3-fc1f-6850c02ab1ff",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "link",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "link_text" : "Learn More",
+      "link_type" : "link",
+      "animation_effect" : "no-animation",
+      "effect_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "link_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "card_title" : "Individual License",
+    "price" : "99",
+    "currency" : "$",
+    "short_description" : "An individual license for testing purposes. Limited access to features.",
+    "highlight_text" : "Best Value",
+    "highlight_color" : {
+      "color" : "#CA6D02",
+      "opacity" : 100
+    },
+    "highlight_text_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "features" : [ {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    } ],
+    "link" : {
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "link_text" : "Learn More",
+      "link_type" : "link",
+      "animation_effect" : "no-animation",
+      "effect_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "link_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "card_title" : "Individual License",
+    "price" : "99",
+    "currency" : "$",
+    "short_description" : "An individual license for testing purposes. Limited access to features.",
+    "highlight_text" : "Best Value",
+    "highlight_color" : {
+      "color" : "#CA6D02",
+      "opacity" : 100
+    },
+    "highlight_text_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "features" : [ {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    } ],
+    "link" : {
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "link_text" : "Learn More",
+      "link_type" : "link",
+      "animation_effect" : "no-animation",
+      "effect_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "link_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "card_title" : "Individual License",
+    "price" : "99",
+    "currency" : "$",
+    "short_description" : "An individual license for testing purposes. Limited access to features.",
+    "highlight_text" : "Best Value",
+    "highlight_color" : {
+      "color" : "#CA6D02",
+      "opacity" : 100
+    },
+    "highlight_text_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "features" : [ {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    }, {
+      "feature" : "Individual's License",
+      "help_text" : "Access for a single user."
+    } ],
+    "link" : {
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "link_text" : "Learn More",
+      "link_type" : "link",
+      "animation_effect" : "no-animation",
+      "effect_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "link_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }
+  } ]
+} ]

@@ -1,0 +1,43 @@
+# label: "Topic Replies"
+# $id: {{ dynamic_page_crm_object.id|default("0") }}
+
+query topicReplies($id: String!) {
+  CRM {
+    p_topic(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      associations {
+        replies: p_reply_collection__reply_to_topic(limit: 500, orderBy: hs_createdate__asc) {
+          items {
+            _metadata {
+              id
+            }
+            created_by_username
+            reply_body
+            hs_createdate
+            video_embed
+            is_reply_child_id
+            mark_as_solution
+            upvote_contacts
+          }
+          hasMore
+          total
+        }
+        solutions: p_reply_collection__reply_to_topic(limit: 500, filter: {mark_as_solution__eq: true}) {
+          items {
+            _metadata {
+              id
+            }
+            created_by_username
+            reply_body
+            hs_createdate
+            video_embed
+            is_reply_child_id
+            mark_as_solution
+            upvote_contacts
+          }
+          hasMore
+          total
+        }
+      }
+    }
+  }
+}

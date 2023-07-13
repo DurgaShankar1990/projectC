@@ -1,0 +1,318 @@
+{% require_css %}
+<style>
+  #{{ name }}.price-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  #{{ name }} .price-table {
+    border-radius: {{ module.style.border_radius }}px;
+    width: calc(100% / {{ module.style.spacing.number_per_row }} - {{ module.style.spacing.space_between_cards }}px);
+    margin: {{ module.style.spacing.space_between_cards / 2 }}px;
+    position: relative;
+    margin-top: {{ module.style.spacing.spacing.margin.top.value ~ module.style.spacing.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.spacing.margin.bottom.value ~ module.style.spacing.spacing.margin.bottom.units }};
+    {% if module.style.colors.background_color == 'custom' %}
+    background-color: rgba({{ module.style.colors.custom_background_color.color|convert_rgb }}, {{ module.style.colors.custom_background_color.opacity / 100 }});
+    {% endif %}
+    border: 3px solid var(--highlight-color);
+  }
+  #{{ name }} .pricing-card__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: {{ module.style.spacing.spacing.padding.top.value ~ module.style.spacing.spacing.padding.top.units }} 
+      {{ module.style.spacing.spacing.padding.right.value ~ module.style.spacing.spacing.padding.right.units }} 
+      {{ module.style.spacing.spacing.padding.bottom.value ~ module.style.spacing.spacing.padding.bottom.units }} 
+      {{ module.style.spacing.spacing.padding.left.value ~ module.style.spacing.spacing.padding.left.units }};
+  }
+  #{{ name }} .price-table .price {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 700;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    color: #fff;
+  }
+  #{{ name }} .price-table .price small {
+    font-size: 1.25rem;
+    font-weight: 400;
+    position: absolute;
+    left: -1.5ch;
+  }
+  #{{ name }} .price-table .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    margin-top: 16px;
+    color: #fff;
+  }
+  #{{ name }} .price-table .description {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 4px;
+  }
+  #{{ name }} .features {
+    margin-top: 32px;
+  }
+  #{{ name }} .feature {
+    position: relative;
+  }
+  #{{ name }} .feature + .feature {
+    margin-top: 16px;
+  }
+  #{{ name }} .feature summary {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+  }
+  #{{ name }} .feature summary::-webkit-details-marker {
+    display: none;
+  }
+  #{{ name }} .feature[open] summary:after {
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 50;
+  }
+  #{{ name }} .feature[open] div {
+    animation: scale 0.15s ease;
+  }
+  #{{ name }} .feature .checkmark {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: 12px;
+    background-color: rgba({{ module.style.colors.checkmark_color.color|convert_rgb }}, {{ module.style.colors.checkmark_color.opacity / 100 }});
+  }
+  #{{ name }} .feature .checkmark svg {
+    width: 18px;
+    height: 18px;
+    color: rgba({{ module.style.colors.inner_checkmark_color.color|convert_rgb }}, {{ module.style.colors.inner_checkmark_color.opacity / 100 }});
+  }
+  #{{ name }} .feature .question-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+  #{{ name }} .feature .answer {
+    padding: 12px;
+    {% if module.style.colors.help_text_background_color == 'custom' %}
+    background-color: rgba({{ module.style.colors.custom_help_text_background_color.color|convert_rgb }}, {{ module.style.colors.custom_help_text_background_color.opacity / 100 }});
+    {% endif %}
+    {% if module.style.colors.help_text_color == 'custom' %}
+    color: rgba({{ module.style.colors.custom_help_text_color.color|convert_rgb }}, {{ module.style.colors.custom_help_text_color.opacity / 100 }});
+    {% endif %}
+    border-radius: 6px;
+    position: absolute;
+    top: -12px;
+    z-index: 100;
+    -webkit-transform: translatey(-100%) translatex(-50%);
+    -ms-transform: translatey(-100%) translatex(-50%);
+    transform: translatey(-100%) translatex(-50%);
+    -webkit-transform-origin: bottom center;
+    -ms-transform-origin: bottom center;
+    transform-origin: bottom center;
+    width: 80%;
+    left: 50%;
+    border: 1px solid #fff;
+  }
+  @-webkit-keyframes scale {
+    0% {
+      -webkit-transform: translatey(-100%) translatex(-50%) scale(0);
+      transform: translatey(-100%) translatex(-50%) scale(0);
+    }
+    100% {
+      -webkit-transform: translatey(-100%) translatex(-50%) scale(1);
+      transform: translatey(-100%) translatex(-50%) scale(1);
+    }
+  }
+  @keyframes scale {
+    0% {
+      -webkit-transform: translatey(-100%) translatex(-50%) scale(0);
+      transform: translatey(-100%) translatex(-50%) scale(0);
+    }
+    100% {
+      -webkit-transform: translatey(-100%) translatex(-50%) scale(1);
+      transform: translatey(-100%) translatex(-50%) scale(1);
+    }
+  }
+
+  {% if module.style.colors.card_text_color == 'custom' %}
+  #{{ name }} .name,
+  #{{ name }} .description,
+  #{{ name }} .price,
+  #{{ name }} .title {
+    color: rgba({{ module.style.colors.custom_card_text_color.color|convert_rgb }}, {{ module.style.colors.custom_card_text_color.opacity / 100 }});
+  }
+  {% endif %}
+  #{{ name }} .question-path {
+    fill: #fff;
+  }
+  #{{ name }} .highlight-text {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    padding: .5rem;
+    width: calc(100% + 6px);
+    left: -3px;
+    text-align: center;
+    border-radius: {{ module.style.border_radius }}px {{ module.style.border_radius }}px 0 0;
+  }
+  #{{ name }} .pricing-card__link {
+    text-align: center;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media(max-width: 1024px) {
+    #{{ name }} .price-table {
+      width: calc(100% / {{ module.style.spacing.number_per_row_tablet }} - {{ module.style.spacing.space_between_cards }}px);
+    }
+  }
+  @media(max-width: 767px) { 
+    #{{ name }} .price-table {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: {{ module.style.spacing.mobile_spacing.margin.top.value ~ module.style.spacing.mobile_spacing.margin.top.units }};
+      margin-bottom: {{ module.style.spacing.mobile_spacing.margin.bottom.value ~ module.style.spacing.mobile_spacing.margin.bottom.units }};
+    }
+    #{{ name }} .pricing-card__content {
+      padding: {{ module.style.spacing.mobile_spacing.padding.top.value ~ module.style.spacing.mobile_spacing.padding.top.units }} 
+        {{ module.style.spacing.mobile_spacing.padding.right.value ~ module.style.spacing.mobile_spacing.padding.right.units }} 
+        {{ module.style.spacing.mobile_spacing.padding.bottom.value ~ module.style.spacing.mobile_spacing.padding.bottom.units }} 
+        {{ module.style.spacing.mobile_spacing.padding.left.value ~ module.style.spacing.mobile_spacing.padding.left.units }};
+    }
+    #{{ name }} .highlight-text {
+      position: relative;
+      top: unset;
+      transform: translateY(0);
+      padding: .5rem;
+      width: calc(100% + 6px);
+      left: unset;
+      width: calc(100% + 6px);
+      margin-left: -3px;
+      text-align: center;
+      border-radius: {{ module.style.border_radius }}px {{ module.style.border_radius }}px 0 0;
+    }
+    #{{ name }} .price-table {
+      border-radius: {{ module.style.border_radius }}px !important;
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ name }}" class="price-section animate animate--{{ module.style.animation }}">
+  {% for item in module.pricing_options %}
+  <article class="price-table 
+                  bg--{{ module.style.colors.background_color }}
+                  {% if module.style.box_shadow %}
+                  box-shadow
+                  {% endif %}"
+           style="--highlight-color: rgba({{ item.highlight_color.color|convert_rgb }},{{ item.highlight_color.opacity / 100 }});
+                  {% if item.highlight_text %} border-radius: 0 0 {{ module.style.border_radius }}px {{ module.style.border_radius }}px; {% endif %}"
+           data-tilt='true'
+           data-tilt-max='{{ module.style.hover.tilt_amount }}'
+           {% if module.style.hover.glare_effect %}
+           data-tilt-glare data-tilt-max-glare="{{ module.style.hover.glare_amount }}"
+           {% endif %}
+           data-tilt-scale="{{ module.style.hover.scale_amount }}">
+    {% if item.highlight_text %}
+    <div class="highlight-text" 
+         style="background-color: rgba({{ item.highlight_color.color|convert_rgb }},{{ item.highlight_color.opacity / 100 }}); 
+                color: rgba({{ item.highlight_text_color.color|convert_rgb }}, {{ item.highlight_text_color.opacity / 100 }});">
+      {{ item.highlight_text }}
+    </div>
+    {% endif %}
+    <div class="pricing-card__content">
+      <div class="price text--{{ module.style.colors.card_text_color }}"><small>{{ item.currency }}</small>{{ item.price }}</div>
+      <h2 class="title text--{{ module.style.colors.card_text_color }}">{{ item.card_title }}</h2>
+      <p class="description text--{{ module.style.colors.card_text_color }}">{{ item.short_description }}
+      </p>
+      <div class="features">
+        {% for feature in item.features %}
+        <details class="feature text--{{ module.style.colors.card_text_color }}">
+          <summary>
+            <i aria-hidden="true" class="checkmark">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+              </svg>
+            </i>
+            <span class="name text--{{ module.style.colors.card_text_color }}">{{ feature.feature }}</span>
+            <i aria-hidden="true" class="question-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path class="question-path fill--{{ module.style.colors.card_text_color }}" fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+              </svg>
+            </i>
+          </summary>
+          {% if feature.help_text %}
+          <div class="answer bg--{{ module.style.colors.help_text_background_color }}">
+            {{ feature.help_text }}
+          </div>
+          {% endif %}
+        </details>
+        {% endfor %}
+      </div> 
+      {% if item.link.link_text %}
+      {% set href = item.link.link.url.href %}
+      {% if item.link.link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+         {% if item.link.link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if item.link.link.rel %}rel="{{ item.link.link.rel }}"{% endif %}
+         class="pricing-card__link btn--{{ item.link.link_type }} animate--{{ item.link.animation_effect }}"
+         style="--effect-color: {{ item.link.effect_color.color }}
+                {% if item.link.link_type == 'link' %}
+                color: rgba({{ item.link.link_color.color|convert_rgb }}, {{ item.link.link_color.opacity }});
+                --link-color: rgba({{ item.link.link_color.color|convert_rgb }}, {{ item.link.link_color.opacity }});
+                {% endif %}">
+        {{ item.link.link_text }}
+      </a>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</div>

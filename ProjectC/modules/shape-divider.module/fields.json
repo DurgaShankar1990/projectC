@@ -1,0 +1,87 @@
+[ {
+  "id" : "b42b4bec-7dc1-e5aa-d1d0-da1c3738c16d",
+  "name" : "height",
+  "display_width" : null,
+  "label" : "Height",
+  "required" : true,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 10,
+  "max" : 300,
+  "step" : 1,
+  "type" : "number",
+  "default" : 100
+}, {
+  "id" : "bd60d303-75fc-442b-7ba2-6e1ed42b93be",
+  "name" : "height_mobile",
+  "display_width" : null,
+  "label" : "Height (Mobile)",
+  "required" : true,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 0,
+  "max" : 150,
+  "step" : 1,
+  "type" : "number",
+  "default" : 25
+}, {
+  "id" : "4e1e224c-a18f-6fce-1a27-f8c8faaa63a9",
+  "name" : "shape_color",
+  "display_width" : null,
+  "label" : "Shape color",
+  "required" : false,
+  "locked" : false,
+  "type" : "color",
+  "default" : {
+    "color" : "#CCCCCC",
+    "opacity" : 100
+  }
+}, {
+  "id" : "1c62dca6-1758-a5ac-3d12-a4386bdddec1",
+  "name" : "flip_shape_horizontally",
+  "display_width" : null,
+  "label" : "Flip Shape Horizontally",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "f348e428-92c0-4f6e-a7f6-cc58b148cb6b",
+  "name" : "flip_shape_vertically",
+  "display_width" : null,
+  "label" : "Flip Shape Vertically",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "4bc77187-fba2-e792-1d20-d70afe66399c",
+  "name" : "shape_position",
+  "display_width" : null,
+  "label" : "Shape Position",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "top", "Top" ], [ "bottom", "Bottom" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "top"
+}, {
+  "id" : "15c8eabe-f638-39be-98aa-7d75c674200a",
+  "name" : "shape",
+  "display_width" : null,
+  "label" : "Shape",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "waves", "Waves" ], [ "opaque_waves", "Opaque Waves" ], [ "curved", "Curved" ], [ "curved_asymmetrical", "Curved Asymmetrical" ], [ "triangle", "Triangle" ], [ "triangle_asymmetrical", "Triangle Asymmetrical" ], [ "tilt", "Tilt" ], [ "arrow", "Arrow" ], [ "split", "Split" ], [ "book", "Book" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "waves"
+} ]

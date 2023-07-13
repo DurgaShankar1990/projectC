@@ -1,0 +1,39 @@
+<!--
+  templateType: section
+  label: Shape Divider - Bottom
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/shape-divider-bottom.png
+  description: "The Shape Divider module with the section pre-formatted. Ready to be placed at the bottom of another section."
+-->
+{% dnd_section
+  full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/omega/modules/shape-divider",
+        offset=0,
+        width=12,
+        flip_shape_horizontally=true,
+        flip_shape_vertically=false,
+        height=100,
+        shape_color={
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

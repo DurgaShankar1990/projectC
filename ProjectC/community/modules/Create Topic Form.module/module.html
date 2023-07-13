@@ -1,0 +1,252 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %}
+{% set cs = widget_data.cohortium_settings %}
+{% if object_schema.contact.to_member_profile_owner %}
+{# set member = crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_member_profile_owner, "", "first_name,last_name,bio,username,profile_photo,hs_object_id", false).results|first #}
+{% set member = module.data_query.data.CRM.contact.associations.p_member_profile_collection__profile_owner.items[0] %}
+{% endif %}
+<!-- Include the Quill library -->
+{% require_js %}
+{#<script src="{{ get_asset_url('/Project C/js/jquery.validate.min.js') }}"></script>#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js" integrity="sha512-P2W2rr8ikUPfa31PLBo5bcBQrsa+TNj8jiKadtaIrHQGMo6hQM6RdPjQYxlNguwHz8AwSQ28VkBK6kHBLgd/8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ get_asset_url('/Project C/js/quill-emoji.js') }}"></script>
+<script>
+  $(document).ready(function() {
+    // <!-- Initialize Quill editor -->
+    var toolbarOptions = { 
+    container: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{ 'header': [ 2, 3, 4, false] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'align': [] }],
+      ['clean']         ,['image'],
+      ['link'],// remove formatting button
+      ['emoji']
+    ]};
+
+    let editorCount = $('#editor').length;
+    console.log(`editorCount = ${editorCount}`);
+    if (editorCount > 0) {
+      var quill = new Quill('#editor', {
+        modules: {
+          toolbar: toolbarOptions,
+          "emoji-toolbar": true,
+          "emoji-textarea": true,
+          "emoji-shortname": true,
+        },
+        placeholder: '{{ module.topic_placeholder_text|striptags|escape }}',
+        theme: 'snow'
+      });
+    }
+    
+  });
+</script>
+{% end_require_js %}
+<!-- Include stylesheet -->
+{% require_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css" integrity="sha512-/FHUK/LsH78K9XTqsR9hbzr21J8B8RwHR/r8Jv9fzry6NVAOVIGFKQCNINsbhK7a1xubVu2r5QZcz2T9cKpubw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ get_asset_url('/Project C/css/quill-emoji.css') }}" rel="stylesheet" />
+<link href="{{ get_asset_url('/Project C/community/css/partials/_forms.css') }}" rel="stylesheet" />
+{% end_require_css %}
+{% set catDB = module.category_hubdb || cs.categories_tags.category_hubdb_table %}
+<form id="form__topic">{# Should redirect after submission to the topic that has been submitted #}
+  {# <input type="hidden" id="member_id" name="member_id" value="{{member.hs_object_id|default(1285195662)}}" > #}
+  <div class="input">
+    <label for="category">{{ module.category_name_label }}:</label>
+    <select name="category" id="category" >
+      <option disabled {% if !request.query_dict.category %}selected {% endif %} value="">{{ module.category_field_label }}</option>
+      {% for category in hubdb_table_rows(catDB , "visibility__ne=2&orderBy=hs_name") %}
+      <option value="{{category.hs_path}}" {% if request.query_dict.category == category.hs_path %} selected{% endif %}>{{category.hs_name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+
+  {# Tag(s) #}
+  <div id="tag-holder" {# style="display:none;" #}>
+    <div class="tags cat{{category.hs_path}}">
+      {# tags start here #}
+      {% for category in hubdb_table_rows(catDB , "visibility__ne=2&orderBy=hs_name&tags__not_null=") %}
+      <div class="tags cat-tags cat-{{category.hs_path}}" style="display:none;">
+        <div class="input">
+          <label for="tag">{{ cs.categories_tags.tag_singular_label }} ({{category.hs_name}}):</label>
+          <select name="tag" id="tag" data-catid="{{category.hs_path}}">
+            <option disabled {% if !request.query_dict.tag %}selected {% endif %} value="">{{ module.category_field_label }}</option>
+            {% for tag in category.tags %}
+            <option value="{{tag.hs_path}}" {% if request.query_dict.tag == tag.hs_path %} selected{% endif %}>#{{tag.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      {% endfor %}
+      {# tags end here #}
+    </div>
+    {# END Tag(s) #}
+
+    {% require_js %}
+    <script>
+      // init tags
+      function initTags(e) {
+        var $catId = $(e.target)
+        var $catHolder = $("#tag-holder");
+        console.log( $catId.val() )
+        var $targetSel = $catHolder.find( `.cat-${$catId.val()}` );
+        $(".cat-tags").each(function() {
+          $(this).hide()
+        });
+        $targetSel.show()
+      }
+
+      $(document).ready(function() {
+
+        // init tags
+        initTags( $("#category")[0] )
+
+        $("body").on("change","#category", function(e) {
+          e.preventDefault();
+          initTags(e);
+        });
+      });
+
+    </script>
+    {% end_require_js %}
+
+    <div class="input">
+      <label for="name" required>{{ module.topic_name_label }}:</label>
+      <input type="text" id="name" name="name" value="" placeholder="{{ module.topic_name_placeholder }}" >
+    </div>
+    {#<input type="hidden" id="topic_slug" name="topic_slug" value="">#}
+    {# need this to autofill via javascript when the title is typed in and add append topic id at end?? #}
+    {# topic_sluf is generated server side from the subject #}
+    {% if content.translations|length > 0 %}
+    <input type="hidden" id="locale" name="locale" value="{{locale}}">
+    {% endif %}
+    <input type="hidden" id="topic_detail" name="topic_detail" value="">
+    <input type="hidden" id="created_by_username" name="created_by_username" value="{{ member.username }}" >
+    <div class="input">
+      {% if module.topic_body_label %}<label>{{ module.topic_body_label }}:</label>{% endif %}
+      <!-- Create the editor container -->
+      <div id="editor" class="editor">
+      </div>
+    </div>
+    <div class="input">
+      <label for="name" required>{{ module.video_embed_label }}:</label>
+      <input type="text" id="video_embed" name="video_embed" value="" placeholder="{{ module.video_embed_placeholder }}" >
+    </div>
+    <div class="submit-container">
+      <input id="submitBtn" type="submit" style="margin:10px 0;" value="{{ module.submit_topic_button_label }}">
+    </div>
+    </form>
+  {# <form id="form__member_profile"> #}
+  {# Should redirect after submission to the topic that has been submitted #}
+    <input type="hidden" id="member_id" name="member_id" value="{{ member.hs_object_id }}" >
+  {# </form> #}
+  {# <form id="form__contact"> #}
+  {# Should redirect after submission to the topic that has been submitted #}
+    <input type="hidden" id="contact_id" name="contact_id" value="{{ contact.hs_object_id }}" >
+  {# </form> #}
+{% if request.query_dict.debug %}
+  member = {{ member }}<br><br>
+  contact = {{ contact }}<br><br>
+{% endif %}
+  {% require_js %}
+  <script>
+    // functions
+    // Form to POJO
+    function formToPOJO(formEl) {
+      var formData = new FormData( formEl );
+      return Object.fromEntries( formData );
+    }
+    // Get value from Quil into hidden field
+    function populateTopicDetail() {
+      var $topic_detail = $('#topic_detail');
+      // Quill injects a child div, get its contents
+      var quillDiv = $('#editor').find('.ql-editor');
+      $topic_detail.val( quillDiv.html() );
+    }
+    // Get member_profile
+    function collectMemberProfile() {
+      return document.getElementById('member_id').value;
+    }
+    // Get contacts
+    function collectContactProfile() {
+      {# return $('#form__contact').find('#contact_id').val(); #}
+      return document.getElementById('contact_id').value;
+    }
+    // build topic object for body
+    function collectTopicData() {
+      populateTopicDetail();
+      var topicData = formToPOJO( $('#form__topic')[0] );
+      delete topicData.contact_id;
+      delete topicData.member_id;
+      return topicData;
+    }
+    // build full body obj
+    function buildBody() {
+      return {
+        properties: collectTopicData(),
+        member_profiles: [ collectMemberProfile() ],
+        contacts: [ collectContactProfile() ]
+      };
+    }
+    // Submit topic
+    async function submitTopic(obj) {
+      return rawResponse = await fetch(`https://{{ request.domain }}/_hcms/api/topics/create/v2`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj)
+      });
+    };
+
+    $(document).ready(function() {
+      // variables
+      var $form__topic = $('#form__topic');
+      // validation rules
+      $form__topic.validate({
+        rules: {
+          name: {
+            required: true
+          },
+          topic_detail: {
+            required: true
+          }
+        },
+        errorElement: 'span'
+      });
+      // Submit Form
+      $form__topic.on('submit', function(e) {
+        e.preventDefault();
+        // BUild body object
+        var requestBody = buildBody();
+        console.log( requestBody )
+        // Validate
+        if ( $form__topic.valid() ) {
+          // prevent multiple clicks
+          $form__topic.find('#submitBtn').replaceWith( '<div id="submitBtn" style="padding: 1rem;"><span style="display:inline-block;" class="h-spin"><svg heigth="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.74 390.33"><defs><style>.b{fill:#1f2040;}</style></defs><path class="b" d="M410.62,149.95l-60.47-104.73C334,17.24,304.14,0,271.83,0h-120.93c-32.31,0-62.17,17.24-78.32,45.22L12.12,149.95c-16.16,27.98-16.16,62.46,0,90.44l60.47,104.73c16.16,27.98,46.01,45.22,78.32,45.22h120.93c32.31,0,62.17-17.24,78.32-45.22l60.47-104.73c16.16-27.98,16.16-62.46,0-90.44Zm-79.69,76.45l-32.73,56.7c-11.16,19.32-31.78,31.23-54.09,31.23h-65.47c-22.31,0-42.93-11.9-54.09-31.23l-32.73-56.7c-11.16-19.32-11.16-43.13,0-62.46l32.73-56.7c11.16-19.32,31.78-31.23,54.09-31.23h65.47c22.31,0,42.93,11.9,54.09,31.23l32.73,56.7c11.16,19.32,11.16,43.13,0,62.46Z"/></svg></span> <span>loading…</span></div>')
+          // validate form
+          let response = submitTopic( requestBody );
+          response.then(function(resp) {
+            return resp.json();
+          })
+            .then(function(resp) {
+            // redirect to the new topic page
+            window.location.href = "http://{{ request.domain }}/topics/" + resp.response.slug;
+          })
+            .catch( function( error ) {
+            console.log( error );
+            $form__topic.find('#submitBtn').replaceWith('<input id="submitBtn" type="submit" style="margin:10px 0;" value="{{ module.submit_topic_button_label }}">');
+                                                        });
+          }
+                   });
+
+        });
+  </script>
+  {% end_require_js %}

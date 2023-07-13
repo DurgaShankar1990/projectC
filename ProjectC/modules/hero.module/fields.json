@@ -1,0 +1,576 @@
+[ {
+  "id" : "d579c3da-fa29-58a9-10da-b6bc6a196160",
+  "name" : "text_above_title",
+  "display_width" : null,
+  "label" : "Text Above Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "OMEGA"
+}, {
+  "id" : "67487bb5-0bc9-b305-6ee1-3347a6e0d523",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "The Future of HubSpot Themes"
+}, {
+  "id" : "4ff54704-5de5-1894-1660-81f111763854",
+  "name" : "helper_text",
+  "display_width" : null,
+  "label" : "Helper Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "This theme is built on three key concepts: Power, Simplicity, and Versatility. We worked diligently on the Omega theme, so you don't have to... giving you more time for what's important."
+}, {
+  "id" : "1606e6e7-9d36-61e5-5525-ec880099d1f0",
+  "name" : "link_text",
+  "display_width" : null,
+  "label" : "Link Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "UPGRADE YOUR WEBSITE TODAY"
+}, {
+  "id" : "d643196d-e807-90e9-e0bc-8829329e2d8e",
+  "name" : "link_field",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "#",
+      "content_id" : null
+    },
+    "open_in_new_tab" : true,
+    "no_follow" : false
+  }
+}, {
+  "id" : "748174ff-3173-d508-5817-599f41915a37",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "aa494f45-34f8-4675-e15c-01c401c549e4",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_from_top"
+  }, {
+    "id" : "0fba4d38-594c-abf3-a4c1-60c850a6a9df",
+    "name" : "text_color",
+    "display_width" : null,
+    "label" : "Text Color",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "white"
+  }, {
+    "id" : "023d67db-4568-0792-3007-31a429ac0a08",
+    "name" : "container_alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "f46496e2-5135-0c16-d126-d3548160d498",
+    "name" : "container_width",
+    "display_width" : null,
+    "label" : "Container Width",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 400,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 900
+  }, {
+    "id" : "434d5590-ff17-acc3-020e-8c3d80a72e35",
+    "name" : "full_screen",
+    "display_width" : null,
+    "label" : "Full Screen",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "2d544f36-ec75-5e35-ac8a-a06d8a7de91e",
+    "name" : "text_shadow",
+    "display_width" : null,
+    "label" : "Text Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "71b8e7ff-11c5-4cc9-07c0-ea28cf8f5acd",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      },
+      "padding" : {
+        "top" : {
+          "value" : 120,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 160,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "524cd09a-2026-82fe-22a5-3f974a4c184f",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "349cb9c4-23da-c07d-466b-7f7faca4e81c",
+      "name" : "mobile_spacing",
+      "display_width" : null,
+      "label" : "Mobile Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 120,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 80,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "mobile_spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 120,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 80,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "92c6e07b-be59-0e7f-477d-99f450bca15c",
+    "name" : "background",
+    "display_width" : null,
+    "label" : "Background",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "ffd3cd0a-7475-496f-cf5c-dfc3633d2605",
+      "name" : "overlay_color",
+      "display_width" : null,
+      "label" : "Overlay Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "b1001f23-0eca-ec03-6b59-519c61452d49",
+      "name" : "custom_overlay_color",
+      "display_width" : null,
+      "label" : "Custom Overlay Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "ffd3cd0a-7475-496f-cf5c-dfc3633d2605",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "809af5ee-95fa-b4b1-7286-ee09453e21cb",
+      "name" : "overlay_opacity",
+      "display_width" : null,
+      "label" : "Overlay Opacity",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 60
+    }, {
+      "id" : "c24ea0ba-986e-92e9-c184-1344fd64aeb5",
+      "name" : "vertical_background_position",
+      "display_width" : null,
+      "label" : "Vertical Background Position",
+      "inline_help_text" : "A value of 0 will show more of the top of the image, while a value of 100 will show the bottom of the image. A value of 50 will center the image.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "888f4563-5a9c-96f1-3f6a-dc52c7ae1dba",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : "NOT_EMPTY",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "f17bf0ab-7c6b-ad93-e0c5-f05b12b2731a",
+      "name" : "horizontal_background_position",
+      "display_width" : null,
+      "label" : "Horizontal Background Position",
+      "inline_help_text" : "A value of 0 will show more of the left of the image, while a value of 100 will show the right of the image. A value of 50 will center the image.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "888f4563-5a9c-96f1-3f6a-dc52c7ae1dba",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : "NOT_EMPTY",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "overlay_color" : "primary_dark",
+      "custom_overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "overlay_opacity" : 60,
+      "vertical_background_position" : 50,
+      "horizontal_background_position" : 50
+    }
+  }, {
+    "id" : "483d7bc4-23f1-acb2-6457-8c160e23340b",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "6c840044-b6f6-9256-1d30-c4ac13611978",
+      "name" : "button_style",
+      "display_width" : null,
+      "label" : "Button Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary"
+    }, {
+      "id" : "014cac64-57be-54e9-2e6c-0523c00f5683",
+      "name" : "animation_effect",
+      "display_width" : null,
+      "label" : "Animation Effect",
+      "inline_help_text" : "Note: If reflect is selected, it will work in most, but not all, browsers. In the browsers where it is not supported, there will simply be no reflection.",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "no-animation", "None" ], [ "glow", "Glow" ], [ "float", "Float" ], [ "pulse", "Pulse" ], [ "reflect", "Reflect" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "glow"
+    }, {
+      "id" : "18c1b6c9-3048-0132-f1ab-251ba0451448",
+      "name" : "effect_color",
+      "display_width" : null,
+      "label" : "Effect Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "014cac64-57be-54e9-2e6c-0523c00f5683",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "no-animation",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "button_style" : "primary",
+      "animation_effect" : "glow",
+      "effect_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_from_top",
+    "text_color" : "white",
+    "container_alignment" : "center",
+    "container_width" : 900,
+    "full_screen" : false,
+    "text_shadow" : true,
+    "spacing" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      },
+      "padding" : {
+        "top" : {
+          "value" : 120,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 160,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
+        }
+      }
+    },
+    "mobile" : {
+      "mobile_spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 120,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 80,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    },
+    "background" : {
+      "overlay_color" : "primary_dark",
+      "custom_overlay_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "overlay_opacity" : 60,
+      "vertical_background_position" : 50,
+      "horizontal_background_position" : 50
+    },
+    "link" : {
+      "button_style" : "primary",
+      "animation_effect" : "glow",
+      "effect_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "888f4563-5a9c-96f1-3f6a-dc52c7ae1dba",
+  "name" : "background_image",
+  "display_width" : null,
+  "label" : "Background Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Picture3flip.jpg",
+    "alt" : "Picture3flip",
+    "loading" : "lazy",
+    "width" : 1070,
+    "height" : 840,
+    "max_width" : 1070,
+    "max_height" : 840
+  }
+}, {
+  "id" : "87aac69a-e13b-a81c-e750-160022869097",
+  "name" : "typewriter_effect",
+  "display_width" : null,
+  "label" : "Typewriter Effect",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+} ]

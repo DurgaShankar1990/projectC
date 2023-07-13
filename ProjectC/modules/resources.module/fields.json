@@ -1,0 +1,1014 @@
+[ {
+  "id" : "a261855f-c475-e796-714d-c4d94c42a750",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7cd2029b-04aa-dfe9-259d-f05e6f829e24",
+    "name" : "corner_radius",
+    "display_width" : null,
+    "label" : "Corner Radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "63dfcb07-d976-429c-cc91-cdaaddd11a4c",
+    "name" : "text_above_tags",
+    "display_width" : null,
+    "label" : "Text Above Tags",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "11686cb9-5829-e372-65f9-2dd9f4741689",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "07c720cf-ad34-2c0b-dfa6-b5f9a06ee7df",
+      "name" : "alignment",
+      "display_width" : null,
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "center"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "text_color" : "primary_dark",
+      "alignment" : "center"
+    }
+  }, {
+    "id" : "f91dfbc0-16ad-fdce-5e36-c27c6d218d0f",
+    "name" : "tag_buttons",
+    "display_width" : null,
+    "label" : "Tag Buttons",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "dda3a708-7336-ec5f-9edb-f353d189b796",
+      "name" : "corner_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number"
+    }, {
+      "id" : "27103e58-32f7-63fc-7b55-f27e4e3f1a69",
+      "name" : "active",
+      "display_width" : null,
+      "label" : "Active",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "6792394c-2854-d857-254c-7081476c57d6",
+        "name" : "text_color",
+        "display_width" : null,
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "5bfc6280-2be2-69d7-9e52-b76d03f2f88f",
+        "name" : "background_color",
+        "display_width" : null,
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "d2c3d158-5e27-983c-6f13-33a13deaa2b6",
+        "name" : "border_field",
+        "display_width" : null,
+        "label" : "Border",
+        "required" : false,
+        "locked" : false,
+        "allow_custom_border_sides" : false,
+        "type" : "border",
+        "default" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "text_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "background_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "border_field" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    }, {
+      "id" : "d822e05c-5ac8-df20-1c36-eb29a38c6c2c",
+      "name" : "inactive",
+      "display_width" : null,
+      "label" : "Inactive",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "04a53cc7-2db9-4910-a7b5-2232f2896942",
+        "name" : "text_color",
+        "display_width" : null,
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "9e58b723-5dd9-967a-b445-205fd89d48d9",
+        "name" : "background_color",
+        "display_width" : null,
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "a3421542-48e8-b0aa-f405-adacb7ec04db",
+        "name" : "border_field",
+        "display_width" : null,
+        "label" : "Border",
+        "required" : false,
+        "locked" : false,
+        "allow_custom_border_sides" : false,
+        "type" : "border",
+        "default" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "text_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "border_field" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "active" : {
+        "text_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "background_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "border_field" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      },
+      "inactive" : {
+        "text_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "border_field" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "47bccbb8-dff1-0f89-c172-66061186609d",
+    "name" : "resource_type",
+    "display_width" : null,
+    "label" : "Resource Type",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d6dec324-3c1c-e038-49bb-cd9002b82e65",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Background Color",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_light"
+    }, {
+      "id" : "0c311954-2309-0ed8-300b-936767bb6e58",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "d8ac13d8-0864-be3f-0427-d6a02a5c83ad",
+      "name" : "corner_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    }, {
+      "id" : "e9c61d65-90f3-fc1e-ff70-e34c719b1290",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 100,
+      "max" : 900,
+      "step" : 100,
+      "type" : "number",
+      "default" : 600
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "background_color" : "primary_light",
+      "text_color" : "primary_dark",
+      "corner_radius" : 20,
+      "font_weight" : 600
+    }
+  }, {
+    "id" : "6270f7ad-bf4c-3619-7106-755f6e9b0a95",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d98c3ac6-f781-5b11-503d-9d9abee8d1f3",
+      "name" : "link_color",
+      "display_width" : null,
+      "label" : "Link Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "3f04bd71-e862-3913-01f8-f17b57dbfa20",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 100,
+      "max" : 900,
+      "step" : 100,
+      "type" : "number",
+      "default" : 600
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "font_weight" : 600
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "corner_radius" : 20,
+    "text_above_tags" : {
+      "text_color" : "primary_dark",
+      "alignment" : "center"
+    },
+    "tag_buttons" : {
+      "active" : {
+        "text_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "background_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "border_field" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      },
+      "inactive" : {
+        "text_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "border_field" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    },
+    "resource_type" : {
+      "background_color" : "primary_light",
+      "text_color" : "primary_dark",
+      "corner_radius" : 20,
+      "font_weight" : 600
+    },
+    "link" : {
+      "link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "font_weight" : 600
+    }
+  }
+}, {
+  "id" : "19f03ee6-9ee0-5fef-b58f-d2975f88ef7f",
+  "name" : "text_above_tags",
+  "display_width" : null,
+  "label" : "Text Above Tags",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Popular topics"
+}, {
+  "id" : "72012876-ddb8-bafa-2101-bd3ec3b862c2",
+  "name" : "include_tag_buttons",
+  "display_width" : null,
+  "label" : "Include Tag Buttons",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "1d5d8010-cfb7-26d7-0041-e8d460d0e048",
+  "name" : "number_of_tags_to_show",
+  "display_width" : null,
+  "label" : "Number of Tags to Show",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "72012876-ddb8-bafa-2101-bd3ec3b862c2",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 5
+}, {
+  "id" : "ca5cff19-65e2-1789-ecb1-94d8458377a5",
+  "name" : "include_search_bar",
+  "display_width" : null,
+  "label" : "Include Search Bar",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "33f7440e-9cb7-a909-21e3-1ecbb08cb4d7",
+  "name" : "include_filter_by_topic_dropdown",
+  "display_width" : null,
+  "label" : "Include Filter By Topic Dropdown",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "4e033a0f-7c14-f0ae-71c3-723fee79213c",
+  "name" : "include_filter_by_type_dropdown",
+  "display_width" : null,
+  "label" : "Include Filter By Type Dropdown",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "0e4a5886-fd2b-1451-5240-6e11cf75a113",
+  "name" : "resources",
+  "display_width" : null,
+  "label" : "Resources",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 6
+  },
+  "children" : [ {
+    "id" : "e683dcfa-353f-2fc2-f3e0-125528900225",
+    "name" : "resource_name",
+    "display_width" : null,
+    "label" : "Resource Name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Resource Name"
+  }, {
+    "id" : "ac293d81-9766-e8e9-8089-9d1525d1a2dd",
+    "name" : "resource_description",
+    "display_width" : null,
+    "label" : "Resource Description",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking..."
+  }, {
+    "id" : "b2636e89-e176-34c6-1b95-ed003c639663",
+    "name" : "resource_image",
+    "display_width" : null,
+    "label" : "Resource Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    }
+  }, {
+    "id" : "187f0bc9-1faa-b1b7-a2f0-5ea86bfe654b",
+    "name" : "resource_link",
+    "display_width" : null,
+    "label" : "Resource Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "2e8b8153-158d-0140-1d01-5e125a82e8e4",
+    "name" : "resource_link_text",
+    "display_width" : null,
+    "label" : "Resource Link Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "READ MORE"
+  }, {
+    "id" : "e348ee54-0dd8-3030-24a9-07090537e85e",
+    "name" : "type",
+    "display_width" : null,
+    "label" : "Resource Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "Guide", "Guide" ], [ "eBook", "Ebook" ], [ "PDF", "PDF" ], [ "Blog", "Blog" ], [ "Video", "Video" ], [ "Webinar", "Webinar" ], [ "Podcast", "Podcast" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "Guide"
+  }, {
+    "id" : "af8bdca9-3bab-0028-dc76-f034e2c46e7d",
+    "name" : "tag",
+    "display_width" : null,
+    "label" : "Tag",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "tag_value" : "NAME",
+    "type" : "tag"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "resource_name" : "Resource Name",
+    "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+    "resource_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    },
+    "resource_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "resource_link_text" : "READ MORE",
+    "type" : "Guide"
+  }, {
+    "resource_name" : "Resource Name",
+    "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+    "resource_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    },
+    "resource_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "resource_link_text" : "READ MORE",
+    "type" : "Guide"
+  }, {
+    "resource_name" : "Resource Name",
+    "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+    "resource_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    },
+    "resource_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "resource_link_text" : "READ MORE",
+    "type" : "Guide"
+  }, {
+    "resource_name" : "Resource Name",
+    "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+    "resource_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    },
+    "resource_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "resource_link_text" : "READ MORE",
+    "type" : "Guide"
+  }, {
+    "resource_name" : "Resource Name",
+    "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+    "resource_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    },
+    "resource_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "resource_link_text" : "READ MORE",
+    "type" : "Guide"
+  }, {
+    "resource_name" : "Resource Name",
+    "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+    "resource_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/hero-bg.jpg",
+      "alt" : "hero-bg",
+      "loading" : "lazy",
+      "width" : 2050,
+      "height" : 1035,
+      "max_width" : 2050,
+      "max_height" : 1035
+    },
+    "resource_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "resource_link_text" : "READ MORE",
+    "type" : "Guide"
+  } ]
+} ]

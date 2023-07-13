@@ -1,0 +1,42 @@
+<div id="{{ name }}"
+     style="{% if module.animate_width %}
+            width: 0;
+            {% else %}
+            width: {{ module.width }}px;
+            {% endif %}
+            height: {{ module.height }}px;
+            max-width: 100%;
+            {% if module.color == 'custom' %}
+            background-color: {{ module.custom_color.css }};
+            {% endif %}
+            {% if module.alignment == 'center' %}
+            margin-left: auto;
+            margin-right: auto;
+            {% else %}
+            float: {{ module.alignment }};
+            {% endif %}
+            margin-top: {{ module.space_above }}px;
+            margin-bottom: {{ module.space_below }}px;"
+     class="line-divider bg--{{ module.color }}">
+</div>
+
+{% if module.animate_width %}
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    if (checkView($('#{{ name }}')) == true ) {
+      $( "#{{ name }}" ).animate({
+        width: '{{ module.width }}px'
+      }, {{ module.animation_speed }});
+    }
+  });
+  $(window).scroll(function() {
+    if (checkView($('#{{ name }}')) == true ) {
+      $( "#{{ name }}" ).animate({
+        width: '{{ module.width }}px'
+      }, {{ module.animation_speed }});
+    }
+  });
+</script>
+{% end_require_js %}
+{% endif %}

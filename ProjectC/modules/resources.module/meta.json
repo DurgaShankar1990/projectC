@@ -1,0 +1,17 @@
+{
+  "global" : false,
+  "icon" : "https://fs.hubspotusercontent00.net/hubfs/20023350/books.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING", "QUOTE" ],
+  "module_id" : 96392566059,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/matchHeight.js",
+    "name" : "matchHeight.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/isotope.js",
+    "name" : "isotope.js"
+  } ],
+  "label" : "Resources",
+  "is_available_for_new_content" : true
+}

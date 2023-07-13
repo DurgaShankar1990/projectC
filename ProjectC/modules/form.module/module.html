@@ -1,0 +1,80 @@
+<div id="module--{{ name }}" class="form bg--{{ module.style.background_color }} text--{{ module.style.text_color }} animate animate--{{ module.style.animation }}">
+  {% if module.form_title %}
+  <h4 class="text--{{ module.style.text_color }}">
+    {{ module.form_title }}
+  </h4>
+  {% endif %}
+  {% if module.supporting_text %}
+  <p class="form__text text--{{ module.style.text_color }}">
+    {{ module.supporting_text }}
+  </p>
+  {% endif %}
+  {% form
+    form_to_use="{{ module.form.form_id }}"
+    response_response_type="{{ module.form.response_type }}"
+    response_message="{{ module.form.message }}"
+    response_redirect_id="{{ module.form.redirect_id }}"
+    response_redirect_url="{{module.form.redirect_url}}"
+    gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+  %}
+</div>
+
+
+<style>
+  {% scope_css %}
+  .form {
+    padding: {{ module.style.vertical_padding }}px {{ module.style.horizontal_padding }}px;
+    {% if module.style.background_color == 'custom' %}
+    background-color: rgba({{ module.style.custom_background_color.color|convert_rgb }}, {{ module.style.custom_background_color.opacity / 100 }});
+    {% endif %}
+    {% if module.style.text_color == 'custom' %}
+    color: rgba({{ module.style.custom_text_color.color|convert_rgb }}, {{ module.style.custom_text_color.opacity / 100 }});
+    {% endif %}
+    border-radius: {{ module.style.border_radius }}px;
+    border: {{ module.style.box_border.css }};
+  }
+  .form h4 {
+    text-align: {{ module.style.supporting_text_alignment }};
+  }
+  .form__text {
+    text-align: {{ module.style.supporting_text_alignment }};
+  }
+  .form label {
+    color: inherit !important;
+  }
+  .form form {
+    margin-top: {{ module.style.space_between_text_and_form }}px;
+  }
+  .hs-input {
+    {{ module.style.border_field.css }}
+    {% if module.style.form_style == 'bottom_line_only' %}
+    border: none; 
+    border-radius: 0; 
+    padding: 0 !important; 
+    border-bottom: {{ module.style.border_field.bottom.width.value }}{{ module.style.border_field.bottom.width.units }} {{ module.style.border_field.bottom.style }} {{ module.style.border_field.bottom.color }}; 
+    background-color: transparent !important; 
+    color: inherit !important;
+    {% endif %}
+    transition: .2s;
+  }
+  .hs-input:focus,
+  .hs-input:active {
+    outline: none !important;
+    border-color: rgba({{ module.style.active_border_color.color|convert_rgb }}, {{ module.style.active_border_color.opacity / 100 }});
+  }
+  .form .hs-button {
+    background-color: rgba({{ module.style.submit_button.button_background_color.color|convert_rgb }}, {{ module.style.submit_button.button_background_color.opacity / 100 }}) !important; /* Module Option */
+    color: rgba({{ module.style.submit_button.button_text_color.color|convert_rgb }}, {{ module.style.submit_button.button_text_color.opacity / 100 }}) !important;
+    {% if module.style.submit_button.make_button_full_width %}
+    width: 100%;
+    {% endif %}
+    margin-top: 1rem;
+    transition: .3s;
+  }
+    .form .hs-button:hover {
+    background-color: rgba({{ module.style.submit_button.hover_button_background_color.color|convert_rgb }}, {{ module.style.submit_button.hover_button_background_color.opacity / 100 }}) !important; /* Module Option */
+    color: rgba({{ module.style.submit_button.hover_button_text_color.color|convert_rgb }}, {{ module.style.submit_button.hover_button_text_color.opacity / 100 }}) !important;
+  }
+  {% end_scope_css %}
+
+</style>

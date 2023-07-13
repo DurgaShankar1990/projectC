@@ -1,0 +1,22 @@
+.member-profile-card h4 {margin-bottom:0px;margin-top:15px}
+.member-profile-card {  background: #fff;
+    border-radius: 7px;
+    padding: 20px;
+    border: 1px solid #e6e6e6;margin-top:15px;}
+
+.topics-container{padding:15px 0;}
+
+.topic-card h4 {
+    margin-bottom: 0;
+  color:#000;
+}
+span.detail-container {
+    font-size: .7rem;
+}
+.topic-card span.detail-container {display:flex;justify-content:space-between;}
+.topic-card {padding:10px 5px;}
+.topic-card a {color:#000;}
+.topic-card:hover {
+    background: whitesmoke;
+}
+.svg-icon {height:.7rem;vertical-align: text-top;}

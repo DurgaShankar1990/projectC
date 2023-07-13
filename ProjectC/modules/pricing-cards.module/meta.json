@@ -1,0 +1,13 @@
+{
+  "global" : false,
+  "icon" : "fontawesome-5.14.0:Dollar%20Sign:SOLID",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 96392566058,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/tilt.js",
+    "name" : "tilt.js"
+  } ],
+  "label" : "Pricing Cards",
+  "is_available_for_new_content" : true
+}

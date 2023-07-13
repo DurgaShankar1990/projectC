@@ -1,0 +1,52 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "environment": {},
+  "secrets": ["APIKEY", "COHORTIUM_KEY"],
+  "endpoints": {
+    "topics/create": {
+      "method": "POST",
+      "file": "topics-create.js"
+    },
+    "topics/create/v2": {
+      "method": "POST",
+      "file": "topics-create-v2.js"
+    },
+    "topics/edit": {
+      "method": "POST",
+      "file": "topics-edit.js"
+    },
+    "topics/follow": {
+      "method": "GET",
+      "file": "follow-topic.js"
+    },
+    "reply/create": {
+      "method": "POST",
+      "file": "reply-create-v2.js"
+    },
+    "reply/edit" : {
+      "method": "POST",
+      "file": "edit-replies.js"
+    },
+    "reply/solution": {
+      "method": "GET",
+      "file":"mark-solution.js"
+    },
+    "profile/create": {
+      "method": "POST",
+      "file": "profile-create.js"
+    },
+    "profile/edit": {
+      "method": "POST",
+      "file": "profile-edit.js"
+    },
+    "file/upload": {
+      "method": "POST",
+      "file": "file-upload.js"
+    },
+    "upvote": {
+      "method": "GET",
+      "file": "upvote.js"
+    }
+  }
+}

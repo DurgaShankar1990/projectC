@@ -1,0 +1,572 @@
+[ {
+  "id" : "f4afd9c6-15aa-50c5-93bb-46ab46247731",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "971c4eb2-6994-8987-d12d-fd97ad2d9556",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_from_bottom"
+  }, {
+    "id" : "6cb9556a-8784-68f9-cc46-3e2a3c8c0b9b",
+    "name" : "cards",
+    "display_width" : null,
+    "label" : "Cards",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "993b9a5b-e83c-dd3b-4668-3d6e6b8cc2ac",
+      "name" : "alignment",
+      "display_width" : null,
+      "label" : "Horizontal Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "43252386-9ac5-0e31-c11a-37b6ea88c45c",
+      "name" : "vertical_alignment",
+      "display_width" : null,
+      "label" : "Vertical Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "flex-start", "Top" ], [ "center", "Center" ], [ "flex-end", "Bottom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "center"
+    }, {
+      "id" : "86416526-3158-6cac-9c8b-fca13ab34bbf",
+      "name" : "card_per_row_desktop",
+      "display_width" : null,
+      "label" : "Card Per Row (Desktop)",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 6,
+      "step" : 1,
+      "type" : "number",
+      "default" : 1
+    }, {
+      "id" : "57733330-871c-fa4a-9206-c58def16639a",
+      "name" : "card_per_row_tablet",
+      "display_width" : null,
+      "label" : "Card Per Row (Tablet)",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 4,
+      "step" : 1,
+      "type" : "number",
+      "default" : 1
+    }, {
+      "id" : "45959dde-0903-91e3-5326-5da384a99ef0",
+      "name" : "card_background_color",
+      "display_width" : null,
+      "label" : "Card Background Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "transparent", "Transparent" ], [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "transparent"
+    }, {
+      "id" : "b15f186b-811b-987e-152d-280a60e95d6c",
+      "name" : "card_text_color",
+      "display_width" : null,
+      "label" : "Card Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : ""
+    }, {
+      "id" : "115a32ed-507b-57f1-1183-afce56832e1d",
+      "name" : "spacing",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      }
+    }, {
+      "id" : "564585a7-3cc7-0d29-2ff3-42e4d2023cac",
+      "name" : "space_between_cards",
+      "display_width" : null,
+      "label" : "Space Between Cards",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    }, {
+      "id" : "f4a656ca-2861-d27b-6784-d795626523ee",
+      "name" : "border_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    }, {
+      "id" : "1c46d469-5820-7d41-9ef5-4893d80aba40",
+      "name" : "box_shadow",
+      "display_width" : null,
+      "label" : "Box Shadow",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "alignment" : "left",
+      "vertical_alignment" : "center",
+      "card_per_row_desktop" : 1,
+      "card_per_row_tablet" : 1,
+      "card_background_color" : "transparent",
+      "card_text_color" : "",
+      "spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      },
+      "space_between_cards" : 20,
+      "border_radius" : 20,
+      "box_shadow" : false
+    }
+  }, {
+    "id" : "e7d7dccf-4956-b5cd-e81b-d4939c492ca9",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "535057b9-03d8-e107-bd21-2c727cb1e2a7",
+      "name" : "overlap_icon_with_top",
+      "display_width" : null,
+      "label" : "Overlap Icon with Top",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "4199b805-957f-2c5c-ba6e-deb1af7e928e",
+      "name" : "space_between_text",
+      "display_width" : null,
+      "label" : "Space Between Text",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 40
+    }, {
+      "id" : "1222ca36-01d5-6a39-037c-3ef25b42cbaa",
+      "name" : "background",
+      "display_width" : null,
+      "label" : "Background",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "14420571-b5e3-adb0-2ba4-3945d9e90646",
+        "name" : "border_radius",
+        "display_width" : null,
+        "label" : "Border Radius",
+        "help_text" : "A number greater than the size of the icon wrapper will create a circle.",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "step" : 1,
+        "type" : "number",
+        "default" : 500
+      }, {
+        "id" : "90590b20-92b6-95b6-8141-7f672223c47c",
+        "name" : "background_color",
+        "display_width" : null,
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "transparent", "Transparent" ], [ "white", "White" ], [ "black", "Black" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "transparent"
+      }, {
+        "id" : "e88a4a59-6896-a9d6-9c4c-e7132d0b3bc8",
+        "name" : "custom_background_color",
+        "display_width" : null,
+        "label" : "Custom Background Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "90590b20-92b6-95b6-8141-7f672223c47c",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "c6792f02-cb54-ffb7-194d-3196cbe079be",
+        "name" : "size",
+        "display_width" : null,
+        "label" : "Size",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 20,
+        "step" : 1,
+        "type" : "number",
+        "default" : 60
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "border_radius" : 500,
+        "background_color" : "transparent",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "size" : 60
+      }
+    }, {
+      "id" : "0517570a-ef1f-a167-0f29-13ab3d56751e",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "f41aae34-7051-6c1d-c649-7ec9509f7265",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "6f463e7c-10df-456e-2391-ac23f8317bb5",
+        "name" : "size",
+        "display_width" : null,
+        "label" : "Size",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 10,
+        "step" : 1,
+        "type" : "number",
+        "default" : 70
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "size" : 70
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "overlap_icon_with_top" : false,
+      "space_between_text" : 40,
+      "background" : {
+        "border_radius" : 500,
+        "background_color" : "transparent",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "size" : 60
+      },
+      "icon" : {
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "size" : 70
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_from_bottom",
+    "cards" : {
+      "alignment" : "left",
+      "vertical_alignment" : "center",
+      "card_per_row_desktop" : 1,
+      "card_per_row_tablet" : 1,
+      "card_background_color" : "transparent",
+      "card_text_color" : "",
+      "spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        }
+      },
+      "space_between_cards" : 20,
+      "border_radius" : 20,
+      "box_shadow" : false
+    },
+    "icon" : {
+      "overlap_icon_with_top" : false,
+      "space_between_text" : 40,
+      "background" : {
+        "border_radius" : 500,
+        "background_color" : "transparent",
+        "custom_background_color" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "size" : 60
+      },
+      "icon" : {
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "size" : 70
+      }
+    }
+  }
+}, {
+  "id" : "1e5f8183-bc11-cb74-87f5-d1c43a3d888d",
+  "name" : "cards",
+  "display_width" : null,
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "f58e9a12-af7d-2daa-25db-c06340f71da1",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "5931b745-8cee-4348-0580-49becd27c350",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "Alternate Feather",
+      "unicode" : "f56b",
+      "type" : "SOLID"
+    }
+  }, {
+    "id" : "f58e9a12-af7d-2daa-25db-c06340f71da1",
+    "name" : "card_text",
+    "display_width" : null,
+    "label" : "Card Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4>Card Text</h4>\n<p><span>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&nbsp;</span></p>"
+  }, {
+    "id" : "1b5b56f9-a7db-f623-fe95-f15ad15d8043",
+    "name" : "include_a_link",
+    "display_width" : null,
+    "label" : "Include a Link",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "cf505b39-d567-be41-5e07-b9ddbfd0417b",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "1b5b56f9-a7db-f623-fe95-f15ad15d8043",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "icon" : {
+      "name" : "Alternate Feather",
+      "unicode" : "f56b",
+      "type" : "SOLID"
+    },
+    "card_text" : "<h4>Card Text</h4>\n<p><span>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&nbsp;</span></p>",
+    "include_a_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "icon" : {
+      "name" : "Alternate Feather",
+      "unicode" : "f56b",
+      "type" : "SOLID"
+    },
+    "card_text" : "<h4>Card Text</h4>\n<p><span>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&nbsp;</span></p>",
+    "include_a_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "icon" : {
+      "name" : "Alternate Feather",
+      "unicode" : "f56b",
+      "type" : "SOLID"
+    },
+    "card_text" : "<h4>Card Text</h4>\n<p><span>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&nbsp;</span></p>",
+    "include_a_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ]
+} ]

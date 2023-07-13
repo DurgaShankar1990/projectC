@@ -1,0 +1,228 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %}
+{% from '../../../community/imports/tools.html' import icons as icons %}
+{% set cs = widget_data.cohortium_settings %}
+{% if module.set_category.columns %}
+{% set category = module.set_category.columns %}
+{% set category_name = category.hs_name %}
+{% set category_slug = category.hs_path %}
+{% set catparams = "&category=" ~ category_slug %}
+{% else %}
+{% if request.query_dict.category %}
+{% set catparams = "&category=" ~ request.query_dict.category %}
+{% else %}
+{% set catparams = "" %}
+{% endif %}
+{% endif %}
+{% if request.query_dict.tag %}
+{% set tagparams = "&tag=" ~ request.query_dict.tag %}
+{% else %}
+{% set tagparams = "" %}
+{% endif %}
+{% if request.query_dict.orderby == "mostupvotes" %}
+{% set orderparams = "&orderBy=-upvote_count" %} 
+{% elif request.query_dict.orderby == "leastupvotes" %}
+{% set orderparams = "&orderBy=upvote_count" %} 
+{% elif request.query_dict.orderby == "oldest" %}
+{% set orderparams = "&orderBy=hs_createdate" %} 
+{% else  %}
+{% set orderparams = "&orderBy=-hs_createdate" %} 
+{% endif %}
+
+
+{% set params = catparams ~ tagparams ~ "&limit=" ~ module.limit_results ~ orderparams ~ "&is_deleted__ne=true" %}
+{% if content.translations|length > 0 %} {# THIS IS THE LANGUAGE SWITCHER #}
+{% set params = catparams ~ tagparams ~ "&limit=" ~ module.limit_results ~ orderparams ~ "&is_deleted__ne=true" ~ "&locale=" ~ locale %}
+{% set localeurl = locale %}
+{% endif %}
+{% set fields = "name,category,hs_createdate,topic_slug,submitted_by_name,submitted_by_member_id,number_of_replies,status,tag,number_of_solutions,upvote_count,list_ids,hs_object_id" %}
+{% if request.query_dict.filtered == "authored" %}
+{% if object_schema.contact.to_topic_author %}
+  {# module.data_query.data.CRM #}
+{#{% set mytopics = crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_topic_author, params , fields, false) %}#} {# topics I've authored #}
+{% set mytopics = { "results": module.data_query.data.CRM.contact.associations.p_topic_collection__author.items } %} {# topics I've authored #}
+{% endif %}
+{% set topics = mytopics %}
+{% elif request.query_dict.filtered == "following" %}
+{% if object_schema.contact.to_topic_follower %}
+{#{% set mytopics = crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_topic_follower, params , fields, false) %}#} {# topics I'm following #}
+{% set mytopics = { "results": module.data_query.data.CRM.contact.associations.p_topic_collection__follower.items } %}{# topics I'm following #}
+{% set topics = mytopics %}
+{% endif %}
+{% elif request.query_dict.filtered == "noreplies" %}
+{% if object_schema.topic.object_name %}
+{% set topics = crm_objects("topic", params ~ "&number_of_replies__lt=1" , fields, false) %}
+{% endif %}
+{% elif request.query_dict.filtered == "notsolved" %}
+{% if object_schema.topic.object_name %}
+{% set topics = crm_objects("topic", params ~ "&number_of_solutions__lt=1" , fields, false) %}
+{% endif %}
+{% elif request.query_dict.filtered == "solved" %}
+{% if object_schema.topic.object_name %}
+{% set topics = crm_objects("topic", params ~ "&number_of_solutions__gt=0" , fields, false) %}
+{% endif %}
+{% else %}
+{% if object_schema.topic.object_name %}
+{% set topics = crm_objects("topic", params , fields, false) %}
+{% endif %}
+{% set default_select = "true" %}
+{% endif %}
+{% if request.query_dict.debug %}
+  topics = {{topics}}<br>
+{% endif %}
+{# If user is in a list in the list_ids column for the topic or that column is blank, show that topic #}
+{% set lists = request.contact.list_memberships %}
+{% set restricted_topics = topics.results|selectattr("list_ids") %}
+{% set unrestricted_topics = topics.results|rejectattr("list_ids") %}
+{% set accessible_topics = [] %}
+{% for topic in restricted_topics %}
+  {% set list_ids = topic.list_ids|split(",") %}
+  {% for list_id in list_ids %}
+    {% if list_id in lists %}
+      {% do accessible_topics.append(topic) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+{% set accessible_topics = accessible_topics|unique("hs_object_id") + unrestricted_topics %}
+
+{# START OF EXISTING FILTERS #}
+{% if request.query_dict.category %}
+{% set otherfilters = "&category=" ~ request.query_dict.category %} 
+{% set otherfilters_no_orderby = "&category=" ~ request.query_dict.category %} 
+{% set otherfilters_no_tag = "&category=" ~ request.query_dict.category %} 
+{% set otherfilters_no_filtered = otherfilters_no_filtered ~ "&category=" ~ request.query_dict.category %}
+{% endif %}
+{% if request.query_dict.tag %}
+{% set otherfilters = otherfilters ~ "&tag=" ~ request.query_dict.tag %}
+{% set otherfilters_no_filtered = otherfilters_no_filtered ~ "&tag=" ~ request.query_dict.tag %}
+{% set otherfilters_no_orderby = otherfilters_no_orderby ~ "&tag=" ~ request.query_dict.tag %}
+{% endif %}
+{% if request.query_dict.filtered %}
+{% set otherfilters = otherfilters ~ "&filtered=" ~ request.query_dict.filtered %}
+{% set otherfilters_no_tag = otherfilters_no_tag ~ "&filtered=" ~ request.query_dict.filtered %}
+{% set otherfilters_no_orderby = otherfilters_no_orderby ~ "&filtered=" ~ request.query_dict.filtered %}
+{% endif %}
+{% if request.query_dict.orderby %}
+{% set otherfilters = otherfilters ~ "&orderby=" ~ request.query_dict.orderby %}
+{% set otherfilters_no_tag = otherfilters_no_tag ~ "&orderby=" ~ request.query_dict.orderby %}
+{% set otherfilters_no_filtered = otherfilters_no_filtered ~ "&orderby=" ~ request.query_dict.orderby %}
+{% endif %}
+{# END OF EXISTING FILTERS #}
+<div class="container-fluid row-fluid dnd-section">
+  <div class="content-wrapper row-fluid">
+    <div class="sidebar-content span3">
+      {% cta "sidebar_cta" label="Select a CTA", guid="" %}
+      {% set cat_hubdb = module.hubdbtable_field || cs.categories_tags.category_hubdb_table %}
+      {% set categories = hubdb_table_rows( cat_hubdb , "visibility=1") %}
+      {% set accessible_categories = [] %}
+      {% for category in categories %}
+        {% set lists_with_access = category.lists_with_access|split(",") %}
+        {% if lists_with_access|length > 0 %}
+          {% for list_with_access in lists_with_access %}
+            {% if list_with_access in lists %}
+              {% do accessible_categories.append(category) %}
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% do accessible_categories.append(category) %}
+        {% endif %}
+      {% endfor %}
+      {% set categories = accessible_categories %}
+      <div class="category-sidebar">
+        {% set category_label = [] %}
+        <a class="category-filter {% if !request.query_dict.category %}active{% endif %}" href="{{content.absolute_url}}">
+          <h4>{{ cs.labels_text.all_topics_label}}</h4>
+        </a>
+        {% for category in categories %}
+        <a class="category-filter {% if request.query_dict.category == category.hs_path %}active{% endif %}" href="?category={{ category.hs_path }}{{otherfiltersnotag}}">
+          <h4>{{ category.hs_name }}</h4>
+        </a>
+        <div class="category-tags {% if request.query_dict.category == category.hs_path %}active{% endif %}">
+          {% for tag in category.tags %}
+          <a {% if tag.hs_path == request.query_dict.tag %}class="active" {% endif %}href="?tag={{tag.hs_path}}&category={{ category.hs_path }}{{otherfiltersnotag}}">#{{tag.hs_path}}</a>
+          {% endfor %}
+        </div>
+        {% if request.query_dict.category == category.hs_path %}
+        {% do category_label.append(category.hs_name) %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="home-content span9">
+      <div class="filter-container">
+        <div class="filters">
+          <div class="sorter-dropdown">
+            <button class="btn btn--ghost">{{ cs.labels_text.filters.filter_by_label}} {{ icons.chevron_down }}</button>
+            <div class="sorter-dropdown-content">
+              {% if request.query_dict.category %} <a class="{% if !request.query_dict.filtered %}active{% endif %}" id="filter-default" href="{{ content.absolute_url }}?category={{request.query_dict.category}}{{otherfilters}}">{{ module.all_category_topics_label|replace("[cat]",category_label|first) }}</a>{% endif %}
+              <a href="?filtered=authored{{otherfilters_no_filtered}}" class="{% if !request_contact.is_logged_in %}user-signup-logged-out{% endif %} {% if request.query_dict.filtered == "authored" %}active{% endif %}" >{{cs.labels_text.filters.my_topics_label}}</a> 
+              <a href="?filtered=following{{otherfilters_no_filtered}}" class="{% if !request_contact.is_logged_in %}user-signup-logged-out{% endif %} {% if request.query_dict.filtered == "following" %}active{% endif %}">{{cs.labels_text.filters.topics_im_following_label}}</a> 
+              <a href="?filtered=noreplies{{otherfilters_no_filtered}}" class="{% if request.query_dict.filtered == "noreplies" %}active{% endif %}" >{{cs.labels_text.filters.no_replies_label}}</a> 
+              <a href="?filtered=solved{{otherfilters_no_filtered}}" class="{% if request.query_dict.filtered == "solved" %}active{% endif %}"  >{{cs.labels_text.filters.solved_label}}</a>
+              <a href="?filtered=notsolved{{otherfilters_no_filtered}}" class="{% if request.query_dict.filtered == "notsolved" %}active{% endif %}"  >{{cs.labels_text.filters.not_solved_label}}</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="sorters">
+
+
+          <div class="sorter-dropdown">
+            <button class="btn btn--ghost">{{cs.labels_text.filters.sort_by_label}} {{ icons.chevron_down }}</button>
+            <div class="sorter-dropdown-content">
+              <a href="?orderby=recent{{otherfilters_no_orderby}}" {% if request.query_dict.orderby == "recent" or !request.query_dict.orderby %}class="active"{% endif %}>{{cs.labels_text.filters.most_recent_label}}</a>
+              <a href="?orderby=oldest{{otherfilters_no_orderby}}" {% if request.query_dict.orderby == "notsolved" %}class="active"{% endif %} >{{ cs.labels_text.filters.oldest_label}}</a>
+              <a href="?orderby=mostupvotes{{otherfilters_no_orderby}}" {% if request.query_dict.orderby == "mostupvotes" %}class="active"{% endif %}>{{cs.labels_text.filters.most_upvotes_label}}</a> 
+              <a href="?orderby=leastupvotes{{otherfilters_no_orderby}}" {% if request.query_dict.orderby == "leastupvotes" %}class="active"{% endif %}>{{cs.labels_text.filters.least_upvotes_label}}</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topics-container">
+        {% if category_label %} <h2 style="font-weight:100;">{{cs.labels_text.viewing_label }} <a href="{{ content.absolute_url }}?category={{request.query_dict.category}}">{{category_label|first}}</a>{% if request.query_dict.tag %}<span class="tag-title">#{{request.query_dict.tag }}</span>{% endif %}</h2>{% endif %}
+        {#{% if topics.total > 0 %}#}
+        {#{% for topic in topics.results %}#}
+        {% if accessible_topics|length > 0 %}
+        {% for topic in accessible_topics %}
+        <div class="topic-card">
+          <a href="{{ cs.default_urls.topic_listing_url}}/{{ topic.topic_slug }}">
+            <h4>{% if topic.number_of_solutions > 0 %}<span class="status-solved">{{cs.labels_text.filters.solved_label}}</span>{% endif %}{{topic.name}}</h4>
+            <span class="detail-container">
+              <span>
+                <span class="details createdate descriptor-padding">
+                  {{ icons.calendar }}{{topic.hs_createdate|datetimeformat('%B %e, %Y') }}
+                </span>
+
+                <span class="descriptor-padding">
+                  {{ (categories|selectattr("hs_path","equalto",topic.category)|first).hs_name }}  {% if topic.tag %}#{{ topic.tag}}{% endif %}
+                </span>
+              </span>
+
+              <span>
+                <span class="details replies descriptor-padding">
+                  {{icons.replies}} {{topic.number_of_replies }} {% if topic.number_of_replies > 1 %}{{cs.labels_text.reply_plural_label}}{% else %}{{cs.labels_text.reply_singular_label}}{% endif %}</span> 
+                <span class="descriptor-padding">{{topic.upvote_count || "0"}} {% if topic.upvote_count > 1 or !topic.upvote_count  %}{{cs.labels_text.upvote_plural_label}}{% else %}{{cs.labels_text.upvote_singular_label}}{% endif %}</span></span></span></a>
+
+        </div>
+        {% if loop.index == "3" and !request_contact.is_logged_in %}
+        <div class="topic-cta">
+          <div class="signup-modal-container">
+            <div class="modal-popup-text-container">
+              {{ cs.messages_prompts.sign_up_or_login_prompt }} 
+            </div>
+
+            <div class="signup-login-buttons">
+              <a class="btn btn--primary" href="https://{{ cs.default_urls.signup_url|split("://")|last }}?signup_from={{content.absolute_url}}">{{ cs.labels_text.sign_up_label }}</a>
+              <a class="btn btn--tertiary" href="https://{{request.domain}}/_hcms/mem/login?redirect_url={{content.absolute_url}}">{{ cs.labels_text.login_label }}</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        {{ cs.messages_prompts.topic_no_results_message }}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>

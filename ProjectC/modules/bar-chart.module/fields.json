@@ -1,0 +1,587 @@
+[ {
+  "id" : "43e0ef3a-b5dd-b33c-a793-4ae8caeb319b",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "da397fd9-6b97-dc05-6814-f51884b18049",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "909553ea-df60-934b-bbd8-f2eb4b07040b",
+      "name" : "charts_per_row",
+      "display_width" : null,
+      "label" : "Charts Per Row (Desktop)",
+      "help_text" : "How many charts will appear side by side on a desktop screen.",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 3,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "78f6c2a1-31fa-0a52-7b0f-f423894858af",
+      "name" : "charts_per_row_tablet",
+      "display_width" : null,
+      "label" : "Charts Per Row (Tablet)",
+      "help_text" : "How many charts will appear side by side on a desktop screen.",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 2,
+      "step" : 1,
+      "type" : "number",
+      "default" : 2
+    }, {
+      "id" : "e43757f9-17b2-90b1-3bea-ef7ef61691e3",
+      "name" : "chart_spacing",
+      "display_width" : null,
+      "label" : "Chart Spacing",
+      "required" : true,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : 10,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 10,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "right" : {
+            "value" : 40,
+            "units" : "px"
+          }
+        }
+      }
+    }, {
+      "id" : "7886383a-b58b-5687-b617-4436cd2c7a42",
+      "name" : "horizontal_spacing",
+      "display_width" : null,
+      "label" : "Horizontal Spacing",
+      "help_text" : "In Pixels",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "charts_per_row" : 3,
+      "charts_per_row_tablet" : 2,
+      "chart_spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 10,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 10,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "right" : {
+            "value" : 40,
+            "units" : "px"
+          }
+        }
+      },
+      "horizontal_spacing" : 20
+    }
+  }, {
+    "id" : "d5f65ba5-344d-8c05-ffc5-b70cb026a685",
+    "name" : "chart",
+    "display_width" : null,
+    "label" : "Chart",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4e07bb11-596b-3d17-50e9-8aa4470a0ec6",
+      "name" : "box_shadow",
+      "display_width" : null,
+      "label" : "Box Shadow",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "1cd07c1c-677d-417b-0675-83a7bb953d6e",
+      "name" : "border_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "help_text" : "",
+      "inline_help_text" : "This number changes how rounded the corners are.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "step" : 20,
+      "type" : "number"
+    }, {
+      "id" : "ed255069-bcfd-3f85-e16b-885f6b2bba24",
+      "name" : "chart_background_color",
+      "display_width" : null,
+      "label" : "Chart Background Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary_dark"
+    }, {
+      "id" : "d03a1cad-1b30-ef1a-2936-0f55e885c4e7",
+      "name" : "custom_chart_background_color",
+      "display_width" : null,
+      "label" : "Custom Chart Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "ed255069-bcfd-3f85-e16b-885f6b2bba24",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 80
+      }
+    }, {
+      "id" : "bee8e1ba-176f-5eb9-fe3c-0e9c6695cc70",
+      "name" : "chart_title_text_color",
+      "display_width" : null,
+      "label" : "Chart Title Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "white"
+    }, {
+      "id" : "6d61f873-1021-4f0b-5d12-30fb14badb26",
+      "name" : "custom_title_color",
+      "display_width" : null,
+      "label" : "Custom Title Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "bee8e1ba-176f-5eb9-fe3c-0e9c6695cc70",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 80
+      }
+    }, {
+      "id" : "fa55408d-5316-6dd1-3929-a3665ea0ad63",
+      "name" : "chart_subtitle_text_color",
+      "display_width" : null,
+      "label" : "Chart Subtitle Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "white"
+    }, {
+      "id" : "70a32f3d-ef15-819a-2a37-e0e0c28da920",
+      "name" : "custom_subtitle_color",
+      "display_width" : null,
+      "label" : "Custom Subtitle Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "fa55408d-5316-6dd1-3929-a3665ea0ad63",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FAFAFA",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "box_shadow" : true,
+      "chart_background_color" : "primary_dark",
+      "custom_chart_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 80
+      },
+      "chart_title_text_color" : "white",
+      "custom_title_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 80
+      },
+      "chart_subtitle_text_color" : "white",
+      "custom_subtitle_color" : {
+        "color" : "#FAFAFA",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "3718fd6b-c2be-e4eb-6ed3-0e23f517e46f",
+    "name" : "animations",
+    "display_width" : null,
+    "label" : "Animations",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "2f22cc23-d35f-aa1b-c58e-ff255383d206",
+      "name" : "animation_speed",
+      "display_width" : null,
+      "label" : "Counting Animation Speed",
+      "inline_help_text" : "How long it takes to animate the bar and number (in milliseconds).",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1000,
+      "max" : 6000,
+      "step" : 100,
+      "type" : "number",
+      "default" : 3000
+    }, {
+      "id" : "440c2da9-de79-2546-6a55-88d983730746",
+      "name" : "in_view_animation",
+      "display_width" : null,
+      "label" : "In View Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_right", "Slide From Right" ], [ "slide_from_left", "Slide From Left" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fade_in"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "animation_speed" : 3000,
+      "in_view_animation" : "fade_in"
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing" : {
+      "charts_per_row" : 3,
+      "charts_per_row_tablet" : 2,
+      "chart_spacing" : {
+        "margin" : {
+          "top" : {
+            "value" : 10,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 10,
+            "units" : "px"
+          }
+        },
+        "padding" : {
+          "top" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : 40,
+            "units" : "px"
+          },
+          "right" : {
+            "value" : 40,
+            "units" : "px"
+          }
+        }
+      },
+      "horizontal_spacing" : 20
+    },
+    "chart" : {
+      "box_shadow" : true,
+      "chart_background_color" : "primary_dark",
+      "custom_chart_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 80
+      },
+      "chart_title_text_color" : "white",
+      "custom_title_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 80
+      },
+      "chart_subtitle_text_color" : "white",
+      "custom_subtitle_color" : {
+        "color" : "#FAFAFA",
+        "opacity" : 100
+      }
+    },
+    "animations" : {
+      "animation_speed" : 3000,
+      "in_view_animation" : "fade_in"
+    }
+  }
+}, {
+  "id" : "2f7751ef-0f83-8e4c-4a16-e6b042cf1d43",
+  "name" : "charts",
+  "display_width" : null,
+  "label" : "Charts",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "4056d8e4-4bd2-c0d4-df56-7902c97440a7",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "4056d8e4-4bd2-c0d4-df56-7902c97440a7",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Page Speed"
+  }, {
+    "id" : "94fe5649-3e09-5e38-3c9f-f15038d7fcec",
+    "name" : "subtitle",
+    "display_width" : null,
+    "label" : "Subtitle",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Omega is FAST"
+  }, {
+    "id" : "6a675bb2-62db-9995-48d7-412effd01802",
+    "name" : "maximum_amount",
+    "display_width" : null,
+    "label" : "Maximum Amount",
+    "required" : true,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 100
+  }, {
+    "id" : "d673813b-2005-f4e9-d927-0142186ff7bb",
+    "name" : "display_as_percentage",
+    "display_width" : null,
+    "label" : "Display Numbers as Percentage",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "bb1179a7-5d3f-266f-3005-19a5f857853c",
+    "name" : "bars",
+    "display_width" : null,
+    "label" : "Bars",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "1d1c67af-a1e9-32d5-148d-3f683d40c83a",
+      "default" : 2
+    },
+    "children" : [ {
+      "id" : "1d1c67af-a1e9-32d5-148d-3f683d40c83a",
+      "name" : "bar_label",
+      "display_width" : null,
+      "label" : "Bar Label",
+      "required" : true,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Omega"
+    }, {
+      "id" : "f333e6d6-24b1-e122-2c52-a81c3b1f10a2",
+      "name" : "amount",
+      "display_width" : null,
+      "label" : "Amount",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 70
+    }, {
+      "id" : "9cc77b11-7160-4c7c-7715-a9cfc00f5d85",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color",
+      "required" : true,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : [ {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    }, {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "title" : "Page Speed",
+    "subtitle" : "Omega is FAST",
+    "maximum_amount" : 100,
+    "display_as_percentage" : false,
+    "bars" : [ {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    }, {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    } ]
+  }, {
+    "title" : "Page Speed",
+    "subtitle" : "Omega is FAST",
+    "maximum_amount" : 100,
+    "display_as_percentage" : false,
+    "bars" : [ {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    }, {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    } ]
+  }, {
+    "title" : "Page Speed",
+    "subtitle" : "Omega is FAST",
+    "maximum_amount" : 100,
+    "display_as_percentage" : false,
+    "bars" : [ {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    }, {
+      "bar_label" : "Omega",
+      "amount" : 70,
+      "color" : {
+        "color" : "#FF9902",
+        "opacity" : 100
+      }
+    } ]
+  } ]
+} ]

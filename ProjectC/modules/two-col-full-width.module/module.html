@@ -1,0 +1,65 @@
+<div id="{{ name }}" class="two-col-full animate animate--{{ module.styles.animation }}">
+  <div class="two-col-full__text bg--{{ module.styles.content.background_color }} text--{{ module.styles.content.color }}">
+    <div class="two-col-full__text--inner animate animate--{{ module.styles.animation }}">
+      {{ module.content }}
+    </div>
+  </div>
+  <div class="two-col-full__img">
+    <img loading="lazy" src="{{ module.image.src}}" alt="{{ module.image.alt }}">
+  </div>
+</div>
+{% require_css %}
+<style>
+  #{{ name }}.two-col-full {
+    display: flex;
+    {% if module.order == 'image_first' %}
+    flex-direction: row-reverse;
+    {% endif %}
+  }
+  #{{ name }} .two-col-full__text,
+  #{{ name }} .two-col-full__img {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #{{ name }} .two-col-full__img img {
+    width: 100%;
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  #{{ name }} .two-col-full__text * {
+    color: inherit;
+  }
+  #{{ name }} .two-col-full__text { 
+    {{ module.styles.content.spacing.css }};
+    text-align: {{ module.styles.content.text_alignment }};
+    {% if module.styles.content.background_color == 'custom' %}
+    background-color: {{ module.styles.content.custom_background_color.css }};
+    {% endif %}
+    {% if module.styles.content.color == 'custom' %}
+    color: {{ module.styles.content.custom_text_color.css }}
+    {% endif %}
+  }
+  @media(min-width: 1240px) {
+    #{{ name }} .two-col-full__text--inner { 
+      max-width: calc(50% - ((100% - 1240px) / 2));
+    }
+  }
+  @media(max-width: 767px) {
+    #{{ name }}.two-col-full {
+      flex-wrap: wrap;
+    }
+    #{{ name }} .two-col-full__text {
+      {{ module.styles.content.mobile.spacing.css }};
+    }
+    #{{ name }} .two-col-full__text,
+    #{{ name }} .two-col-full__img {
+      width: 100%;
+    }
+  }
+
+</style>
+{% end_require_css %}

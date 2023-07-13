@@ -1,0 +1,58 @@
+[ {
+  "id" : "42df7e33-1569-703f-1006-8117de10eeeb",
+  "name" : "text_message",
+  "display_width" : null,
+  "label" : "Modal Text Content",
+  "required" : false,
+  "locked" : true,
+  "type" : "richtext",
+  "default" : "<h2>This is default content!</h2>"
+}, {
+  "id" : "84fd9402-6823-145a-693f-e5c2df3496c5",
+  "name" : "signup_label",
+  "display_width" : null,
+  "label" : "Signup Label",
+  "required" : false,
+  "locked" : true,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Sign Up"
+}, {
+  "id" : "7d37919b-f657-6c6e-8f6a-27ecf5010455",
+  "name" : "signup_url",
+  "display_width" : null,
+  "label" : "Signup Url",
+  "required" : false,
+  "locked" : true,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "2397ca64-f0e0-e5aa-ee9b-c68c47f22ad5",
+  "name" : "login_label",
+  "display_width" : null,
+  "label" : "Login Label",
+  "required" : false,
+  "locked" : true,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Log In"
+}, {
+  "id" : "69ed2fc0-e862-2262-18a5-8ad6caa79b08",
+  "name" : "button_text_color",
+  "display_width" : null,
+  "label" : "Button Text Color",
+  "required" : false,
+  "locked" : true,
+  "type" : "color",
+  "default" : {
+    "color" : "#FFFFFF",
+    "opacity" : 100
+  }
+} ]

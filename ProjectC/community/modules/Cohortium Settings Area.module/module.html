@@ -1,0 +1,123 @@
+{#  {% set cs = widget_data.cohortium_settings %}  #}
+{% set nothing_set = "<span style='background:#fbbcad;display:inline-block;'>Nothing Set</span>" %}
+<div class="settings-section">
+  <h3>Default Urls</h3>
+  <p>This section is for defining the default URLS that are necessary to connect your community base pages</p>
+  <hr>
+  <ul class="options">
+    <li><strong>Topic Listing Url:</strong><span> {{ module.default_urls.topic_listing_url || nothing_set }}</span> </li>
+    <li><strong>Topic Edit Url:</strong><span> {{ module.default_urls.topic_edit_url || nothing_set }}</span> </li>
+    <li><strong>Signup Url:</strong><span>{{ module.default_urls.signup_url || nothing_set }}</span> </li>
+    <li><strong>Report Abuse Url:</strong><span>{{ module.default_urls.report_abuse_url || nothing_set }}</span> </li>
+  </ul>
+</div>
+<div class="settings-section">
+  <h3>Category & Tags Information</h3>
+  <p>This section is for Setting up your Categories. Remember to make sure your topic object categories match</p>
+  <hr>
+  <ul class="options">
+    <li><strong>Category Label:</strong><span>{{ module.categories_tags.category_singular_label || nothing_set  }}</span></li>
+    <li><strong>Category Plural Label:</strong><span>{{ module.categories_tags.category_plural_label || nothing_set  }}</span></li>
+    <li><strong>Category HubDB Table:</strong><span>{{ module.categories_tags.category_hubdb_table || nothing_set  }} {% if module.categories_tags.category_hubdb_table %}<a href="https://app.hubspot.com/hubdb/{{hub_id}}/table/{{module.categories_tags.category_hubdb_table}}">(visit HubDB)</a>{% endif %}</span></li>
+
+    <li><strong>Tag Singular Label:</strong><span>{{ module.categories_tags.tag_singular_label || nothing_set  }}</span></li>
+    <li><strong>Tag Plural Label:</strong><span>{{ module.categories_tags.tag_singular_label || nothing_set  }}</span></li>
+    <li><strong>Tags HubDB Table:</strong><span>{{ module.categories_tags.tags_hubdb_table || nothing_set  }} {% if module.categories_tags.tags_hubdb_table %}<a href="https://app.hubspot.com/hubdb/{{hub_id}}/table/{{module.categories_tags.tags_hubdb_table}}">(visit HubDB)</a>{% endif %}</span></li>
+    <li><strong>Badges HubDB Table:</strong><span>{{ module.categories_tags.badges_hubdb || nothing_set  }} {% if module.categories_tags.badges_hubdb %}<a href="https://app.hubspot.com/hubdb/{{hub_id}}/table/{{ module.categories_tags.badges_hubdb }}">(visit HubDB)</a>{% endif %}</span></li>
+  </ul>
+</div>
+<div class="settings-section">
+  <h3>Labels & Text</h3>
+  <p>This section is for labels throughout the community. Keep special attention to each of the singular and plural options</p>
+  <hr>
+  <ul class="options">
+    <li><strong>Category Listing "Viewing" Label:</strong><span>{{ module.labels_text.viewing_label  || nothing_set  }}</span></li>
+    <li><strong>Topic Singular Label:</strong><span>{{ module.labels_text.topic_singular_label || nothing_set  }}</span></li>
+    <li><strong>Topic Plural Label:</strong><span>{{ module.labels_text.topic_plural_label || nothing_set  }}</span></li>
+    <li><strong>"All Topics" Label:</strong><span>{{ module.labels_text.all_topics_label || nothing_set  }}</span></li>
+    <li><strong>Upvote Singular Label:</strong><span>{{ module.labels_text.upvote_singular_label || nothing_set  }}</span></li>
+    <li><strong>Upvote Plural Label:</strong><span>{{ module.labels_text.upvote_plural_label || nothing_set  }}</span></li>
+    <li><strong>Reply Singular Label:</strong><span>{{ module.labels_text.reply_singular_label || nothing_set  }}</span></li>
+    <li><strong>Reply Plural Label:</strong><span>{{ module.labels_text.reply_plural_label || nothing_set  }}</span></li>
+    <li><strong>Solution Singular Label:</strong><span>{{ module.labels_text.solution_singular_label || nothing_set  }}</span></li>
+    <li><strong>Solutions Plural Label:</strong><span>{{ module.labels_text.solution_plural_label || nothing_set  }}</span></li>
+    <li><strong>View Solution in Discussion Thread:</strong><span>{{ module.labels_text.view_solution_in_discussion_thread_label || nothing_set  }}</span></li>
+    <li><strong>Discussion Label:</strong><span>{{ module.labels_text.discussion_label || nothing_set  }}</span></li>
+    <li><strong>Follow Label:</strong><span>{{ module.labels_text.follow_label || nothing_set  }}</span></li>
+    <li><strong>Following Label:</strong><span>{{ module.labels_text.following_label || nothing_set  }}</span></li> 
+    <li><strong>Login Label:</strong><span>{{ module.labels_text.login_label || nothing_set  }}</span></li>
+    <li><strong>Sign Up Label:</strong><span>{{ module.labels_text.sign_up_label || nothing_set  }}</span></li>
+    <li><strong>Report Abuse Label:</strong><span>{{ module.labels_text.report_abuse_label || nothing_set  }}</span></li>
+    <li><strong>Edit Topic Label:</strong><span>{{ module.labels_text.edit_topic_label || nothing_set  }}</span></li>
+    <li><strong>Edit Reply Label:</strong><span>{{ module.labels_text.edit_reply_label || nothing_set  }}</span></li>
+    <li><strong>Moderator Tools Label:</strong><span>{{ module.labels_text.moderator_tools_label  || nothing_set  }}</span></li>
+    <li><strong>Archive Topic Label:</strong><span>{{ module.labels_text.archive_topic_label || nothing_set  }}</span></li>
+    <li><strong>Archive Reply Label:</strong><span>{{ module.labels_text.archive_reply_label || nothing_set  }}</span></li>
+    <li><strong>Disable Replies Label:</strong><span>{{ module.labels_text.disable_replies_label  || nothing_set  }}</span></li>
+    <li><strong>Remove as a Solution Label:</strong><span>{{ module.labels_text.remove_as_a_solution_label || nothing_set  }}</span></li>
+    <li><strong>Author Label:</strong><span>{{ module.labels_text.author_label  || nothing_set  }}</span></li>
+    <li><strong>Reply Button Label:</strong><span>{{ module.labels_text.reply_button_label || nothing_set  }}</span></li>
+    <li><strong>Mark as a Solution Label:</strong><span>{{ module.labels_text.mark_as_a_solution_label || nothing_set  }}</span></li>
+    <li><strong>"Loading" Label:</strong><span>{{ module.labels_text.loading_label || nothing_set  }}</span></li>
+    <li><strong>View Profile Card Button Label:</strong><span>{{ module.labels_text.view_profile_button_label || nothing_set  }}</span></li>
+    <li><strong>More from "Author" Label:</strong><span>{{ module.labels_text.more_from_author_label || nothing_set  }}</span></li>
+  </ul>
+  <h4>Community Filters and Sorting</h4>
+  <ul class="options">
+    <li><strong>"Filter By" Label:</strong><span>{{ module.labels_text.filters.filter_by_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "My Topics" Label:</strong><span>{{ module.labels_text.filters.my_topics_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Topics I'm Following" Label:</strong><span>{{ module.labels_text.filters.topics_im_following_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "No Replies" Label:</strong><span>{{ module.labels_text.filters.no_replies_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Solved" Label:</strong><span>{{ module.labels_text.filters.solved_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Not Solved" Label:</strong><span>{{ module.labels_text.filters.not_solved_label || nothing_set  }}</span></li>
+    <li><strong>"Sort By" Label:</strong><span>{{ module.labels_text.filters.sort_by_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Most Recent" Label:</strong><span>{{ module.labels_text.filters.most_recent_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Oldest" Label:</strong><span>{{ module.labels_text.filters.oldest_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Most Upvotes" Label:</strong><span>{{ module.labels_text.filters.most_upvotes_label || nothing_set  }}</span></li>
+    <li><strong>&nbsp;&nbsp;- "Least Upvotes" Label:</strong><span>{{ module.labels_text.filters.least_upvotes_label || nothing_set  }}</span></li>
+  </ul>
+  <div class="settings-section">
+    <h3>Reply & Topic Form Submission Labels</h3>
+    <p>This section where the labels for form fields and related content are held</p>
+    <hr>
+    <ul class="options">
+      <li><strong>Topic Reply Form Header:</strong><span>{{ module.topic_reply_forms.topic_reply_form_header || nothing_set  }}</span></li>
+      <li><strong>Topic Reply Form Header for 1st Reply:</strong><span>{{ module.topic_reply_forms.topic_reply_form_header_first || nothing_set  }}</span></li>
+      <li><strong>Video Embed Field Label:</strong><span>{{ module.topic_reply_forms.video_embed_field_label || nothing_set  }}</span></li>
+      <li><strong>Video Embed Field Placeholder:</strong><span>{{ module.topic_reply_forms.video_embed_field_placeholder || nothing_set }}</span></li>
+      <li><strong>Submit Reply Button Label:</strong><span>{{ module.topic_reply_forms.submit_reply_button_label  || nothing_set }}</span></li>
+      <li><strong>Follow Topic Checkbox Label:</strong><span>{{ module.topic_reply_forms.follow_topic_checkbox_label  || nothing_set }}</span></li>
+
+    </ul>
+  </div>
+</div>
+<div class="settings-section">
+  <h3>Signup Popup & Login Prompt</h3>
+  <p>This section is the content that is displayed inline as well as on popups for logged out users. A Preview is below</p>
+  <hr>
+  <div class="b-modal__body">
+    <div class="modal-popup-text-container">
+      {{ module.messages_prompts.sign_up_or_login_prompt }}
+    </div>
+
+    <div class="signup-login-buttons">
+      <a class="btn btn--primary" href="https://{{ module.default_urls.signup_url|split("://")|last }}?signup_from={{content.absolute_url}}">{{ module.labels_text.sign_up_label }}</a>
+      <a class="btn btn--tertiary" href="https://{{request.domain}}/_hcms/mem/login?redirect_url={{content.absolute_url}}">{{ module.labels_text.login_label }}</a>
+    </div>
+  </div>
+</div>
+<div class="settings-section">
+  <h3>Signup Popup & Login Prompt</h3>
+  <p>This section is the content that is displayed inline as well as on popups for logged out users. A Preview is below</p>
+  <hr>
+  <h4>
+    Topic No Results Message
+  </h4>
+  {{ module.messages_prompts.topic_no_results_message }}
+</div>
+<div class="settings-section">
+  <h3>Topic Discussion Disabled Message</h3>
+  <p>This section if the topic has "disable replies" checked</p>
+  <hr>
+  {{ module.messages_prompts.topic_discussion_disabled_message }}
+</div>

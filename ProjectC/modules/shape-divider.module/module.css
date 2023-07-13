@@ -1,0 +1,26 @@
+.shape-divider {
+  position: relative;
+  width: 100%;
+  z-index: 3;
+}
+.custom-shape-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.shape--flipY {
+  transform: rotateY(180deg);
+}
+.shape--flipX {
+  transform: rotateX(180deg);
+}
+.shape--bottom {
+  top: unset;
+  bottom: 0;
+}
+.shape--flipY.shape--flipX {
+  transform: rotateX(180deg) rotateY(180deg); 
+}

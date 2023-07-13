@@ -1,0 +1,926 @@
+[ {
+  "id" : "85b51808-4511-b199-bb56-6d8c42652ea6",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "775518ed-7316-81cf-e9b7-0d9f86808744",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_lefrt", "Slide From Lefrt" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_from_bottom"
+  }, {
+    "id" : "98c82cbb-a8f1-8457-ff2f-21c6e8e9ae7a",
+    "name" : "question",
+    "display_width" : null,
+    "label" : "Question",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "5d3cbff6-3589-1193-2c5f-b1ada3167986",
+      "name" : "unopened",
+      "display_width" : null,
+      "label" : "Unopened",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "d962c855-5412-416e-bb46-aebe84a73a77",
+        "name" : "question_background_color_unopened",
+        "display_width" : null,
+        "label" : "Question Background Color (Unopened)",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "white"
+      }, {
+        "id" : "88dff069-7a68-d694-5cdd-65b7c588a38e",
+        "name" : "custom_question_bg_color_unopened",
+        "display_width" : null,
+        "label" : "Custom Question BG Color (Unopened)",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "d962c855-5412-416e-bb46-aebe84a73a77",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "2e50cdba-6efb-07e1-83ab-aba24147b593",
+        "name" : "question_text_color_unopened",
+        "display_width" : null,
+        "label" : "Question Text Color (Unopened)",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "black"
+      }, {
+        "id" : "1ae4b49f-1bd1-46fc-dd77-c782a8fc79aa",
+        "name" : "custom_question_text_color_unopened",
+        "display_width" : null,
+        "label" : "Custom Question Text Color (Unopened)",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "2e50cdba-6efb-07e1-83ab-aba24147b593",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "e8818936-337a-5bc2-797d-73e19d67511b",
+        "name" : "icon_color_unopened",
+        "display_width" : null,
+        "label" : "Icon Color (Unopened)",
+        "required" : true,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "665d4427-0d5a-6c0f-b431-cd50305f1b73",
+        "name" : "border_unopened",
+        "display_width" : null,
+        "label" : "Border (Unopened)",
+        "required" : false,
+        "locked" : false,
+        "allow_custom_border_sides" : false,
+        "type" : "border",
+        "default" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "question_background_color_unopened" : "white",
+        "custom_question_bg_color_unopened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "question_text_color_unopened" : "black",
+        "custom_question_text_color_unopened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "icon_color_unopened" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "border_unopened" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    }, {
+      "id" : "7057e649-7060-adb7-4e79-0477b5b72d64",
+      "name" : "opened",
+      "display_width" : null,
+      "label" : "Opened",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "63ba2f23-0cb2-9e6f-81c1-aba23e46e86c",
+        "name" : "question_background_color_opened",
+        "display_width" : null,
+        "label" : "Question Background Color (Opened)",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary_dark"
+      }, {
+        "id" : "ff83643c-0c50-33a0-df2a-eb92bbc5c174",
+        "name" : "custom_question_bg_color_opened",
+        "display_width" : null,
+        "label" : "Custom Question BG Color (Opened)",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "63ba2f23-0cb2-9e6f-81c1-aba23e46e86c",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#000000",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "73e66217-0a36-0333-b34f-8280f25eff71",
+        "name" : "question_text_color_opened",
+        "display_width" : null,
+        "label" : "Question Text Color (Opened)",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "white"
+      }, {
+        "id" : "d1568a8c-e9db-ffc0-cf2a-96d2c6963932",
+        "name" : "custom_question_text_color_opened",
+        "display_width" : null,
+        "label" : "Custom Question Text Color (Opened)",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "73e66217-0a36-0333-b34f-8280f25eff71",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#000000",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "a73c48ed-02a1-22a9-e740-485bfcfe0cce",
+        "name" : "icon_color_opened",
+        "display_width" : null,
+        "label" : "Icon Color (Opened)",
+        "required" : true,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "20abc2b9-2248-55fd-c707-8f703401831e",
+        "name" : "border_opened",
+        "display_width" : null,
+        "label" : "Border (Opened)",
+        "required" : false,
+        "locked" : false,
+        "allow_custom_border_sides" : false,
+        "type" : "border",
+        "default" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "question_background_color_opened" : "primary_dark",
+        "custom_question_bg_color_opened" : {
+          "color" : "#000000",
+          "opacity" : 100
+        },
+        "question_text_color_opened" : "white",
+        "custom_question_text_color_opened" : {
+          "color" : "#000000",
+          "opacity" : 100
+        },
+        "icon_color_opened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "border_opened" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "unopened" : {
+        "question_background_color_unopened" : "white",
+        "custom_question_bg_color_unopened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "question_text_color_unopened" : "black",
+        "custom_question_text_color_unopened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "icon_color_unopened" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "border_unopened" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      },
+      "opened" : {
+        "question_background_color_opened" : "primary_dark",
+        "custom_question_bg_color_opened" : {
+          "color" : "#000000",
+          "opacity" : 100
+        },
+        "question_text_color_opened" : "white",
+        "custom_question_text_color_opened" : {
+          "color" : "#000000",
+          "opacity" : 100
+        },
+        "icon_color_opened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "border_opened" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "fa9a8b7e-eb68-5a02-21fb-cc9561ae5f8e",
+    "name" : "answer",
+    "display_width" : null,
+    "label" : "Answer",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "42f49c79-bf36-2504-3ae2-58d7b6622c40",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Background color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "transparent"
+    }, {
+      "id" : "e49eb9d2-bb36-715c-8f45-f30279e6f4f7",
+      "name" : "custom_background_color",
+      "display_width" : null,
+      "label" : "Custom Background Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "42f49c79-bf36-2504-3ae2-58d7b6622c40",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 30
+      }
+    }, {
+      "id" : "170b63f2-e4fb-34fc-6a72-ce218ef821bf",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "black", "Black" ], [ "transparent", "Transparent" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "black"
+    }, {
+      "id" : "ee5df88d-a94a-e6d1-6d8c-a4746ccdbf81",
+      "name" : "custom_text_color",
+      "display_width" : null,
+      "label" : "Custom Text Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "170b63f2-e4fb-34fc-6a72-ce218ef821bf",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "background_color" : "transparent",
+      "custom_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 30
+      },
+      "text_color" : "black",
+      "custom_text_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_from_bottom",
+    "question" : {
+      "unopened" : {
+        "question_background_color_unopened" : "white",
+        "custom_question_bg_color_unopened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "question_text_color_unopened" : "black",
+        "custom_question_text_color_unopened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "icon_color_unopened" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "border_unopened" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      },
+      "opened" : {
+        "question_background_color_opened" : "primary_dark",
+        "custom_question_bg_color_opened" : {
+          "color" : "#000000",
+          "opacity" : 100
+        },
+        "question_text_color_opened" : "white",
+        "custom_question_text_color_opened" : {
+          "color" : "#000000",
+          "opacity" : 100
+        },
+        "icon_color_opened" : {
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        "border_opened" : {
+          "top" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "bottom" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "left" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          },
+          "right" : {
+            "style" : "solid",
+            "color" : "#113540",
+            "opacity" : 100,
+            "width" : {
+              "value" : 2,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    },
+    "answer" : {
+      "background_color" : "transparent",
+      "custom_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 30
+      },
+      "text_color" : "black",
+      "custom_text_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "27dc0fd0-d8b5-09a0-69d5-5b9afbef9ffa",
+  "name" : "faqs",
+  "display_width" : null,
+  "label" : "Faqs",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "2b041450-5dd8-0bc0-f0a0-170eb665258e",
+    "default" : 5
+  },
+  "children" : [ {
+    "id" : "2b041450-5dd8-0bc0-f0a0-170eb665258e",
+    "name" : "question",
+    "display_width" : null,
+    "label" : "Question",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor sit amet  consectetur?"
+  }, {
+    "id" : "1234db12-7092-da8f-2704-3261cca5ed42",
+    "name" : "answer",
+    "display_width" : null,
+    "label" : "Answer",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>"
+  }, {
+    "id" : "7f0364bc-9f20-374a-ff04-0b6879d016ba",
+    "name" : "supporting_content_type",
+    "display_width" : null,
+    "label" : "Supporting Content Type",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "video", "Video" ], [ "image", "Image" ], [ "none", "None" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "032305f3-78c4-3e24-5618-ca36e7b6313b",
+    "name" : "supporting_image",
+    "display_width" : null,
+    "label" : "Supporting Image",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7f0364bc-9f20-374a-ff04-0b6879d016ba",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/bunny.jpeg",
+      "alt" : "bunny",
+      "loading" : "lazy",
+      "width" : 1252,
+      "height" : 1252,
+      "max_width" : 1252,
+      "max_height" : 1252
+    }
+  }, {
+    "id" : "de3d9ce7-79b7-68fb-0d46-d18185aa6479",
+    "name" : "supporting_video",
+    "display_width" : null,
+    "label" : "Supporting Video",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7f0364bc-9f20-374a-ff04-0b6879d016ba",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "resizable" : true,
+    "show_preview" : true,
+    "show_advanced_options" : false,
+    "type" : "videoplayer"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "question" : "Lorem ipsum dolor sit amet  consectetur?",
+    "answer" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "supporting_content_type" : "none",
+    "supporting_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/bunny.jpeg",
+      "alt" : "bunny",
+      "loading" : "lazy",
+      "width" : 1252,
+      "height" : 1252,
+      "max_width" : 1252,
+      "max_height" : 1252
+    }
+  }, {
+    "question" : "Lorem ipsum dolor sit amet  consectetur?",
+    "answer" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "supporting_content_type" : "none",
+    "supporting_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/bunny.jpeg",
+      "alt" : "bunny",
+      "loading" : "lazy",
+      "width" : 1252,
+      "height" : 1252,
+      "max_width" : 1252,
+      "max_height" : 1252
+    }
+  }, {
+    "question" : "Lorem ipsum dolor sit amet  consectetur?",
+    "answer" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "supporting_content_type" : "none",
+    "supporting_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/bunny.jpeg",
+      "alt" : "bunny",
+      "loading" : "lazy",
+      "width" : 1252,
+      "height" : 1252,
+      "max_width" : 1252,
+      "max_height" : 1252
+    }
+  }, {
+    "question" : "Lorem ipsum dolor sit amet  consectetur?",
+    "answer" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "supporting_content_type" : "none",
+    "supporting_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/bunny.jpeg",
+      "alt" : "bunny",
+      "loading" : "lazy",
+      "width" : 1252,
+      "height" : 1252,
+      "max_width" : 1252,
+      "max_height" : 1252
+    }
+  }, {
+    "question" : "Lorem ipsum dolor sit amet  consectetur?",
+    "answer" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "supporting_content_type" : "none",
+    "supporting_image" : {
+      "size_type" : "auto",
+      "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/bunny.jpeg",
+      "alt" : "bunny",
+      "loading" : "lazy",
+      "width" : 1252,
+      "height" : 1252,
+      "max_width" : 1252,
+      "max_height" : 1252
+    }
+  } ]
+} ]

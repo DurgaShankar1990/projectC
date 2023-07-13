@@ -1,0 +1,227 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Resources
+  screenshotPath: ../images/final-template-previews/resources.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+{% dnd_area 'dnd_area'
+  label='Main section',
+  class='body-container body-container--blank'
+%}
+
+<!-- Hero -->
+{% dnd_section
+  vertical_alignment='MIDDLE',
+  full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_module
+    path="./../modules/hero",
+    offset=0,
+    width=12,
+    background_image={
+      "alt" : "resources",
+      "height" : 1353,
+      "loading" : "lazy",
+      "max_height" : 1353,
+      "max_width" : 2128,
+      "size_type" : "auto",
+      "src" : get_asset_url('./../images/placeholder-image.png'),
+      "width" : 2128
+    },
+    style={
+      "container_alignment" : "left",
+      "link" : {
+        "animation_effect" : "glow"
+      }
+    },
+    title="RESOURCES",
+    typewriter_effect=false
+  %}
+  {% end_dnd_module %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/resources",
+        offset=0,
+        width=12,
+        resources=[ {
+          "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+          "resource_image" : {
+            "alt" : "photo-1560278674-4a17b808730a",
+            "height" : 780,
+            "loading" : "lazy",
+            "max_height" : 780,
+            "max_width" : 1170,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 1170
+          },
+          "resource_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "resource_link_text" : "READ MORE",
+          "resource_name" : "Resource Name",
+          "tag" : [ "Case Studies", "Mobile Design" ],
+          "type" : "Guide"
+        }, {
+          "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+          "resource_image" : {
+            "alt" : "photo-1502404768591-f24d06b7a366",
+            "height" : 780,
+            "loading" : "lazy",
+            "max_height" : 780,
+            "max_width" : 1170,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 1170
+          },
+          "resource_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "resource_link_text" : "READ MORE",
+          "resource_name" : "Resource Name",
+          "tag" : [ "Website Design", "Mobile Design" ],
+          "type" : "eBook"
+        }, {
+          "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+          "resource_image" : {
+            "alt" : "photo-1512054502232-10a0a035d672-3",
+            "height" : 500,
+            "loading" : "lazy",
+            "max_height" : 500,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "resource_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "resource_link_text" : "READ MORE",
+          "resource_name" : "Resource Name",
+          "tag" : [ "SEO", "Social Media", "Website Design" ],
+          "type" : "PDF"
+        }, {
+          "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+          "resource_image" : {
+            "alt" : "photo-1526570207772-784d36084510-1",
+            "height" : 667,
+            "loading" : "lazy",
+            "max_height" : 667,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "resource_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "resource_link_text" : "READ MORE",
+          "resource_name" : "Resource Name",
+          "tag" : [ "Website Design", "Mobile Design" ],
+          "type" : "Blog"
+        }, {
+          "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+          "resource_image" : {
+            "alt" : "photo-1523329110005-297cf111f8de",
+            "height" : 749,
+            "loading" : "lazy",
+            "max_height" : 749,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "resource_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "resource_link_text" : "READ MORE",
+          "resource_name" : "Resource Name",
+          "tag" : [ "SEO", "Social Media", "Case Studies" ],
+          "type" : "Video"
+        }, {
+          "resource_description" : "A short paragraph that gives a little bit more info about the resource. You don't want this paragraph to be too long, so that it doesn't begin to look odd in a small card, you just want to entice the reader into clicking...",
+          "resource_image" : {
+            "alt" : "photo-1483032469466-b937c425697b-1",
+            "height" : 780,
+            "loading" : "lazy",
+            "max_height" : 780,
+            "max_width" : 1170,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 1170
+          },
+          "resource_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "resource_link_text" : "READ MORE",
+          "resource_name" : "Resource Name",
+          "tag" : [ "SEO" ],
+          "type" : "Podcast"
+        } ],
+        style={
+          "text_above_tags" : {
+            "corner_radius" : 3
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}

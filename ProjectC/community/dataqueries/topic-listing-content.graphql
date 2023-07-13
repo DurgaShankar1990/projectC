@@ -1,0 +1,53 @@
+# label: "Topic Listing Content"
+# $id: {{ request.contact.contact_vid|default("0") }}
+
+query topicListingContent($id: String!) {
+  CRM {
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      associations {
+        p_topic_collection__author(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+            name
+            category
+            hs_createdate
+            topic_slug
+            submitted_by_name
+            submitted_by_member_id
+            status
+            tag
+            upvote_count
+            list_ids
+            hs_object_id
+            number_of_replies
+            number_of_solutions
+          }
+          total
+        }
+        p_topic_collection__follower(limit: 500) {
+          items {
+            _metadata {
+              id
+            }
+            name
+            category
+            hs_createdate
+            topic_slug
+            submitted_by_name
+            submitted_by_member_id
+            status
+            tag
+            upvote_count
+            list_ids
+            hs_object_id
+            number_of_replies
+            number_of_solutions
+          }
+          total
+        }
+      }
+    }
+  }
+}

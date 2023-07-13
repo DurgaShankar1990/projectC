@@ -1,0 +1,114 @@
+{% if module.type_of_posts_to_pull == 'popular' %}
+{% set timeframe = module.timeframe_of_popularity %}
+{% set posts = blog_popular_posts(module.blog, module.number_of_posts, timeframe) %}
+{% else %}
+{% set posts = blog_recent_posts(module.blog, module.number_of_posts) %}
+{% endif %}
+{% set tags_icon = '<svg class="tags-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tags" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z" class=""></path></svg>' %}
+
+{% require_css %}
+<style>
+  #module--{{ name }} h4 {
+    margin-top: 0;
+  }
+  #module--{{ name }} .blog-card__tags {
+    color: {{ theme.global_colors.primary_dark.color }};
+  }
+  #module--{{ name }} .blog-card__tags svg {
+    fill: {{ theme.global_colors.primary_dark.color }};
+  }
+  #module--{{ name }} .blog-card:hover .blog-card__header img {
+    min-height: {{ module.style.hover.image_zoom_percentage + 100}}%;
+    min-width: {{ module.style.hover.image_zoom_percentage + 100}}%;
+  }
+  #module--{{ name }} .blog-card__wrapper {
+    width: calc(100% / {{ module.style.spacing.cards_per_row }} - {{ module.style.spacing.space_between_cards }}px);
+    margin: {{ module.style.spacing.space_between_cards / 2 }}px;
+  }
+  #module--{{ name }} .blog-card {
+    border-radius: {{ module.style.card_styles.border_radius }}px;
+    width: 100%;
+  }
+  #module--{{ name }} .blog-card__header {
+    height: {{ module.style.card_styles.image_height }}px;
+  }
+  #module--{{ name }} .blog-card__content {
+    padding-top: {{ module.style.spacing.text_spacing.padding.top.value }}{{ module.style.spacing.text_spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.text_spacing.padding.left.value }}{{ module.style.spacing.text_spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.text_spacing.padding.right.value }}{{ module.style.spacing.text_spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.text_spacing.padding.bottom.value }}{{ module.style.spacing.text_spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.text_spacing.margin.top.value }}{{ module.style.spacing.text_spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.text_spacing.margin.bottom.value }}{{ module.style.spacing.text_spacing.margin.bottom.units }};
+  }
+  @media(max-width: 1024px) {
+    #module--{{ name }} .blog-card__wrapper {
+      width: calc(100% / {{ module.style.spacing.cards_per_row_tablet }} - {{ module.style.spacing.space_between_cards }}px);
+    }
+  }
+  @media(max-width: 767px) {
+    #module--{{ name }} .blog-card__wrapper {
+      width: 100%;
+      margin: 1rem 0;
+    }
+    #module--{{ name }} .blog-card {
+      margin: 0;
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="module--{{ name }}" class="blog-cards">
+  {% for post in posts %}
+  <div class="blog-card__wrapper animate animate--{{ module.style.animation }}">
+    <a href="{{ post.absolute_url }}" 
+       class="blog-card  matchHeight
+              {% if module.style.card_styles.add_shadow_to_cards %}
+              box-shadow
+              {% endif %}"
+       data-tilt='true'
+       data-tilt-max='{{ module.style.hover.tilt_amount }}'
+       {% if module.style.hover.glare_effect %}
+       data-tilt-glare data-tilt-max-glare="{{ module.style.hover.glare_amount }}"
+       {% endif %}
+       data-tilt-scale="{{ module.style.hover.scale_amount }}">
+      <div class="blog-card__header">
+        <img loading="lazy" src="{{ resize_image_url(post.featured_image, 0, 0, 600) }}" alt="{{ post.featured_image_alt_text }}" />
+      </div>
+      <div class="blog-card__content">
+        <div class="blog-card__body">
+          <h4>{{ post.name }}</h4>
+          <p>
+            {% if post.post_summary %}
+            {{ post.post_summary|striptags|truncate(100, '') }}
+            {% else %}
+            {{ post.post_body|striptags|truncate(100, '') }}
+            {% endif %}
+          </p>
+        </div>
+        <div class="blog-card__bottom">
+          {% if module.include_tags %}
+          <div class="blog-card__tags">
+            {{ tags_icon }} 
+            <div style="width:calc(100% - 20px);">
+              {% for tag in post.topic_list %}{{ tag }}{% unless loop.last %}, {% endunless %}{% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if module.include_author_details %}
+          <div class="blog-card__author">
+            {% if post.blog_author.avatar %}
+            <img width="100" src="{{ post.blog_author.avatar }}" alt="{{ post.blog_author.display_name }}" />
+            {% endif %}
+            <div class="blog-card__author-info">
+              <h5>{{ post.blog_author.display_name }}</h5>
+              <small>{{ datetimeformat(post.publish_date, '%B %e, %Y') }} </small>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,182 @@
+[ {
+  "id" : "d573bff8-8c62-d207-2bcc-2f60cfff906c",
+  "name" : "hubdbtable_field",
+  "display_width" : null,
+  "label" : "HubDB table",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable",
+  "default" : ""
+}, {
+  "id" : "8bf6e5e6-5b7c-6354-c69c-09d623c97cdc",
+  "name" : "limit_results",
+  "display_width" : null,
+  "label" : "Limit Results",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 3,
+  "max" : 100,
+  "step" : 1,
+  "type" : "number",
+  "default" : 5
+}, {
+  "id" : "ed9e0bf7-954a-7309-b322-2c06164fb752",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "0ec49027-68dd-c968-77b0-44e2ff2024c3",
+    "name" : "card_background",
+    "display_width" : null,
+    "label" : "Card Background",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "36c0447b-3664-3dfb-2600-e0a602804437",
+    "name" : "border",
+    "display_width" : null,
+    "label" : "Border",
+    "required" : false,
+    "locked" : false,
+    "allow_custom_border_sides" : false,
+    "type" : "border",
+    "default" : {
+      "bottom" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      },
+      "left" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      },
+      "right" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      },
+      "top" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "49e939aa-838f-39a9-e824-18b3c7ed6779",
+    "name" : "font_size",
+    "display_width" : null,
+    "label" : "Font-Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0.6,
+    "max" : 2,
+    "step" : 0.1,
+    "suffix" : "rem",
+    "type" : "number",
+    "default" : 1.4
+  }, {
+    "id" : "1ed1166e-ac6c-95b7-e427-6bdbe65f8b33",
+    "name" : "font_color",
+    "display_width" : null,
+    "label" : "Font Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "card_background" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "border" : {
+      "bottom" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      },
+      "left" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      },
+      "right" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      },
+      "top" : {
+        "style" : "solid",
+        "color" : "#999999",
+        "opacity" : 100,
+        "width" : {
+          "value" : 1,
+          "units" : "px"
+        }
+      }
+    },
+    "font_size" : 1.4,
+    "font_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "a5f60afa-5f8b-3a29-b536-89f34d12fe96",
+  "name" : "tags_or_categories",
+  "display_width" : null,
+  "label" : "Tags or Categories",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "category", "Categories" ], [ "tag", "Tags" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "category"
+} ]

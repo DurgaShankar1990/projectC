@@ -1,0 +1,934 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Home
+screenshotPath: ../images/final-template-previews/homepage.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+
+{% dnd_area 'dnd_area'
+  label='Main section', 
+  class='body-container body-container--home'
+%}
+
+<!-- Hero -->
+{% dnd_section
+full_width=true,
+    vertical_alignment='MIDDLE'
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/hero",
+        offset=0,
+        width=12,
+        background_image={
+          "alt" : "computer-bg_1_1600x",
+          "height" : 1058,
+          "loading" : "lazy",
+          "max_height" : 1058,
+          "max_width" : 1600,
+          "size_type" : "auto",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 1600
+        },
+        helper_text="This theme is built on three key concepts: Power, Simplicity, and Versatility. We worked diligently on the Omega theme, so you don't have to... giving you more time for what's important.",
+        style={
+          "background" : {
+            "overlay_color" : "primary_dark"
+          },
+          "container_alignment" : "center",
+          "full_screen" : false,
+          "mobile" : {
+            "mobile_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 80
+                },
+                "left" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "right" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 80
+                }
+              }
+            }
+          },
+          "spacing" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 200
+              },
+              "left" : {
+                "units" : "rem",
+                "value" : 1
+              },
+              "right" : {
+                "units" : "rem",
+                "value" : 1
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 160
+              }
+            }
+          },
+          "text_alignment" : "center",
+          "text_color" : "white",
+          "text_shadow" : false
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+<!-- Bar Chart -->
+{% dnd_section %}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/bar-chart",
+        offset=0,
+        width=12,
+        charts=[ {
+          "bars" : [ {
+            "amount" : 98,
+            "bar_label" : "Omega",
+            "color" : {
+              "color" : "#eb9838",
+              "opacity" : 100
+            }
+          }, {
+            "amount" : 63,
+            "bar_label" : "Our Competitors",
+            "color" : {
+              "color" : "#CCCCCC",
+              "opacity" : 100
+            }
+          } ],
+          "display_as_percentage" : false,
+          "maximum_amount" : 100,
+          "subtitle" : "Omega is FAST",
+          "title" : "Page Speed"
+        }, {
+          "bars" : [ {
+            "amount" : 50,
+            "bar_label" : "Omega",
+            "color" : {
+              "color" : "#a6e6ff",
+              "opacity" : 100
+            }
+          }, {
+            "amount" : 42,
+            "bar_label" : "Our Competitors",
+            "color" : {
+              "color" : "#CCCCCC",
+              "opacity" : 100
+            }
+          } ],
+          "display_as_percentage" : false,
+          "maximum_amount" : 44,
+          "subtitle" : "Omega is FULL",
+          "title" : "# of Modules"
+        }, {
+          "bars" : [ {
+            "amount" : 100,
+            "bar_label" : "Omega",
+            "color" : {
+              "color" : "#fc91bd",
+              "opacity" : 100
+            }
+          }, {
+            "amount" : 70,
+            "bar_label" : "Our Competitors",
+            "color" : {
+              "color" : "#CCCCCC",
+              "opacity" : 100
+            }
+          } ],
+          "display_as_percentage" : true,
+          "maximum_amount" : 100,
+          "subtitle" : "Omega is CUSTOMIZABLE",
+          "title" : "Customizable"
+        } ],
+        style={
+          "chart" : {
+            "border_radius" : 20,
+            "chart_background_color" : "primary_dark"
+          }
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+    vertical_alignment='MIDDLE',
+    max_width=900,
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "80px"
+    }
+  }
+%}
+{% dnd_column
+    offset=0,
+    width=5
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/omega-rich-text",
+        offset=0,
+        width=12,
+        style={
+          "animation" : "slide_from_left",
+          "background_color" : "primary_light",
+          "mobile" : {
+            "left_margin" : 0,
+            "right_margin" : 0,
+            "spacing" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "left" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "right" : {
+                  "units" : "rem",
+                  "value" : 1
+                },
+                "top" : {
+                  "units" : "rem",
+                  "value" : 1
+                }
+              }
+            }
+          },
+          "right_margin" : -160,
+          "spacing" : {
+            "padding" : {
+              "bottom" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "left" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "right" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "top" : {
+                "units" : "rem",
+                "value" : 2
+              }
+            }
+          },
+          "text_color" : "primary_dark"
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% dnd_column
+    offset=5,
+    width=7
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/omega-image",
+        offset=0,
+        width=12,
+        image={
+          "alt" : "photo-1596208091591-fc5c2f4a1022",
+          "height" : 750,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 500
+        },
+        style={
+          "animation" : "fade_from_bottom"
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section %}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/flip-cards",
+        offset=0,
+        width=12,
+        cards=[ {
+          "back" : {
+            "highlight_text" : "",
+            "image" : {
+              "alt" : "computer",
+              "height" : 781,
+              "loading" : "lazy",
+              "max_height" : 781,
+              "max_width" : 1171,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1171
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          },
+          "front" : {
+            "highlight_text" : "20% Off",
+            "image" : {
+              "alt" : "computer",
+              "height" : 781,
+              "loading" : "lazy",
+              "max_height" : 781,
+              "max_width" : 1171,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1171
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          }
+        }, {
+          "back" : {
+            "highlight_text" : "",
+            "image" : {
+              "alt" : "watch",
+              "height" : 798,
+              "loading" : "lazy",
+              "max_height" : 798,
+              "max_width" : 1099,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1099
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          },
+          "front" : {
+            "highlight_text" : "20% Off",
+            "image" : {
+              "alt" : "watch",
+              "height" : 798,
+              "loading" : "lazy",
+              "max_height" : 798,
+              "max_width" : 1099,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1099
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          }
+        }, {
+          "back" : {
+            "highlight_text" : "",
+            "image" : {
+              "alt" : "tablet",
+              "height" : 780,
+              "loading" : "lazy",
+              "max_height" : 780,
+              "max_width" : 1170,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1170
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          },
+          "front" : {
+            "highlight_text" : "20% Off",
+            "image" : {
+              "alt" : "tablet",
+              "height" : 780,
+              "loading" : "lazy",
+              "max_height" : 780,
+              "max_width" : 1170,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1170
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          }
+        } ]
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/shape-divider",
+        offset=0,
+        width=12,
+        height=113,
+        shape="tilt",
+        shape_color={
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)"
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/simple-cards",
+        offset=0,
+        width=12,
+        cards=[ {
+          "card_specific_styles" : {
+            "background_color" : "primary_dark",
+            "background_image" : {
+              "alt" : "card-bg",
+              "height" : 800,
+              "loading" : "lazy",
+              "max_height" : 800,
+              "max_width" : 800,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 800
+            },
+            "background_type" : "color",
+            "overlay_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 60
+            },
+            "text_color" : "white"
+          },
+          "card_text" : "<p><strong>Dynamic</strong></p>\n<p>Tons of options to make your brand and content stand out!</p>",
+          "field_group" : {
+            "background_color" : "primary_dark",
+            "background_image" : {
+              "alt" : "green-bg",
+              "height" : 707,
+              "loading" : "lazy",
+              "max_height" : 707,
+              "max_width" : 1131,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1131
+            },
+            "background_type" : "color",
+            "custom_background_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "overlay_color" : {
+              "color" : "#000000",
+              "opacity" : 60
+            },
+            "text_color" : "white"
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          }
+        }, {
+          "card_specific_styles" : {
+            "background_color" : "primary_light",
+            "background_image" : {
+              "alt" : "Holy Background",
+              "height" : 480,
+              "loading" : "lazy",
+              "max_height" : 480,
+              "max_width" : 852,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 852
+            },
+            "background_type" : "color",
+            "overlay_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 60
+            },
+            "text_color" : "primary_dark"
+          },
+          "card_text" : "<p><strong>Fast</strong></p>\n<p>Loading your pages in under two seconds. Far beyond the industry standard.</p>",
+          "field_group" : {
+            "background_color" : "primary_dark",
+            "background_image" : {
+              "alt" : "green-bg",
+              "height" : 707,
+              "loading" : "lazy",
+              "max_height" : 707,
+              "max_width" : 1131,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1131
+            },
+            "background_type" : "color",
+            "custom_background_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "overlay_color" : {
+              "color" : "#000000",
+              "opacity" : 60
+            },
+            "text_color" : "white"
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "#",
+              "type" : "EXTERNAL"
+            }
+          }
+        }, {
+          "card_specific_styles" : {
+            "background_color" : "secondary_dark",
+            "background_image" : {
+              "alt" : "card-bg",
+              "height" : 800,
+              "loading" : "lazy",
+              "max_height" : 800,
+              "max_width" : 800,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 800
+            },
+            "background_type" : "color",
+            "overlay_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 60
+            },
+            "text_color" : "white"
+          },
+          "card_text" : "<p><strong>Customizable<br></strong></p>\n<p>Each module has tons of options, allowing you to really make your website unique.</p>",
+          "field_group" : {
+            "background_color" : "primary_dark",
+            "background_image" : {
+              "alt" : "green-bg",
+              "height" : 707,
+              "loading" : "lazy",
+              "max_height" : 707,
+              "max_width" : 1131,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1131
+            },
+            "background_type" : "color",
+            "custom_background_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "overlay_color" : {
+              "color" : "#000000",
+              "opacity" : 60
+            },
+            "text_color" : "white"
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          }
+        }, {
+          "card_specific_styles" : {
+            "background_color" : "secondary_light",
+            "background_image" : {
+              "alt" : "card-bg",
+              "height" : 800,
+              "loading" : "lazy",
+              "max_height" : 800,
+              "max_width" : 800,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 800
+            },
+            "background_type" : "color",
+            "overlay_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 60
+            },
+            "text_color" : "primary_dark"
+          },
+          "card_text" : "<p><strong>Professional</strong></p>\n<p>The entire theme has been thoroughly QC'd in order to ensure that everything is bug-free.&nbsp;</p>",
+          "field_group" : {
+            "background_color" : "primary_dark",
+            "background_image" : {
+              "alt" : "green-bg",
+              "height" : 707,
+              "loading" : "lazy",
+              "max_height" : 707,
+              "max_width" : 1131,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1131
+            },
+            "background_type" : "color",
+            "custom_background_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "overlay_color" : {
+              "color" : "#000000",
+              "opacity" : 60
+            },
+            "text_color" : "white"
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          }
+        } ],
+        style={
+          "glare_amount" : 0.3,
+          "spacing" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 8
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 8
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "left" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "right" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "top" : {
+                "units" : "rem",
+                "value" : 2
+              }
+            }
+          },
+          "tilt_amount" : 4
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section  
+  full_width=true,
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/shape-divider",
+        offset=0,
+        width=12,
+        flip_shape_horizontally=true,
+        flip_shape_vertically=true,
+        shape="arrow",
+        shape_color={
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        shape_position="top"
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(202, 109, 2, 1)", "rgba(246, 178, 107, 1)" ],
+    "direction" : "to bottom"
+  }
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/faqs",
+        offset=0,
+        width=12
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+full_width=true,
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/shape-divider",
+        offset=0,
+        width=12,
+        height=124,
+        shape="opaque_waves",
+        shape_color={
+          "color" : "#F6B26B",
+          "opacity" : 100
+        }
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)"
+%}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/blog-cards",
+        offset=0,
+        width=12
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section %}
+{% dnd_column
+    offset=0,
+    width=12
+  %}
+{% dnd_row %}
+{% dnd_module
+        path="./../modules/testimonial-slider",
+        offset=0,
+        width=12,
+        styles={
+          "hover" : {
+            "tilt_amount" : 2
+          },
+          "slider" : {
+            "enable_slider" : true
+          }
+        },
+        testimonials=[ {
+          "image" : {
+            "alt" : "person-2",
+            "height" : 333,
+            "loading" : "lazy",
+            "max_height" : 333,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "person_description" : "Web Developer at Impulse Creative",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "image"
+        }, {
+          "image" : {
+            "alt" : "person-3",
+            "height" : 664,
+            "loading" : "lazy",
+            "max_height" : 664,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "person_description" : "Web Developer at Impulse Creative",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "image"
+        }, {
+          "image" : {
+            "alt" : "person-5",
+            "height" : 750,
+            "loading" : "lazy",
+            "max_height" : 750,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "person_description" : "Web Developer at Impulse Creative",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "image"
+        }, {
+          "image" : {
+            "alt" : "person-2",
+            "height" : 333,
+            "loading" : "lazy",
+            "max_height" : 333,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "person_description" : "Web Developer at Impulse Creative",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "image"
+        }, {
+          "image" : {
+            "alt" : "person-2",
+            "height" : 333,
+            "loading" : "lazy",
+            "max_height" : 333,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "person_description" : "Web Developer at Impulse Creative",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "image"
+        }, {
+          "image" : {
+            "alt" : "person-2",
+            "height" : 333,
+            "loading" : "lazy",
+            "max_height" : 333,
+            "max_width" : 500,
+            "size_type" : "auto",
+            "src" : get_asset_url('./../images/placeholder-image.png'),
+            "width" : 500
+          },
+          "person_description" : "Web Developer at Impulse Creative",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "image"
+        } ]
+      %}
+{% end_dnd_module %}
+{% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% end_dnd_area %}
+{% endblock body %}
+
+

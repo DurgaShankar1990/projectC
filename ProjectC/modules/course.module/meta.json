@@ -1,0 +1,23 @@
+{
+  "global" : false,
+  "inline_help_text" : "View our helper video in the documentation. <br>\n<a href=\"https://marketplace.impulsecreative.com/omega/documentation#module--module_16440959790084\">View</a>",
+  "icon" : "fontawesome-5.14.0:Chalkboard%20Teacher:SOLID",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 96392566039,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/magnific.css",
+    "name" : "magnific.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/magnific.js",
+    "name" : "magnific.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/jQuery.js",
+    "name" : "jQuery.js"
+  } ],
+  "label" : "Course",
+  "is_available_for_new_content" : false
+}

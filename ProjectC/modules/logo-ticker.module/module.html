@@ -1,0 +1,92 @@
+{% require_css %}
+<style>
+  #{{ name }} img {
+    height: {{ module.style.image_height }}px;
+    width: auto;
+    {% if module.style.grayscale_images %}
+    filter: grayscale(100%);
+    {% endif %}
+  }
+  #{{ name }} .logo-slider__logo-wrapper {
+    {{ module.style.spacing.css }};
+  }
+  #{{ name }} .flickity-viewport {
+    width: 100%;
+  }
+
+</style>
+{% end_require_css %}
+
+<div id="{{ name }}" class="logo-slider">
+  {% for item in module.images %}
+  <div class="logo-slider__logo-wrapper">
+    <img height="{{ module.style.image_height }}" loading="lazy" src="{{ item.src }}" alt="{{ item.alt }}">
+  </div>
+  {% endfor %}
+</div>
+
+{% require_js %}
+<script>
+
+  $(document).ready(function() {
+    let tickerSpeed_{{ name }} = {{ module.slider_speed }};
+
+    let flickity = null;
+    let isPaused = false;
+    const slideshowEl = document.querySelector('#{{ name }}');
+
+    const update = () => {
+      if (isPaused) return;
+      if (flickity.slides) {
+        flickity.x = (flickity.x - tickerSpeed_{{ name }}) % flickity.slideableWidth;
+        flickity.selectedIndex = flickity.dragEndRestingSelect();
+        flickity.updateSelectedSlide();
+        flickity.settle(flickity.x);
+      }
+      window.requestAnimationFrame(update);
+    };
+
+    flickity = new Flickity(slideshowEl, {
+      autoPlay: false,
+      {% if module.display_arrows %}
+      prevNextButtons: true,
+      {% else %}
+      prevNextButtons: false,
+      {% endif %}
+      pageDots: false,
+      draggable: true,
+      wrapAround: true,
+      selectedAttraction: 0.015,
+      friction: 0.25,
+      imagesLoaded: true
+    });
+    flickity.x = 0;
+    
+    {% if module.pause_on_hover %}
+    const pause = () => {
+      isPaused = true;
+    };
+
+    const play = () => {
+      if (isPaused) {
+        isPaused = false;
+        window.requestAnimationFrame(update);
+      }
+    };
+    slideshowEl.addEventListener('mouseenter', pause, false);
+    slideshowEl.addEventListener('focusin', pause, false);
+    slideshowEl.addEventListener('mouseleave', play, false);
+    slideshowEl.addEventListener('focusout', play, false);
+    {% endif %}
+
+
+    flickity.on('dragStart', () => {
+      isPaused = true;
+    });
+
+    update();
+  });
+</script>
+{% end_require_js %}
+
+

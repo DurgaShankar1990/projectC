@@ -1,0 +1,188 @@
+[ {
+  "id" : "76657426-1f61-4d6c-ce42-ed80ae8b8cdb",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2efcd944-e3cd-bbfa-9167-419c7b76ea61",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade_in", "Fade In" ], [ "fade_from_top", "Fade From Top" ], [ "fade_from_bottom", "Fade From Bottom" ], [ "slide_from_left", "Slide From Left" ], [ "slide_from_right", "Slide From Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fade_in"
+  }, {
+    "id" : "9c231310-bd7c-cca6-d217-db9037a78585",
+    "name" : "image_size",
+    "display_width" : null,
+    "label" : "Image Size",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "set_height", "Set Height" ], [ "keep_dimensions", "Keep Dimensions" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "keep_dimensions"
+  }, {
+    "id" : "e2379721-0b52-b187-e2a2-29346d21c489",
+    "name" : "image_height",
+    "display_width" : null,
+    "label" : "Image Height",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9c231310-bd7c-cca6-d217-db9037a78585",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "set_height",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "text",
+    "min" : 30,
+    "step" : 1,
+    "type" : "number",
+    "default" : 400
+  }, {
+    "id" : "7678bd4d-6f53-c169-4199-89ccde72d113",
+    "name" : "border_radius",
+    "display_width" : null,
+    "label" : "Corner Radius",
+    "inline_help_text" : "This number will change how rounded the corners are. The higher the number, the more rounded the corners.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "828be42c-58f3-ea9a-1bf4-72880c31f474",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "box-shadow", "Regular" ], [ "shadow--offset", "Offset" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "25af05bd-797c-0386-8f26-f59ba75cd215",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "828be42c-58f3-ea9a-1bf4-72880c31f474",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "shadow--offset",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#DEF0F7",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "b5f36d20-86bf-b0fd-49af-b0c319a42524",
+    "name" : "shadow_position",
+    "display_width" : null,
+    "label" : "Shadow Position",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "828be42c-58f3-ea9a-1bf4-72880c31f474",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "shadow--offset",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "top_left", "Top Left" ], [ "top_right", "Top Right" ], [ "bottom_left", "Bottom Left" ], [ "bottom_right", "Bottom Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "top_left"
+  }, {
+    "id" : "07fbdfa5-a526-0a6a-885a-417d2b0d8126",
+    "name" : "offset_amount",
+    "display_width" : null,
+    "label" : "Offset Amount",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "828be42c-58f3-ea9a-1bf4-72880c31f474",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "shadow--offset",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "slider",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 50
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : "fade_in",
+    "image_size" : "keep_dimensions",
+    "image_height" : 400,
+    "border_radius" : 20,
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#DEF0F7",
+      "opacity" : 100
+    },
+    "shadow_position" : "top_left",
+    "offset_amount" : 50
+  }
+}, {
+  "id" : "4fbb8819-eb22-8977-f5ff-d91a0e1f1131",
+  "name" : "image",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "exact",
+    "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Instagram_Marketing_Basketball.jpg",
+    "alt" : "Instagram_Marketing_Basketball",
+    "loading" : "lazy",
+    "width" : 1000,
+    "height" : 728,
+    "max_width" : 1000,
+    "max_height" : 728
+  }
+} ]

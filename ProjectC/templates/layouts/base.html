@@ -1,0 +1,89 @@
+<!--
+templateType: none
+-->
+{% from '../../community/imports/object_associations.html' import object_schema as object_schema1, export_to_template_context=true %} 
+<!doctype html>
+<!--- cohortinstaller {{ get_asset_url('/Project C PromoSite/css/launchpad-installer-styles.css') }}--->
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title || pageTitle %}<title>{{ page_meta.html_title || pageTitle }}</title>{% endif %}
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+    {#{{ require_js(get_asset_url("./../../js/jQuery.js")) }}#}
+    {% require_js %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% end_require_js %}
+    {{ require_css(get_asset_url("../../css/main.css")) }}
+    {# This is intended to be used if a template requires template specific style sheets #}
+    {% if template_css %}
+    {{ require_css(get_asset_url(template_css)) }}
+    {% endif %}
+    {# Lity Modal #}
+    {{ require_css(get_asset_url("../../css/lity.min.css") ) }}
+    {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css" integrity="sha512-UiVP2uTd2EwFRqPM4IzVXuSFAzw+Vo84jxICHVbOA1VZFUyr4a6giD9O3uvGPFIuB2p3iTnfDVLnkdY7D/SJJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> #}
+    {{ require_css(get_asset_url("../../css/theme-overrides.css")) }}
+    {#{{ require_js( get_asset_url('/Project C/js/jquery.validate.min.js') )}}#}
+    {% require_js %}
+    {#<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/additional-methods.js"></script>#}
+  {% end_require_js %}
+    {# To see a full list of what is included via standard_header_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    {% if request.query_dict.hash %}
+      {{ (request.query_dict.hash ~ hub_id)|md5 }} | 
+      {{ hub_id }}
+    {% endif %}
+    {%- module "cohortium_settings" path="../../community/modules/Cohortium Settings Area", label="Cohortium Settings Area", export_to_template_context=True -%}
+    {%- set cs = widget_data.cohortium_settings -%}
+    {%- module "user_login_signip_modal_content" path="/Project C/community/modules/user-login-signup-modal-content", label="user-login-signup-modal-content", export_to_template_context=True -%}
+
+    <div class="body-wrapper {{ builtin_body_classes }}">
+      {% block header %}
+      {% global_partial path='../partials/header.html' %}
+      {% endblock header %}
+
+      {# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+
+      <main id="main-content" class="body-container-wrapper">
+        {% block body %}
+        {% endblock body %}
+      </main>
+
+      {% block footer %}
+      {% global_partial path='../partials/footer.html' %}
+      {% endblock footer %}
+    </div>
+
+    {# START Global Lity Modals #}
+    {% if request_contact.is_logged_in  %}
+    {% else %}
+    <div id="modal__not-logged-in" class="b-modal lity-hide">
+      <div class="b-modal__body">
+        <div class="modal-popup-text-container">
+          {{ cs.messages_prompts.sign_up_or_login_prompt }}
+        </div>
+
+        <div class="signup-login-buttons">
+          <a class="btn btn--primary" href="https://{{ cs.default_urls.signup_url|split("://")|last }}?signup_from={{content.absolute_url}}">{{ cs.labels_text.sign_up_label }}</a>
+          <a class="btn btn--tertiary" href="https://{{request.domain}}/_hcms/mem/login?redirect_url={{content.absolute_url}}">{{ cs.labels_text.login_label }}</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {# END Global Lity Modals #}
+    {{ require_js(get_asset_url("./../../js/matchHeight.js")) }}
+    {{ require_js(get_asset_url('../../js/main.js')) }}
+    <!-- Lity JS code -->
+    {{ require_js(get_asset_url("../../js/lity.min.js")) }}
+    {# <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js" integrity="sha512-UU0D/t+4/SgJpOeBYkY+lG16MaNF8aqmermRIz8dlmQhOlBnw6iQrnt4Ijty513WB3w+q4JO75IX03lDj6qQNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> #}
+
+    {# To see a full list of what is included via standard_footer_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ standard_footer_includes }}
+    {% if request.query_dict.debug %}
+    lang="{{ html_lang }}" {{ html_lang_dir }}<br>
+    {{ group.language.languageTag }}
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,18 @@
+# label: "Member Sidebar"
+# $id: {{ request.contact.contact_vid|default("0") }}
+
+query memberSidebar($id: String!) {
+  CRM {
+    contact(uniqueIdentifier: "hs_object_id", uniqueIdentifierValue: $id) {
+      associations {
+        p_member_profile_collection__profile_owner(limit: 500) {
+          items {
+            hs_object_id
+            username
+          }
+          total
+        }
+      }
+    }
+  }
+}

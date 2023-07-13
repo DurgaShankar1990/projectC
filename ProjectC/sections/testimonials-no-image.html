@@ -1,0 +1,52 @@
+<!--
+  templateType: section
+  label: Testimonials - No Image
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/testimonials-no-image.png
+  description: "Testimonials section with a gradient and no images for the testimonials."
+-->
+{% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(247, 226, 202, 1)", "rgba(222, 240, 247, 1)" ],
+    "direction" : "to bottom"
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/omega/modules/testimonial-slider",
+        offset=0,
+        width=12,
+        testimonials=[ {
+          "image" : {
+            "src" : ""
+          },
+          "person_description" : "",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "none"
+        }, {
+          "image" : {
+            "src" : ""
+          },
+          "person_description" : "",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "none"
+        }, {
+          "image" : {
+            "src" : ""
+          },
+          "person_description" : "",
+          "person_name" : "Stephen Brown",
+          "quote" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+          "visual_content" : "none"
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

@@ -1,0 +1,88 @@
+<!-- To Do:
+Mobile Options
+-->
+<style>
+  {% scope_css %}
+  .simple-hero {
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin-top: {{ module.style.spacing.margin.top.value ~ module.style.spacing.margin.top.units }};
+    padding: {{ module.style.spacing.padding.top.value ~ module.style.spacing.padding.top.units }} 
+      {{ module.style.spacing.padding.right.value ~ module.style.spacing.padding.right.units }}
+      {{ module.style.spacing.padding.bottom.value ~ module.style.spacing.padding.bottom.units }} 
+      {{ module.style.spacing.padding.left.value ~ module.style.spacing.padding.left.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value ~ module.style.spacing.margin.bottom.units }};
+  }
+  .simple-hero__wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    {% if module.style.alignment_field.vertical_align == 'MIDDLE' %}
+    align-items: center;
+    {% elif module.style.alignment_field.vertical_align == 'RIGHT' %}
+    align-items: flex-end;
+    {% endif %}
+    {% if module.style.alignment_field.horizontal_align == 'CENTER' %}
+    justify-content: center;
+    text-align: center;
+    {% elif module.style.alignment_field.horizontal_align == 'RIGHT' %}
+    justify-content: flex-end;
+    text-align: right;
+    {% else %}
+    text-align: left;
+    {% endif %}
+  }
+  .simple-hero__container {
+    max-width: {{ module.style.text_width }}px;
+    height: fit-content;
+    text-align: inherit;
+    position: relative;
+    z-index: 2;
+  }
+  {% end_scope_css %}
+</style>
+
+<div class="simple-hero section module--{{ name }}">
+  <div class="section-wrapper simple-hero__wrapper">
+    <div class="simple-hero__container">
+      {% if module.text_above_title %}
+      <h5 class="text--{{ module.style.text_color }}">
+        {{ module.text_above_title }}
+      </h5>
+      {% endif %}
+      {% if module.title %}
+      <h1 class="text--{{ module.style.text_color }}">
+        {{ module.title }}
+      </h1>
+      {% endif %}
+      {% if module.helper_text %}
+      <p class="text--{{ module.style.text_color }}" style="margin-bottom: 2rem;">
+        {{ module.helper_text }}
+      </p>
+      {% endif %}
+      {% if module.link_text %}
+      {% set href = module.link_field.url.href %}
+      {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.link_field.no_follow %}
+      {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.link_field.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}" 
+         style="--link-color: rgba({{ module.style.link_color.color|convert_rgb }}, {{ module.style.link_color.opacity / 100 }})"
+         class="btn--{{ module.style.button_style }}"
+         {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+         {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+         >
+        {{ module.link_text }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

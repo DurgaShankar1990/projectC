@@ -1,0 +1,170 @@
+{% require_css %}
+<style>
+  #module--{{ name }} .flip-card__image-wrapper.image-style--set_height {
+    position: relative;
+    height: {{ module.style.front.image.image_height }}px;
+    overflow: hidden;
+  }
+  #module--{{ name }} .flip-card {
+    height: {{ module.style.card_height }}px;
+  }
+  {% if module.style.front.background_color == 'custom' %}
+  #module--{{ name }} .flip-card__front {
+    background-color: {{ module.style.front.custom_background_color.color }}
+  }
+  {% endif %}
+
+  #module--{{ name }} .flip-card__front,
+  #module--{{ name }} .flip-card__back {
+    border-style: solid;
+    border-width: {{ module.style.border_width }}px;
+    border-radius: {{ module.style.corner_radius }}px;
+  }
+  #module--{{ name }} .flip-card__front .flip-card__highlight {
+    top: {{ module.style.front.highlight_text.spacing.margin.top.value }}{{ module.style.front.highlight_text.spacing.margin.top.units }};
+    padding-top: {{ module.style.front.highlight_text.spacing.padding.top.value }}{{ module.style.front.highlight_text.spacing.padding.top.units }};
+    padding-left: {{ module.style.front.highlight_text.spacing.padding.left.value }}{{ module.style.front.highlight_text.spacing.padding.left.units }};
+    padding-right: {{ module.style.front.highlight_text.spacing.padding.right.value }}{{ module.style.front.highlight_text.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.front.highlight_text.spacing.padding.bottom.value }}{{ module.style.front.highlight_text.spacing.padding.bottom.units }};
+  }
+  #module--{{ name }} .flip-card__back .flip-card__highlight {
+    top: {{ module.style.back.highlight_text.spacing.margin.top.value }}{{ module.style.back.highlight_text.spacing.margin.top.units }};
+    padding-top: {{ module.style.back.highlight_text.spacing.padding.top.value }}{{ module.style.back.highlight_text.spacing.padding.top.units }};
+    padding-left: {{ module.style.back.highlight_text.spacing.padding.left.value }}{{ module.style.back.highlight_text.spacing.padding.left.units }};
+    padding-right: {{ module.style.back.highlight_text.spacing.padding.right.value }}{{ module.style.back.highlight_text.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.back.highlight_text.spacing.padding.bottom.value }}{{ module.style.back.highlight_text.spacing.padding.bottom.units }};
+  }
+  #module--{{ name }} .flip-card__front .flip-card__text {
+    padding-top: {{ module.style.front.text.spacing.padding.top.value }}{{ module.style.front.text.spacing.padding.top.units }};
+    padding-left: {{ module.style.front.text.spacing.padding.left.value }}{{ module.style.front.text.spacing.padding.left.units }};
+    padding-right: {{ module.style.front.text.spacing.padding.right.value }}{{ module.style.front.text.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.front.text.spacing.padding.bottom.value }}{{ module.style.front.text.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.front.text.spacing.margin.top.value }}{{ module.style.front.text.spacing.margin.top.units }};
+    margin-left: {{ module.style.front.text.spacing.margin.left.value }}{{ module.style.front.text.spacing.margin.left.units }};
+    margin-right: {{ module.style.front.text.spacing.margin.right.value }}{{ module.style.front.text.spacing.margin.right.units }};
+    margin-bottom: {{ module.style.front.text.spacing.margin.bottom.value }}{{ module.style.front.text.spacing.margin.bottom.units }};
+    border-radius: {{ module.style.corner_radius }}px;
+  }
+  #module--{{ name }} .flip-card__back .flip-card__text {
+    padding-top: {{ module.style.back.text.spacing.padding.top.value }}{{ module.style.back.text.spacing.padding.top.units }};
+    padding-left: {{ module.style.back.text.spacing.padding.left.value }}{{ module.style.back.text.spacing.padding.left.units }};
+    padding-right: {{ module.style.back.text.spacing.padding.right.value }}{{ module.style.back.text.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.back.text.spacing.padding.bottom.value }}{{ module.style.back.text.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.back.text.spacing.margin.top.value }}{{ module.style.back.text.spacing.margin.top.units }};
+    margin-left: {{ module.style.back.text.spacing.margin.left.value }}{{ module.style.back.text.spacing.margin.left.units }};
+    margin-right: {{ module.style.back.text.spacing.margin.right.value }}{{ module.style.back.text.spacing.margin.right.units }};
+    margin-bottom: {{ module.style.back.text.spacing.margin.bottom.value }}{{ module.style.back.text.spacing.margin.bottom.units }};
+    border-radius: {{ module.style.corner_radius }}px;
+  }
+  #module--{{ name }} .flip-card {
+    width: calc(100% / {{ module.style.cards_per_row_desktop }} - {{ module.style.space_between_cards }}px);
+    margin: {{ module.style.space_between_cards / 2 }}px;
+  }
+
+  #module--{{ name }} .flip-card__image-wrapper.image-style--set_height+.flip-card__text {
+    border-radius: 0 0 {{ module.style.corner_radius }}px {{ module.style.corner_radius }}px;
+  }
+  @media(max-width: 1024px) {
+    #module--{{ name }} .flip-card {
+      width: calc(100% / {{ module.style.cards_per_row_tablet }} - {{ module.style.space_between_cards }}px);
+    }
+  }
+  @media(max-width: 620px) {
+    #module--{{ name }} .flip-card {
+      width: 100%;
+    }
+  }
+</style>
+{% end_require_css %}
+<div id="module--{{ name }}" class="flip-cards">
+  {% for card in module.cards %}
+  <div class="flip-card animate animate--{{ module.style.animation }}">
+    <div class="flip-card__inner">
+      <div class="flip-card__front bg--{{ module.style.front.background_color }} {% if module.style.box_shadow %} box-shadow {% endif %} border--{{ module.style.border_color }}">
+        {% if card.front.image %}
+        <div class="flip-card__image-wrapper image-style--{{ module.style.front.image.image_style }}">
+          <img loading="lazy" class="flip-card__image" src="{{ resize_image_url(card.front.image.src, 0, module.style.card_height) }}" alt="{{ card.front.image.alt }}">
+        </div>
+        {% endif %}
+        {% if card.front.text %}
+        <div class="flip-card__text
+                    text--{{ module.style.front.text.text_color }}
+                    bg--{{ module.style.front.text.background_color }}"
+             style="
+                    {% if module.style.front.text.background_color == 'custom' %}
+                    background-color: rgba({{ module.style.front.text.custom_background_color.color|convert_rgb }}, {{ module.style.front.text.custom_background_color.opacity / 100 }});
+                    {% endif %}
+                    {% if module.style.front.text.text_color == 'custom' %}
+                    color: rgba({{ module.style.front.text.custom_text_color.color|convert_rgb }}, {{ module.style.front.text.custom_text_color.opacity / 100 }});
+                    {% endif %}">
+          {{ card.front.text }}
+        </div>
+        {% endif %}
+        {% if card.front.highlight_text %}
+        <div class="flip-card__highlight 
+                    position--{{ module.style.front.highlight_text.position }}
+                    text--{{ module.style.front.highlight_text.text_color }}
+                    bg--{{ module.style.front.highlight_text.background_color }}"
+             style="
+                    {% if module.style.front.highlight_text.background_color == 'custom' %}
+                    background-color: rgba({{ module.style.front.highlight_text.custom_background_color.color|convert_rgb }}, {{ module.style.front.highlight_text.custom_background_color.opacity / 100 }});
+                    {% endif %}
+                    {% if module.style.front.highlight_text.text_color == 'custom' %}
+                    color: rgba({{ module.style.front.highlight_text.custom_text_color.color|convert_rgb }}, {{ module.style.front.highlight_text.custom_text_color.opacity / 100 }});
+                    {% endif %}">
+          {{ card.front.highlight_text }}
+        </div>
+        {% endif %}
+      </div>
+      <div class="flip-card__back bg--{{ module.style.back.background_color }} {% if module.style.box_shadow %} box-shadow {% endif %} border--{{ module.style.border_color }}">
+        {% if card.back.image %}
+        <div class="flip-card__image-wrapper image-style--{{ module.style.back.image.image_style }}">
+          <img loading="lazy" class="flip-card__image" src="{{ resize_image_url(card.back.image.src, 0, module.style.card_height) }}" alt="{{ card.back.image.alt }}">
+        </div>
+        {% endif %}
+        {% if card.back.text %}
+        <div class="flip-card__text
+                    text--{{ module.style.back.text.text_color }}
+                    bg--{{ module.style.back.text.background_color }}"
+             style="
+                    {% if module.style.back.text.background_color == 'custom' %}
+                    background-color: rgba({{ module.style.back.text.custom_background_color.color|convert_rgb }}, {{ module.style.back.text.custom_background_color.opacity / 100 }});
+                    {% endif %}
+                    {% if module.style.back.text.text_color == 'custom' %}
+                    color: rgba({{ module.style.back.text.custom_text_color.color|convert_rgb }}, {{ module.style.back.text.custom_text_color.opacity / 100 }});
+                    {% endif %}">
+          {{ card.back.text }}
+          {% if card.back.include_link == 'true' %}
+          {% set href = card.back.link.link.url.href %}
+          {% if card.back.link.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          <a class="btn--link" href="{{ href }}"
+             {% if card.back.link.link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if card.back.link.link.rel %}rel="{{ card.back.link.link.rel }}"{% endif %}
+             >
+            {{ card.back.link.link_text }}
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% if card.back.highlight_text %}
+        <div class="flip-card__highlight 
+                    position--{{ module.style.back.highlight_text.position }}
+                    text--{{ module.style.back.highlight_text.text_color }}
+                    bg--{{ module.style.back.highlight_text.background_color }}"
+             style="
+                    {% if module.style.back.highlight_text.background_color == 'custom' %}
+                    background-color: rgba({{ module.style.back.highlight_text.custom_background_color.color|convert_rgb }}, {{ module.style.back.highlight_text.custom_background_color.opacity / 100 }});
+                    {% endif %}
+                    {% if module.style.back.highlight_text.text_color == 'custom' %}
+                    color: rgba({{ module.style.back.highlight_text.custom_text_color.color|convert_rgb }}, {{ module.style.back.highlight_text.custom_text_color.opacity / 100 }});
+                    {% endif %}">
+          {{ card.back.highlight_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

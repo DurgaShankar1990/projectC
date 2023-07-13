@@ -1,0 +1,255 @@
+{% set cs = widget_data.cohortium_settings %}
+{% if topic.number_of_solutions > 0 %}<div class="solvedtag">{{ cs.labels_text.filters.solved_label }}</div>{% endif %} 
+{% from '../../../community/imports/tools.html' import icons as icons %}
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %} 
+
+{% set like_icon = icons.like_icon %}
+{% set tools = icons.tools %}
+{% if dynamic_page_crm_object %}
+{% set topic = dynamic_page_crm_object %}
+{% else %}
+{% set topic = module.crmobject_field %}
+{% endif %}
+
+{% set category = hubdb_table_rows(cs.categories_tags.category_hubdb_table, "hs_path=" ~ topic.category)|first %}
+{% if topic.video_embed %}
+<div class="video-outer-container">
+  {% if topic.video_embed is string_containing "wistia.com/medias/" %}
+  {% set vid = topic.video_embed|split('wistia.com/medias/') %}
+  {% set video_id = vid|last %}
+  <script src="https://fast.wistia.com/embed/medias/1s8spu18yz.jsonp" async></script>
+  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+  <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+      <div class="wistia_embed wistia_async_{{ video_id }} videoFoam=true" style="height:100%;position:relative;width:100%">
+        <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+          <img src="https://fast.wistia.com/embed/medias/{{ video_id }}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  {% elif topic.video_embed is string_containing "//youtu.be/" %}
+  {% set vid = topic.video_embed|split('/',4) %}
+  {% set video_id = vid[2] %}
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  {% elif topic.video_embed is string_containing "https://www.youtube.com/watch?v=" %}
+  {% set vid = topic.video_embed|split('v=',2) %}
+  {% set video_id = vid[1] %}
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  {% elif topic.video_embed is string_containing "https://vimeo.com/" %}
+  {% set vid = topic.video_embed|split('/',4) %}
+  {% set video_id = vid[2] %}
+  <div class="video-container">
+    <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  {% elif topic.video_embed is string_containing "https://player.vimeo.com/video/" %}
+  {% set vid = topic.video_embed|split('https://player.vimeo.com/video/',4) %}
+  {% set video_id = vid|first %}
+  <div class="video-container">
+    <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  {% elif topic.video_embed is string_containing "www.loom.com/share/" %}
+  {% set vid = topic.video_embed|split('loom.com/share/') %}
+  {% set video_id = vid|last %}
+  <div class="video-container-loom" style="position: relative; padding-bottom: 49.586776859504134%; height: 0;">
+    <iframe src="https://www.loom.com/embed/{{video_id}}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  {% elif topic.video_embed is not string_containing "width=" and topic.video_embed %}
+  <div class="video-container">
+    {{ topic.video_embed}}
+  </div>
+  {% elif topic.video_embed %}
+  {{ topic.video_embed}}
+  {% endif %}
+</div>
+{% endif %}
+<div class="breadcrumbs">
+  <div class="category-links">
+    {% if category.hs_path %}<a href="{{ content.widgets.redirect_url.body.value }}?category={{category.hs_path}}">{{category.hs_name}}</a>{% endif %}
+    {% if topic.tag %}<a class="breadcrumb-link tagger" href="{{ content.widgets.redirect_url.body.value }}?tag={{topic.tag}}{% if category.hs_path %}&category={{category.hs_path}}{% endif %}">#{{topic.tag}}</a>{% endif %}
+    {% if contact.community_manager == "Admin" %}
+    <a class="admintools hubspot-icons" href="https://app.hubspot.com/contacts/{{hub_id}}/record/{{ object_schema.topic.obj_id  }}/{{topic.hs_object_id}}/" target="_blank">{{ icons.hubspot}}</a>
+    {% endif %}
+  </div>
+
+  <div class="follow-like">
+    <div class="sorter-dropdown">
+      <button id="tooltip-{{topic.id}}" class="tools" href="#inlinemenu-topic">{{ tools }}</button>
+      <div class="sorter-dropdown-content">
+        {% if request_contact.is_logged_in and is_editable == "topic_owner" or request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin"%}
+        <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %}  href="{{ cs.default_urls.topic_edit_url ~ "/" ~ topic.topic_slug}}">{{ cs.labels_text.edit_topic_label }}</a>{% endif %}
+        <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} href="{{ cs.default_urls.report_abuse_url ~ "?abuse_url=" ~ content.absolute_url ~ "&abuse_category=" ~ topic.category|urlencode }}">{{ cs.labels_text.report_abuse_label }}</a>
+        {% if request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin"  %}
+        <a class="ui-state-disabled">{{ cs.labels_text.moderator_tools_label }}</a>
+        <a>{{ cs.labels_text.archive_topic_label }}</a>
+        <a>{{ cs.labels_text.disable_replies_label }}</a>  
+        {% endif %}
+      </div>
+    </div>
+
+
+    <button id="topic-upvote-{{topic.id}}" data-topic-id="{{topic.id}}" data-cid="{{contact.hs_object_id}}" data-oid="{{topic.id}}" data-type="topic" class="upvote {% if topic.upvote_contacts is string_containing contact.hs_object_id %}upvoted {% else %}{% endif %}"><span class="like-icon">{{ like_icon }}</span> <span class="unvote">X</span><span class="upvote-count">{% if topic.upvote_contacts|split("|")|length > 0 %}{{ topic.upvote_contacts|split("|")|length }}{% endif %}</span>&nbsp;{{ cs.labels_text.upvote_plural_label }}</button> 
+    <!--- {{contact.hs_object_id}} --- {{ topic.upvote_contacts}} ---->
+    <button id="topic-follow-button" class="follow {{ is_follower }}" data-cid="{{contact.hs_object_id}}" data-tid="{{topic.id}}"><span id="topic-follow-count">{{topic.followers|default("0")}}</span><span id="topic-follow-label">{{ cs.labels_text.follow_label  }}</span><span id="topic-following-label">{{ cs.labels_text.following_label  }}</span> <span class="unvote">X</span> </button>
+  </div>
+</div>
+<h1>
+  {{topic.name}}
+</h1>
+<div class="topic-descriptors">
+  <div class="byline-area">
+    {% if module.show_byline =="fullname" %}
+    <p>{{ module.byline_lable }} <a href="/members/{{member.username}}">{{member.first_name}} {{member.last_name}}</a></p>
+    {% endif %}
+    {% if module.show_byline =="username" %}
+    <p>{{ module.byline_lable }} <a href="/members/{{member.username}}">@{{member.username}}</a></p>
+    {% endif %}
+    <p  class="date-time-section">{{ topic.hs_createdate|datetimeformat('%B %e, %Y %l:%M %p') }}</p> 
+  </div>
+</div>
+
+
+<div class="topic-detail">
+  {{topic.topic_detail}}
+</div>
+{% if request.query_dict.debug %}
+{{"DEBUG: " ~ topic}}
+{% endif %}
+
+{# start functionality for moderation popups #}
+{% require_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.css" integrity="sha512-z2AFOVKBqcloFCT+Ugs0icqTfC8fBoGq2zP60MlESnL9CdusjEyVnNvHgs3RWtdMJxGkP0FDWfNp/puIP9CctA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% end_require_css %}
+{% require_js %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $( function() {
+    $( "#topic-settings-menu" ).menu();
+  } );
+</script>
+{% end_require_js %}
+
+
+{% if request_contact.is_logged_in  %}
+{# upvote delegation #}
+{% require_js %}
+<script>
+  (function () {
+    var on = (selector, eventType, childSelector, eventHandler) => {
+      var elements = document.querySelectorAll(selector)
+      for (element of elements) {
+        element.addEventListener(eventType, eventOnElement => {
+          if (eventOnElement.target.matches(childSelector)) {
+            eventHandler(eventOnElement)
+          }
+        })
+      }
+    };
+    // upvotes
+    on('button', 'click', '.upvote', event => {
+      var item = event.target;
+      var type = item.dataset.type;
+      var cid = item.dataset.cid;
+      var oid = item.dataset.oid;
+      var upvoteBtn_html = event.target;
+      var $upvoteBtn_jq = $( upvoteBtn_html );
+      // API call
+      var response = fetch(`https://{{ request.domain }}/_hcms/api/upvote?cid=${cid}&oid=${oid}&type=${type}`);
+      response.then(function(resp) {
+        return resp.json()
+      })
+        .then(function(resp) {
+        if ( parseInt(resp.response.properties.upvote_count) > 0) {
+          $upvoteBtn_jq.find('.upvote-count').html(resp.response.properties.upvote_count);
+          $upvoteBtn_jq.toggleClass('upvoted');
+        } else {
+          $upvoteBtn_jq.find('.upvote-count').empty();
+          $upvoteBtn_jq.toggleClass('upvoted');
+        }
+      });
+    });
+    // mark as solution 
+    on('button', 'click', '.mark-as-solution', event => {
+      var item = event.target;
+      var item_jquery = $(item );
+      var rid = item.dataset.rid;
+      item_jquery.replaceWith( '<div id="submitBtn" style="padding: 1rem;"><span style="display:inline-block;" class="h-spin"><svg heigth="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.74 390.33"><defs><style>.b{fill:#1f2040;}</style></defs><path class="b" d="M410.62,149.95l-60.47-104.73C334,17.24,304.14,0,271.83,0h-120.93c-32.31,0-62.17,17.24-78.32,45.22L12.12,149.95c-16.16,27.98-16.16,62.46,0,90.44l60.47,104.73c16.16,27.98,46.01,45.22,78.32,45.22h120.93c32.31,0,62.17-17.24,78.32-45.22l60.47-104.73c16.16-27.98,16.16-62.46,0-90.44Zm-79.69,76.45l-32.73,56.7c-11.16,19.32-31.78,31.23-54.09,31.23h-65.47c-22.31,0-42.93-11.9-54.09-31.23l-32.73-56.7c-11.16-19.32-11.16-43.13,0-62.46l32.73-56.7c11.16-19.32,31.78-31.23,54.09-31.23h65.47c22.31,0,42.93,11.9,54.09,31.23l32.73,56.7c11.16,19.32,11.16,43.13,0,62.46Z"/></svg></span> <span>loading…</span></div>');
+      // API call
+      var response = fetch(`https://{{ request.domain }}/_hcms/api/reply/solution?rid=${rid}`);
+      response.then(function(resp) {
+        return resp.json()
+      })
+        .then(function(resp) {
+        setTimeout(function() {
+          location.reload()
+        },250)
+      });
+    });
+
+    // mark as solution 
+    on('button', 'click', '.remove-solution', event => {
+      var item = event.target;
+      var item_jquery = $(item );
+      var rid = item.dataset.rid;
+      item_jquery.replaceWith( '<div id="submitBtn" style="padding: 1rem;"><span style="display:inline-block;" class="h-spin"><svg heigth="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.74 390.33"><defs><style>.b{fill:#1f2040;}</style></defs><path class="b" d="M410.62,149.95l-60.47-104.73C334,17.24,304.14,0,271.83,0h-120.93c-32.31,0-62.17,17.24-78.32,45.22L12.12,149.95c-16.16,27.98-16.16,62.46,0,90.44l60.47,104.73c16.16,27.98,46.01,45.22,78.32,45.22h120.93c32.31,0,62.17-17.24,78.32-45.22l60.47-104.73c16.16-27.98,16.16-62.46,0-90.44Zm-79.69,76.45l-32.73,56.7c-11.16,19.32-31.78,31.23-54.09,31.23h-65.47c-22.31,0-42.93-11.9-54.09-31.23l-32.73-56.7c-11.16-19.32-11.16-43.13,0-62.46l32.73-56.7c11.16-19.32,31.78-31.23,54.09-31.23h65.47c22.31,0,42.93,11.9,54.09,31.23l32.73,56.7c11.16,19.32,11.16,43.13,0,62.46Z"/></svg></span> <span>loading…</span></div>');
+      // API call
+      // Change this to remove solution
+      var response = fetch(`https://{{ request.domain }}/_hcms/api/reply/solution?rid=${rid}`);
+      response.then(function(resp) {
+        return resp.json()
+      })
+        .then(function(resp) {
+        setTimeout(function() {
+          location.reload()
+        },250)
+      });
+    });
+    
+    // follow topic
+    on('button', 'click', '.follow', event => {
+      console.log('clicked')
+      var item = event.target;
+      var item_jquery = $( item );
+      var cid = item.dataset.cid;
+      var tid = item.dataset.tid;
+      // API call
+      // Change this to remove solution
+      var response = fetch(`https://{{ request.domain }}/_hcms/api/topics/follow?cid=${cid}&tid=${tid}`);
+      response.then(function(resp) {
+        return resp.json()
+      })
+        .then(function(resp) {
+        console.log( item_jquery )
+        console.log( resp.response.count )
+        item_jquery.find("#topic-follow-count").text(resp.response.count);
+        if( resp.response.value ) {
+          item_jquery.addClass("following")
+        } else {
+          item_jquery.removeClass("following")
+        }
+      });
+    });
+
+  })();
+</script>
+{% end_require_js %}
+{% else %}
+{# Open lity w/ #}
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    $('body').on('click','button.upvote, button.follow, .user-signup-logged-out', function(e) {
+      e.preventDefault();
+      lity("#modal__not-logged-in")
+    })
+  });
+</script>
+{% end_require_js %}
+{% endif %}

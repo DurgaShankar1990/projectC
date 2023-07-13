@@ -1,0 +1,66 @@
+<!--
+templateType: "none"
+isAvailableForNewContent: false
+-->
+{# this file defines the ID's for all association labels. This will allow for global editing of the association id's to make this more portalble #}
+{# Example Usage: {% from '../../../community/imports/object_associations.html' import object_schema as object_schema %}
+{% set topic_schema = object_schema.topic %} #}
+{% set object_schema = {
+"contact" : {
+    "obj_id"                        : "0-1",
+    "object_name"                   : "contact",
+    "to_reply"                      : "16",
+    "to_topic_author"               : "56",
+    "to_topic_follower"             : "58",
+    "to_member_profile_owner"       : "60",
+    "to_member_profile_follower"    : "62"
+    },
+  "topic" : {
+    "obj_id"                        : "2-8040737",
+    "object_name"                   : "topic",
+    "to_reply"                      : "63",
+    "to_contact_author"             : "55",
+    "to_contact_follower"           : "57",
+    "to_member_profile_author"      : "52",
+    "to_member_profile_follower"    : "53"
+    },
+  "reply" : {
+    "obj_id"                        : "2-8040734",
+    "object_name"                   : "reply",
+    "to_topic"                      : "64",
+    "to_member_profile"             : "67",
+    "to_contact"                    : "15"
+    },
+    "member_profile" : {
+    "obj_id"                        : "2-10812922",
+    "object_name"                   : "member_profile",
+    "to_reply"                      : "68",
+    "to_topic_author"               : "49",
+    "to_topic_follower"             : "54",
+    "to_contact_owner"              : "59",
+    "to_contact_follower"           : "61"
+    }
+  }
+%}
+{# set object_schema = {
+"contact" : {
+    "obj_id"                        : "0-1",
+    "object_name"                   : "contact"
+    },
+  "topic" : {
+    "obj_id"                        : "2-8040737",
+    "object_name"                   : "topic"
+    },
+  "reply" : {
+    "obj_id"                        : "2-8040734",
+    "object_name"                   : "reply"
+    },
+    "member_profile" : {
+    "obj_id"                        : "2-8040740",
+    "object_name"                   : "member_profile"
+    }
+  }
+#}
+{# 
+  EXAMPLE :   {# set topics = crm_associations(member.hs_object_id, "USER_DEFINED", object_schema.member_profile.topic.to_member_profile_author, "", "first_name,last_name,bio,username,profile_photo", false).results|first #}
+ #}

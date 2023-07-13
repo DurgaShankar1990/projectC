@@ -1,0 +1,137 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %}
+{% require_css %}
+<style>
+
+  #module--{{ name }} {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  #module--{{ name }} .team-card__wrapper {
+    width: calc(100% / {{ module.style.spacing.cards_per_row_desktop }} - {{ module.style.spacing.space_between_cards }}px);
+    margin: {{ module.style.spacing.space_between_cards / 2 }}px;
+  }
+  #module--{{ name }} .team-cards {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ module.style.card_styles.border_radius }}px;
+    background-size: cover;
+    background-position: {{ module.style.card_styles.horizontal_background_position }}% {{ module.style.card_styles.vertical_background_position }}%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    min-height: 300px;
+  }
+  #module--{{ name }} .team-cards__text {
+    position: relative;
+    transform: translateY(100%);
+    transition: 1s;
+    padding-top: {{ module.style.card_styles.text_spacing.padding.top.value }}{{ module.style.card_styles.text_spacing.padding.top.units }};
+    padding-left: {{ module.style.card_styles.text_spacing.padding.left.value }}{{ module.style.card_styles.text_spacing.padding.left.units }};
+    padding-right: {{ module.style.card_styles.text_spacing.padding.right.value }}{{ module.style.card_styles.text_spacing.padding.right.units }};
+    padding-bottom: {{ module.style.card_styles.text_spacing.padding.bottom.value }}{{ module.style.card_styles.text_spacing.padding.bottom.units }};
+    margin-top: {{ module.style.card_styles.text_spacing.margin.top.value }}{{ module.style.card_styles.text_spacing.margin.top.units }};
+    margin-bottom: {{ module.style.card_styles.text_spacing.margin.bottom.value }}{{ module.style.card_styles.text_spacing.margin.bottom.units }};
+  }
+  #module--{{ name }} .team-cards:hover .team-cards__text {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    z-index: 3;
+  }
+  #module--{{ name }} .team-cards__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    padding: .75rem 2rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    text-align: center;
+    border-radius: {{ module.style.card_styles.title_border_radius }}px;
+    width: 60%;
+  }
+  #module--{{ name }} .team-cards:hover .team-cards__title {
+    top: 0;
+    width: 100%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  #module--{{ name }} .team-cards:hover .team-cards__text {
+    background-color: rgba({{ module.style.card_styles.colors.text_background_color.color|convert_rgb }}, {{ module.style.card_styles.colors.text_background_color.opacity / 100 }});
+  }
+  #module--{{ name }} .team-cards__name {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  #module--{{ name }} .team-cards__job {
+    font-size: .9rem;
+  }
+  #module--{{ name }} .team-cards__social {
+    display: flex;
+    align-items: center;
+  }
+  #module--{{ name }} .team-cards__social-link {
+    margin: .5rem;
+    margin-bottom: 0;
+  }
+  #module--{{ name }} .team-cards__social-link svg {
+    height: 24px;
+    width: auto;
+    fill: rgba({{ module.style.card_styles.colors.social_icon_color.color|convert_rgb }}, {{ module.style.card_styles.colors.social_icon_color.opacity / 100 }});
+    transition: .3s;
+  }
+  #module--{{ name }} .team-cards__social-link:hover svg {
+    fill: rgba({{ module.style.card_styles.colors.social_icon_hover_color.color|convert_rgb }}, {{ module.style.card_styles.colors.social_icon_hover_color.opacity / 100 }});
+  }
+
+  @media(max-width: 1024px) {
+    #module--{{ name }} .team-card__wrapper {
+      width: calc(100% / {{ module.style.spacing.cards_per_row_tablet }} - {{ module.style.spacing.space_between_cards }}px); /* Add to module */
+    }
+  }
+  @media(max-width: 767px) {
+    #module--{{ name }} .team-card__wrapper {
+      width: 100%;
+    }
+  }
+</style>
+{% end_require_css %}
+
+{% set members = crm_objects("member_profile", catparams ~ "&limit=" ~ module.limit_results ~ "&orderBy=first_name&profile_visibility=Public", "first_name,last_name,username,bio,profile_photo, job_title,hs_createdate", false) %}
+<div id="module--{{ name }}" class="team-cardss animate animate--{{ module.style.animation }}">
+  {% for member in members.results %}
+  <a class="team-card__wrapper" href="/members/{{member.username}}">
+    <div class="team-cards matchHeight {{ module.style.card_styles.shadow }}"
+         style="background-image: url({{ resize_image_url(member.profile_photo, 0, 0, 600) }});"
+         data-tilt='true'
+         data-tilt-max='{{ module.style.hover.tilt_amount }}'
+         {% if module.style.hover.glare_effect %}
+         data-tilt-glare data-tilt-max-glare="{{ module.style.hover.glare_amount }}"
+         {% endif %}
+         data-tilt-scale="{{ module.style.hover.scale_amount }}">
+      <div class="team-cards__overlay"></div>
+    </div>
+    <div class="team-cards__name text--{{ module.style.card_styles.colors.title_text_color }}">
+      {{ member.first_name }} {{ member.last_name }}
+    </div>
+    <div class="team-cards__job">
+     Joined: {{ member.hs_createdate|datetimeformat('%B %Y') }}
+    </div>
+  </a>
+  {% endfor %}
+</div>

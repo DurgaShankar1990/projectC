@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "fontawesome-5.14.0:Link:SOLID",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 96396849940,
+  "label" : "Omega - Button",
+  "is_available_for_new_content" : true
+}

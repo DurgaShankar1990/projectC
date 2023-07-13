@@ -1,0 +1,22 @@
+{
+  "global" : false,
+  "icon" : "fontawesome-5.14.0:Columns:SOLID",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 96396849756,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/flickity.css",
+    "name" : "flickity.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/flickity.js",
+    "name" : "flickity.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/flickity-fade.js",
+    "name" : "flickity-fade.js"
+  } ],
+  "label" : "Two Column Slider",
+  "is_available_for_new_content" : true
+}

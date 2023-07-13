@@ -1,0 +1,85 @@
+{% require_css %}
+<style>
+  #module--{{ name }} .simple-card {
+    padding-top: {{ module.style.spacing.padding.top.value }}{{ module.style.spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.padding.left.value }}{{ module.style.spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.padding.right.value }}{{ module.style.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.padding.bottom.value }}{{ module.style.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.margin.top.value }}{{ module.style.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value }}{{ module.style.spacing.margin.bottom.units }};
+    width: calc((100% / {{ module.style.cards_per_row }}) - {{ module.style.space_between_cards }}px);
+    margin: {{ module.style.space_between_cards / 2 }}px;
+    border-radius: {{ module.style.corner_radius }}px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+            flex-direction: column;
+    justify-content: {{ module.style.vertical_text_alignment }};
+  }
+  .simple-card__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+            flex-direction: column;
+    justify-content: {{ module.style.vertical_text_alignment }};
+    text-align: {{ module.style.horizontal_text_alignment }};
+    height: 100%;
+  }
+  @media(max-width: 1024px) {
+    #module--{{ name }} .simple-card {
+      width: calc((100% / {{ module.style.cards_per_row_tablet }}) - {{ module.style.space_between_cards }}px);
+    }
+  }
+  @media(max-width: 767px) {
+    #module--{{ name }} .simple-card {
+      width: 100%;
+      margin: {{ module.style.space_between_cards / 2 }}px 0;
+    }
+  }
+</style>
+{% end_require_css %}
+<div id="module--{{ name }}" class="simple-cards animate animate--{{ module.style.animation }}"
+     style="transtion: {{ loop.index }}s;">
+  {% for card in module.cards %}
+  {% set href = card.link.url.href %}
+  {% if card.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+  {% endif %}
+  <a {% if href %}href="{{ href }}"{% endif %}
+     {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+     {% if card.link.rel %}rel="{{ card.link.rel }}"{% endif %}
+     style="{% if card.card_specific_styles.background_type == 'image' %}
+            background-image: url({{ card.card_specific_styles.background_image.src }});
+            {% elif card.card_specific_styles.background_type == 'image_w_overlay' %}
+            background: linear-gradient(to top, rgba({{ card.card_specific_styles.overlay_color.color|convert_rgb }}, {{ card.card_specific_styles.overlay_color.opacity / 100 }}), rgba({{ card.card_specific_styles.overlay_color.color|convert_rgb }}, {{ card.card_specific_styles.overlay_color.opacity / 100 }})), url({{ card.card_specific_styles.background_image.src }});
+            {% elif card.card_specific_styles.background_color == 'custom' %}
+            background-color: rgba({{ card.card_specific_styles.custom_background_color.color|convert_rgb }}, {{ card.card_specific_styles.custom_background_color.opacity / 100 }});
+            {% endif %}
+            {% unless href %}
+            cursor: default;
+            {% endunless %}"
+     class="simple-card 
+            {% if card.card_specific_styles.background_type == 'color' %}
+            bg--{{ card.card_specific_styles.background_color }}
+            {% endif %}
+            text--{{ card.card_specific_styles.text_color }}
+            h-text--{{ card.card_specific_styles.text_color }}
+            {% if module.style.box_shadow %} box-shadow {% endif %}"
+     data-tilt='true'
+     data-tilt-max='{{ module.style.hover.tilt_amount }}'
+     {% if module.style.hover.glare_effect %}
+     data-tilt-glare data-tilt-max-glare="{{ module.style.hover.glare_amount }}"
+     {% endif %}
+     data-tilt-scale="{{ module.style.hover.scale_amount }}">
+    <div class="simple-card__inner">
+      {{ card.card_text }}
+    </div>
+  </a>
+  {% endfor %}
+</div>

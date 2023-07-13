@@ -1,0 +1,213 @@
+{% set desktop_background_size = module.style.desktop.icon_size * 2 %}
+{% set mobile_background_size = module.style.desktop.icon_size * 2 %}
+{% set desktop_icon_size = module.style.desktop.icon_size * .9 %}
+{% set mobile_icon_size = module.style.mobile.icon_size * .9 %}
+{% set desktop_gap = module.style.desktop.icon_size / 3 %}
+{% set mobile_gap = module.style.mobile.icon_size / 3 %}
+{% set desktop_bar_height = module.style.desktop.icon_size / 6  %}
+{% set mobile_bar_height = module.style.mobile.icon_size / 6  %}
+
+{% require_css %}
+<style>
+
+  
+  #{{ name }} {
+    position: fixed;
+    bottom: {{ module.style.desktop.distance_from_bottom }}px;
+    {{ module.style.desktop.position }}: {{ module.style.desktop.distance_from_side }}px;
+    background-color: rgba({{ module.style.menu_background_color.color|convert_rgb }}, {{ module.style.menu_background_color.opacity / 100 }});
+    z-index: 99;
+    border-radius: 50%;
+    min-width: {{ desktop_background_size }}px;
+    min-height: {{ desktop_background_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #{{ name }} .floating-menu__open {
+    position: relative;
+    display:  inline-block;
+    width: {{ desktop_icon_size|round }}px;
+    height: {{ desktop_icon_size|round }}px;
+    z-index: 2;
+    cursor: pointer;
+  }
+  #{{ name }} .floating-menu__open span {
+    margin: 0 auto;
+    position: relative;
+    top: {{ desktop_gap|round }}px;
+  }
+  #{{ name }} .floating-menu__open span:before, .floating-menu__open span:after {
+    position: absolute;
+    content: '';
+  }
+  #{{ name }}.open .floating-menu__open span, .open .floating-menu__open span:before, .open .floating-menu__open span:after {
+    background-color: #fff;
+  }  
+  #{{ name }} .floating-menu__open span, .floating-menu__open span:before, .floating-menu__open span:after {
+    width: {{ desktop_icon_size|round }}px;
+    height: {{ desktop_bar_height|round }}px;
+    border-radius: 10px;
+    background-color: rgba({{ module.style.menu_icon_color.color|convert_rgb }}, {{ module.style.menu_icon_color.opacity / 100 }});
+    display: block;
+  }
+  #{{ name }} .floating-menu__open span:before {
+    margin-top: -{{ desktop_gap|round }}px;
+  }
+  #{{ name }} .floating-menu__open span:after {
+    margin-top: {{ desktop_gap|round }}px;
+  }
+  #{{ name }} .floating-menu__open span {
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  #{{ name }}.open .floating-menu__open span {
+    background-color: rgba(0,0,0,0.0);
+  }
+  #{{ name }} .floating-menu__open span:before {
+    -webkit-transition-duration: 0.3s; transition-duration: 0.3s;
+  }
+  #{{ name }}.open .floating-menu__open span:before {
+    margin-top: 0;
+    -webkit-transform: rotate(45deg); transform: rotate(45deg);
+  }
+  #{{ name }} .floating-menu__open span:after {
+    -webkit-transition-duration: 0.3s; transition-duration: 0.3s;
+  }
+  #{{ name }}.open .floating-menu__open span:after {
+    margin-top: 0;
+    -webkit-transform: rotate(-45deg); transform: rotate(-45deg);
+  }
+  #{{ name }} .floating-menu__content {
+    position: absolute;
+    z-index: -999;
+    display: block;
+    bottom: 0;
+    {{ module.style.desktop.position }}: 0;
+    width: fit-content;
+    max-height: {{ desktop_icon_size|round }}px;
+    max-width: {{ desktop_icon_size|round }}px;
+    transition: .5s;
+    padding: 0;
+    border-radius: {{ desktop_icon_size|round }}px;
+    overflow: hidden;
+  }
+  #{{ name }} .floating-menu__content a {
+    display: block;
+    white-space: nowrap;
+    font-weight: 600;
+    padding: .25rem;
+    color: rgba({{ module.style.link_color.color|convert_rgb }}, {{ module.style.link_color.opacity / 100 }});
+    opacity: 0;
+    transition: .5s;
+    position: relative;
+    width: fit-content;
+    {% if module.style.open_animation == 'slide_from_right' %}
+    transform: translateX(200px);
+    {% elif module.style.open_animation == 'slide_from_left' %}
+    transform: translateX(-200px);
+    {% elif module.style.open_animation == 'fade_in' %}
+    transform: translateY(100px);
+    {% endif %}
+  }
+  #{{ name }} .floating-menu__content a:after {
+    content: '';
+    position: absolute;
+    bottom: .2rem;
+    width: 0;
+    left: .25rem;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 1.0);
+    transition: .3s;
+  }
+  #{{ name }} .floating-menu__content a:hover:after {
+    width: calc(100% - .5rem);
+  }
+  #{{ name }}.open .floating-menu__content {
+    height: fit-content;
+    padding: 1.5rem 1.5rem {{ desktop_icon_size|round * 1.8 }}px {{ desktop_icon_size|round * .66 }}px;
+    background-color: rgba({{ module.style.menu_background_color.color|convert_rgb }}, {{ module.style.menu_background_color.opacity / 100 }});
+    max-height: 100vh;
+    max-width: 100vw;
+    z-index: 1;
+  }
+  #{{ name }}.open .floating-menu__content a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media(max-width: 767px) {
+    {% if module.style.display_on_mobile == 'false' %}
+    #{{ name }} {
+      display: none !important;
+    }
+    {% else %}
+    #{{ name }} {
+      position: fixed;
+      bottom: {{ module.style.mobile.distance_from_bottom }}px;
+      {{ module.style.desktop.position }}: unset;
+      {{ module.style.mobile.position }}: {{ module.style.mobile.distance_from_side }}px;
+      min-width: {{ mobile_background_size }}px;
+      min-height: {{ mobile_background_size }}px;
+    }
+    #{{ name }} .floating-menu__open {
+      width: {{ mobile_icon_size|round }}px;
+      height: {{ mobile_icon_size|round }}px;
+    }
+    #{{ name }} .floating-menu__content {
+      {{ module.style.desktop.position }}: unset;
+      {{ module.style.mobile.position }}: 0px;
+      max-height: {{ mobile_icon_size|round }}px;
+      max-width: {{ mobile_icon_size|round }}px;
+      border-radius: {{ mobile_icon_size|round }}px;
+    }
+    #{{ name }} .floating-menu__open span, .floating-menu__open span:before, .floating-menu__open span:after {
+      width: {{ mobile_icon_size|round }}px;
+    }
+    #{{ name }} .floating-menu__open span, .floating-menu__open span:before, .floating-menu__open span:after {
+      width: {{ mobile_icon_size|round }}px;
+      height: {{ mobile_bar_height|round }}px;
+    }
+    #{{ name }} .floating-menu__open span:before {
+      margin-top: -{{ mobile_gap|round }}px;
+    }
+    #{{ name }} .floating-menu__open span:after {
+      margin-top: {{ mobile_gap|round }}px;
+    }
+    #{{ name }} .floating-menu__open span {
+      margin-top: -1px;
+    }
+    {% endif %}
+  }
+</style>
+{% end_require_css %}
+<div id="{{ name }}" class="floating-menu">
+  <div class="floating-menu__open">
+    <span></span>
+  </div>
+  <div class="floating-menu__content">
+    {% for link in module.links %}
+    <div class="floating-menu__link">
+      {% set href = link.link_field.url.href %}
+      {% if link.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      <a style="transition: calc(.2s * {{ loop.index }});" href="{{ href }}"
+         {% if link.link_field.open_in_new_tab %}target="_blank"{% endif %}
+         {% if link.link_field.rel %}rel="{{ link.link_field.rel }}"{% endif %}
+         >
+        {{ link.link_text }}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    $('#{{ name }}').prependTo('body');
+      });
+</script>
+{% end_require_js %}

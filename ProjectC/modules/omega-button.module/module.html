@@ -1,0 +1,32 @@
+<style>
+  {% scope_css %}
+  .module--{{ name }} {
+    display: -webkit-box;display: -ms-flexbox;display: flex;
+    align-items: {{ module.styles.vertical_alignment }};
+    justify-content: {{ module.styles.horizontal_alignment }};
+    -ms-flex-wrap: wrap;flex-wrap: wrap;
+  }
+  {% end_scope_css %}
+</style>
+<div class="module--{{ name }} button-wrapper animate animate--{{ module.styles.scroll_animation }}">
+  {% for button in module.buttons %}
+  {% set href = button.link.url.href %}
+  {% if button.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+  {% endif %}
+  <a class="btn--{{ button.button_type }}
+            animate--{{ button.animation_effect }}" 
+     href="{{ href }}" 
+     style="margin: {{ module.styles.space_between_buttons / 2 }}px;
+            {% if button.button_type == 'link' %}
+            color: rgba({{ button.link_color.color|convert_rgb }}, {{ button.link_color.opacity }});
+            --link-color: rgba({{ button.link_color.color|convert_rgb }}, {{ button.link_color.opacity }});
+            {% endif %}
+            --effect-color: {{ button.effect_color.css }}"
+     {% if button.link.open_in_new_tab %}target="_blank"{% endif %}
+     {% if button.link.rel %}rel="{{ button.link.rel }}"{% endif %}
+     >
+    {{ button.button_text }}
+  </a>
+  {% endfor %}
+</div>

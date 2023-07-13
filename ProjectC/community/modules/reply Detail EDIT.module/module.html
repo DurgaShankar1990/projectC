@@ -1,0 +1,242 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %} 
+{# object_schema.reply.to_reply #}
+{% from '../../../community/imports/tools.html' import icons as icons %}
+{% set like_icon = icons.like_icon %}
+{% set tools = icons.tools %}
+
+{% if dynamic_page_crm_object %}
+{% set reply = dynamic_page_crm_object %}
+{% else %}
+{% set reply = module.crmobject_field %}
+{% endif %}
+{% if object_schema.reply.to_member_profile %}
+{# module.data_query.data.CRM. #}
+{#{% set member_edit = (crm_associations(reply.id, "USER_DEFINED", object_schema.reply.to_member_profile, "", "", false).results|first).id %}#}
+{% set member_edit = module.data_query.data.CRM.p_reply.associations.p_member_profile_collection__reply_to_member_profile.items[0]._metadata.id %}
+{% endif %}
+{% if object_schema.contact.to_member_profile_owner %}
+{#{% set contact_reply = (crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_member_profile_owner, "", "", false).results|first).id %}#}
+{% set contact_reply = module.data_query.data.CRM.contact.associations.p_member_profile_collection__profile_owner.items[0]._metadata.id %}
+{% endif %}
+{% if member_edit == contact_reply %}{% else %} You are editing as a Moderator<!-- {{ member_edit }} == {{ contact_reply}} -->{% endif %}
+{% if reply.video_embed is string_containing "wistia.com/medias/" %}
+{% set vid = reply.video_embed|split('wistia.com/medias/') %}
+{% set video_id = vid|last %}
+<script src="https://fast.wistia.com/embed/medias/1s8spu18yz.jsonp" async></script>
+<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+    <div class="wistia_embed wistia_async_{{ video_id }} videoFoam=true" style="height:100%;position:relative;width:100%">
+      <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+        <img src="https://fast.wistia.com/embed/medias/{{ video_id }}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+      </div>
+    </div>
+  </div>
+</div>
+{% elif reply.video_embed is string_containing "//youtu.be/" %}
+{% set vid = reply.video_embed|split('/',4) %}
+{% set video_id = vid[2] %}
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+{% elif reply.video_embed is string_containing "https://www.youtube.com/watch?v=" %}
+{% set vid = reply.video_embed|split('v=',2) %}
+{% set video_id = vid[1] %}
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+{% elif reply.video_embed is string_containing "https://vimeo.com/" %}
+{% set vid = reply.video_embed|split('/',4) %}
+{% set video_id = vid[2] %}
+<div class="video-container">
+  <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+{% elif reply.video_embed is string_containing "https://player.vimeo.com/video/" %}
+{% set vid = reply.video_embed|split('https://player.vimeo.com/video/',4) %}
+{% set video_id = vid|first %}
+<div class="video-container">
+  <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+{% elif reply.video_embed is string_containing "www.loom.com/share/" %}
+{% set vid = reply.video_embed|split('loom.com/share/') %}
+{% set video_id = vid|last %}
+<div style="position: relative; padding-bottom: 49.586776859504134%; height: 0;">
+  <iframe src="https://www.loom.com/embed/{{video_id}}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
+{% elif reply.video_embed is not string_containing "width=" and reply.video_embed %}
+<div class="video-container">
+  {{ reply.video_embed}}
+</div>
+{% elif reply.video_embed %}
+{{ reply.video_embed}}
+{% endif %}
+<div class="reply-descriptors">
+  <div class="byline-area">
+    {% if module.show_byline =="fullname" %}
+    <p>by <a href="/members/{{member.username}}">{{member.first_name}} {{member.last_name}}</a></p>
+    {% endif %}
+    {% if module.show_byline =="username" %}
+    <p>by <a href="/members/{{member.username}}">@{{member.username}}</a></p>
+    {% endif %}
+    <p  class="date-time-section">{{ reply.hs_createdate|datetimeformat('%B %e, %Y %l:%M %p') }}</p> 
+  </div>
+</div>
+<h1>
+  {{reply.name}}
+</h1>
+{# contact.community_manager is a dropdown select #}
+{% if contact.community_manager == "Moderator" or contact.community_manager == "Admin" or member_edit == contact_reply %}
+<div class="reply-detail">
+<!-- Include the Quill library -->
+{% require_js %}
+{#<script src="{{ get_asset_url('/Project C/js/jquery.validate.min.js') }}"></script>#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(document).ready(function() {
+    // <!-- Initialize Quill editor -->
+   {# var toolbarOptions = [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{ 'header': [ 2, 3, 4, false] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'align': [] }],
+      ['clean']         ,
+      ['link']// remove formatting button
+    ];#}
+{#
+    var quill = new Quill('#editor', {
+      modules: {
+        toolbar: toolbarOptions
+      },
+      placeholder: '{{ module.topic_placeholder_text|striptags|escape }}',
+      theme: 'snow'
+    });
+    #}
+
+    var toolbarOptions = {
+    container: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{ 'header': [ 2, 3, 4, false] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'align': [] }],
+      ['clean']         ,
+      ['link', 'image'],// remove formatting button
+      ['emoji']
+    ]};
+
+    let editorCount = $('#editor').length;
+    console.log(`editorCount = ${editorCount}`);
+    if (editorCount > 0) {
+      var quill = new Quill('#editor', {
+        modules: {
+          toolbar: toolbarOptions,
+          "emoji-toolbar": true,
+          "emoji-textarea": true,
+          "emoji-shortname": true,
+        },
+        placeholder: '{{ module.topic_placeholder_text|striptags|escape }}',
+        theme: 'snow'
+      });
+    }
+  });
+</script>
+{% end_require_js %}
+<!-- Include stylesheet -->
+{% require_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css" integrity="sha512-/FHUK/LsH78K9XTqsR9hbzr21J8B8RwHR/r8Jv9fzry6NVAOVIGFKQCNINsbhK7a1xubVu2r5QZcz2T9cKpubw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ get_asset_url('../community/css/partials/_forms.css') }}" rel="stylesheet">
+{% end_require_css %}
+
+  <form id="form__reply">
+    <input type="hidden" id="reply_detail" name="reply_detail" value="">
+    <div class="input">
+      {% if module.reply_body_label %}<label>{{ module.reply_body_label }}:</label>{% endif %}
+      <!-- Create the editor container -->
+      <div id="editor" class="editor">
+        {{reply.reply_detail}}
+      </div>
+    </div>
+    <div class="input">
+      <label for="name" required>{{ module.video_embed_field_label }}:</label>
+      <input type="text" id="video_embed" name="video_embed" value="" placeholder="{{ module.video_embed_placeholder }}" >
+    </div>
+    <div class="submit-container">
+      <input id="submitBtn" type="submit" style="margin:10px 0;" value="{{ module.save_reply_button_label }}"><a href="{{ content.widgets.redirect_url.body.value }}/{{ reply.reply_slug}}">{{ module.cancel_reply_edit_label }}</a>
+    </div>
+  </form>
+
+
+
+</div>
+{% if request.query_dict.debug %}
+  {{"DEBUG: " ~ reply}}
+{% endif %}
+{% require_js %}
+<script>
+  // Variables
+  var replyId = "{{ reply.hs_object_id }}";
+  var replieslug = "{{ dynamic_page_crm_object.reply_slug }}";
+  // Get value from Quil into hidden field
+  function populatereplyDetail() {
+    var $reply_detail = $('#reply_detail');
+    // Quill injects a child div, get its contents
+    var quillDiv = $('#editor').find('.ql-editor');
+    $reply_detail.val( quillDiv.html() );
+  }
+  // Submit data
+  function submitEdit(obj) {
+    return fetch(`https://{{ request.domain }}/_hcms/api/replies/edit?oid=${replyId}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    })
+  }
+  function handleEditSubmission() {
+    populatereplyDetail();
+    var data = formToPOJO( $("#form__reply")[0] );
+    return submitEdit(data);
+  }
+  $(document).ready(function() {
+    $("#form__reply").on('submit', function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      var $submitBtn = $this.find('#submitBtn');
+      var $submitBtntemplate = $submitBtn.clone();
+      $submitBtn.replaceWith(`<div id="submitBtn" style="padding: 1rem;"><span style="display:inline-block;" class="h-spin"><svg heigth="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.74 390.33"><defs><style>.b{fill:#1f2040;}</style></defs><path class="b" d="M410.62,149.95l-60.47-104.73C334,17.24,304.14,0,271.83,0h-120.93c-32.31,0-62.17,17.24-78.32,45.22L12.12,149.95c-16.16,27.98-16.16,62.46,0,90.44l60.47,104.73c16.16,27.98,46.01,45.22,78.32,45.22h120.93c32.31,0,62.17-17.24,78.32-45.22l60.47-104.73c16.16-27.98,16.16-62.46,0-90.44Zm-79.69,76.45l-32.73,56.7c-11.16,19.32-31.78,31.23-54.09,31.23h-65.47c-22.31,0-42.93-11.9-54.09-31.23l-32.73-56.7c-11.16-19.32-11.16-43.13,0-62.46l32.73-56.7c11.16-19.32,31.78-31.23,54.09-31.23h65.47c22.31,0,42.93,11.9,54.09,31.23l32.73,56.7c11.16,19.32,11.16,43.13,0,62.46Z"/></svg></span> <span>loading…</span></div>`);
+      handleEditSubmission()
+      .then(function(resp) {
+        setTimeout(function() {
+          window.location = `https://{{request.domain}}/replies/${replieslug}`
+        }, 500)
+      })
+      .catch(function(err) {
+        console.log( err );
+        $this.find('#submitBtn').replaceWith($submitBtntemplate);
+      })
+    })
+  });
+</script>
+{% end_require_js %}
+{% else %}{# this is the alternative content if not authorized #}
+<div class="reply-detail">
+  {% inline_rich_text field="dont_have_access_message" value="{{ module.dont_have_access_message }}" %}
+  {% if !request.query_dict.debug %}
+  <script>
+    setInterval(function(){
+      document.location.href='{{ content.widgets.redirect_url.body.value }}/{{ reply.reply_slug}}';
+    }, 5000);
+  </script>
+  {% endif %}
+</div>
+{% endif %}

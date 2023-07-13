@@ -1,0 +1,344 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Edit Membership Profile
+dataQueryPath: dataqueries/membership-profile-edit
+-->
+{% extends "../templates/layouts/base.html" %}
+{% block body %}
+{% from '../community/imports/object_associations.html' import object_schema as object_schema %}
+{{ require_js( get_asset_url('/Project C/js/profile-edit.js') ) }}
+{% from './imports/tools.html' import icons as icons %}
+{% if request.query_dict.edit %}
+{% require_js %}
+{#<script src="{{ get_asset_url('/Project C/js/jquery.validate.min.js') }}"></script>#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js" integrity="sha512-P2W2rr8ikUPfa31PLBo5bcBQrsa+TNj8jiKadtaIrHQGMo6hQM6RdPjQYxlNguwHz8AwSQ28VkBK6kHBLgd/8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ get_asset_url('/Project C/js/quill-emoji.js') }}"></script>
+<script>
+  $(document).ready(function() {
+    // <!-- Initialize Quill editor -->
+    var toolbarOptions = { 
+    container: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{ 'header': [ 2, 3, 4, false] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'align': [] }],
+      ['clean']         ,['image'],
+      ['link'],// remove formatting button
+      ['emoji']
+    ]
+     };
+
+     let editorCount = $('#editor').length;
+     console.log(`editorCount = ${editorCount}`);
+     if (editorCount > 0) {
+       var quill = new Quill('#editor', {
+         modules: {
+           toolbar: toolbarOptions,
+           "emoji-toolbar": true,
+           "emoji-textarea": true,
+           "emoji-shortname": true,
+         },
+         placeholder: '{{ module.topic_placeholder_text|striptags|escape }}',
+         theme: 'snow'
+       });
+     }
+  });
+</script>
+{% end_require_js %}
+
+{% require_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css" integrity="sha512-/FHUK/LsH78K9XTqsR9hbzr21J8B8RwHR/r8Jv9fzry6NVAOVIGFKQCNINsbhK7a1xubVu2r5QZcz2T9cKpubw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ get_asset_url('/Project C/community/css/partials/_forms.css') }}" rel="stylesheet" />
+<link href="{{ get_asset_url('/Project C/css/quill-emoji.css') }}" rel="stylesheet" />
+{% end_require_css %}
+{% endif %}
+<div class="body-container body-container--landing-page">
+  {% dnd_area "dnd_area"
+    label="Main section",
+  %}
+
+  {# Hero banner #}
+  {% end_dnd_area %}
+  {% if request.query_dict.edit %} {% set is_editable = "is_editable" %}{% else %}{% set is_editable = "not_editable" %}{% endif %}
+  {% if object_schema.contact.to_member_profile_owner %}
+  {#{% set member = crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_member_profile_owner, "", "hs_object_id,first_name,last_name,bio,username,profile_photo,username,twitter_url,facebook_url,instagram_url,company_name,email,website_url,full_bio,linkedin,profile_visibility", false).results|first %}#}
+  {% set member = data_query.data.CRM.contact.associations.p_member_profile_collection__profile_owner.items[0] %}
+  {% endif %}
+  <div class="container-fluid row-fluid dnd-section">
+    <div class="content-wrapper row-fluid container-{{is_editable}}">
+      {% if member.hs_object_id %} {# Checking to make sure there is a member profile #}
+      <div class="sidebar-content span4">
+        <img src="{{member.profile_photo}}" style="max-width:391px;width:100%" /> {# Dealing with large uploaded images. #}
+        {% if is_editable == "not_editable" %}
+        <a class="btn btn--primary edit-profile-button" href="?edit=true">Edit Profile</a>
+        {% endif %}
+        <form id="member-profile" class="form__one">
+
+          <div class="input {{is_editable}}">
+            <label for="profile_photo">Upload a Profile Photo:</label>
+            <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="file" id="profile_photo" name="profile_photo">
+          </div>
+
+
+          <div class="input {{is_editable}}">
+            <label for="profile_visibility">Profile Visibility:</label>
+            <select {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} name="profile_visibility" id="profile_visibility" >
+              <option disabled value="">Please Choose</option>   
+              <option value="Public" {% if member.profile_visibility == "" or member.profile_visibility == null or member.profile_visibility == "Public" %} selected{% endif %}>Public</option>
+              <option value="Members Only" {% if member.profile_visibility == "Members Only" %} selected{% endif %}>Members Only</option>
+              <option value="Unlisted" {% if member.profile_visibility == "Unlisted" %} selected{% endif %}>Unlisted</option>
+            </select>
+          </div>
+          <div class="input {{is_editable}}">
+            <label for="username">Username:</label>
+            <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="username" name="username" value="{{member.username}}" disabled="disabled">
+          </div>
+        </form>
+      </div>
+      <div class="home-content span8">    
+
+        <form id="member-profile" class="form__two">
+          <div class="input-fieldset">
+            <div class="input {{is_editable}}">
+              <label for="first_name">First name:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="first_name" name="first_name"  value="{{member.first_name}}" required>
+            </div>
+            <div class="input {{is_editable}}">
+              <label for="last_name">Last name:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="last_name" name="last_name" value="{{member.last_name}}" required>
+            </div>
+          </div>
+          <div class="input-fieldset">
+            <div class="input {{is_editable}}">
+              <label for="company_name">Company name:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="company_name" name="company_name" value="{{member.company_name}}">
+            </div>
+            <div class="input {{is_editable}}">
+              <label for="website_url">Website Url:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="website_url" name="website_url" value="{{member.website_url}}">
+            </div>
+          </div>
+          <div class="input {{is_editable}}">
+            <label for="email">Email:</label>
+            <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="email" name="email" value="{{member.email}}" required>
+          </div>
+          <div class="input {{is_editable}}">
+            <label for="bio">Short Bio / Tagline:</label>
+            <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="bio" name="bio" value="{{member.bio}}">
+          </div>
+          <div class="input {{is_editable}}">
+            <label for="full_bio">Full Bio:</label>
+            <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="hidden" id="full_bio" name="full_bio" >
+            <div id="editor"  class="full_bio editor {{is_editable}}">
+              {{member.full_bio}}
+            </div>
+          </div>
+          <div class="input-fieldset">
+            <div class="input {{is_editable}}">
+              <label for="twitter_url">Twitter Profile:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="twitter_url" name="twitter_url" value="{{member.twitter_url}}">
+            </div>
+            <div class="input {{is_editable}}">
+              <label for="linkedin">LinkedIn Url:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="linkedin" name="linkedin" value="{{member.linkedin}}">
+            </div>
+            <div class="input {{is_editable}}">
+              <label for="facebook_url">Facebook Url:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="facebook_url" name="facebook_url" value="{{member.facebook_url}}">
+            </div>
+            <div class="input {{is_editable}}">
+              <label for="instagram_url">Instagram Url:</label>
+              <input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="text" id="instagram_url" name="instagram_url" value="{{member.instagram_url}}">
+            </div>
+          </div>
+          {% if request.query_dict.edit %}<input {% if is_editable == "not_editable" %} disabled="disabled"{% endif %} type="submit" value="Update Profile" id="profileSubmitBtn" data-mid="{{member.hs_object_id}}">{% endif %}
+        </form>
+
+        {% if request.query_dict.debug %}
+        <hr>{{member}}
+        {% endif %}
+      </div>
+      {% else %}{# Checking to make sure there is a member profile #}
+      <h3>
+        No Profile Found
+      </h3>
+      <p>
+        Please <a href="/signup">Signup to get access or reach out to support</a>
+      </p>
+      {% endif %}{# END OF Checking to make sure there is a member profile #}
+    </div>
+
+  </div>
+
+  <style>
+    .home-content, .sidebar-content {padding-top:15px;}
+    .input-fieldset {display:flex;width:100%;}
+    .input {padding-bottom:1rem;}
+    .input-fieldset .input {
+      width: 50%;
+      margin-right: 1%;
+    }
+    .edit-profile-button {display:block;margin:10px 0;}
+    .input-fieldset .input:last-child {
+      margin-right: 0;
+    }
+    .container-not_editable input, .container-not_editable select {
+      border: 0px!important;
+      padding:0px!important;
+    }
+    .container-not_editable file {
+      display:none!important;
+    }
+    .container-not_editable label {
+      font-weight:bold!important;
+    }
+  </style>
+</div>
+{% require_js %}
+<script>
+  // collect form data
+  function collectForms(a,b) {
+    var formOne =  formToPOJO( a[0] );
+    var formTwo =  formToPOJO( b[0] );
+    var returnObj = {
+
+    };
+    Object.assign(returnObj, formOne, formTwo);
+    return returnObj
+  }
+  // api submission
+  function submitAPI(obj, mid) {
+    return fetch(`https://{{ request.domain }}/_hcms/api/profile/edit?mid=${mid}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    });
+  }
+  // Get value from Quil into hidden field
+  function populateTopicDetail() {
+    var $full_bio = $('#full_bio');
+    // Quill injects a child div, get its contents
+    var quillDiv = $('#editor').find('.ql-editor');
+    $full_bio.val( quillDiv.html() );
+  }
+
+  //Get file data and convert to b64 encoded string to send out of hubspot
+  function readFile(file) {
+    console.log("reading file")
+    file_name = file.name.replaceAll(" ", "-")
+    console.log('file_name:');
+    console.log(file_name);
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
+  }
+  $(document).ready(function() {
+
+    console.log("connected");
+    var $profileFormOne = $(".form__one");
+    var $profileFormTwo = $(".form__two");
+
+    $("body").on("submit", "#member-profile", function(event) {
+      event.preventDefault();
+      var $this = $(event.target).find("#profileSubmitBtn");
+      var memberId = $this[0].dataset.mid;
+      let file_data = document.getElementById("profile_photo").files[0]
+      if(file_data) {
+
+        let filePromise = readFile(file_data)
+
+        filePromise.then(file => {
+          let b64Array = file.slice(0, file.length - 1).split("base64,");
+          let b64string = b64Array[1];
+          let b64FileType = b64Array[0];
+          console.log(file_data.name)
+          fetch(`https://{{ request.domain }}/_hcms/api/file/upload`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'maxContentLength': Infinity,
+              'maxBodyLength': Infinity
+            },
+            body: JSON.stringify({
+              file_name: file_data.name,
+              profile_photo: b64Array
+            })
+          }).then(res => res.json())
+            .then(res => {
+            let imgUrl = res.url
+            console.log(imgUrl)
+            populateTopicDetail()
+            ///////////////
+            var data = collectForms($profileFormOne, $profileFormTwo);
+            data.profile_photo = imgUrl
+            $this.replaceWith( `<div id='submitBtn' style='padding: 1rem;'><span style='display:inline-block;' class='h-spin'>{{ icons.nugget }}</span> <span>{{ cs.labels_text.loading_label }}</span></div>`)
+            // call api
+            console.log(data)
+            var response = submitAPI(data, memberId);
+            response.then(function(resp) {
+              return resp.json()
+            })
+              .then(function(resp) {
+              console.log(resp)
+              
+              setTimeout(function() {
+                window.location = `https://{{ request.domain }}{{ request.path }}`
+              }, 800)
+
+            })
+
+              .catch(function(err) {
+              console.log( err)
+            })
+            /////////////// 
+
+          }) //end second containing .then
+
+        })//end file on upload callback
+
+      } else {
+        populateTopicDetail()
+        ///////////////
+        var data = collectForms($profileFormOne, $profileFormTwo);
+        // Since there's no new photo to be uploaded, be sure to clear out the profile_photo property
+        delete data.profile_photo;
+        $this.replaceWith( `<div id='submitBtn' style='padding: 1rem;'><span style='display:inline-block;' class='h-spin'>{{ icons.nugget }}</span> <span>{{ cs.labels_text.loading_label }}</span></div>`)
+        // call api
+        var response = submitAPI(data, memberId);
+
+        response.then(function(resp) {
+          return resp.json()
+        }) //end first .then
+          .then(function(resp) {
+          console.log(resp)
+
+          setTimeout(function() {
+            window.location = `https://{{ request.domain }}{{ request.path }}`
+          }, 800)//end timeout
+
+        })// end second .then
+          .catch(function(err) {
+          console.log( err)
+        }) //end catch
+      } // end else
+      /////////////// 
+    }) //end body.on submit
+  });//document.ready callback end
+</script>
+{% end_require_js %}
+
+{% endblock %}

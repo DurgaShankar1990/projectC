@@ -1,0 +1,144 @@
+{% require_css %}
+<style>
+  {% if module.text %}
+  #module--{{ name }} .collage__box {
+    position: absolute;
+    max-width: {{ module.style.text_box.max_width }}px;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    {% if module.style.text_box.background_color == 'custom' %}
+    background-color: rgba({{ module.style.text_box.custom_background_color.color|convert_rgb }}, {{ module.style.text_box.custom_background_color.opacity / 100 }});
+    {% endif %}
+    padding-top: {{ module.style.text_box.spacing_field.padding.top.value }}{{ module.style.text_box.spacing_field.padding.top.units }};
+    padding-right: {{ module.style.text_box.spacing_field.padding.right.value }}{{ module.style.text_box.spacing_field.padding.right.units }};
+    padding-bottom: {{ module.style.text_box.spacing_field.padding.bottom.value }}{{ module.style.text_box.spacing_field.padding.bottom.units }};
+    padding-left: {{ module.style.text_box.spacing_field.padding.left.value }}{{ module.style.text_box.spacing_field.padding.left.units }};
+    text-align: center;
+    box-shadow: 0px 8px 16px rgba(0,0,0,.4);
+    z-index: 2;
+  }
+  {% endif %}
+  #module--{{ name }} .collage__image-wrapper {
+    overflow: hidden;
+    margin: {{ module.style.images.gap_between_images / 2 }}px;
+    {% if module.style.images.set_image_height %}
+    height: {{ module.style.images.image_height }}px;
+    {% endif %}
+  }
+  .collage--2,
+  .collage--3,
+  .collage--4 {
+    width: calc(50% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--3:nth-of-type(2) {
+    width: calc(100% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--5 {
+    width: calc(33.333% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--5:nth-of-type(2),
+  .collage--5:nth-of-type(3) {
+    width: calc(50% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--6,
+  .collage--7,
+  .collage--9 {
+    width: calc(33.333% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--7:nth-of-type(2),
+  .collage--7:nth-of-type(3),
+  .collage--7:nth-of-type(4),
+  .collage--7:nth-of-type(5) {
+    width: calc(50% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--8 {
+    width: calc(33.333% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--8:nth-of-type(5), 
+  .collage--8:nth-of-type(6) {
+    width: calc(50% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--10 {
+    width: calc(33.333% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--10:nth-of-type(5),
+  .collage--10:nth-of-type(6),
+  .collage--10:nth-of-type(7),
+  .collage--10:nth-of-type(8) {
+    width: calc(25% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--11 {
+    width: calc(25% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--11:nth-of-type(6),
+  .collage--11:nth-of-type(7),
+  .collage--11:nth-of-type(8) {
+    width: calc(33.333% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--12 {
+    width: calc(25% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--13 {
+    width: calc(25% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--13:nth-of-type(6),
+  .collage--13:nth-of-type(7),
+  .collage--13:nth-of-type(8),
+  .collage--13:nth-of-type(9),
+  .collage--13:nth-of-type(10) {
+    width: calc(20% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--14 {
+    width: calc(20% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--14:nth-of-type(7),
+  .collage--14:nth-of-type(8),
+  .collage--14:nth-of-type(9),
+  .collage--14:nth-of-type(10) {
+    width: calc(25% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--15 {
+    width: calc(20% - {{ module.style.images.gap_between_images }}px);
+  }
+  .collage--16 {
+    width: calc(25% - {{ module.style.images.gap_between_images }}px);
+  }
+
+  @media(max-width: 768px) {
+    #module--{{ name }} .collage__box {
+      position: relative;
+      transform: unset;
+      width: 100%;
+      left: 0;
+      margin: {{ module.style.images.gap_between_images / 2 }}px;
+    }
+  }
+</style>
+{% end_require_css %}
+<div id="module--{{ name }}" class="collage animate animate--{{ module.style.animation }}">
+  {% if module.text %}
+  <div class="collage__box animate animate--{{ module.style.animation }} bg--{{ module.style.text_box.background_color }}">
+    {{ module.text }}
+  </div>
+  {% endif %}
+  {% for item in module.images %}
+  <div href="{{ item.src }}" class="collage__image-wrapper collage--{{ module.images|length }}">
+    <img width="1200" loading="lazy" src="{{ item.src }}" alt="{{ item.alt }}"> 
+  </div>
+  {% endfor %}
+</div>
+
+{% if module.style.images.enable_gallery_view %}
+{% unless request.postDict.inpageEditorUI %}
+{% require_js %}
+<script>
+  $('#module--{{ name }}').magnificPopup({
+    delegate: '.collage__image-wrapper', // child items selector, by clicking on it popup will open
+    type: 'image',
+    gallery: { enabled:true }
+    });
+</script>
+{% end_require_js %}
+{% endunless %}
+{% endif %}

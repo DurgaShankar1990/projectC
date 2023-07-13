@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "inline_help_text" : "Drop this module into any section to add a video background to the section. Please ensure you do not have a background color or image on the section you are putting this module in. <br>\nThe Video Must be an MP4 or webM video type. <br><br>\nPlease note that video backgrounds will affect page speed.",
+  "icon" : "fontawesome-5.14.0:Video:SOLID",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 96396849947,
+  "label" : "Video Background",
+  "is_available_for_new_content" : true
+}

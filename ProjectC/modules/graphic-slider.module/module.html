@@ -1,0 +1,110 @@
+{% require_css %}
+<style>
+  #{{ name }} .omega-graphic {
+    border-radius: {{ module.style.border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    {% if module.style.image_size == 'set_height' %}
+    height: {{ module.style.image_height }}px;
+    {% endif %}
+    margin-top: 0;
+    margin-left: 0;
+  }
+  #{{ name }} .omega-graphic img {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    object-fit: cover;
+  }
+  #{{ name }} .omega-graphic svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: rgba({{ module.style.icon_color.color|convert_rgb }}, {{ module.style.icon_color.opacity / 100 }});
+    height: {{ module.style.icon_size }}px;
+  }
+  #{{ name }}-nav .graphic-slider__nav-image-wrapper {
+    margin: .25rem;
+    margin-top: .5rem;
+    height: {{ module.style.thumbnail.height }}px;
+    width: {{ module.style.thumbnail.width }}px;
+    border-radius: {{ module.style.thumbnail.border_radius }}px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+            justify-content: center;
+    overflow: hidden;
+  }
+  #{{ name }}-nav img {
+    height: auto;
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+  #{{ name }} .flickity-viewport {
+    -webkit-transition: height 0.2s;
+-o-transition: height 0.2s;
+transition: height 0.2s;
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ name }}" class="graphic-slider 
+                            animate animate--{{ module.style.animation }}">
+  {% for item in module.items %}
+  <a {% if item.graphic_type == 'video' %}{% unless request.postDict.inpageEditorUI %}href="{{ item.video_url }}"{% endunless %}{% endif %}
+     class="omega-graphic 
+            {% unless module.style.height_between_slides == 'resize' %} matchHeight {% endunless %}
+            omega-{{ item.graphic_type }} 
+            {{ module.style.shadow }}">
+    <img width="{{ item.image.width }}" height="{{ item.image.height }}" loading="lazy" src="{{ item.image.src }}" alt="{{ item.image.alt }}">
+    {% if item.graphic_type == 'video' %}
+    {% icon
+      name="{{ item.play_icon.name }}"
+      style="{{ item.play_icon.type }}"
+      unicode="{{ item.play_icon.unicode }}"
+      icon_set="{{ item.play_icon.icon_set }}"
+    %}
+    {% endif %}
+  </a>
+  {% endfor %}
+</div>
+
+<div id="{{ name }}-nav" 
+     class="graphic-slider__nav animate animate--{{ module.style.animation }}" 
+     data-flickity='{ "asNavFor": "#{{ name }}", "contain": true, "pageDots": false, "prevNextButtons": false, "wrapAround": true }'>
+  {% for item in module.items %}
+  <div class="graphic-slider__nav-image-wrapper">
+    <img width="{{ item.image.width }}" height="{{ item.image.height }}" loading="lazy" src="{{ item.image.src }}" alt="{{ item.image.alt }}">
+  </div>
+  {% endfor %}
+</div>
+
+{% require_js %}
+
+<script>
+  $('#{{ name }}').flickity({
+    // options
+    cellAlign: 'center',
+    wrapAround: true,
+    {% if module.style.height_between_slides == 'resize' %}
+    adaptiveHeight: true,
+    {% endif %}
+    pageDots: false,
+    prevNextButtons: false,
+    contain: true
+    });
+</script>
+
+{% end_require_js %}

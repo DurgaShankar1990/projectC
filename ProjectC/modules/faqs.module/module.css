@@ -1,0 +1,109 @@
+.faq {
+  margin: 1rem;
+}
+.faq__question {
+  padding: 1rem 2rem;
+  position: relative;
+  border: 2px solid #707070;
+  font-size: 26px;
+  cursor: pointer;
+  -webkit-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+}
+.faq__question::after {
+  content: '';
+  position: absolute;
+  right: 26px;
+  height: 4px;
+  width: 30px;
+  top: calc(50% - 2px);
+  border-radius: 3px;
+  -webkit-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+}
+.faq__question::before {
+  content: '';
+  position: absolute;
+  right: 39px;
+  height: 30px;
+  width: 4px;
+  top: calc(50% - 15px);
+  border-radius: 3px;
+  -webkit-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+}
+.faq__question.open::after {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.faq__question.open::before {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.faq__answer-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  opacity: 0;
+}
+.faq__answer-content.loaded {
+  position: relative;
+  opacity: 1;
+}
+.faq__answer {
+  padding: 1rem 2rem;
+  width: 50%;
+}
+.faq__supporting-content {
+  width: 50%;
+  padding: 2rem;
+}
+.faq__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+.faq__image img {
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: cover;
+}
+.faq__answer p {
+  font-size: 22px;
+}
+@media(max-width: 767px) {
+  .faq__question {
+    font-size: 20px;
+    padding: 1rem;
+    padding-right: 3rem;
+  }
+  .faq__answer-content {
+    -ms-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
+  }
+  .faq__answer,
+  .faq__supporting-content {
+    -webkit-box-flex: unset;
+    -ms-flex: unset;
+    flex: unset;
+    width: 100%;
+    padding: .5rem;
+  }
+
+}

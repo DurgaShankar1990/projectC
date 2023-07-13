@@ -1,0 +1,120 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Community Topics
+  dataQueryPath: dataqueries/community-topics
+-->
+{% extends '../templates/layouts/base.html' %}
+{% block body %}
+{% set cs = widget_data.cohortium_settings %}
+{% from '../community/imports/object_associations.html' import object_schema as object_schema %}
+{% boolean "edit_mode" label="Edit Mode Template", value=False,export_to_template_context=True,no_wrapper=True %}
+{{ require_css(get_asset_url('../community/css/community.css')) }}
+{# modules are defined up here so that settings are available on listing page for the detail pages -- they are used again (NAME MUST MATCH) below in the corresponding areas #}
+{% if object_schema.contact.to_member_profile_owner %}
+{# set contact_member = crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_member_profile_owner, "", "hs_object_id,first_name,last_name,bio,username,profile_photo,username,twitter_url,facebook_url,company_name,email,website_url,full_bio,linkedin,profile_visibility", false).results|first #}
+{% set contact_member = data_query.data.CRM.contact.associations.p_member_profile_collection__profile_owner.items[0] %}
+{% endif %}
+
+{% if request.query_dict.debug %}
+  contact_member = {{ contact_member }}
+  request.contact.list_memberships = {{ request.contact.list_memberships }}
+{% endif %}
+
+{% module "module_16492665928315" path="../community/modules/Topic Detail", label="Topic Detail Settings ", export_to_template_context=true  %}
+{% module "module_16492690087363" path="../community/modules/Topic Replies", label="Topic Replies Settings", export_to_template_context=true  %}
+{% module "module_16506932059165" path="../community/modules/Community Call to Action", label="Community Call to Action", export_to_template_context=true  %}
+{% module "module_16492707721077123" path="../community/modules/Topic Member Card", label="Topic Member Card Settings", export_to_template_context=true  %}
+<div class="body-container body-container-community">
+  {% if !dynamic_page_crm_object %}
+  {% dnd_area "dnd_area"
+  label="Main section",
+%}
+  {# Hero banner #}
+  {% end_dnd_area %}
+    {% text "redirect_url" label="Listing Page Redirect Url", value="",export_to_template_context=True,no_wrapper=True %}
+
+  {% if content.widgets.edit_mode.body.value == "True" %}
+
+  {% if content.widgets.redirect_url.body.value and !request.postDict.inpageEditorUI %}
+  <script>
+    setInterval(function(){
+      document.location.href='{{ content.widgets.redirect_url.body.value }}';
+    }, 0);
+  </script>
+  {% endif %}
+  {% else %}
+  {% module "all_topics" path='../community/modules/Topic Listing Content', label="Topic Listing Content" %}
+  {% endif %}
+  {% endif %}
+
+  {% if dynamic_page_crm_object or request.postDict.inpageEditorUI %}
+  {% set topic = dynamic_page_crm_object %}
+  {% if object_schema.topic.to_member_profile_author %}
+  {# set member = crm_associations(topic.hs_object_id, "USER_DEFINED", object_schema.topic.to_member_profile_author, "", "first_name,last_name,bio,username,profile_photo,hs_object_id", false).results|first #}
+  {% set member = data_query.data.CRM.p_topic.associations.p_member_profile_collection__member_author.items[0] %}
+  {% if request.query_dict.debug %}
+    member = {{ member }}
+  {% endif %}
+  {% if object_schema.contact.to_topic_author %}
+{#{% if crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_member_author, "&hs_object_id=" ~ topic.id , "", false).results|length > 0 %} {% set is_editable = "topic_owner" %} {% endif %}#}
+{% if data_query.data.CRM.contact.associations.p_topic_collection__author.items|length > 0 %} {% set is_editable = "topic_owner" %} {% endif %}
+{% endif %}
+{% if object_schema.contact.to_topic_follower %}
+{#{% if crm_associations(contact.hs_object_id, "USER_DEFINED", object_schema.contact.to_topic_follower, "&hs_object_id=" ~ topic.id , "", false).results|length > 0 %}#}
+{% if data_query.data.CRM.contact.associations.p_topic_collection__follower.items|length > 0 %}
+  {% set is_follower = "following" %} {% endif %}
+{% endif %}
+  {% endif %}
+  {% if object_schema.member_profile.to_reply %}
+{#{% set member_replies = crm_associations(contact_member.hs_object_id, "USER_DEFINED", object_schema.member_profile.to_reply, "&topic_id=" ~ topic.id , "", false).results %}#}
+  {% set member_replies = data_query.data.CRM.contact.associations.p_member_profile_collection__profile_owner.items[0].associations.p_reply_collection__reply_to_member_profile.items %}
+  {% set myreplies = [] %}
+  {% for r in member_replies %}
+  {# do myreplies.append(r.id) #}
+  {% do myreplies.append(r._metadata.id) %}
+  {% endfor %}
+{% endif %}
+  <div class="container-fluid row-fluid dnd-section">
+    <div class="content-wrapper row-fluid">
+{% if topic.is_deleted == "true" %}{{ set_response_code(404) }} {% endif %}
+      <div class="home-content span8">
+        {% if content.widgets.edit_mode.body.value == "True" %}
+        {% module "module_16492665928315234" path="../community/modules/Topic Detail EDIT.module", label="Topic EDIT Settings " %}
+        {% else %}
+        {% module "module_16492665928315" path="../community/modules/Topic Detail", label="Topic Detail Settings " %}
+        {% module "module_16492690087363" path="../community/modules/Topic Replies", label="Topic Replies Settings" %}
+        {% endif %}
+      </div>
+
+      <div class="sidebar-content span4">
+        {% module "module_16506932059165" path="../community/modules/Community Call to Action", label="Community Call to Action" %}
+        {% module "module_16492707721077123" path="../community/modules/Topic Member Card", label="Topic Member Card Settings" %}
+      </div>
+
+    </div>
+  </div>
+  <style>
+    .home-content {
+      background: #fff;
+      border-radius: 7px;
+      padding: 20px;
+    }
+    .sidebar-content {}
+    .body-container-community {background:{{ theme.global_colors.secondary_light.color }};}
+
+  </style>
+  {% endif %}
+  <style>
+    .home-content {
+      background: #fff;
+      border-radius: 7px;
+      padding: 20px;
+      border: 1px solid #e6e6e6; position:relative;
+    }
+    .sidebar-content {}
+    .body-container-community {background:{{ theme.global_colors.secondary_light.color }};}
+
+  </style>
+</div>
+{% endblock %}

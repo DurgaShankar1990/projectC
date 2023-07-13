@@ -1,0 +1,112 @@
+<style>
+  {% scope_css %}
+  #footer {
+    background-color: {{ theme.footer.background_color.css }};
+    padding-top: {{ module.style.spacing.padding.top.value }}{{ module.style.spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.padding.left.value }}{{ module.style.spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.padding.right.value }}{{ module.style.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.padding.bottom.value }}{{ module.style.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.margin.top.value }}{{ module.style.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value }}{{ module.style.spacing.margin.bottom.units }};
+  }
+
+  /*  Text Colors  */
+  #footer h1,
+  #footer h2,
+  #footer h3,
+  #footer h4,
+  #footer h5,
+  #footer h6,
+  #footer ul,
+  #footer li,
+  #footer p,
+  #footer label,
+  #footer span {
+    color: {{ module.style.text_color.css }};
+  }
+  #footer svg path {
+    fill: {{ module.style.icons.icon_color.css }};
+  }
+  #footer svg {
+    height: {{ module.style.icons.icon_size }}px;
+  }
+  #footer form .hs-richtext, 
+  #footer form .hs-richtext p {
+    margin: .5rem 0;
+  }
+  #footer a {
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  #footer a:hover {
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+  #footer .footer--inner {
+    max-width: {{ module.style.max_content_width }}px;
+  }
+  #footer .logo-wrapper {
+    padding: 0 1rem 1rem 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: {{ module.style.logo.alignment }};
+  }
+
+  @media(max-width: 767px) {
+    #footer ul a {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+    #footer * {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #footer .btn {
+      margin: auto;
+    }
+    #footer .footer__bottom {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+    #footer h4 {
+      margin-top: 2rem;
+    }
+  }
+  {% end_scope_css %}
+</style>
+
+<div id="footer" class="footer">
+  {% if module.include_logo %}
+  <div class="logo-wrapper footer--inner">
+    <img style="width:{{ theme.footer.logo_width }}px"  src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" width="{{ theme.footer.logo_width }}" loading="lazy">
+  </div>
+  {% endif %}
+  <div class="footer--inner">
+    <div class="footer__bottom">
+      <div class="social-links">
+        {% for link in module.social_links %}
+        <a href="{{ link.link }}" target="_blank">
+          {% icon
+              name="{{ link.icon.name }}"
+              style="{{ link.icon.type }}"
+              unicode="{{ link.icon.unicode }}"
+              icon_set="{{ link.icon.icon_set }}"
+            %}
+        </a>
+        {% endfor %}
+      </div>
+      <p style="margin-top: 2rem;">
+        {{ module.copyright }}
+      </p>
+    </div>
+  </div>
+</div>

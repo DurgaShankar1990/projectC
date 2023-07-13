@@ -1,0 +1,235 @@
+[ {
+  "id" : "d579c3da-fa29-58a9-10da-b6bc6a196160",
+  "name" : "text_above_title",
+  "display_width" : null,
+  "label" : "Text Above Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "OMEGA"
+}, {
+  "id" : "67487bb5-0bc9-b305-6ee1-3347a6e0d523",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Turning Complex Code into Simple Design. <br> For You."
+}, {
+  "id" : "4ff54704-5de5-1894-1660-81f111763854",
+  "name" : "helper_text",
+  "display_width" : null,
+  "label" : "Helper Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "This theme is built on three key concepts: Power, Simplicity, and Versatility. We worked on The OMEGA Theme, so you don't have to work hard on your website."
+}, {
+  "id" : "1606e6e7-9d36-61e5-5525-ec880099d1f0",
+  "name" : "link_text",
+  "display_width" : null,
+  "label" : "Link Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "UPGRADE YOUR WEBSITE TODAY"
+}, {
+  "id" : "d643196d-e807-90e9-e0bc-8829329e2d8e",
+  "name" : "link_field",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "#",
+      "content_id" : null
+    },
+    "open_in_new_tab" : true,
+    "no_follow" : false
+  }
+}, {
+  "id" : "748174ff-3173-d508-5817-599f41915a37",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "b21c5847-0fbc-06c3-ffa2-deddf9fb325d",
+    "name" : "text_width",
+    "display_width" : null,
+    "label" : "Text Width",
+    "required" : true,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 400,
+    "max" : 1400,
+    "step" : 1,
+    "type" : "number",
+    "default" : 800
+  }, {
+    "id" : "8a46774a-b6c4-2227-532d-cb6adbaa57e6",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      },
+      "padding" : {
+        "top" : {
+          "value" : 140,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 80,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "1710fd00-2ecf-9ce6-d53b-b25a4cbb7121",
+    "name" : "alignment_field",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "alignment_direction" : "BOTH",
+    "type" : "alignment",
+    "default" : {
+      "horizontal_align" : "LEFT",
+      "vertical_align" : "MIDDLE"
+    }
+  }, {
+    "id" : "0fba4d38-594c-abf3-a4c1-60c850a6a9df",
+    "name" : "text_color",
+    "display_width" : null,
+    "label" : "Text Color",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "black", "Black" ], [ "white", "White" ], [ "primary_dark", "Primary Dark" ], [ "primary_light", "Primary Light" ], [ "secondary_dark", "Secondary Dark" ], [ "secondary_light", "Secondary Light" ], [ "tertiary", "Tertiary" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "black"
+  }, {
+    "id" : "4bbfc003-8de0-7998-558a-ac438b4cbbc0",
+    "name" : "button_style",
+    "display_width" : null,
+    "label" : "Button Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "072d65a1-bcfb-6ba8-79b8-9aa99de31b9f",
+    "name" : "link_color",
+    "display_width" : null,
+    "label" : "Link Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "4bbfc003-8de0-7998-558a-ac438b4cbbc0",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "link",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#113540",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "text_width" : 800,
+    "spacing" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      },
+      "padding" : {
+        "top" : {
+          "value" : 140,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 80,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
+        }
+      }
+    },
+    "alignment_field" : {
+      "horizontal_align" : "LEFT",
+      "vertical_align" : "MIDDLE"
+    },
+    "text_color" : "black",
+    "button_style" : "primary",
+    "link_color" : {
+      "color" : "#113540",
+      "opacity" : 100
+    }
+  }
+} ]

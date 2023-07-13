@@ -1,0 +1,9 @@
+.badge-container {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+img.profile-badge {max-width:80px;margin:5px;}

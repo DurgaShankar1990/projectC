@@ -1,0 +1,15 @@
+<style>
+{% scope_css %}
+  @media(max-width: 767px) {
+    .map iframe {
+      height: {{ module.map_height_mobile }}px;
+    }
+  }
+{% end_scope_css %}
+</style>
+
+<div class="map">
+  <div class="gmap_canvas">
+    <iframe width="100%" height="{{ module.map_height_desktop }}" id="gmap_canvas" src="https://maps.google.com/maps?q={{ module.address|replace(' ', '%20') }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+  </div>
+</div>

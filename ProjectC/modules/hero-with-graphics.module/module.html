@@ -1,0 +1,190 @@
+<!-- To Do:
+Mobile Options
+-->
+<style>
+  {% scope_css %}
+  .graphics-hero {
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+  .graphics-hero__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    {% unless module.style.graphic.graphic_style == 'match_text_height' %}
+    align-items: {{ module.style.graphic.graphic_style }};
+    {% else %}
+    align-items: center;
+    {% endunless %}
+    {% if module.style.swap_order_desktop %}
+    -webkit-box-orient: horizontal;    -webkit-box-direction: reverse;    -ms-flex-direction: row-reverse;    flex-direction: row-reverse;
+    {% endif %}
+  }
+  .graphics-hero__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: inherit;
+    position: relative;
+    z-index: 2;
+    {% if module.style.text.text_alignment == 'center' %}
+    text-align: center;
+    align-items: center;
+    {% elif module.style.text.text_alignment == 'right' %}
+    text-align: right;
+    align-items: flex-end;
+    {% else %}
+    align-items: flex-start;
+    text-align: left;
+    {% endif %}
+    margin-top: {{ module.style.text.spacing.margin.top.value ~ module.style.text.spacing.margin.top.units }};
+    padding: {{ module.style.text.spacing.padding.top.value ~ module.style.text.spacing.padding.top.units }} 
+      {{ module.style.text.spacing.padding.right.value ~ module.style.text.spacing.padding.right.units }}
+      {{ module.style.text.spacing.padding.bottom.value ~ module.style.text.spacing.padding.bottom.units }} 
+      {{ module.style.text.spacing.padding.left.value ~ module.style.text.spacing.padding.left.units }};
+    margin-bottom: {{ module.style.text.spacing.margin.bottom.value ~ module.style.text.spacing.margin.bottom.units }};
+    margin-left: {{ module.style.text.margin_left }}px;
+    margin-right: {{ module.style.text.margin_right }}px;
+    border-radius: {{ module.style.text.corner_radius }}px;
+  }
+  .graphics-hero__image,
+  .graphics-hero__video {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    {% if module.style.graphic.graphic_style == 'match_text_height' %}
+    height: 100%;
+    {% endif %}
+    border-radius: {{ module.style.graphic.border_radius }}px;
+    position: relative;
+  }
+  .graphics-hero__image img,
+  .graphics-hero__video img {
+    -o-object-fit: cover;object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .graphics-hero__container,
+  .graphics-hero__graphic {
+    -webkit-transition: 1s;-o-transition: 1s;transition: 1s;
+    {% if module.style.give_elements_a_min_width_of_50_ %}
+    min-width: 50%;
+    {% endif %}
+  }
+  .graphics-hero__play-icon {
+    height: {{ module.style.graphic.play_icon_size }}px;
+    width: {{ module.style.graphic.play_icon_size }}px;
+    z-index: 2;
+    fill: rgba({{ module.style.graphic.play_icon_color.color|convert_rgb }}, {{ module.style.graphic.play_icon_color.opacity / 100 }});
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+  }
+  @media(max-width: 1024px) {
+    .graphics-hero__wrapper {
+      -ms-flex-wrap: wrap;flex-wrap: wrap;
+      {% if module.style.swap_order_mobile %}
+      -webkit-box-orient: horizontal;-webkit-box-direction: reverse;-ms-flex-direction: row-reverse;flex-direction: row-reverse;
+      {% else %}
+      -webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-direction: row;flex-direction: row;
+      {% endif %}
+    }
+    .graphics-hero__graphic,
+    .graphics-hero__container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      padding: 1rem;
+    }
+  }
+  {% end_scope_css %}
+</style>
+
+<div class="graphics-hero section module--{{ name }}">
+  <div class="section-wrapper graphics-hero__wrapper">
+    <div class="graphics-hero__container animate animate--{{ module.style.animation }} text--{{ module.style.text.text_color }} bg--{{ module.style.text.background_color }}">
+      {% if module.text.text_above_title %}
+      <h5 class="text--{{ module.style.text.text_color }}">
+        {{ module.text.text_above_title }}
+      </h5>
+      {% endif %}
+      {% if module.text.title %}
+      <h1 class="text--{{ module.style.text.text_color }}">
+        {{ module.text.title }}
+      </h1>
+      {% endif %}
+      {% if module.text.helper_text %}
+      <div class="text--{{ module.style.text.text_color }}" style="margin-bottom: 2rem;">
+        {{ module.text.helper_text }}
+      </div>
+      {% endif %}
+      {% if module.text.link_text %}
+      {% set href = module.text.link_field.url.href %}
+      {% if module.text.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.text.link_field.no_follow %}
+      {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.text.link_field.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}" 
+         style="--link-color: rgba({{ module.style.text.link_color.color|convert_rgb }}, {{ module.style.text.link_color.opacity / 100 }})"
+         class="btn--{{ module.style.text.button_style }}"
+         {% if module.text.link_field.open_in_new_tab %}target="_blank"{% endif %}
+         {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+         >
+        {{ module.text.link_text }}
+      </a>
+      {% endif %}
+    </div>
+    <div class="graphics-hero__graphic animate animate--fade_in">
+      {% if module.graphic.graphic_type == 'image' %}
+      <div class="graphics-hero__image {% if module.style.graphic.box_shadow %} box-shadow {% endif %}">
+        <img src="{{ module.graphic.image.src }}" alt="{{ module.graphic.image.alt }}" loading="lazy" width="800">
+      </div>
+      {% else %}
+      <div class="graphics-hero__video {% if module.style.graphic.box_shadow %} box-shadow {% endif %}">
+        <img src="{{ module.graphic.placeholder_image.src }}" alt="{{ module.graphic.placeholder_image.alt }}" loading="lazy" width="800">
+        <a {% unless request.postDict.inpageEditorUI %} href="{{ module.graphic.video_url }}" {% endunless %} class="graphics-hero__play-icon">
+          {% icon
+            name="{{ module.graphic.play_button_icon.name }}"
+            style="{{ module.graphic.play_button_icon.type }}"
+            unicode="{{ module.graphic.play_button_icon.unicode }}"
+            icon_set="{{ module.graphic.play_button_icon.icon_set }}"
+            %}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% require_js %}
+<script>
+  {% if module.style.graphic.graphic_style == 'match_text_height' %}
+  var text_height = $('.graphics-hero__container').height();
+  $('.graphics-hero__graphic').css('height', text_height);
+  {% endif %}
+</script>
+{% end_require_js %}

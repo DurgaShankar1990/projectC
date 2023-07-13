@@ -1,0 +1,18 @@
+{
+  "global" : false,
+  "icon" : "fontawesome-5.14.0:Retro%20Camera:SOLID",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 96392566056,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/magnific.css",
+    "name" : "magnific.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/magnific.js",
+    "name" : "magnific.js"
+  } ],
+  "label" : "Photo Collage",
+  "is_available_for_new_content" : true
+}

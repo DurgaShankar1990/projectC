@@ -1,0 +1,693 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %} {# object_schema.topic.to_reply #}
+{% from '../../../community/imports/tools.html' import icons as icons %}
+{% set cs = widget_data.cohortium_settings %}
+
+{# JS #}
+
+{% require_js %}
+{# jQuery Validate #}
+{#<script src="{{ get_asset_url('/Project C/js/jquery.validate.min.js') }}"></script>#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{# Lity #}
+{# <script src="{{ get_asset_url('/Project C/js/lity.min.js') }}"></script> #}
+<!-- Include the Quill library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js" integrity="sha512-P2W2rr8ikUPfa31PLBo5bcBQrsa+TNj8jiKadtaIrHQGMo6hQM6RdPjQYxlNguwHz8AwSQ28VkBK6kHBLgd/8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ get_asset_url('/Project C/js/quill-emoji.js') }}"></script>
+<!-- Include reply to reply js -->
+<script src="{{ get_asset_url('/Project C/js/reply-to-replies.js') }}"></script>
+<!-- Initialize Quill editor -->
+<script>
+  $(document).ready(function() {
+    var toolbarOptions = {
+    container: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{ 'header': [ 2, 3, 4, false] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'align': [] }],
+      ['clean']         ,
+      ['link', 'image'],// remove formatting button
+      ['emoji']
+    ]};
+
+    let editorCount = $('#editor').length;
+    console.log(`editorCount = ${editorCount}`);
+    if (editorCount > 0) {
+      var quill = new Quill('#editor', {
+        modules: {
+          toolbar: toolbarOptions,
+          "emoji-toolbar": true,
+          "emoji-textarea": true,
+          "emoji-shortname": true,
+        },
+        placeholder: '{{ module.topic_placeholder_text|striptags|escape }}',
+        theme: 'snow'
+      });
+    }
+
+  });
+</script>
+{% end_require_js %}
+{# CSS #}
+{% require_css %}
+<!-- Include stylesheet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css" integrity="sha512-/FHUK/LsH78K9XTqsR9hbzr21J8B8RwHR/r8Jv9fzry6NVAOVIGFKQCNINsbhK7a1xubVu2r5QZcz2T9cKpubw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ get_asset_url('/Project C/css/quill-emoji.css') }}" rel="stylesheet" />
+{% end_require_css %}
+{% if contact.community_manager %}
+{% set admintype = "true" %}
+{% endif %}
+{% set like_icon = icons.like_icon %}
+{% set tools = icons.tools %}
+{% if object_schema.topic.to_reply %}
+{# module.data_query.data.CRM #}
+{#{% set replies = crm_associations(topic.hs_object_id, "USER_DEFINED", object_schema.topic.to_reply, "limit=100&orderBy=hs_createdate", "created_by_username,reply_body,hs_createdate,video_embed,is_reply_child_id,mark_as_solution,upvote_contacts", false) %}#}
+{% set replies = module.data_query.data.CRM.p_topic.associations.replies.items %}
+{#{% set solutions = crm_associations(topic.hs_object_id, "USER_DEFINED", object_schema.topic.to_reply, "mark_as_solution=true", "created_by_username,reply_body,hs_createdate,video_embed,is_reply_child_id,mark_as_solution,upvote_contacts", false) %}#}
+{% set solutions = module.data_query.data.CRM.p_topic.associations.solutions.items %}
+{% endif %}
+{# &is_reply_child_id__is_null= #}
+{# START Replies Section #} {{ contact.community_manager }} 
+{% if solutions|length > 0 %}
+<h2>{% if solutions|length > 1 %}{{ cs.labels_text.solution_plural_label }} ({{solutions.total}}){% else %}{{ cs.labels_text.solution_singular_label }}{% endif %}</h2>
+{# START IF SOLUTION #}
+{% for solution in solutions %}
+<div id="solution-{{solution._metadata.id}}" class="message-container">
+
+  <div class="reply-bylines">
+    <div class="reply-detail-view">
+      <a href="/members/{{solution.created_by_username }}">@{{solution.created_by_username }}</a>
+      {% if solution.created_by_username == member.username %}
+      <span class="authortag">{{ cs.labels_text.author_label }}</span>
+      {% endif %}
+      <a id="solution-{{solution._metadata.id}}" href="#solution-{{solution._metadata.id}}" style="font-style:italic;font-size:.7rem;">{{solution.hs_createdate|datetimeformat('%B %e, %Y %l:%M %p')}}</a>
+      <div class="sorter-dropdown">
+        <button id="tooltip-reply-{{solution._metadata.id}}" class="admintools" >{{tools }}</button>
+        <div class="sorter-dropdown-content">
+          <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} id="edit-{{solution._metadata.id}}" href="#">{{ cs.labels_text.edit_reply_label }}</a>
+          <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} href="{{ cs.default_urls.report_abuse_url  ~ "?abuse_url=" ~ request.domain ~ request.path_and_query ~ "&abuse_category=" ~ topic.category|urlencode }}">{{ cs.labels_text.report_abuse_label }}</a>
+          {% if request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin"  %}
+          <a class="ui-state-disabled">{{ cs.labels_text.moderator_tools_label }}</a>
+          <a class="remove-solution" data-solution-id="{{solution._metadata.id}}">{{ cs.labels_text.remove_as_a_solution_label }}</a>
+          <a>{{ cs.labels_text.archive_reply_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% if contact.community_manager == "Admin" %}
+      <a href="https://app.hubspot.com/contacts/{{hub_id}}/record/{{ object_schema.reply.obj_id  }}/{{solution._metadata.id}}" target="_blank" class="admintools">{{ icons.hubspot}}&nbsp;</a>
+      {% endif %}
+    </div>
+
+    <div>
+      <button id="subreply-upvote-{{solution._metadata.id}}" data-cid="{{contact.hs_object_id}}" data-oid="{{reply._metadata.id}}" data-type="reply" class="upvote {% if solution.upvote_contacts is string_containing contact.hs_object_id %}upvoted {% else %}{% endif %}"><span class="like-icon">{{ like_icon }}</span> <span class="unvote">X</span><span class="upvote-count">{% if solution.upvote_contacts|split("|")|length > 0 %} {{ solution.upvote_contacts|split("|")|length }}{% endif %}</span>&nbsp;{{ cs.labels_text.upvote_singular_label }}</button> 
+      <!--- {{contact.hs_object_id}} --- {{ solution.upvote_contacts}} ---->
+    </div>
+  </div>
+
+
+  <div class="reply-body {% if solution.mark_as_solution == "true" %} is-solution {% endif %}">
+    {{solution.reply_body}}
+    {# TODO figure out why my predecessors had this comment, which makes no sense #}
+    {% if solution.video_embed %}
+    <div class="video-outer">
+      {% if solution.video_embed is string_containing "wistia.com/medias/" %}
+      {% set vid = solution.video_embed|split('/',4) %}
+      {% set video_id = vid[3] %}
+      <script src="https://fast.wistia.com/embed/medias/1s8spu18yz.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_{{ video_id }} videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+            <img src="https://fast.wistia.com/embed/medias/{{ video_id }}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% elif solution.video_embed is string_containing "//youtu.be/" %}
+      {% set vid = solution.video_embed|split('/',4) %}
+      {% set video_id = vid[2] %}
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      {% elif solution.video_embed is string_containing "https://www.youtube.com/watch?v=" %}
+      {% set vid = solution.video_embed|split('v=',2) %}
+      {% set video_id = vid[1] %}
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      {% elif solution.video_embed is string_containing "https://vimeo.com/" %}
+      {% set vid = solution.video_embed|split('/',4) %}
+      {% set video_id = vid[2] %}
+      <div class="video-container">
+        <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+
+      <div class="vid-section">
+        {% elif solution.video_embed is string_containing "https://player.vimeo.com/video/" and is not string_containing "src=" %}
+        {% set vid = solution.video_embed|split('https://player.vimeo.com/video/',4) %}
+        {% set video_id = vid|first %}
+        <div class="video-container">
+          <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        {% elif solution.video_embed is string_containing "www.loom.com/share/" %}
+        {% set vid = solution.video_embed|split('loom.com/share/') %}
+        {% set video_id = vid|last %}
+        <div class="video-container__loom" style="position: relative; padding-bottom: 49.586776859504134%; height: 0;">
+          <iframe src="https://www.loom.com/embed/{{video_id}}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        </div>
+        {% elif solution.video_embed is not string_containing "width=" %}
+        <div class="video-container">
+          {{ solution.video_embed}}
+        </div>
+        {% else %}
+        {{ solution.video_embed }}
+      </div>
+      {% endif %}
+
+      {% if !topic.disable_replies %}
+      <div class="reply-tools">
+        <button id="replyto-{{reply._metadata.id}}" class="{% if !request_contact.is_logged_in %}user-signup-logged-out{% endif %}">
+          {{icons.reply}} {{ cs.labels_text.reply_button_label }}
+        </button>
+        {% if is_editable == "topic_owner" and solution.mark_as_solution != "true" or solution.mark_as_solution != "true" and contact.community_manager %}
+        <button id="mark-as-solution-{{solution._metadata.id}}" class="mark-as-solution" data-solution-id="{{solution._metadata.id}}">
+          {{ cs.labels_text.mark_as_a_solution_label }}
+        </button>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    </div>
+    {% endif %}
+    <div class="reply-tools">
+      <a href="#reply-{{solution._metadata.id}}" style="font-style:italic;font-size:.7rem;">{{ cs.labels_text.view_solution_in_discussion_thread_label }}</a>
+    </div>
+  </div>
+  <div id="edit-reply-modal={{solution._metadata.id}}" class="not-open"></div>
+</div>
+{% endfor %}{# END Subreply loop #}
+{% endif %}
+{# END IF SOLUTION #}
+
+
+{% if replies|length > 0 %}
+<h2>{{cs.labels_text.discussion_label}} ({{replies|length}})</h2>
+<div class="discussion-container">
+
+  {% for reply in replies|rejectattr("is_reply_child_id") %}
+  <div id="reply-{{reply._metadata.id}}" class="message-container">
+
+    <div class="reply-bylines">
+      <div class="reply-detail-view">
+        <a href="/members/{{reply.created_by_username }}">@{{reply.created_by_username }}</a>{% if reply.created_by_username == member.username %}<span class="authortag">{{ cs.labels_text.author_label }}</span>{% endif %} <a id="reply-{{reply._metadata.id}}" href="#reply-{{reply._metadata.id}}" style="font-style:italic;font-size:.7rem;">{{reply.hs_createdate|datetimeformat('%B %e, %Y %l:%M %p')}}</a>
+
+        <div class="sorter-dropdown">
+          <button id="tooltip-reply-{{reply._metadata.id}}" class="admintools" >{{tools }}</button>
+          <div class="sorter-dropdown-content">
+            {% if reply._metadata.id is in myreplies and request_contact.is_logged_in or request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin" %}
+            <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} id="edit-{{reply._metadata.id}}"  href="#">{{ cs.labels_text.edit_reply_label }}</a>
+            {% endif %}
+            <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} href="{{ cs.default_urls.report_abuse_url ~ "?abuse_url=" ~ request.domain ~ request.path_and_query ~ "&abuse_category=" ~ topic.category|urlencode }}">{{ cs.labels_text.report_abuse_label }}</a>
+            {% if request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin"  %}
+            <a class="ui-state-disabled">{{ cs.labels_text.moderator_tools_label }}</a>
+            <a>{{ cs.labels_text.archive_reply_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if contact.community_manager == "Admin" %}
+        <a href="https://app.hubspot.com/contacts/{{hub_id}}/record/{{ object_schema.reply.obj_id  }}/{{reply._metadata.id}}" target="_blank" class="admintools">{{ icons.hubspot}}&nbsp;</a>
+        {% endif %}
+      </div>
+
+      <div>
+        <button id="reply-upvote-{{reply._metadata.id}}" data-cid="{{contact.hs_object_id}}" data-oid="{{reply._metadata.id}}" data-type="reply" class="upvote {% if reply.upvote_contacts is string_containing contact.hs_object_id %}upvoted {% else %}{% endif %}"><span class="like-icon">{{ like_icon }}</span> <span class="unvote">X</span><span class="upvote-count">{% if reply.upvote_contacts|split("|")|length > 0 %} {{ reply.upvote_contacts|split("|")|length }}{% endif %}</span>&nbsp;{{ cs.labels_text.upvote_singular_label }}</button>
+        <!--- {{contact.hs_object_id}} --- {{ reply.upvote_contacts}} ---->
+      </div>
+    </div>
+
+    <div class="reply-body {% if reply.mark_as_solution == "true" %} is-solution {% endif %}">
+      {{reply.reply_body}}
+      {% if reply.video_embed %}
+      <div class="video-wrapper">
+        {% if reply.video_embed is string_containing "wistia.com/medias/" %}
+        {% set vid = reply.video_embed|split('/',4) %}
+        {% set video_id = vid[3] %}
+
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_{{ video_id }} videoFoam=true" style="height:100%;position:relative;width:100%">
+              <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                <img src="https://fast.wistia.com/embed/medias/{{ video_id }}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {% elif reply.video_embed is string_containing "//youtu.be/" %}
+        {% set vid = reply.video_embed|split('/',4) %}
+        {% set video_id = vid[2] %}
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% elif reply.video_embed is string_containing "https://www.youtube.com/watch?v=" %}
+        {% set vid = reply.video_embed|split('v=',2) %}
+        {% set video_id = vid[1] %}
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% elif reply.video_embed is string_containing "https://vimeo.com/" %}
+        {% set vid = reply.video_embed|split('/',4) %}
+        {% set video_id = vid[2] %}
+        <div class="video-container">
+          <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        {% elif reply.video_embed is string_containing "https://player.vimeo.com/video/" and is not string_containing "src=" %}
+        {% set vid = reply.video_embed|split('https://player.vimeo.com/video/',4) %}
+        {% set video_id = vid|first %}
+        <div class="video-container">
+          <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        {% elif reply.video_embed is string_containing "www.loom.com/share/" %}
+        {% set vid = reply.video_embed|split('loom.com/share/') %}
+        {% set video_id = vid|last %}
+        <div style="position: relative; padding-bottom: 49.586776859504134%; height: 0;">
+          <iframe src="https://www.loom.com/embed/{{video_id}}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        </div>
+        {% elif reply.video_embed is not string_containing "width=" %}
+        <div class="video-container">
+          {{ reply.video_embed}}
+        </div>
+        {% else %}
+        {{ reply.video_embed}}
+        {% endif %}
+      </div>
+
+      {% endif %}
+      {% if !topic.disable_replies %}
+      <div class="reply-tools">
+        <button id="replyto-{{reply._metadata.id}}" class=" {% if !request_contact.is_logged_in %}user-signup-logged-out{% else %} reply-to-reply{% endif %}" data-reply-id="{{reply._metadata.id}}">
+          {{icons.reply}} {{ cs.labels_text.reply_button_label }}
+        </button>
+        {% if reply.mark_as_solution != "true" and contact.community_manager %}
+        <button id="mark-as-solution-{{reply._metadata.id}}" class="mark-as-solution" data-solution-id="{{reply._metadata.id}}" data-rid="{{reply._metadata.id}}">
+          {{ cs.labels_text.mark_as_a_solution_label }}
+        </button>
+        {% endif %}
+      </div>
+
+      <div id="quill-wrapper-{{reply._metadata.id}}" class="reply-editor" style="display:none;">
+
+        <div id="quill-{{reply._metadata.id}}"></div>
+
+        <form class="form__member-profile" data-type="member_profiles">
+          <input type="hidden" name="member_profile" value="{{contact_member.hs_object_id}}" required/>
+        </form>
+
+        <form data-type="contacts">
+          <input type="hidden" name="contacts" value="{{ contact.hs_object_id }}" />
+        </form>
+
+        <form data-type="topic">
+          <input type="hidden" name="topic_id" value="{{ topic.hs_object_id }}" />
+        </form>
+
+        <form class="form__{{reply._metadata.id}}" data-type="properties">
+          <input type="hidden" name="created_by_username" value="{{contact_member.username}}" required/>
+          <input type="hidden" name="reply_body" required/>
+          <input type="hidden" name="is_reply_child_id" value="{{reply._metadata.id}}" required/>
+          <button type="submit">{{ cs.labels_text.reply_button_label }}</button>
+        </form>
+
+      </div>
+
+      {% endif %}
+    </div>
+    <div id="edit-reply-modal={{reply._metadata.id}}" class="not-open"></div>
+
+  </div>
+  {# START Subreply #}
+  {% for subreply in replies|selectattr("is_reply_child_id", "equalto", reply._metadata.id) %}
+  <div id="reply-{{subreply._metadata.id}}" class="message-container child-reply">
+    <div class="reply-bylines">
+      <div class="reply-detail-view">
+        <a href="/members/{{subreply.created_by_username }}">@{{subreply.created_by_username }}</a>
+        {% if subreply.created_by_username == member.username %}
+        <span class="authortag">{{ cs.labels_text.author_label }}</span>
+        {% endif %}
+        <a id="reply-{{subreply._metadata.id}}" href="#reply-{{subreply._metadata.id}}" style="font-style:italic;font-size:.7rem;">{{subreply.hs_createdate|datetimeformat('%B %e, %Y %l:%M %p')}}</a>
+        <div class="sorter-dropdown">
+          <button id="tooltip-reply-{{subreply._metadata.id}}" class="admintools" >{{tools }}</button>
+          <div class="sorter-dropdown-content">
+            {% if subreply._metadata.id is in myreplies and request_contact.is_logged_in or request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin" %}
+            <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} id="edit-{{subreply._metadata.id}}"  href="#">{{ cs.labels_text.edit_reply_label }}</a>
+            {% endif %}
+            <a {% if !request_contact.is_logged_in %}class="user-signup-logged-out"{% endif %} href="{{ cs.default_urls.report_abuse_url ~ "?abuse_url=" ~ request.domain ~ request.path_and_query ~ "&abuse_category=" ~ topic.category|urlencode }}">{{ cs.labels_text.report_abuse_label }}</a>
+            {% if request_contact.is_logged_in and contact.community_manager == "Moderator" or request_contact.is_logged_in and contact.community_manager == "Admin"  %}
+            <a class="ui-state-disabled">{{ cs.labels_text.moderator_tools_label }}</a>
+            <a>{{ cs.labels_text.archive_reply_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+        {% if contact.community_manager == "Admin" %}
+        <a href="https://app.hubspot.com/contacts/{{hub_id}}/record/{{ object_schema.reply.obj_id  }}/{{subreply._metadata.id}}" target="_blank" class="admintools">{{ icons.hubspot }}&nbsp;</a>
+        {% endif %}
+      </div>
+
+      <div>
+        <button id="subreply-upvote-{{reply._metadata.id}}" data-cid="{{contact.hs_object_id}}" data-oid="{{reply._metadata.id}}" data-type="reply" class="upvote {% if subreply.upvote_contacts is string_containing contact.hs_object_id %}upvoted {% else %}{% endif %}"><span class="like-icon">{{ like_icon }}</span> <span class="unvote">X</span><span class="upvote-count">{% if subreply.upvote_contacts|split("|")|length > 0 %} {{ subreply.upvote_contacts|split("|")|length }}{% endif %}</span>&nbsp;{{ cs.labels_text.upvote_singular_label }}</button> 
+        <!--- {{contact.hs_object_id}} --- {{ subreply.upvote_contacts}} ---->
+      </div>
+    </div>
+
+
+    <div class="reply-body {% if subreply.mark_as_solution == "true" %} is-solution {% endif %}">
+      {{subreply.reply_body}}
+
+      {% if subreply.video_embed %}
+      <div class="video-outer">
+        {% if subreply.video_embed is string_containing "wistia.com/medias/" %}
+        {% set vid = subreply.video_embed|split('/',4) %}
+        {% set video_id = vid[3] %}
+        <script src="https://fast.wistia.com/embed/medias/1s8spu18yz.jsonp" async></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_{{ video_id }} videoFoam=true" style="height:100%;position:relative;width:100%">
+              <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                <img src="https://fast.wistia.com/embed/medias/{{ video_id }}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% elif subreply.video_embed is string_containing "//youtu.be/" %}
+        {% set vid = subreply.video_embed|split('/',4) %}
+        {% set video_id = vid[2] %}
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% elif subreply.video_embed is string_containing "https://www.youtube.com/watch?v=" %}
+        {% set vid = subreply.video_embed|split('v=',2) %}
+        {% set video_id = vid[1] %}
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% elif subreply.video_embed is string_containing "https://vimeo.com/" %}
+        {% set vid = subreply.video_embed|split('/',4) %}
+        {% set video_id = vid[2] %}
+        <div class="video-container">
+          <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+
+        {% elif subreply.video_embed is string_containing "https://player.vimeo.com/video/" and is not string_containing "src=" %}
+        {% set vid = subreply.video_embed|split('https://player.vimeo.com/video/',4) %}
+        {% set video_id = vid|first %}
+        <div class="video-container">
+          <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        {% elif subreply.video_embed is string_containing "www.loom.com/share/" %}
+        {% set vid = subreply.video_embed|split('loom.com/share/') %}
+        {% set video_id = vid|last %}
+        <div class="video-container__loom" style="position: relative; padding-bottom: 49.586776859504134%; height: 0;">
+          <iframe src="https://www.loom.com/embed/{{video_id}}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        </div>
+        {% elif subreply.video_embed is not string_containing "width=" %}
+        <div class="video-container">
+          {{ subreply.video_embed}}
+        </div>
+        {% else %}
+        {{ subreply.video_embed }}
+
+        {% endif %}
+      </div>
+      {% if !topic.disable_replies %}
+      <div class="reply-tools">
+        <button id="replyto-{{reply._metadata.id}}">
+          {{icons.reply}} {{ cs.labels_text.reply_button_label }}
+        </button>
+        {% if subreply.mark_as_solution != "true" and contact.community_manager %}
+        <button id="mark-as-solution-{{subreply._metadata.id}}" class="mark-as-solution" data-solution-id="{{subreply._metadata.id}}" data-rid="{{subreply._metadata.id}}">
+          {{ cs.labels_text.mark_as_a_solution_label }}
+        </button>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% endif %}
+
+    </div>
+    <div id="edit-reply-modal={{subreply._metadata.id}}" class="not-open"></div>
+  </div>
+  {% endfor %}<!-- END Subreply loop-->
+  {% endfor %}<!-- END Reply loop -->
+  {% endif %}<!--END Replies Section -->
+
+
+  {% if !topic.disable_replies %}<!-- start !topic.disable_replies -->
+  {% if request_contact.is_logged_in %}
+  {% if replies|length > 0 %}<h2>{{ cs.topic_reply_forms.topic_reply_form_header }}</h2>{% else %}<h2>{{ cs.topic_reply_forms.topic_reply_form_header_first }}</h2>{% endif %}
+  <div class="form-wrapper">
+    <form id="form__member_profile">
+      <input type="hidden" id="member_id" name="member_id" value="{{contact_member.hs_object_id}}">
+    </form>
+    <form id="form__contact">
+      <input type="hidden" id="contact_id" name="contact_id" value="{{ contact.hs_object_id }}" >
+    </form>
+    <form id="form__reply_info">
+      <input type="hidden" id="topic_id" name="topic_id" value="{{topic.hs_object_id}}">
+    </form>
+
+    <form id="form__reply">
+      <input type="hidden" id="created_by_username" name="created_by_username" value="{{contact_member.username}}">
+      <input type="hidden" id="reply_body" name="reply_body" value="">
+      <input type="hidden" id="topic_id" name="topic_id" value="{{topic.hs_object_id}}">
+      <div class="quill-editor">
+        <!-- Create the editor container -->
+        <div id="editor"></div>
+      </div>
+
+      <div class="input">
+        <label for="video_embed">{{ cs.topic_reply_forms.video_embed_field_label }}:</label>
+        <input type="text" id="video_embed" name="video_embed" value="" placeholder="{{ cs.topic_reply_forms.video_embed_field_placeholder }}" >
+      </div>
+      <div class="submit-container">
+        <button id="submitBtn" type="submit"><span>{{ cs.topic_reply_forms.submit_reply_button_label }}</span></button>
+      </div>
+    </form>
+  </div>
+
+  {% else %}
+  <div class="reply-body message-container require_login">
+    <div class="signup-modal-container">
+      <div class="modal-popup-text-container">
+        {{ cs.messages_prompts.sign_up_or_login_prompt }} 
+      </div>
+
+      <div class="signup-login-buttons">
+        <a class="btn btn--primary" href="https://{{ cs.default_urls.signup_url|split("://")|last }}?signup_from={{content.absolute_url}}">{{ cs.labels_text.sign_up_label }}</a>
+        <a class="btn btn--tertiary" href="https://{{request.domain}}/_hcms/mem/login?redirect_url={{content.absolute_url}}">{{ cs.labels_text.login_label }}</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="disabled-replies">
+    {{cs.messages_prompts.topic_discussion_disabled_message}}
+  </div>
+</div>
+{% endif %}
+{% if replies|length > 0 %}</div>{% endif %}
+
+{######################################################################################################}
+{######################################################################################################}
+{######################################################################################################}
+{######################################################################################################}
+{######################################################################################################}
+
+{% require_js %}
+<script>
+  console.log("this script works")
+  // functions
+  // Form to POJO
+  function formToPOJO(formEl) {
+    var formData = new FormData( formEl );
+    return Object.fromEntries( formData )
+  }
+  // Get value from Quil into hidden field
+  function populateTopicDetail() {
+    var $reply_body = $('#reply_body');
+    // Quill injects a child div, get its contents
+    var quillDiv = $('#editor').find('.ql-editor');
+    $reply_body.val( quillDiv.html() );
+  }
+  // Get member_profile
+  function collectMemberProfile() {
+    return $('#form__member_profile').find('#member_id').val();
+  }
+  // Get contacts
+  function collectContactProfile() {
+    return $('#form__contact').find('#contact_id').val();
+  }
+  // Get Topic ID
+  function collectTopicId() {
+    return $('#form__reply_info').find('#topic_id').val();
+  }
+  // build topic object for body
+  function collectTopicData() {
+    populateTopicDetail()
+    var topicData = formToPOJO( $('#form__reply')[0] );
+    return topicData
+  }
+  // build full body obj
+  function buildBody() {
+    return {
+      properties: collectTopicData(),
+      member_profiles: [ collectMemberProfile() ],
+      contacts: [ collectContactProfile() ],
+      topicId: collectTopicId()
+    }
+  }
+  // Submit topic
+  async function submitTopic(obj) {
+    return rawResponse = await fetch(`https://{{ request.domain }}/_hcms/api/reply/create?topic=${obj.topicId}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    });
+  };
+
+  $(document).ready(function() {
+    //get all "mark as solution" buttons
+    let solution_buttons = document.querySelectorAll(".mark-as-solution")
+
+    for(let button of solution_buttons) {
+      button.addEventListener("click", (evt) => {
+        let replyId = evt.target.id.split("-").slice(-1)[0]
+        console.log(replyId)
+
+        fetch(`https://{{ request.domain }}/_hcms/api/reply/solution?rid=${replyId}`)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+        })
+      })
+    }
+    //get all edit buttons on the page
+    let edit_buttons = document.querySelectorAll('.sorter-dropdown-content a:first-child')
+
+    for(let button of edit_buttons) {
+      //if it's a reply edit
+      if(button.id.includes("edit-")) {
+        button.addEventListener('click', (evt) => {
+          evt.preventDefault()
+
+          //get info from the selected reply
+
+          let replyId = evt.target.id.split("-")[1] 
+          let authorName = document.querySelector(`#reply-${replyId} .reply-detail-view a`).textContent.slice(1)
+          //need gaurd clause against edits to replies that aren't the user's
+          let editDisplay = document.getElementById(`edit-reply-modal=${replyId}`)
+          let replyBody = document.querySelector(`#reply-${replyId} .reply-body p`) ? document.querySelector(`#reply-${replyId} .reply-body p`).textContent : document.querySelector(`#reply-${replyId} .reply-body`).textContent.trim().split("           ")[0].trim()
+
+          console.log("clicked edit button for reply:", replyId)
+          //create edit form modal, and populate with current reply data
+          let edit_form = document.createElement('form')
+          edit_form.innerHTML = `
+<h4>{{"Edit Content"}}</h4>
+<label for="content"><input id="edit-content-${replyId}" name="content" type="text" value="${replyBody}"/></label>
+<input type="submit" />
+`
+
+
+          //send updated info to serverless function
+          edit_form.addEventListener('submit', (evt) => {
+            evt.preventDefault()
+            let changeData = {
+              reply_body: document.getElementById(`edit-content-${replyId}`).value
+            }
+
+            fetch(`https://{{ request.domain }}/_hcms/api/reply/edit?oid=${replyId}`, {
+              method: "POST", headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(changeData)
+            })
+              .then(res => res.json())
+              .then(res => {
+              console.log(res)
+              window.location.reload()
+            })
+              .catch(err => {
+              console.error(err)
+            })
+
+          })
+
+          editDisplay.appendChild(edit_form)
+
+
+
+        })
+      }
+    }
+
+    // variables
+    var $form__reply = $('#form__reply');
+    // validation rules
+    $form__reply.validate({
+      rules: {
+        name: {
+          required: true
+        },
+        topic_detail: {
+          required: true
+        }
+      },
+      errorElement: 'span'
+    });
+    // Submit Form
+    $form__reply.on('submit', function(e) {
+      e.preventDefault();
+      // BUild body object
+      var requestBody = buildBody();
+      // Validate
+      if ( $form__reply.valid() ) {
+        {% if Query.icqc %}
+        console.log( requestBody )
+        {% else %}
+        // prevent multiple clicks
+        $form__reply.find('#submitBtn').replaceWith( "<div id='submitBtn' style='padding: 1rem;'><span style='display:inline-block;' class='h-spin'>{{ icons.nugget }}</span> <span>{{ cs.labels_text.loading_label }}</span></div>")
+                                                    // submit request
+        let response = submitTopic( requestBody );
+        response.then(function(resp) {
+          return resp.json();
+        })
+          .then(function(resp) {
+          console.log(resp)
+          // redirect to the new topic page
+          setTimeout(function() {
+            window.location = `${window.location.hash = resp.response.slug }` ;
+            window.location.reload()
+          }, 1500)
+        })
+          .catch( function( error ) {
+          console.log( error );
+          $form__reply.find('#submitBtn').replaceWith('<input id="submitBtn" type="submit" style="margin:10px 0;" value="{{ cs.topic_reply_forms.submit_reply_button_label }}">');
+                                                      });
+          {% endif %}
+        }
+                 });
+      });
+</script>
+{% end_require_js %}

@@ -1,0 +1,164 @@
+<div id="{{ name }}" class="hero-with-form">
+  <div class="hero-with-form__text bg--{{ module.style.text.background_color }}">
+    <h1 class="text--{{ module.style.text.title_color }}"
+        {% if module.style.text.title_color == 'custom' %}
+        style="color: rgba({{ module.style.text.custom_title_color.color|convert_rgb }}, {{ module.style.text.custom_title_color.opacity / 100 }});"
+        {% endif %}>
+      {{ module.page_title }}
+    </h1>
+    <div class="hero-with-form__supporting-text text--{{ module.style.text.supporting_text_color }}"
+         {% if module.style.text.supporting_text_color == 'custom' %}
+         style="color: rgba({{ module.style.text.custom_supporting_text_color.color|convert_rgb }}, {{ module.style.text.custom_supporting_text_color.opacity / 100 }});"
+         {% endif %}>
+      {{ module.hero_text }}
+    </div>
+  </div>
+  <div class="form bg--{{ module.style.form.background_color }} text--{{ module.style.form.text_color }} animate animate--{{ module.style.form.animation }}">
+    {% if module.form_title %}
+    <h4 class="text--{{ module.style.form.text_color }}">
+      {{ module.form_title }}
+    </h4>
+    {% endif %}
+    {% if module.supporting_text %}
+    <p class="form__text text--{{ module.style.form.text_color }}">
+      {{ module.supporting_text }}
+    </p>
+    {% endif %}
+    {% form
+    form_to_use="{{ module.form.form_id }}"
+    response_response_type="{{ module.form.response_type }}"
+    response_message="{{ module.form.message }}"
+    response_redirect_id="{{ module.form.redirect_id }}"
+    response_redirect_url="{{module.form.redirect_url}}"
+    gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+  %}
+  </div>
+</div>
+
+
+{% require_css %}
+<style>
+  .hero-with-form {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  /*  Text CSS  */
+  #{{ name }} .hero-with-form__text {
+    width: 50%;
+    border-radius: {{ module.style.text.border_radius }}px;
+    {% if module.style.text.background_color == 'custom' %}
+    background-color: rgba({{ module.style.text.custom_background_color.color|convert_rgb }}, {{ module.style.text.custom_background_color.opacity / 100 }});
+    {% endif %}
+    padding-top: {{ module.style.text.spacing.padding.top.value ~ module.style.text.spacing.padding.top.units }};
+    padding-right: {{ module.style.text.spacing.padding.right.value ~ module.style.text.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.text.spacing.padding.bottom.value ~ module.style.text.spacing.padding.bottom.units }};
+    padding-left: {{ module.style.text.spacing.padding.left.value ~ module.style.text.spacing.padding.left.units }};
+    margin-top: {{ module.style.text.spacing.margin.top.value ~ module.style.text.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.text.spacing.margin.bottom.value ~ module.style.text.spacing.margin.bottom.units }};
+    margin-right: {{ module.style.text.margin_right }}px;
+    margin-left: {{ module.style.text.margin_left }}px;
+  }
+  /*  Form CSS  */
+  #{{ name }} .form {
+
+    {% if module.style.form.background_color == 'custom' %}
+    background-color: rgba({{ module.style.form.custom_background_color.color|convert_rgb }}, {{ module.style.form.custom_background_color.opacity / 100 }});
+    {% endif %}
+    {% if module.style.form.text_color == 'custom' %}
+    color: rgba({{ module.style.form.custom_text_color.color|convert_rgb }}, {{ module.style.form.custom_text_color.opacity / 100 }});
+    {% endif %}
+    border-radius: {{ module.style.form.border_radius }}px;
+    width: 50%;
+    border-radius: {{ module.style.form.desktop.border_radius }}px;
+    padding-top: {{ module.style.form.desktop.spacing.padding.top.value ~ module.style.form.desktop.spacing.padding.top.units }};
+    padding-right: {{ module.style.form.desktop.spacing.padding.right.value ~ module.style.form.desktop.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.form.desktop.spacing.padding.bottom.value ~ module.style.form.desktop.spacing.padding.bottom.units }};
+    padding-left: {{ module.style.form.desktop.spacing.padding.left.value ~ module.style.form.desktop.spacing.padding.left.units }};
+    margin-top: {{ module.style.form.desktop.spacing.margin.top.value ~ module.style.form.desktop.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.form.desktop.spacing.margin.bottom.value ~ module.style.form.desktop.spacing.margin.bottom.units }};
+    margin-right: {{ module.style.form.desktop.margin_right }}px;
+    margin-left: {{ module.style.form.desktop.margin_left }}px;
+  }
+  #{{ name }} .form h4 {
+    text-align: {{ module.style.form.supporting_text_alignment }};
+  }
+  #{{ name }} .form__text {
+    text-align: {{ module.style.form.supporting_text_alignment }};
+  }
+  #{{ name }} .form label {
+    color: inherit !important;
+  }
+  #{{ name }} .form form {
+    margin-top: {{ module.style.form.space_between_text_and_form }}px;
+  }
+  #{{ name }} .hs-input {
+    {{ module.style.form.border_field.css }}
+    {% if module.style.form.form_style == 'bottom_line_only' %}
+    border: none; 
+    border-radius: 0; 
+    padding: 0 !important; 
+    border-bottom: {{ module.style.form.border_field.bottom.width.value }}{{ module.style.form.border_field.bottom.width.units }} {{ module.style.form.border_field.bottom.style }} {{ module.style.form.border_field.bottom.color }}; 
+    background-color: transparent !important; 
+    color: inherit !important;
+    {% endif %}
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+  }
+  #{{ name }} .hs-input:focus,
+  #{{ name }} .hs-input:active {
+    outline: none !important;
+    border-color: rgba({{ module.style.form.active_border_color.color|convert_rgb }}, {{ module.style.form.active_border_color.opacity / 100 }});
+  }
+  #{{ name }} .form .hs-button {
+    background-color: rgba({{ module.style.form.submit_button.button_background_color.color|convert_rgb }}, {{ module.style.form.submit_button.button_background_color.opacity / 100 }}) !important; /* Module Option */
+    color: rgba({{ module.style.form.submit_button.button_text_color.color|convert_rgb }}, {{ module.style.form.submit_button.button_text_color.opacity / 100 }}) !important;
+    {% if module.style.form.submit_button.make_button_full_width %}
+    width: 100%;
+    {% endif %}
+    margin-top: 1rem;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  #{{ name }} .form .hs-button:hover {
+    background-color: rgba({{ module.style.form.submit_button.hover_button_background_color.color|convert_rgb }}, {{ module.style.form.submit_button.hover_button_background_color.opacity / 100 }}) !important; /* Module Option */
+    color: rgba({{ module.style.form.submit_button.hover_button_text_color.color|convert_rgb }}, {{ module.style.form.submit_button.hover_button_text_color.opacity / 100 }}) !important;
+  }
+  @media(max-width: 767px) {
+    .hero-with-form {
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }  
+    #{{ name }} .hero-with-form__text {
+      width: 100%;
+      border-radius: {{ module.style.text.mobile.border_radius }}px;
+      padding-top: {{ module.style.text.mobile.spacing.padding.top.value ~ module.style.text.mobile.spacing.padding.top.units }};
+      padding-right: {{ module.style.text.mobile.spacing.padding.right.value ~ module.style.text.mobile.spacing.padding.right.units }};
+      padding-bottom: {{ module.style.text.mobile.spacing.padding.bottom.value ~ module.style.text.mobile.spacing.padding.bottom.units }};
+      padding-left: {{ module.style.text.mobile.spacing.padding.left.value ~ module.style.text.mobile.spacing.padding.left.units }};
+      margin-top: {{ module.style.text.mobile.spacing.margin.top.value ~ module.style.text.mobile.spacing.margin.top.units }};
+      margin-bottom: {{ module.style.text.mobile.spacing.margin.bottom.value ~ module.style.text.mobile.spacing.margin.bottom.units }};
+      margin-right: {{ module.style.text.mobile.margin_right }}px;
+      margin-left: {{ module.style.text.mobile.margin_left }}px;
+    }
+    #{{ name }} .form {
+      width: 100%;
+      border-radius: {{ module.style.form.mobile.border_radius }}px;
+      padding-top: {{ module.style.form.mobile.spacing.padding.top.value ~ module.style.form.mobile.spacing.padding.top.units }};
+      padding-right: {{ module.style.form.mobile.spacing.padding.right.value ~ module.style.form.mobile.spacing.padding.right.units }};
+      padding-bottom: {{ module.style.form.mobile.spacing.padding.bottom.value ~ module.style.form.mobile.spacing.padding.bottom.units }};
+      padding-left: {{ module.style.form.mobile.spacing.padding.left.value ~ module.style.form.mobile.spacing.padding.left.units }};
+      margin-top: {{ module.style.form.mobile.spacing.margin.top.value ~ module.style.form.mobile.spacing.margin.top.units }};
+      margin-bottom: {{ module.style.form.mobile.spacing.margin.bottom.value ~ module.style.form.mobile.spacing.margin.bottom.units }};
+      margin-right: {{ module.style.form.mobile.margin_right }}px;
+      margin-left: {{ module.style.form.mobile.margin_left }}px;
+    }
+  }
+</style>
+{% end_require_css %}

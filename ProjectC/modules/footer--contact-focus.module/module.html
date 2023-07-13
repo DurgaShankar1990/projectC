@@ -1,0 +1,208 @@
+<style>
+  {% scope_css %}
+  #footer {
+    background-color: {{ theme.footer.background_color.css }};
+    padding-top: {{ module.style.spacing.padding.top.value }}{{ module.style.spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.padding.left.value }}{{ module.style.spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.padding.right.value }}{{ module.style.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.padding.bottom.value }}{{ module.style.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.margin.top.value }}{{ module.style.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value }}{{ module.style.spacing.margin.bottom.units }};
+  }
+  /* Menu  */
+  #footer .hs-menu-item a:before {
+    content: '';
+    position: absolute;
+    bottom: .15rem;
+    left: .25rem;
+    height: 2px;
+    width: 0;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    background-color: #fff;
+  }
+  #footer .hs-menu-item a:hover:before {
+    width: calc(100% - .5rem);
+  }
+  /*  Top Level  */
+  #footer .hs-menu-depth-1>a {
+    color: {{ module.style.menus.top_level_text_color.css }};
+  }
+  #footer .hs-menu-depth-1>a:before {
+    background-color: {{ module.style.menus.top_level_text_color.css }};
+  }
+  /*  Second Level  */
+  #footer .hs-menu-depth-2>a {
+    color: {{ module.style.menus.second_level_text_color.css }};
+  }
+  #footer .hs-menu-depth-2>a:before {
+    background-color: {{ module.style.menus.second_level_text_color.css }};
+  }
+  /*  Third Level  */
+  #footer .hs-menu-depth-3>a {
+    color: {{ module.style.menus.third_level_text_color.css }};
+  }
+  #footer .hs-menu-depth-3>a:before {
+    background-color: {{ module.style.menus.third_level_text_color.css }};
+  }
+  /*  Text Colors  */
+  #footer h1,
+  #footer h2,
+  #footer h3,
+  #footer h4,
+  #footer h5,
+  #footer h6,
+  #footer ul,
+  #footer li,
+  #footer p,
+  #footer label,
+  #footer span {
+    color: {{ module.style.text_color.css }};
+  }
+  #footer .footer__bottom {
+    border-top: 1px solid {{ module.style.text_color.css }};
+  }
+  #footer svg path {
+    fill: {{ module.style.icons.icon_color.css }};
+  }
+  #footer svg {
+    height: {{ module.style.icons.icon_size }}px;
+  }
+  #footer form .hs-richtext, 
+  #footer form .hs-richtext p {
+    margin: .5rem 0;
+  }
+  #footer a {
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  #footer a:hover {
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+  #footer .footer--inner {
+    max-width: {{ module.style.max_content_width }}px;
+  }
+  #footer .logo-wrapper {
+    padding: 0 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: {{ module.style.logo.alignment }};
+  }
+
+  @media(max-width: 767px) {
+    #footer ul a {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+    #footer * {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #footer .btn {
+      margin: auto;
+    }
+    #footer .footer__bottom {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+    #footer h4 {
+      margin-top: 2rem;
+    }
+    #footer .logo-wrapper {
+      margin-bottom: 1rem;
+    }
+  }
+  {% end_scope_css %}
+</style>
+
+<div id="footer" class="footer">
+  {% if module.include_logo %}
+  <div class="logo-wrapper footer--inner">
+    <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" width="{{ theme.footer.logo_width }}" loading="lazy">
+  </div>
+  {% endif %}
+  <div class="footer--inner">
+    <div class="col col-1">
+      <div class="footer__menu">
+        {% menu id="{{ module.column_1_menu }}" max_levels=2 flow='vertical' %}
+      </div>
+    </div>
+    <div class="col col-2">
+      <div class="footer__menu">
+        {% menu id="{{ module.column_2_menu }}" %}
+      </div>
+    </div>
+    <div class="col col-3">
+      {% if module.include_cta_section %}
+      <div class="cta-section">
+        {{ module.cta_section.text_above_cta }}
+
+        {% set href = module.cta_section.link_field.url.href %}
+        {% if module.cta_section.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        <a style="margin-top: 1rem; display: block; width: fit-content;" class="btn btn--{{ module.style.button_type }}" href="{{ href }}"
+           {% if module.cta_section.link_field.open_in_new_tab %}target="_blank"{% endif %}
+           {% if module.cta_section.link_field.rel %}rel="{{ module.cta_section.link_field.rel }}"{% endif %}
+           >
+          {{ module.cta_section.link_text }}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col col-4">
+      {% if module.include_contact_info %}
+      <div class="contact-info">
+        <h4>
+          Contact
+        </h4>
+        {% for item in module.contact_info %}
+        <a class="contact-link" href="{{ item.link_destination }}" target="_blank">
+          {% icon
+                    name="{{ item.icon.name }}"
+                    style="{{ item.icon.type }}"
+                    unicode="{{ item.icon.unicode }}"
+                    icon_set="{{ item.icon.icon_set }}"
+                  %}
+          <p>
+            {{ item.text }}
+          </p>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="footer--inner">
+    <div class="footer__bottom">
+      {% if module.include_social_links %}
+      <div class="social-links">
+        {% for link in module.social_links %}
+        <a href="{{ link.link }}" target="_blank">
+          {% icon
+              name="{{ link.icon.name }}"
+              style="{{ link.icon.type }}"
+              unicode="{{ link.icon.unicode }}"
+              icon_set="{{ link.icon.icon_set }}"
+            %}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <p>
+        {{ module.copyright }}
+      </p>
+    </div>
+  </div>
+</div>

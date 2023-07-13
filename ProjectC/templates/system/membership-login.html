@@ -1,0 +1,36 @@
+<!--
+  templateType: membership_login_page
+  isAvailableForNewContent: true
+  label: OMEGA - membership login
+  screenshotPath: ../../images/final-template-previews/login.png
+-->
+{% set template_css = '../../css/templates/system.css' %}
+{% extends '../layouts/base.html' %}
+{# pageTitle is used on system templates for setting a value for the title tag #}
+{% set pageTitle = "Membership | Login" %}
+
+{% block header %}
+{% endblock %}
+{% set cs = widget_data.cohortium_settings %}
+{% block body %}
+<section class="content-wrapper">
+  <div class="systems-page">
+    {% module 'content'
+      path='@hubspot/rich_text',
+      html='<h1>Sign in to view this page</h1><p>This page is only available to people who have been given access.</p>'
+    %}
+    <div class="form-container">
+      {% member_login 'my_login'
+        email_label= 'Email',
+        password_label= 'Password',
+        remember_me_label= 'Remember Me',
+        reset_password_text= 'Forgot your password?',
+        submit_button_text= 'Login'
+      %}
+    </div>
+    <div style="text-align:center;">
+      No Account? &nbsp; <a class="btn btn--tertiary" href="https://{{ cs.default_urls.signup_url|split("://")|last }}">{{ cs.labels_text.sign_up_label }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

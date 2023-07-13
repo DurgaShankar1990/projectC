@@ -1,0 +1,38 @@
+[ {
+  "id" : "d573bff8-8c62-d207-2bcc-2f60cfff906c",
+  "name" : "hubdbtable_field",
+  "display_width" : null,
+  "label" : "HubDB table",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable",
+  "default" : ""
+}, {
+  "id" : "9f9b0e47-1da5-ced2-fccd-44cbb2007d69",
+  "name" : "set_category",
+  "display_width" : null,
+  "label" : "Set Category",
+  "required" : false,
+  "locked" : false,
+  "placeholder" : "To refine the topic category choose one here",
+  "table_name_or_id" : "community_categories",
+  "columns_to_fetch" : [ "description", "hs_name", "hs_path" ],
+  "display_columns" : [ "hs_name" ],
+  "type" : "hubdbrow",
+  "default" : {
+    "id" : null
+  }
+}, {
+  "id" : "8bf6e5e6-5b7c-6354-c69c-09d623c97cdc",
+  "name" : "limit_results",
+  "display_width" : null,
+  "label" : "Limit Results",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 3,
+  "max" : 15,
+  "step" : 1,
+  "type" : "number",
+  "default" : 5
+} ]

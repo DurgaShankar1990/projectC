@@ -1,0 +1,23 @@
+{% set arrow = '<svg class="nav__arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path id="Polygon_3" data-name="Polygon 3" d="M5.293.707a1,1,0,0,1,1.414,0l3.586,3.586A1,1,0,0,1,9.586,6H2.414a1,1,0,0,1-.707-1.707Z" transform="translate(12 6) rotate(180)" fill="#001d38"/></svg>' %}
+
+<style>
+  {% scope_css %}
+  .nav-omega {
+    background-color: {{ theme.header.background_color.color }};
+  }
+{% end_scope_css %}
+</style>
+{% if module.use_custom_logo %}
+{% set logo_src = module.logo.src %}
+{% set logo_alt = module.logo.alt %}
+{% else %}
+{% set logo_src = domain_settings.site_settings.logo_src %}
+{% set logo_alt = domain_settings.site_settings.logo_alt %}
+{% endif %}
+<div class="nav-omega">
+  <div class="nav__inner section-wrapper">
+    <a href="/" class="nav__logo" style="width: {{ theme.header.logo_width }}px;">
+      <img src="{{ logo_src }}" alt="{{ logo_alt }}">
+    </a>
+  </div>
+</div>

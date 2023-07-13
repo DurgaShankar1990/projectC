@@ -1,0 +1,84 @@
+
+{% require_css %}
+<style>
+  #{{ name }} .hs-search-field__input {
+    border: none;
+    max-width: {{ module.style.search_input_max_width }}px;
+    border-radius: {{ module.style.search_input_corner_radius }}px;
+    {{ module.style.input_border.css }};
+  }
+  #{{ name }} .hs-search-field__suggestions a,
+  #{{ name }} .hs-search-field__suggestions li {
+    color: rgba({{ module.style.search_results_option_text_color.color|convert_rgb }}, {{ module.style.search_results_option_text_color.opacity / 100 }});
+  }
+  #{{ name }} .hs-search-field__suggestions a:hover,
+  #{{ name }} .hs-search-field__suggestions a:focus {
+    color: rgba({{ module.style.search_results_option_hover_text_color.color|convert_rgb }}, {{ module.style.search_results_option_hover_text_color.opacity / 100 }});
+    background-color: rgba({{ module.style.search_results_option_hover_background_color.color|convert_rgb }}, {{ module.style.search_results_option_hover_background_color.opacity / 100 }});
+    outline: none;
+  }
+  #{{ name }}.hs-search-field--open .hs-search-field__suggestions {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    background-color: rgba({{ module.style.search_results_background_color.color|convert_rgb }}, {{ module.style.search_results_background_color.opacity / 100 }});
+    width: 100%;
+  }
+  #{{ name }} .hs-search-field__bar button {
+    background-color: #fff;
+    margin-left: -{{ module.style.search_input_corner_radius }}px;
+    border-radius: 0 {{ module.style.search_input_corner_radius }}px {{ module.style.search_input_corner_radius }}px 0;
+    color: rgba({{ module.style.search_results_option_hover_text_color.color|convert_rgb }}, {{ module.style.search_results_option_hover_text_color.opacity / 100 }});
+    background-color: rgba({{ module.style.search_results_option_hover_background_color.color|convert_rgb }}, {{ module.style.search_results_option_hover_background_color.opacity / 100 }});
+    {{ module.style.input_border.css }};
+  }
+  #{{ name }} .hs-search-field__bar svg path {
+    fill: {{ module.style.search_results_option_hover_text_color.css }};
+  }
+  #{{ name }} form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+  #{{ name }} .hs-search-field__suggestions {
+    position: relative;
+    z-index: 103;
+  }
+</style>
+{% end_require_css %}
+<div id="{{ name }}" class="hs-search-field"> 
+  <div class="hs-search-field__bar"> 
+    {% if module.field_label %}
+    <label for="term">{{ module.field_label }}</label>
+    {% endif %}
+    <form action="/{{ site_settings.content_search_results_page_path }}">
+      <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="{{ module.field_label || "Search" }}" placeholder="{{ module.placeholder }}">
+      {% if module.content_types.website_pages %}
+      <input type="hidden" name="type" value="SITE_PAGE">
+      {% endif %}
+      {% if module.content_types.landing_pages %}
+      <input type="hidden" name="type" value="LANDING_PAGE">
+      {% endif %}
+      {% if module.content_types.blog_posts %}
+      <input type="hidden" name="type" value="BLOG_POST">
+      <input type="hidden" name="type" value="LISTING_PAGE">
+      {% endif %}
+      {% if module.content_types.knowledge_articles %}
+      <input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+      {% endif %}
+
+      {% if module.include_search_button %}
+      <button aria-label="Search">{% icon name="search" style="solid" %}</button>
+      {% endif %}
+    </form>
+  </div>
+  <ul class="hs-search-field__suggestions box-shadow"></ul>
+</div>

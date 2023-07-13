@@ -1,0 +1,7 @@
+  .logo-slider {
+    width: 100%;
+    display: flex;
+  }
+  .logo-slider__logo-wrapper {
+    width: fit-content;
+  }

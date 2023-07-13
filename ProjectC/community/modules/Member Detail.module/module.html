@@ -1,0 +1,31 @@
+{% from '../../../community/imports/object_associations.html' import object_schema as object_schema %}
+{% set member_schema = object_schema.member_profile %}
+{% set member = dynamic_page_crm_object %}
+{% set cs = widget_data.cohortium_settings %}
+
+<div class="full_bio">
+  {{member.full_bio}}
+</div>
+{% if member_schema.to_topic_author %}
+{#{% set topics = crm_associations(member.hs_object_id, "USER_DEFINED", member_schema.to_topic_author, "&limit=" ~ module.limit_results ~ "&orderBy=-hs_createdate&is_deleted__ne=true", "name,category,hs_createdate,topic_slug,submitted_by_name,submitted_by_member_id,number_of_replies,status", false) %}#}
+  {% set topics = module.data_query.data.CRM.p_member_profile.associations.p_topic_collection__member_author.items %}
+{% endif %}
+{% if topics|length > 0 %}
+<div class="topics-container">
+  <h2> {{member.first_name}}'s {{cs.labels_text.topic_plural_label}}</h2>
+
+{% for topic in topics %}
+<div class="topic-card">
+  <a href="/topics/{{ topic.topic_slug }}">
+    <h4>{{topic.name}}{% if topic.status = "Solved"%}<span class="status-green">Solved</span>{% endif %}</h4>
+    <span class="detail-container">
+  <span class="details createdate">
+    <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 248H128V192H48V248zM48 296V360H128V296H48zM176 296V360H272V296H176zM320 296V360H400V296H320zM400 192H320V248H400V192zM400 408H320V464H384C392.8 464 400 456.8 400 448V408zM272 408H176V464H272V408zM128 408H48V448C48 456.8 55.16 464 64 464H128V408zM272 192H176V248H272V192z"/></svg>
+     {{topic.hs_createdate|datetimeformat('%B %e, %Y') }}</span>
+  <span class="details replies">
+    <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C114.6 32 .0272 125.1 .0272 240c0 47.63 19.91 91.25 52.91 126.2c-14.88 39.5-45.87 72.88-46.37 73.25c-6.625 7-8.375 17.25-4.625 26C5.818 474.2 14.38 480 24 480c61.5 0 109.1-25.75 139.1-46.25C191.1 442.8 223.3 448 256 448c141.4 0 255.1-93.13 255.1-208S397.4 32 256 32zM256.1 400c-26.75 0-53.12-4.125-78.38-12.12l-22.75-7.125l-19.5 13.75c-14.25 10.12-33.88 21.38-57.5 29c7.375-12.12 14.37-25.75 19.88-40.25l10.62-28l-20.62-21.87C69.82 314.1 48.07 282.2 48.07 240c0-88.25 93.25-160 208-160s208 71.75 208 160S370.8 400 256.1 400z"/></svg> {{topic.number_of_replies }} repl{% if topic.number_of_replies > 1 %}ies{% else %}y{% endif %}</span> </span></a>
+</div>
+
+{% endfor %}
+</div>
+{% endif %}

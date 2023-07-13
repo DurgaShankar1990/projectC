@@ -1,0 +1,385 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Products
+  screenshotPath: ../images/final-template-previews/products.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+{% dnd_area 'dnd_area'
+  label='Main section',
+  class='body-container body-container--blank'
+%}
+
+{% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(222, 240, 247, 1)", "rgba(247, 226, 202, 1)" ],
+    "direction" : "to bottom"
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=6
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/omega-rich-text",
+        offset=0,
+        width=12,
+        style={
+          "background_color" : "custom",
+          "custom_background_color" : {
+            "color" : "#FFFFFF",
+            "opacity" : 90
+          },
+          "right_margin" : 0,
+          "spacing" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "rem",
+                "value" : 1
+              },
+              "top" : { }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "left" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "right" : {
+                "units" : "rem",
+                "value" : 2
+              },
+              "top" : {
+                "units" : "rem",
+                "value" : 1
+              }
+            }
+          },
+          "text_color" : "black"
+        }
+      %}
+        {% module_attribute "richtext_field" %}
+          <h1 style="text-align: center;">PRODUCTS</h1>
+          <div style="text-align: center;"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</span></div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/omega-button",
+        offset=0,
+        width=12,
+        buttons=[ {
+          "animation_effect" : "reflect",
+          "button_text" : "Click Me!",
+          "button_type" : "primary",
+          "effect_color" : {
+            "color" : "#FFFFFF",
+            "opacity" : 100
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "link_color" : {
+            "color" : "#113540",
+            "opacity" : 100
+          }
+        }, {
+          "animation_effect" : "reflect",
+          "button_text" : "Or Click Me!",
+          "button_type" : "primary",
+          "effect_color" : {
+            "color" : "#FFFFFF",
+            "opacity" : 100
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "link_color" : {
+            "color" : "#113540",
+            "opacity" : 100
+          }
+        } ],
+        styles={
+          "scroll_animation" : "fade_from_bottom"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=6
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/photo-collage",
+        offset=0,
+        width=12,
+        images=[ {
+          "alt" : "blog-11",
+          "height" : 780,
+          "loading" : "lazy",
+          "max_height" : 780,
+          "max_width" : 1170,
+          "size_type" : "auto",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 1170
+        }, {
+          "alt" : "blog-6",
+          "height" : 780,
+          "loading" : "lazy",
+          "max_height" : 780,
+          "max_width" : 1170,
+          "size_type" : "auto",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 1170
+        }, {
+          "alt" : "blog-1",
+          "height" : 1378,
+          "loading" : "lazy",
+          "max_height" : 1378,
+          "max_width" : 2073,
+          "size_type" : "auto",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 2073
+        }, {
+          "alt" : "blog-2",
+          "height" : 780,
+          "loading" : "lazy",
+          "max_height" : 780,
+          "max_width" : 1169,
+          "size_type" : "auto",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 1169
+        } ],
+        style={
+          "animation" : "slide_from_right"
+        }
+      %}
+        {% module_attribute "text" %}
+          <h3>IMAGES</h3>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+    vertical_alignment='MIDDLE',
+    full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/shape-divider",
+        offset=0,
+        width=12,
+        shape_color={
+          "color" : "#F7E2CA",
+          "opacity" : 100
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "40px",
+      "top" : "80px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/omega-video",
+        offset=0,
+        width=12,
+        image={
+          "alt" : "wide-bg",
+          "height" : 827,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('./../images/placeholder-image.png'),
+          "width" : 2074
+        },
+        style={
+          "animation" : "fade_from_bottom"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "40px",
+      "top" : "40px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p>&nbsp;</p>
+          <p style="text-align: center;"><a data-tilt="true" data-tilt-max="3" data-tilt-glare="" data-tilt-max-glare="0.3" data-tilt-scale="1.05" style="text-decoration: none;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&nbsp;</a></p>
+          <p>&nbsp;</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="./../modules/flip-cards",
+        offset=0,
+        width=12,
+        cards=[ {
+          "back" : {
+            "highlight_text" : "",
+            "image" : {
+              "alt" : "blog-4",
+              "height" : 1380,
+              "loading" : "lazy",
+              "max_height" : 1380,
+              "max_width" : 2070,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 2070
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          },
+          "front" : {
+            "highlight_text" : "20% Off",
+            "image" : {
+              "alt" : "desk-computer",
+              "height" : 780,
+              "loading" : "lazy",
+              "max_height" : 780,
+              "max_width" : 1170,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1170
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          }
+        }, {
+          "back" : {
+            "highlight_text" : "",
+            "image" : {
+              "alt" : "blog-3",
+              "height" : 1381,
+              "loading" : "lazy",
+              "max_height" : 1381,
+              "max_width" : 2071,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 2071
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          },
+          "front" : {
+            "highlight_text" : "20% Off",
+            "image" : {
+              "alt" : "blog-5",
+              "height" : 781,
+              "loading" : "lazy",
+              "max_height" : 781,
+              "max_width" : 1171,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1171
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          }
+        }, {
+          "back" : {
+            "highlight_text" : "",
+            "image" : {
+              "alt" : "blog-1",
+              "height" : 1378,
+              "loading" : "lazy",
+              "max_height" : 1378,
+              "max_width" : 2073,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 2073
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          },
+          "front" : {
+            "highlight_text" : "20% Off",
+            "image" : {
+              "alt" : "blog-2-1",
+              "height" : 780,
+              "loading" : "lazy",
+              "max_height" : 780,
+              "max_width" : 1169,
+              "size_type" : "auto",
+              "src" : get_asset_url('./../images/placeholder-image.png'),
+              "width" : 1169
+            },
+            "text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>"
+          }
+        } ],
+        style={
+          "animation" : "fade_from_bottom"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}

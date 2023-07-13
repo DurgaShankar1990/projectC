@@ -1,0 +1,6 @@
+.settings-section {margin:15px;border-radius:5px;border:2px solid #cecece;padding:10px;}
+.settings-section h3 {margin:0px;}
+ul.options li {display:flex;}
+ul.options strong {
+    min-width: 300px;
+}

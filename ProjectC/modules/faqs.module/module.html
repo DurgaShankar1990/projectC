@@ -1,0 +1,99 @@
+{% require_css %}
+<style>
+  {% if module.style.question_background_color_unopened == 'custom' %}
+  #module--{{ name }} .faq__question {
+    background-color: {{ module.style.question.unopened.custom_question_bg_color_unopened.css }};
+  }
+  {% endif %}
+  {% if module.style.question_background_color_opened == 'custom' %}
+  #module--{{ name }} .faq__question:hover,
+  #module--{{ name }} .faq__question.open {
+    background-color: {{ module.style.question.opened.custom_question_bg_color_opened.css }};
+  }
+  {% endif %}
+  {% if module.style.question_text_color_unopened == 'custom' %}
+  #module--{{ name }} .faq__question {
+    color: {{ module.style.question.unopened.custom_question_text_color_unopened.css }}
+  }
+  {% endif %}
+  {% if module.style.question_text_color_opened == 'custom' %}
+  #module--{{ name }} .faq__question:hover,
+  #module--{{ name }} .faq__question.open {
+    color: {{ module.style.question.opened.custom_question_text_color_opened.css }}
+  }
+  {% endif %}
+  #module--{{ name }} .faq__question::before,
+  #module--{{ name }} .faq__question::after {
+    background-color: {{ module.style.question.unopened.icon_color_unopened.css }};
+  }
+  #module--{{ name }} .faq__question.open::before,
+  #module--{{ name }} .faq__question.open::after,
+  #module--{{ name }} .faq__question:hover::before,
+  #module--{{ name }} .faq__question:hover::after {
+    background-color: {{ module.style.question.opened.icon_color_opened.css }}
+  }
+  #module--{{ name }} .faq__question {
+    {{ module.style.question.unopened.border_unopened.css }};
+  }
+  #module--{{ name }} .faq__question:hover,
+  #module--{{ name }} .faq__question.open {
+    {{ module.style.question.opened.border_opened.css }};
+  }
+  #module--{{ name }} .faq__answer-content {
+    {% if module.style.answer.background_color == 'custom' %}
+    background-color: {{ module.style.answer.custom_background_color.css }};
+    {% endif %}
+    {% if module.style.answer.text_color == 'custom' %}
+    color: {{ module.style.answer.custom_text_color.css }};
+    {% endif %}
+  }
+</style>
+{% end_require_css %}
+
+<div id="module--{{ name }}" class="faq-wrapper">
+  {% for item in module.faqs %}
+  <div class="faq animate animate--{{ module.style.animation }}">
+    <div class="faq__question  animate animate--{{ module.style.animation }}
+                bg--{{ module.style.question.unopened.question_background_color_unopened }}
+                h-bg--{{ module.style.question.opened.question_background_color_opened }}
+                text--{{ module.style.question.unopened.question_text_color_unopened }}
+                h-text--{{ module.style.question.opened.question_text_color_opened }}">
+      {{ item.question }}
+    </div>
+    <div class="faq__answer-content bg--{{ module.style.answer.background_color }} text--{{ module.style.answer.text_color }}">
+      <div class="faq__answer" {% if item.supporting_content_type == 'none' %} style="width: 100%;" {% endif %}>
+        {{ item.answer }}
+      </div>
+      {% unless item.supporting_content_type == 'none' %}
+      <div class="faq__supporting-content">
+        {% if item.supporting_content_type == 'video' %}
+        {% if item.supporting_video.player_id %}
+        {% set max_width = item.supporting_video.size_type == 'auto_custom_max' ? item.supporting_video.max_width : item.supporting_video.width %}
+        {% set max_height = item.supporting_video.size_type == 'auto_custom_max' ? item.supporting_video.max_height : item.supporting_video.height %}
+        {% widget_block video_player "embed_player"
+          overrideable=False,
+          type='scriptV4',
+          hide_playlist=True,
+          viral_sharing=False,
+          embed_button=False,
+          full_width={{ item.supporting_video.size_type == 'auto_full_width' }},
+          width="{{ max_width }}",
+          height="{{ max_height }}",
+          player_id="{{ item.supporting_video.player_id }}"
+        %}
+        {% widget_attribute "conversion_asset" %}
+        {{ item.supporting_video.conversion_asset|tojson|safe }}
+        {% end_widget_attribute %}
+        {% end_widget_block %}
+        {% endif %}
+        {% else %}
+        <div class="faq__image">
+          <img src="{{ resize_image_url(item.supporting_image.src, 0, 0, 600) }}" alt="{{ item.supporting_image.alt }}">
+        </div>
+        {% endif %}
+      </div>
+      {% endunless %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

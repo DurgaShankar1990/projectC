@@ -1,0 +1,15 @@
+[ {
+  "id" : "3dd89408-b495-e26d-f391-eb2fd500b8d8",
+  "name" : "choose_features_to_include",
+  "display_width" : null,
+  "label" : "Choose Features to Include",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "choices" : [ [ "fullname", "Name" ], [ "user", "Username" ], [ "member_bio", "Bio" ], [ "profile", "Profile Link" ] ],
+  "multiple" : true,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : [ "fullname", "user", "member_bio", "profile" ]
+} ]

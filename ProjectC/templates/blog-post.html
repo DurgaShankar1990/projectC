@@ -1,0 +1,171 @@
+<!--
+templateType: blog_post
+isAvailableForNewContent: true
+label: OMEGA - Blog Post
+screenshotPath: ../images/final-template-previews/blog-post.png
+-->
+
+
+{% require_css %}
+<style>
+  article.blog-post,
+  .comment {
+    border-radius: {{ widget_data.corner_radius.value }}px !important;
+    border-radius: {{ widget_data.corner_radius.value }} !important;
+  }
+  .blog-post {
+    max-width: {{ widget_data.content_max_width.value }}px !important;
+    max-width: {{ widget_data.content_max_width.value }} !important;
+  }
+</style>
+{% end_require_css %}
+
+
+{% set template_css = '../../css/templates/blog.css' %}
+{% extends './layouts/base.html' %}
+{% block body %}
+
+
+{% set alt = content.name %}
+{% set img = content.featured_image %}
+
+{% text "text_above_related_posts" label="Text Above Related Posts", value="Read On" export_to_template_context=true %}
+{% boolean "include_scroll_bar" label="Include Scroll Bar", value=True, export_to_template_context=true %}
+{% boolean "include_floating_menu" label="Include Floating Menu" value=True, export_to_template_context=true %}
+{% boolean "include_author_info" label="Include Author Info" value=True, export_to_template_context=true %}
+{% boolean "include_tags" label="Include Tags" value=True, export_to_template_context=true %}
+{% text "corner_radius" label="Corner Radius on Box", value="20", export_to_template_context=true %}
+{% text "content_max_width" label="Content Maximum Width", value="900", export_to_template_context=true %}
+{% image "hero_bg" label="Hero Background Image", export_to_template_context=true %}
+
+{% set tags_icon = '<svg class="tags-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tags" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="curentColor" d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z" class=""></path></svg>' %}
+{% set white_tags_icon = '<svg class="tags-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tags" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path style="fill: "#fff;" fill="#fff" d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z" class=""></path></svg>' %}
+
+{% if widget_data.include_scroll_bar.value == 'true' %}
+{% module "module_1643591104164221" path="./../modules/scroll-bar", label="scroll-bar" %}
+{% endif %}
+
+{% if widget_data.include_floating_menu.value == 'true' %}
+{% module "module_1643591400558223" path="./../modules/floating-menu", label="floating-menu" %}
+{% endif %}
+
+
+
+
+<div class="body-container body-container--blog-post">
+
+  {# Blog post #}
+  <div class="blog-post__hero" style="background-image:linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.3)), url({{ resize_image_url(widget_data.hero_bg.src || content.featured_image, 0, 0, 1600) }});">
+    <div class="blog-post">
+      <h1>{{ content.name }}</h1>
+      <div class="blog-post__hero-bottom">
+        {% if content.tag_list %}
+        <div class="blog-post__tags">
+          {{ white_tags_icon }}
+          {% for tag in content.tag_list %}
+          <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}" rel="tag">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if widget_data.include_author_info.value == 'true' %}
+        <div class="blog-post__meta">
+          <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}" rel="author" class="blog-card__author">
+            {% if content.blog_author.avatar %}
+            <img width="100" src="{{ content.blog_author.avatar }}" alt="{{ content.blog_author.display_name }}" />
+            {% endif %}
+            <div class="blog-card__author-info">
+              <h5>{{ content.blog_author.display_name }}</h5>
+              <small>{{ datetimeformat(content.publish_date, '%B %e, %Y') }} </small>
+            </div>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <article class="blog-post box-shadow">
+      <div class="blog-post__body">
+        {{ content.post_body }}
+      </div>
+    </article>
+    {% if group.allow_comments %}
+    <div class="blog-post">
+      {% module 'blog_comments'
+          path='@hubspot/blog_comments',
+          label="Blog comments"
+        %}
+    </div>
+    {% endif %}
+  </div>
+
+  {# Recent posts listing #}
+
+  {# This macro is used to format each recent post card and gets passed to the related_blog_posts HubL tag below #}
+
+  {% macro related_posts(post, count, total) %}
+  {% if count == 1 %}
+  <section class="blog-related-posts">
+    <div class="section-wrapper">
+      <h2>{{ widget_data.text_above_related_posts.value }}</h2>
+      <div class="blog-related-posts__list">
+        {% endif %}
+        <div class="blog-card__wrapper animate animate--fade_from_bottom">
+          <a href="{{ post.absolute_url }}" 
+             class="blog-card matchHeight
+                    box-shadow">
+            <div class="blog-card__header">
+              <img loading="lazy" src="{{ resize_image_url(post.featured_image, 0, 0, 600) }}" alt="{{ post.featured_image_alt_text }}" />
+            </div>
+            <div class="blog-card__content">
+              <div class="blog-card__body">
+                <h4>{{ post.name }}</h4>
+                <p>
+                  {% if post.post_summary %}
+                  {{ post.post_summary|striptags|truncate(100, '') }}
+                  {% else %}
+                  {{ post.post_body|striptags|truncate(100, '') }}
+                  {% endif %}
+                </p>
+              </div>
+              <div class="blog-card__bottom">
+                {% if widget_data.include_tags.value == 'true' %}
+                <div class="blog-card__tags">
+                  {{ tags_icon }} 
+                  <div style="width:calc(100% - 20px);">
+                    {% for tag in post.topic_list %}{{ tag }}{% unless loop.last %}, {% endunless %}{% endfor %}
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              {% if widget_data.include_author_info.value == 'true' %}
+              <div class="blog-card__author">
+                {% if post.blog_author.avatar %}
+                <img width="100" src="{{ post.blog_author.avatar }}" alt="{{ post.blog_author.display_name }}" />
+                {% endif %}
+                <div class="blog-card__author-info">
+                  <h5>{{ post.blog_author.display_name }}</h5>
+                  <small>{{ datetimeformat(post.publish_date, '%B %e, %Y') }} </small>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </a>
+        </div>
+        {% if count == total %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% endmacro %}
+
+
+
+  {% related_blog_posts
+    limit=3,
+    no_wrapper=True,
+    post_formatter="related_posts"
+  %}
+</div>
+{% endblock body %}

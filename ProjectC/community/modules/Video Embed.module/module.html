@@ -1,0 +1,50 @@
+{% if module.video_embed_code %}
+{% if module.video_embed_code is string_containing "wistia.com/medias/" %}
+{% set vid = module.video_embed_code|split('/',4) %}
+{% set video_id = vid[3] %}
+<script src="https://fast.wistia.com/embed/medias/1s8spu18yz.jsonp" async></script>
+<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+    <div class="wistia_embed wistia_async_{{ video_id }} videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+      <img src="https://fast.wistia.com/embed/medias/{{ video_id }}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+      </div>
+    </div>
+  </div>
+</div>
+{% elif module.video_embed_code is string_containing "//youtu.be/" %}
+{% set vid = module.video_embed_code|split('/',4) %}
+{% set video_id = vid[2] %}
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+{% elif module.video_embed_code is string_containing "https://www.youtube.com/watch?v=" %}
+{% set vid = module.video_embed_code|split('v=',2) %}
+{% set video_id = vid[1] %}
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/{{video_id  }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+{% elif module.video_embed_code is string_containing "https://vimeo.com/" %}
+{% set vid = module.video_embed_code|split('/',4) %}
+{% set video_id = vid[2] %}
+<div class="video-container">
+ <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+{% elif module.video_embed_code is string_containing "https://player.vimeo.com/video/" and is not string_containing "src=" %}
+{% set vid = module.video_embed_code|split('https://player.vimeo.com/video/',4) %}
+{% set video_id = vid|first %}
+<div class="video-container">
+ <iframe src="https://player.vimeo.com/video/{{video_id}}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+{% elif module.video_embed_code is string_containing "www.loom.com/share/" %}
+{% set vid = module.video_embed_code|split('loom.com/share/') %}
+{% set video_id = vid|last %}
+<div style="position: relative; padding-bottom: 49.586776859504134%; height: 0;"><iframe src="https://www.loom.com/embed/{{video_id}}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+{% elif module.video_embed_code is not string_containing "width=" %}
+<div class="video-container">
+ {{ module.video_embed_code}}
+</div>
+{% else %}
+{{ module.video_embed_code}}
+{% endif %}
+{% endif %}

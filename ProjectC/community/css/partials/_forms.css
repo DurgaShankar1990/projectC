@@ -1,0 +1,21 @@
+/* @import url('http://example.com/example_style.css'); */
+
+/***********************************************/
+/* CSS @imports must be at the top of the file */
+/* Add them above this section                 */
+/***********************************************/
+
+/*****************************************/
+/* Start your style declarations here    */
+/*****************************************/
+form input[type=text].error {
+  border-color: red;
+}
+form input[type=text].error:focus {
+  outline-color: red;
+}
+form input ~ span.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 1rem;
+}

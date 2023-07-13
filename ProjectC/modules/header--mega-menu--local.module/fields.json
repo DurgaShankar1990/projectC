@@ -1,0 +1,2097 @@
+[ {
+  "id" : "785fb882-f360-3613-9250-eaac2d489379",
+  "name" : "use_custom_logo",
+  "display_width" : null,
+  "label" : "Use Custom Logo",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "377cd2bc-d0ef-3763-2883-4fb1a8fd4ed4",
+  "name" : "logo",
+  "display_width" : null,
+  "label" : "Logo",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "785fb882-f360-3613-9250-eaac2d489379",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/omega-logo-svg--2.svg",
+    "alt" : "omega-logo-svg--2",
+    "loading" : "lazy",
+    "width" : 400,
+    "height" : 400,
+    "max_width" : 400,
+    "max_height" : 400
+  }
+}, {
+  "id" : "df448e2f-23ef-48e2-adb5-1f51c940d32b",
+  "name" : "menu_items",
+  "display_width" : null,
+  "label" : "Menu Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "37f0339d-46df-8233-04b8-1179c4ae6dd9",
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "30636df1-99c0-b2aa-d002-f9332677b22a",
+    "name" : "type",
+    "display_width" : null,
+    "label" : "Type",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "link", "Link" ], [ "simple_menu", "Simple Menu" ], [ "mega_menu", "Mega Menu" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "simple_menu"
+  }, {
+    "id" : "37f0339d-46df-8233-04b8-1179c4ae6dd9",
+    "name" : "dropdown_title",
+    "display_width" : null,
+    "label" : "Menu Item Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "bad9880b-2082-245a-6df4-2f4440b3be6c",
+    "name" : "link_field",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "40819cfe-c93f-56e5-21d4-6e501b4edec4",
+    "name" : "simple_menu",
+    "display_width" : null,
+    "label" : "Simple menu",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "30636df1-99c0-b2aa-d002-f9332677b22a",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "simple_menu",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "simplemenu",
+    "default" : [ {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "ad5be84e-b956-9ea3-1129-e169dee0f5c4",
+    "name" : "mega_menu",
+    "display_width" : null,
+    "label" : "Mega Menu",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "30636df1-99c0-b2aa-d002-f9332677b22a",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "mega_menu",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "children" : [ {
+      "id" : "7da76ebd-51dd-97d8-339a-4614db75dbd6",
+      "name" : "mega_menu_style",
+      "display_width" : null,
+      "label" : "Mega Menu Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "images", "Images on Every Link" ], [ "cta", "Cta on Right Side" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "images"
+    }, {
+      "id" : "07209d6f-208f-0234-f54f-660fc08b8f02",
+      "name" : "transform",
+      "display_width" : null,
+      "label" : "Transform",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : -100,
+      "max" : 100,
+      "step" : 0.01,
+      "type" : "number",
+      "default" : -50
+    }, {
+      "id" : "cf015bbf-9f11-4992-8d65-bfeb7cee21f5",
+      "name" : "links_w_images",
+      "display_width" : null,
+      "label" : "Links w Images",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : 2,
+        "max" : 4,
+        "sorting_label_field" : "7cbff125-2973-06ab-62d6-74a6b25c9240",
+        "default" : 3
+      },
+      "visibility" : {
+        "controlling_field" : "7da76ebd-51dd-97d8-339a-4614db75dbd6",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "images",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "children" : [ {
+        "id" : "e6928994-6b55-df97-b8cd-18f4dbf87af0",
+        "name" : "image_type",
+        "display_width" : null,
+        "label" : "Image Type",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "image", "Image" ], [ "icon", "Icon" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "image"
+      }, {
+        "id" : "b635776b-3afb-75a0-e502-37eb0a426484",
+        "name" : "icon",
+        "display_width" : null,
+        "label" : "Icon",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "e6928994-6b55-df97-b8cd-18f4dbf87af0",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        }
+      }, {
+        "id" : "eb7762bc-c684-a82c-7f94-8d1c6818fb3c",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "e6928994-6b55-df97-b8cd-18f4dbf87af0",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "68b089cb-4d35-6f07-0032-ddaa7f05fee2",
+        "name" : "link_image",
+        "display_width" : null,
+        "label" : "Link Image",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "e6928994-6b55-df97-b8cd-18f4dbf87af0",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "image",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "responsive" : false,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        }
+      }, {
+        "id" : "7cbff125-2973-06ab-62d6-74a6b25c9240",
+        "name" : "link_title",
+        "display_width" : null,
+        "label" : "Link Title",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Lorem ipsum"
+      }, {
+        "id" : "440078a2-f02e-5a54-d1c5-54b88d467915",
+        "name" : "link_description",
+        "display_width" : null,
+        "label" : "Link Description",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Lorem ipsum dolor sit amet."
+      }, {
+        "id" : "d0de12e3-6b49-07a0-f867-eaa7f5062979",
+        "name" : "link",
+        "display_width" : null,
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "id" : "d9d1a9f4-c020-a291-05e2-e3c1fa903563",
+        "name" : "callout_text",
+        "display_width" : null,
+        "label" : "Callout Text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "LEARN MORE"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : [ {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      }, {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      }, {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      } ]
+    }, {
+      "id" : "7dc46494-295a-4473-acfd-90fd46a1bfd3",
+      "name" : "links_no_images",
+      "display_width" : null,
+      "label" : "Links no Images",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : 2,
+        "max" : null,
+        "sorting_label_field" : "b31cc67a-ded1-f72d-0792-7f2931350f20",
+        "default" : 8
+      },
+      "visibility" : {
+        "controlling_field" : "7da76ebd-51dd-97d8-339a-4614db75dbd6",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "cta",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "children" : [ {
+        "id" : "b31cc67a-ded1-f72d-0792-7f2931350f20",
+        "name" : "link_title",
+        "display_width" : null,
+        "label" : "Link Title",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Lorem ipsum"
+      }, {
+        "id" : "18025e2d-0fab-6b6d-fdf9-a72caf66b357",
+        "name" : "link_description",
+        "display_width" : null,
+        "label" : "Link Description",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Fully Integrated, highly configurable, dynamic modules for your company."
+      }, {
+        "id" : "9ee9b95f-7b9d-f0a2-8edd-dacaebf6f754",
+        "name" : "link",
+        "display_width" : null,
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : [ {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ]
+    }, {
+      "id" : "2b051175-38ef-0736-140f-62e122bb2cfd",
+      "name" : "cta",
+      "display_width" : null,
+      "label" : "CTA",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "7da76ebd-51dd-97d8-339a-4614db75dbd6",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "cta",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "children" : [ {
+        "id" : "11ab7ffc-cb79-5a77-d025-75b43c1a3585",
+        "name" : "cta_image",
+        "display_width" : null,
+        "label" : "CTA Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "auto",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Add%20your%20HubSpot%20certifications%20to%20your%20LinkedIn%20profile.jpg",
+          "alt" : "Add your HubSpot certifications to your LinkedIn profile",
+          "loading" : "lazy",
+          "width" : 1920,
+          "height" : 1080,
+          "max_width" : 1920,
+          "max_height" : 1080
+        }
+      }, {
+        "id" : "a932a2a4-40c3-fa26-e58a-08d0d3182dd3",
+        "name" : "cta_title",
+        "display_width" : null,
+        "label" : "CTA Title",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "HubSpot Academy Certifications"
+      }, {
+        "id" : "3f06defe-a436-7ecf-ee6d-2dce085f4642",
+        "name" : "text_field",
+        "display_width" : null,
+        "label" : "Text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "If you're familiar with The Sprocket, then you know that HubSpot's educational arm, HubSpot Academy, offers a ton of information..."
+      }, {
+        "id" : "27488c15-7122-134a-0389-100cf50d38f2",
+        "name" : "link",
+        "display_width" : null,
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "id" : "89cfac2a-a585-f4e3-9958-2641ff711ff9",
+        "name" : "link_text",
+        "display_width" : null,
+        "label" : "Link Text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "CTA BUTTON"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "cta_image" : {
+          "size_type" : "auto",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Add%20your%20HubSpot%20certifications%20to%20your%20LinkedIn%20profile.jpg",
+          "alt" : "Add your HubSpot certifications to your LinkedIn profile",
+          "loading" : "lazy",
+          "width" : 1920,
+          "height" : 1080,
+          "max_width" : 1920,
+          "max_height" : 1080
+        },
+        "cta_title" : "HubSpot Academy Certifications",
+        "text_field" : "If you're familiar with The Sprocket, then you know that HubSpot's educational arm, HubSpot Academy, offers a ton of information...",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "link_text" : "CTA BUTTON"
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "mega_menu_style" : "images",
+      "transform" : -50,
+      "links_w_images" : [ {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      }, {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      }, {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      } ],
+      "links_no_images" : [ {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cta" : {
+        "cta_image" : {
+          "size_type" : "auto",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Add%20your%20HubSpot%20certifications%20to%20your%20LinkedIn%20profile.jpg",
+          "alt" : "Add your HubSpot certifications to your LinkedIn profile",
+          "loading" : "lazy",
+          "width" : 1920,
+          "height" : 1080,
+          "max_width" : 1920,
+          "max_height" : 1080
+        },
+        "cta_title" : "HubSpot Academy Certifications",
+        "text_field" : "If you're familiar with The Sprocket, then you know that HubSpot's educational arm, HubSpot Academy, offers a ton of information...",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "link_text" : "CTA BUTTON"
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "type" : "simple_menu",
+    "dropdown_title" : "",
+    "link_field" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "simple_menu" : [ {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    }, {
+      "isPublished" : false,
+      "pageLinkId" : null,
+      "pageLinkName" : null,
+      "isDeleted" : null,
+      "categoryId" : null,
+      "subCategory" : null,
+      "contentType" : null,
+      "state" : null,
+      "linkLabel" : "Link",
+      "linkUrl" : null,
+      "linkParams" : null,
+      "linkTarget" : null,
+      "type" : "PAGE_LINK",
+      "children" : [ ]
+    } ],
+    "mega_menu" : {
+      "mega_menu_style" : "images",
+      "transform" : -50,
+      "links_w_images" : [ {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      }, {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      }, {
+        "image_type" : "image",
+        "icon" : {
+          "name" : "Chess Pawn",
+          "unicode" : "f443",
+          "type" : "SOLID"
+        },
+        "icon_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "link_image" : {
+          "size_type" : "exact",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/pawn.svg",
+          "alt" : "pawn",
+          "loading" : "lazy",
+          "width" : 400,
+          "height" : 400
+        },
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Lorem ipsum dolor sit amet.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "callout_text" : "LEARN MORE"
+      } ],
+      "links_no_images" : [ {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "link_title" : "Lorem ipsum",
+        "link_description" : "Fully Integrated, highly configurable, dynamic modules for your company.",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cta" : {
+        "cta_image" : {
+          "size_type" : "auto",
+          "src" : "https://fs.hubspotusercontent00.net/hubfs/20023350/Imported_Blog_Media/Add%20your%20HubSpot%20certifications%20to%20your%20LinkedIn%20profile.jpg",
+          "alt" : "Add your HubSpot certifications to your LinkedIn profile",
+          "loading" : "lazy",
+          "width" : 1920,
+          "height" : 1080,
+          "max_width" : 1920,
+          "max_height" : 1080
+        },
+        "cta_title" : "HubSpot Academy Certifications",
+        "text_field" : "If you're familiar with The Sprocket, then you know that HubSpot's educational arm, HubSpot Academy, offers a ton of information...",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "link_text" : "CTA BUTTON"
+      }
+    }
+  }
+}, {
+  "id" : "f39b4f10-6c26-3c33-0511-e49cd786a714",
+  "name" : "right_side_button",
+  "display_width" : null,
+  "label" : "Right Side Button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "4d88d961-4220-c970-3f46-91f31bce3861",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "80298d7c-c29d-e449-30b5-17672a26f513",
+    "name" : "logged_out_link",
+    "display_width" : null,
+    "label" : "Logged Out Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "437839c9-eb27-ae1f-2071-fb1c82673e43",
+    "name" : "link_text",
+    "display_width" : null,
+    "label" : "Link Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "LET'S CHAT!"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "logged_out_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "link_text" : "LET'S CHAT!"
+  }
+}, {
+  "id" : "915cd914-f44d-ae3c-43e2-7b280bfda14c",
+  "name" : "mobile_menu",
+  "display_width" : null,
+  "label" : "Mobile Menu",
+  "required" : false,
+  "locked" : false,
+  "type" : "menu",
+  "default" : ""
+}, {
+  "id" : "084afd54-b863-1fc3-07d2-c62f4914de93",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "09655032-d0ab-ff00-674e-c214d49b84c2",
+    "name" : "right_side_button",
+    "display_width" : null,
+    "label" : "Right Side Button",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "0af236f0-edfc-1963-f0ca-88c4e901ff16",
+      "name" : "button_type",
+      "display_width" : null,
+      "label" : "Button Type",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary"
+    }, {
+      "id" : "1143f496-2cb3-6f08-3871-9d8bfb872343",
+      "name" : "space_between_button_and_links",
+      "display_width" : null,
+      "label" : "Space Between Button and Links",
+      "required" : true,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 40,
+      "step" : 1,
+      "type" : "number",
+      "default" : 20
+    }, {
+      "id" : "51a80149-f504-1717-a74b-ee1883a9b596",
+      "name" : "overwrite_default_spacing",
+      "display_width" : null,
+      "label" : "Overwrite Default Spacing",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "7e31ea4f-5c73-2b18-2979-8cc5bb0b5ede",
+      "name" : "custom_spacing",
+      "display_width" : null,
+      "label" : "Custom Spacing",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "51a80149-f504-1717-a74b-ee1883a9b596",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 0.5,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 0.5,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "button_type" : "primary",
+      "space_between_button_and_links" : 20,
+      "overwrite_default_spacing" : false,
+      "custom_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 0.5,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 0.5,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "56c7a40b-4de9-622a-477b-e87d5d0aadba",
+    "name" : "links",
+    "display_width" : null,
+    "label" : "Links",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1f296a90-1c78-77f7-07d7-2422bf24560d",
+      "name" : "navigation_link_color",
+      "display_width" : null,
+      "label" : "Navigation Link Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "c2ea7116-f4ee-d02f-3138-131ce2879ecc",
+      "name" : "hover_navigation_link_color",
+      "display_width" : null,
+      "label" : "Hover Navigation Link Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "03539382-98a5-8ae2-3698-6d1d4bec163c",
+      "name" : "hover_box_background_color",
+      "display_width" : null,
+      "label" : "Hover Box Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "78d6d290-542a-7f2f-c6d8-005d0dfc78df",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 100,
+      "max" : 900,
+      "step" : 100,
+      "type" : "number",
+      "default" : 600
+    }, {
+      "id" : "96f31a63-f857-3d1f-5483-e470a3abf6c0",
+      "name" : "children_menus",
+      "display_width" : null,
+      "label" : "Children Menus",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "223a13ab-31e4-6fc5-7c1c-3370fc33704d",
+        "name" : "hover_children_menu_link_background_color",
+        "display_width" : null,
+        "label" : "Hover Children Menu Link Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "1886c492-8634-f06d-aab3-6833655a7c1f",
+        "name" : "hover_children_menu_link_color",
+        "display_width" : null,
+        "label" : "Hover Children Menu Link Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "25aa8a2a-926b-0146-732d-e65e681bbc42",
+        "name" : "children_menu_link_color",
+        "display_width" : null,
+        "label" : "Children Menu Link Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "f330e819-95f1-c855-5811-8d25bea43d6d",
+        "name" : "font_weight",
+        "display_width" : null,
+        "label" : "Font Weight",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 100,
+        "max" : 900,
+        "step" : 100,
+        "type" : "number",
+        "default" : 600
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hover_children_menu_link_background_color" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        },
+        "hover_children_menu_link_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "children_menu_link_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "font_weight" : 600
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "navigation_link_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "hover_navigation_link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "hover_box_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "font_weight" : 600,
+      "children_menus" : {
+        "hover_children_menu_link_background_color" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        },
+        "hover_children_menu_link_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "children_menu_link_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "font_weight" : 600
+      }
+    }
+  }, {
+    "id" : "33fc8cc4-3661-6b18-035c-109d12291ea4",
+    "name" : "mega_menu",
+    "display_width" : null,
+    "label" : "Mega Menu",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "48b77cb2-0979-7ee6-6616-0dca694a3b68",
+      "name" : "image_height",
+      "display_width" : null,
+      "label" : "Image Height",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 40,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "c7f25f09-ae27-9c84-40c9-c5727093f838",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#CA6D02",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "e1af0f99-499a-aba9-52d2-fd30f011db0e",
+      "name" : "hover_text_color",
+      "display_width" : null,
+      "label" : "Hover Text Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "03f2f323-962a-cc96-f143-a81461516dd0",
+      "name" : "cta_on_right_side",
+      "display_width" : null,
+      "label" : "Cta on Right Side",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "2cf8f293-14a8-e32e-7f96-f2bcded81915",
+        "name" : "background_color",
+        "display_width" : null,
+        "label" : "Background Color",
+        "inline_help_text" : "",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "864dbcd0-23fb-703b-f799-842b44704b59",
+        "name" : "text_color",
+        "display_width" : null,
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : "#113540",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "171d3bde-9c6b-375f-2037-6c1a4400e8ec",
+        "name" : "button_style",
+        "display_width" : null,
+        "label" : "Button Style",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "background_color" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        },
+        "text_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "button_style" : "primary"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "image_height" : 100,
+      "text_color" : {
+        "color" : "#CA6D02",
+        "opacity" : 100
+      },
+      "hover_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "cta_on_right_side" : {
+        "background_color" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        },
+        "text_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "button_style" : "primary"
+      }
+    }
+  }, {
+    "id" : "48cd25e7-3c37-b9ad-6e0a-a3626bd55503",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "5a543b51-b8f9-af56-a7ab-5c8f501c86a6",
+      "name" : "menu_text_color",
+      "display_width" : null,
+      "label" : "Menu Text Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "423dea8d-fcc0-0bf2-1195-f4e00bb2589d",
+      "name" : "open_menu_icon_color",
+      "display_width" : null,
+      "label" : "Open Menu Icon Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "60db00aa-1151-c484-1f35-be923edeaded",
+      "name" : "close_menu_icon_color",
+      "display_width" : null,
+      "label" : "Close Menu Icon Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "b7e277fc-fa20-3efa-7f09-3ed957c95a3e",
+      "name" : "menu_background_color",
+      "display_width" : null,
+      "label" : "Menu Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#113540",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "9f7fc14c-e26a-8603-6b8a-9b4f66f40912",
+      "name" : "mobile_menu_padding",
+      "display_width" : null,
+      "label" : "Mobile Menu Padding",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 5,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 5,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "menu_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "open_menu_icon_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "close_menu_icon_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "menu_background_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "mobile_menu_padding" : {
+        "padding" : {
+          "top" : {
+            "value" : 5,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 5,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "right_side_button" : {
+      "button_type" : "primary",
+      "space_between_button_and_links" : 20,
+      "overwrite_default_spacing" : false,
+      "custom_spacing" : {
+        "padding" : {
+          "top" : {
+            "value" : 0.5,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 0.5,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 1,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 1,
+            "units" : "rem"
+          }
+        },
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      }
+    },
+    "links" : {
+      "navigation_link_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "hover_navigation_link_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "hover_box_background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "font_weight" : 600,
+      "children_menus" : {
+        "hover_children_menu_link_background_color" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        },
+        "hover_children_menu_link_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "children_menu_link_color" : {
+          "color" : "#CA6D02",
+          "opacity" : 100
+        },
+        "font_weight" : 600
+      }
+    },
+    "mega_menu" : {
+      "image_height" : 100,
+      "text_color" : {
+        "color" : "#CA6D02",
+        "opacity" : 100
+      },
+      "hover_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "cta_on_right_side" : {
+        "background_color" : {
+          "color" : "#DEF0F7",
+          "opacity" : 100
+        },
+        "text_color" : {
+          "color" : "#113540",
+          "opacity" : 100
+        },
+        "button_style" : "primary"
+      }
+    },
+    "mobile" : {
+      "menu_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "open_menu_icon_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "close_menu_icon_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "menu_background_color" : {
+        "color" : "#113540",
+        "opacity" : 100
+      },
+      "mobile_menu_padding" : {
+        "padding" : {
+          "top" : {
+            "value" : 5,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 5,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      }
+    }
+  }
+} ]

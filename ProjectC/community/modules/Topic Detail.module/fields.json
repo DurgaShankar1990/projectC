@@ -1,0 +1,26 @@
+[ {
+  "id" : "551706dd-d9a8-bae6-cf49-85990a6d2523",
+  "name" : "choose_your_sample_topic",
+  "display_width" : null,
+  "label" : "Choose Your Sample Topic",
+  "required" : false,
+  "locked" : false,
+  "object_type" : "p_topic",
+  "properties_to_fetch" : [ "topic_detail", "name", "dynamic_page_slug_2", "number_of_replies", "category", "status" ],
+  "display_properties" : [ ],
+  "type" : "crmobject"
+}, {
+  "id" : "c86aac8e-96a4-4ee5-9bbe-778c81195c93",
+  "name" : "show_byline",
+  "display_width" : null,
+  "label" : "Show Byline",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "username", "by Username" ], [ "fullname", "by Full Name" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "fullname"
+} ]

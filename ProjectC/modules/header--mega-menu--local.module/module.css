@@ -1,0 +1,7 @@
+html, body {
+  position: relative;
+}
+html.menu-is-open {
+  height: 100%;
+  overflow-y: hidden;
+}

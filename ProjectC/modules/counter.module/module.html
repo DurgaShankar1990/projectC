@@ -1,0 +1,120 @@
+<!-- To Do:
+Mobile Options
+Update tilt options so that they aren't so extreme
+-->
+{% require_css %}
+<style>
+  #module--{{ name }} .counter-card {
+    padding-top: {{ module.style.spacing.padding.top.value }}{{ module.style.spacing.padding.top.units }};
+    padding-left: {{ module.style.spacing.padding.left.value }}{{ module.style.spacing.padding.left.units }};
+    padding-right: {{ module.style.spacing.padding.right.value }}{{ module.style.spacing.padding.right.units }};
+    padding-bottom: {{ module.style.spacing.padding.bottom.value }}{{ module.style.spacing.padding.bottom.units }};
+    margin-top: {{ module.style.spacing.margin.top.value }}{{ module.style.spacing.margin.top.units }};
+    margin-bottom: {{ module.style.spacing.margin.bottom.value }}{{ module.style.spacing.margin.bottom.units }};
+    width: calc((100% / {{ module.style.cards_per_row }}) - {{ module.style.space_between_cards }}px);
+    margin: {{ module.style.space_between_cards / 2 }}px;
+    border-radius: {{ module.style.corner_radius }}px;
+  }
+  @media(max-width: 1024px) {
+    #module--{{ name }} .counter-card {
+      width: calc((100% / {{ module.style.cards_per_row_tablet }}) - {{ module.style.space_between_cards }}px);
+    }
+  }
+  @media(max-width: 767px) {
+    #module--{{ name }} .counter-card {
+      width: 100%;
+      margin: {{ module.style.space_between_cards / 2 }}px 0;
+    }
+  }
+</style>
+{% end_require_css %}
+<div id="module--{{ name }}" class="counter-cards animate animate--{{ module.style.animations.scrolling_animation }}"
+     style="transtion: {{ loop.index }}s;">
+  {% for card in module.cards %}
+  {% set href = card.link.url.href %}
+  {% if card.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+  {% endif %}
+  <a {% if href %}href="{{ href }}"{% endif %}
+     {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+     {% if card.link.rel %}rel="{{ card.link.rel }}"{% endif %}
+     style="{% if card.card_specific_styles.background_type == 'image' %}
+            background-image: url({{ card.card_specific_styles.background_image.src }});
+            {% elif card.card_specific_styles.background_type == 'image_w_overlay' %}
+            background: linear-gradient(to top, rgba({{ card.card_specific_styles.overlay_color.color|convert_rgb }}, {{ card.card_specific_styles.overlay_color.opacity / 100 }}), rgba({{ card.card_specific_styles.overlay_color.color|convert_rgb }}, {{ card.card_specific_styles.overlay_color.opacity / 100 }})), url({{ card.card_specific_styles.background_image.src }});
+            {% elif card.card_specific_styles.background_color == 'custom' %}
+            background-color: rgba({{ card.card_specific_styles.custom_background_color.color|convert_rgb }}, {{ card.card_specific_styles.custom_background_color.opacity / 100 }});
+            {% endif %}
+            {% unless href %}
+            cursor: default;
+            {% endunless %}"
+     class="counter-card 
+            {% if card.card_specific_styles.background_type == 'color' %}
+            bg--{{ card.card_specific_styles.background_color }}
+            {% endif %}
+            text--{{ card.card_specific_styles.text_color }}
+            h-text--{{ card.card_specific_styles.text_color }}
+            {% if module.style.box_shadow %} box-shadow {% endif %}"
+     data-tilt='true'
+     data-tilt-max='{{ module.style.hover.tilt_amount }}'
+     {% if module.style.hover.glare_effect %}
+     data-tilt-glare data-tilt-max-glare="{{ module.style.hover.glare_amount }}"
+     {% endif %}
+     data-tilt-scale="{{ module.style.hover.scale_amount }}"
+     >
+    <div data-amount="{{ card.number }}" class="counter-card__number" style="font-weight: {{ module.style.number.font_weight }}; font-size: {{ module.style.number.number_font_size }}px;">
+      {{ card.number }}
+    </div>
+    <div class="counter-card__inner">
+      {{ card.card_text }}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+{% require_js %}
+<script>
+  const {{name}}_animationDuration = {{ module.style.animations.animation_speed }};
+  const {{name}}_frameDuration = 1000 / 60;
+  const {{name}}_totalFrames = Math.round( animationDuration / frameDuration );
+  const {{name}}_easeOutQuad = t => t * ( 2 - t );
+
+  $(document).ready(function() {
+    $('.counter-card__number:not(.counted)').each(function() {
+      if (checkView($(this)) == true ) {
+        $(this).addClass('counted');
+        animateCountUp(this);
+      };
+    });
+  });
+
+  $(window).scroll(function() {
+    $('.counter-card__number:not(.counted)').each(function() {
+      if (checkView($(this)) == true ) {
+        $(this).addClass('counted');
+        animateCountUp(this);
+      };
+    });
+  });
+
+  const {{name}}_animateCountUp = el => {
+    let frame = 0;
+    const {{name}}_countTo = parseInt( el.dataset.amount, 10 );
+    console.log(countTo);
+    const {{name}}_counter = setInterval( () => {
+      frame++;
+      const {{name}}_progress = easeOutQuad( frame / totalFrames );
+      const {{name}}_currentCount = Math.round( countTo * progress );
+
+      if ( parseInt( el.innerHTML, 10 ) !== currentCount ) {
+        el.innerHTML = currentCount;
+      }
+      if ( frame === totalFrames ) {
+        clearInterval( counter );
+      }
+    }, frameDuration );
+  };
+</script>
+{% end_require_js %}
+
+
